@@ -1,6 +1,4 @@
-﻿using Android.Content;
-using Android.App;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
@@ -9,10 +7,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration;
 using System.IO;
-using Java.Util;
 using System.Linq;
-using Android.Graphics.Drawables;
-using Android;
+
 
 namespace SzybkoOdziez.Views
 {
@@ -24,12 +20,15 @@ namespace SzybkoOdziez.Views
             ChoseRandImg();
            
         }
-        private void OnDislikeClicked(object sender, EventArgs args)
+        private async void OnDislikeClicked(object sender, EventArgs args)
         {
-            LoadImg();
-            mainClothesImg.BackgroundColor = Color.Aqua;
-            //imgContainer.HeightRequest -= 10;
-            //likeBtn.Text = imgContainer.Height.ToString();
+            await dislikeButton.ScaleTo(0.75, 100);
+            await dislikeButton.ScaleTo(1, 100);
+        }
+        private async void OnLikeClicked(object sender, EventArgs args)
+        {
+            await likeButton.ScaleTo(0.75, 100);
+            await likeButton.ScaleTo(1, 100);
         }
 
         private void LoadImg()
