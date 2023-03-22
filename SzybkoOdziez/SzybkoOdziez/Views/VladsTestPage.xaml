@@ -21,13 +21,68 @@
                     <Image x:Name="mainClothesImg" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
                 </ContentView>
             </StackLayout>
-            <StackLayout Margin="10,0,10,10" 
+            <Grid BackgroundColor="Cyan" HeightRequest="150" Padding="10,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" 
+                       Grid.Row="0" 
+                       BackgroundColor="#32312D"
+                       TextColor="White"
+                       FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
+                       Text="Item name">
+                </Label>
+                <Label Grid.Column="1" 
+                       Grid.Row="0" 
+                       BackgroundColor="#32312D"
+                       TextColor="#9FA9FF"
+                       FontSize="18" FontFamily="Calibri"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="End"
+                       Text="Item price">
+                    
+                </Label>
+                <Label Text="Item description"
+                       FontFamily="courier new" 
+                       Grid.ColumnSpan="2" 
+                       Grid.Row="1" 
+                       BackgroundColor="#32312D"
+                       TextColor="White"
+                       FontSize="18" 
+                       >
+
+                </Label>
+                <Label Grid.Column="0" 
+                       Grid.Row="2" 
+                       BackgroundColor="#32312D"
+                       TextColor="White"
+                       FontSize="18" FontFamily="Calibri"
+                       Text="Item details">
+                    
+                </Label>
+                <Label Grid.Column="1" 
+                       Grid.Row="2" 
+                       BackgroundColor="#32312D"
+                       TextColor="White"
+                       FontSize="18" FontFamily="Calibri"
+                       HorizontalTextAlignment="End"
+                       Text="V">
+                    
+                </Label>
+            </Grid>
+            <!--<StackLayout Margin="10,0,10,10" 
                          VerticalOptions="End" 
                          BackgroundColor="#358550"
                          HeightRequest="140">
                 
-            
-            </StackLayout>
+            </StackLayout>-->
         </StackLayout>
         <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10" BackgroundColor="#1F1F5E">
             <ImageButton Source="like.png" 
@@ -39,6 +94,7 @@
                          Margin="0,0,20,0"
                          x:Name="likeButton"
                          Clicked="OnLikeClicked"/>
+            
             <ImageButton Source="dislike.png" 
                          HorizontalOptions="Center" 
                          VerticalOptions="CenterAndExpand"

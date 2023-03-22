@@ -24,19 +24,18 @@ namespace SzybkoOdziez.Views
         }
         private async void OnDislikeClicked(object sender, EventArgs args)
         {
+            mainClothesImg.Source = GetRandImgPath();
+
             await dislikeButton.ScaleTo(0.75, 100);
-            await dislikeButton.ScaleTo(1, 100);
+            await dislikeButton.ScaleTo(1, 100);        
         }
         private async void OnLikeClicked(object sender, EventArgs args)
         {
+            mainClothesImg.Source = GetRandImgPath();
+
             await likeButton.ScaleTo(0.75, 100);
-            await likeButton.ScaleTo(1, 100);
-            mainClothesImg.Source = GetRandImgPath();
-        }
-        private void OnDislikeClicked(object sender, EventArgs args)
-        {
-            mainClothesImg.Source = GetRandImgPath();
-        }
+            await likeButton.ScaleTo(1, 100);         
+        }    
         private string GetRandImgPath()
         {
             var random = new System.Random();
