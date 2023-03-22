@@ -54,7 +54,7 @@ namespace SzybkoOdziez.Views
             //var InternalPath = "android.resource://" + Android.App.Application.Context.PackageName;
             //var Path = (System.Environment.CurrentDirectory + "/Resources/Drawable");
             //var files = Directory.EnumerateFiles(Path);
-            var beruh = App.Current.Resources["Drawable"];
+            //var beruh = App.Current.Resources["Drawable"];
             return "bruh";
         }
 

@@ -20,9 +20,6 @@
                 <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
                     <Image x:Name="mainClothesImg" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
                 </ContentView>
-                <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
-                    <Image x:Name="mainClothesImg2" Source="@drawable/m_acc_item_1.png" Aspect="Fill"/>
-                </ContentView>
             </StackLayout>
             <StackLayout Margin="10,0,10,10" 
                          VerticalOptions="End" 

@@ -64,7 +64,6 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="asdasd.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,35 +102,6 @@
     <AndroidResource Include="Resources\drawable\sz_od_logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\clothes\m\accessories\item_1.jpg" />
-    <Content Include="Assets\clothes\m\accessories\item_2.jpg" />
-    <Content Include="Assets\clothes\m\accessories\item_3.jpg" />
-    <Content Include="Assets\clothes\m\boots\item1.jpg" />
-    <Content Include="Assets\clothes\m\boots\item_2.jpg" />
-    <Content Include="Assets\clothes\m\boots\item_3.jpg" />
-    <Content Include="Assets\clothes\m\pants\item_1.jpg" />
-    <Content Include="Assets\clothes\m\pants\item_2.jpg" />
-    <Content Include="Assets\clothes\m\pants\item_3.jpg" />
-    <Content Include="Assets\clothes\m\tops\item_1.jpg" />
-    <Content Include="Assets\clothes\m\tops\item_2.jpg" />
-    <Content Include="Assets\clothes\m\tops\item_3.jpg" />
-    <Content Include="Assets\clothes\m\tops\item_4.jpg" />
-    <Content Include="Assets\clothes\w\accessories\item_1.jpg" />
-    <Content Include="Assets\clothes\w\accessories\item_2.jpg" />
-    <Content Include="Assets\clothes\w\accessories\item_3.jpg" />
-    <Content Include="Assets\clothes\w\boots\item_1.jpg" />
-    <Content Include="Assets\clothes\w\boots\item_2.jpg" />
-    <Content Include="Assets\clothes\w\boots\item_3.jpg" />
-    <Content Include="Assets\clothes\w\pants\item_1.jpg" />
-    <Content Include="Assets\clothes\w\pants\item_2.jpg" />
-    <Content Include="Assets\clothes\w\pants\item_3.jpg" />
-    <Content Include="Assets\clothes\w\pants\item_4.jpg" />
-    <Content Include="Assets\clothes\w\pants\item_5.jpg" />
-    <Content Include="Assets\clothes\w\tops\item_1.jpg" />
-    <Content Include="Assets\clothes\w\tops\item_2.jpg" />
-    <Content Include="Assets\clothes\w\underwear\item_1.jpg" />
-    <Content Include="Assets\clothes\w\underwear\item_2.jpg" />
-    <Content Include="Assets\clothes\w\underwear\item_3.jpg" />
     <AndroidResource Include="Resources\drawable\m_acc_item_3.jpg" />
     <AndroidResource Include="Resources\drawable\m_acc_item_1.jpg" />
     <AndroidResource Include="Resources\drawable\m_acc_item_2.jpg" />
