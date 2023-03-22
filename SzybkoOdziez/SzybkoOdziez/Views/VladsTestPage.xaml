@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.VladsTestPage"
+             xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:VladsTestPage />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="#1F1F5E">
+        <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#7585FF">
+            <StackLayout Margin="10,10,10,10" x:Name="imgContainer"  VerticalOptions="FillAndExpand" BackgroundColor="#50C878">
+                <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
+                    <Image x:Name="mainClothesImg" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
+                </ContentView>
+                <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
+                    <Image x:Name="mainClothesImg2" Source="@drawable/m_acc_item_1.png" Aspect="Fill"/>
+                </ContentView>
+            </StackLayout>
+            <StackLayout Margin="10,0,10,10" 
+                         VerticalOptions="End" 
+                         BackgroundColor="#358550"
+                         HeightRequest="140">
+                
+            
+            </StackLayout>
+        </StackLayout>
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10" BackgroundColor="#1F1F5E">
+            <Button Text="Like" x:Name="likeBtn"
+                    VerticalOptions="End"
+                    HeightRequest="120"
+                    WidthRequest="120"
+                    CornerRadius="60"
+                    Margin="0,0,10,0"
+                    Padding="0,20,0,20"
+                    BackgroundColor="#01983B"
+                    TextColor="White" />
+
+            <Button Text="Dislike"
+                    Clicked="OnDislikeClicked"
+                    HeightRequest="120"
+                    WidthRequest="120"
+                    CornerRadius="60"
+                    Margin="10,0,0,0"  
+                    Padding="0,20,0,20"
+                    BackgroundColor="#E30713"
+                    TextColor="White" />
+        </StackLayout>
+    </StackLayout>
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout Margin="10,10,10,10" BackgroundColor="#A0B803" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="sz_od_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Margin="10,10,10,10" BackgroundColor="#B5AAA3" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                
+                <Button Margin="0,10,0,0" Text="Like"
+                        
+                        BackgroundColor="#525E01"
+                        TextColor="White" />
+                
+                <Button Margin="0,10,0,0" Text="Dislike"
+                   
+                        BackgroundColor="#522E06"
+                        TextColor="White" />
+                <ContentView Padding="0,80,0,80" VerticalOptions="FillAndExpand">
+                    <Image Source="sz_od_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>
+            </StackLayout>
+        </StackLayout>-->
+        <!--<ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="Start fapping your didi right now" FontSize="Title"/>
+                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
+                <Label FontSize="16" Padding="0,24,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Learn more at "/>
+                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button Margin="0,10,0,0" Text="Learn more"
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="#525E01"
+                        TextColor="White" />
+            </StackLayout>
+        </ScrollView>-->
+    <!--</Grid> -->
+
+</ContentPage>

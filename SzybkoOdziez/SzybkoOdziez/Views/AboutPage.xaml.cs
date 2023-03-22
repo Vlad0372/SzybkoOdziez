@@ -10,6 +10,6 @@ namespace SzybkoOdziez.Views
         public AboutPage()
         {
             InitializeComponent();
-        }
+        }   
     }
 }

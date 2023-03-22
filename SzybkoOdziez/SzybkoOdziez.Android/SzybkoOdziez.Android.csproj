@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -34,6 +34,11 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <MandroidI18n />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,6 +64,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="asdasd.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,5 +99,68 @@
       <Name>SzybkoOdziez</Name>
     </ProjectReference>
   </ItemGroup>
- <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\sz_od_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\clothes\m\accessories\item_1.jpg" />
+    <Content Include="Assets\clothes\m\accessories\item_2.jpg" />
+    <Content Include="Assets\clothes\m\accessories\item_3.jpg" />
+    <Content Include="Assets\clothes\m\boots\item1.jpg" />
+    <Content Include="Assets\clothes\m\boots\item_2.jpg" />
+    <Content Include="Assets\clothes\m\boots\item_3.jpg" />
+    <Content Include="Assets\clothes\m\pants\item_1.jpg" />
+    <Content Include="Assets\clothes\m\pants\item_2.jpg" />
+    <Content Include="Assets\clothes\m\pants\item_3.jpg" />
+    <Content Include="Assets\clothes\m\tops\item_1.jpg" />
+    <Content Include="Assets\clothes\m\tops\item_2.jpg" />
+    <Content Include="Assets\clothes\m\tops\item_3.jpg" />
+    <Content Include="Assets\clothes\m\tops\item_4.jpg" />
+    <Content Include="Assets\clothes\w\accessories\item_1.jpg" />
+    <Content Include="Assets\clothes\w\accessories\item_2.jpg" />
+    <Content Include="Assets\clothes\w\accessories\item_3.jpg" />
+    <Content Include="Assets\clothes\w\boots\item_1.jpg" />
+    <Content Include="Assets\clothes\w\boots\item_2.jpg" />
+    <Content Include="Assets\clothes\w\boots\item_3.jpg" />
+    <Content Include="Assets\clothes\w\pants\item_1.jpg" />
+    <Content Include="Assets\clothes\w\pants\item_2.jpg" />
+    <Content Include="Assets\clothes\w\pants\item_3.jpg" />
+    <Content Include="Assets\clothes\w\pants\item_4.jpg" />
+    <Content Include="Assets\clothes\w\pants\item_5.jpg" />
+    <Content Include="Assets\clothes\w\tops\item_1.jpg" />
+    <Content Include="Assets\clothes\w\tops\item_2.jpg" />
+    <Content Include="Assets\clothes\w\underwear\item_1.jpg" />
+    <Content Include="Assets\clothes\w\underwear\item_2.jpg" />
+    <Content Include="Assets\clothes\w\underwear\item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\m_acc_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\m_acc_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\m_acc_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\m_boots_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\m_boots_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\m_boots_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\m_pants_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\m_pants_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\m_pants_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\m_tops_item_4.jpg" />
+    <AndroidResource Include="Resources\drawable\m_tops_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\m_tops_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\m_tops_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\w_acc_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\w_acc_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\w_acc_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\w_boots_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\w_boots_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\w_boots_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\w_pants_item_5.jpg" />
+    <AndroidResource Include="Resources\drawable\w_pants_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\w_pants_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\w_pants_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\w_pants_item_4.jpg" />
+    <AndroidResource Include="Resources\drawable\w_tops_item_2.jpg" />
+    <AndroidResource Include="Resources\drawable\w_tops_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\w_underwear_item_3.jpg" />
+    <AndroidResource Include="Resources\drawable\w_underwear_item_1.jpg" />
+    <AndroidResource Include="Resources\drawable\w_underwear_item_2.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
