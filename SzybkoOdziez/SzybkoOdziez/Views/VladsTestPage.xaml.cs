@@ -9,7 +9,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration;
 using System.IO;
-using Java.Util;
 using System.Linq;
 using Android.Graphics.Drawables;
 using Android;
@@ -23,8 +22,15 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();        
         }
-        private void OnlikeClicked(object sender, EventArgs args)
+        private async void OnDislikeClicked(object sender, EventArgs args)
         {
+            await dislikeButton.ScaleTo(0.75, 100);
+            await dislikeButton.ScaleTo(1, 100);
+        }
+        private async void OnLikeClicked(object sender, EventArgs args)
+        {
+            await likeButton.ScaleTo(0.75, 100);
+            await likeButton.ScaleTo(1, 100);
             mainClothesImg.Source = GetRandImgPath();
         }
         private void OnDislikeClicked(object sender, EventArgs args)
