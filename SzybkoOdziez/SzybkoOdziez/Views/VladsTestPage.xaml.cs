@@ -13,6 +13,7 @@ using Java.Util;
 using System.Linq;
 using Android.Graphics.Drawables;
 using Android;
+using Java.IO;
 
 namespace SzybkoOdziez.Views
 {
@@ -20,53 +21,25 @@ namespace SzybkoOdziez.Views
     {
         public VladsTestPage()
         {
-            InitializeComponent();
-            ChoseRandImg();
-           
+            InitializeComponent();        
+        }
+        private void OnlikeClicked(object sender, EventArgs args)
+        {
+            mainClothesImg.Source = GetRandImgPath();
         }
         private void OnDislikeClicked(object sender, EventArgs args)
         {
-            LoadImg();
-            mainClothesImg.BackgroundColor = Color.Aqua;
-            //imgContainer.HeightRequest -= 10;
-            //likeBtn.Text = imgContainer.Height.ToString();
+            mainClothesImg.Source = GetRandImgPath();
         }
-
-        private void LoadImg()
+        private string GetRandImgPath()
         {
-            //mainClothesImg.Source = "pack://application:,,,/Clothes/M/boots/item1.jpg";
-            //mainClothesImg.Source = new BitmapImage(new Uri(chosenStickerPath, UriKind.Relative));
-            mainClothesImg.Source = "@drawable/icon_about.png";
-            //var bruh = Resource.Drawable.mt
+            var random = new System.Random();
             
+            List<string> imgsNameList = DependencyService.Get<IImgArrayGetterService>().GetImgArrayStreamAsync();
 
-        }
-        private string ChoseRandImg()
-        {
-           //var bruh1 = System.IO.Directory.GetFiles("C:/Users/Vladislav/Desktop/Clothes/W/accessories");
-
-            int[] range = { 1, 2, 3 };
-            string[] sex = { "m", "w" };
-            string[] category = { "acc", "boots", "pants", "tops", "underwear" };
-
-            // Use whatever folder path you want here, the special folder is just an example
-            //Assembly assembly = Assembly.GetExecutingAssembly();
-            //var InternalPath = "android.resource://" + Android.App.Application.Context.PackageName;
-            //var Path = (System.Environment.CurrentDirectory + "/Resources/Drawable");
-            //var files = Directory.EnumerateFiles(Path);
-            //var beruh = App.Current.Resources["Drawable"];
-            return "bruh";
-        }
-
-        private string[] GetAllTxt()
-        {
-            var executingAssembly = Assembly.GetExecutingAssembly();
-            string folderName = string.Format("{0}.Resources.drawable", executingAssembly.GetName().Name);
-            return executingAssembly
-                .GetManifestResourceNames()
-                .Where(r => r.StartsWith(folderName) && r.EndsWith(".jpg"))
-                .Select(r => r.Substring(folderName.Length + 1))
-                .ToArray();
+            int index = random.Next(imgsNameList.Count);
+            
+            return  "@drawable/" + imgsNameList[index] + ".jpg";
         }
     }
 }
