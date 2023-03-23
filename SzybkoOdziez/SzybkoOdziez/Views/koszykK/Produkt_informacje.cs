@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SzybkoOdziez
+namespace SzybkoOdziez.Views.koszykK
 {
     public class Produkt_informacje
     {

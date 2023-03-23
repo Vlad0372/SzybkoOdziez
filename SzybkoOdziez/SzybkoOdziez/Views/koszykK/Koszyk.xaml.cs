@@ -3,11 +3,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SzybkoOdziez.Views
+namespace SzybkoOdziez.Views.koszykK
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Koszyk : ContentPage
@@ -17,9 +16,10 @@ namespace SzybkoOdziez.Views
         public Koszyk()
         {
             InitializeComponent();
+          
 
-            
         }
+
         private void Kliknienie_zamowienia(object sender, EventArgs e)
         {
             Navigation.PushAsync(new Zatwierdzenie_zamowienie());

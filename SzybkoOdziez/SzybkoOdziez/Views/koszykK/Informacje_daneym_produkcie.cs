@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace SzybkoOdziez
+namespace SzybkoOdziez.Views.koszykK
 {
     public class Informacje_daneym_produkcie
     {

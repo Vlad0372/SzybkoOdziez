@@ -23,19 +23,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Login.xaml">
+    <EmbeddedResource Update="Views\LoginLogowanie\Login.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Rejestracja.xaml">
+    <EmbeddedResource Update="Views\LoginLogowanie\Rejestracja.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Koszyk.xaml">
+    <EmbeddedResource Update="Views\koszykK\Koszyk.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Strona_glowna.xaml">
+    <EmbeddedResource Update="Views\LoginLogowanie\Strona_glowna.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Zatwierdzenie_zamowienie.xaml">
+    <EmbeddedResource Update="Views\koszykK\Zatwierdzenie_zamowienie.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

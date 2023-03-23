@@ -10,17 +10,5 @@
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
-    <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
     
-
-  </ListView>
 </ContentPage>
