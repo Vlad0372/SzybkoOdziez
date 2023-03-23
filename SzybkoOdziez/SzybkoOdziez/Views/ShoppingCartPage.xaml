@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
-             xmlns:local="clr-namespace:SzybkoOdziez.Views.koszykK"
-             x:Class="SzybkoOdziez.Views.koszykK.Koszyk">
+             x:Class="SzybkoOdziez.Views.ShoppingCartPage" 
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:SzybkoOdziez.ViewModels"  
+             xmlns:model="clr-namespace:SzybkoOdziez.Models">
 
-    <ContentPage.BindingContext>
-        <local:Informacje_daneym_produkcie/>
-        
-    </ContentPage.BindingContext>
-    <ContentPage.Content>
-        <StackLayout>
+    <!--zawartosc strony-->
+    <ContentPage.Content x:DataType="local:ShoppingCartViewModel">
+        <StackLayout x:DataType="model:ProductInfo">
 
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Twoje zamówienie" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
             </Frame>
 
-
-            <ListView
+            <ListView x:DataType="local:ShoppingCartViewModel"
                 ItemsSource="{Binding listaProduktu}"
                 HasUnevenRows="True"
                 SeparatorColor="Black"
@@ -25,19 +22,17 @@
                 IsPullToRefreshEnabled="True"
                 RefreshControlColor="Black"
                 >
-                <ListView.ItemTemplate>
+                <ListView.ItemTemplate x:DataType="model:ProductInfo">
                     <DataTemplate>
                         <ViewCell>
-
                             <Grid Padding="10">
                                 <Frame CornerRadius="15" HasShadow="True">
-                                    <StackLayout Orientation="Horizontal">
+                                    <StackLayout Orientation="Horizontal" x:DataType="model:ProductInfo">
                                         <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100">
                                         </Image>
                                         <StackLayout VerticalOptions="Center">
                                             <Label VerticalOptions="Center" Text="{Binding NazwaProduktu}" FontSize="Medium"></Label>
                                             <Label VerticalOptions="Center" Text="{Binding Cena}" FontSize="Medium"></Label>
-
                                         </StackLayout>
                                         <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                                             <Image Source="smietnik.jpg"
@@ -54,49 +49,26 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
-
-
-
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
             <Button x:Name="Przycisk_zamowienia"
                 Clicked="Kliknienie_zamowienia"
-                Text="Złóż zamówienie"
-                 
+                Text="Złóż zamówienie"                
                 TextColor="White" 
                 BackgroundColor="Black" 
                 BorderWidth="1.5" 
                 CornerRadius="50"
                 VerticalOptions="EndAndExpand"
-                >
-
+                    >
             </Button>
             <Label>
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Kliknienie_zamowienia"/>
                 </Label.GestureRecognizers>
             </Label>
-            
         </StackLayout>
     </ContentPage.Content>
-
-
-
-    <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
-            ItemTapped="Handle_ItemTapped"
-            CachingStrategy="RecycleElement">
-  
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-   
-  </ListView>
 </ContentPage>

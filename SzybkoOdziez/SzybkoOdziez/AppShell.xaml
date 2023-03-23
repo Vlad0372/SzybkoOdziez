@@ -89,6 +89,11 @@
         <ShellContent Route="VladsTestPage" ContentTemplate="{DataTemplate local:VladsTestPage}" />
     </FlyoutItem>
     <!--16.03 added-->
+    <!--23.03 added (Karol)-->
+    <FlyoutItem Title="Karol tu testuje" Icon="icon_about.png">
+        <ShellContent Route="ShoppingCartPage" ContentTemplate="{DataTemplate local:ShoppingCartPage}" />
+    </FlyoutItem>
+    <!--23.03 added (Karol)-->
     
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">

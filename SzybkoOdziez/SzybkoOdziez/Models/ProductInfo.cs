@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SzybkoOdziez.Views.koszykK
+namespace SzybkoOdziez.Models
 {
-    public class Produkt_informacje
+    public class ProductInfo
     {
         public int ProduktId { get; set; }
         public string NazwaProduktu { get; set; }
-
         public string Cena { get; set; }
-
         public string ImageUrl { get; set; }
     }
 }
