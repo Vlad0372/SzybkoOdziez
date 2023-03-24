@@ -23,11 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\ShoppingCartPage.xaml">
+    <EmbeddedResource Update="Views\RegistrationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginLogowanie\Login.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    <EmbeddedResource Update="Views\ShoppingCartPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginLogowanie\Rejestracja.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

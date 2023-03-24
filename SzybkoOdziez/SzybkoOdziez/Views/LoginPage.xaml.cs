@@ -17,5 +17,22 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            if (userLogin.Text == "admin" && userPass.Text == "admin")
+            {
+                Navigation.PushAsync(new VladsTestPage());
+            }
+            else
+            {
+                DisplayAlert("UPS...!", "Podałeś złe hasło albo nazwę uztkownika", "Spróbuj ponownie");
+            }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RegistrationPage());
+        }
     }
 }

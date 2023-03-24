@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Android.Content.Res;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using SzybkoOdziez.Views;
@@ -20,5 +21,7 @@ namespace SzybkoOdziez.ViewModels
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
         }
+
+        
     }
 }
