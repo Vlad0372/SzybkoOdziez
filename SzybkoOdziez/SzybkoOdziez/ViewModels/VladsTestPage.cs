@@ -10,7 +10,7 @@ namespace SzybkoOdziez.ViewModels
     {
         public VladsTestPage()
         {
-            Title = "Vladek tu";
+            Title = "Strona główna";
             
         }
     }

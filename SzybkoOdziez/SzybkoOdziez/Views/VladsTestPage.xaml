@@ -14,14 +14,16 @@
             <Color x:Key="Accent">#96d1ff</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="#1F1F5E">
-        <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#7585FF">
-            <StackLayout Margin="10,10,10,10" x:Name="imgContainer"  VerticalOptions="FillAndExpand" BackgroundColor="#50C878">
+    <StackLayout BackgroundColor="White">
+        <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="Silver" >
+            <StackLayout Margin="1,1,1,1" x:Name="imgContainer"  VerticalOptions="FillAndExpand" BackgroundColor="Orange">
                 <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
                     <Image x:Name="productUrl" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
                 </ContentView>
             </StackLayout>
-            <Grid BackgroundColor="Cyan" HeightRequest="150" Padding="10,0,10,0">
+        </StackLayout>
+        <StackLayout Margin="20,10,20,10" VerticalOptions="FillAndExpand">
+            <Grid BackgroundColor="Gray" HeightRequest="150" Padding="1,1,1,1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="2*" />
@@ -34,29 +36,29 @@
 
                 <Label Grid.Column="0" 
                        Grid.Row="0" 
-                       BackgroundColor="#32312D"
-                       TextColor="White"
+                       BackgroundColor="White"
+                       TextColor="Black"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
                        x:Name="productName"
-                       Text="Item name">
+                       Text="Nazwa">
                 </Label>
                 <Label Grid.Column="1" 
                        Grid.Row="0" 
-                       BackgroundColor="#32312D"
-                       TextColor="#9FA9FF"
+                       BackgroundColor="White"
+                       TextColor="Black"
                        FontSize="18" FontFamily="Calibri"
                        FontAttributes="Bold"
-                       HorizontalTextAlignment="End"
+                       HorizontalTextAlignment="Start"
                        x:Name="productPrice"
-                       Text="Item price">
+                       Text="Cena">
                     
                 </Label>
-                <Label Text="Item description"
+                <Label Text="Opis"
                        FontFamily="courier new" 
                        Grid.ColumnSpan="2" 
                        Grid.Row="1" 
-                       BackgroundColor="#32312D"
-                       TextColor="White"
+                       BackgroundColor="White"
+                       TextColor="Gray"
                        x:Name="productDesc"
                        FontSize="18" 
                        >
@@ -64,30 +66,30 @@
                 </Label>
                 <Label Grid.Column="0" 
                        Grid.Row="2" 
-                       BackgroundColor="#32312D"
-                       TextColor="White"
+                       BackgroundColor="White"
+                       TextColor="Gray"
                        FontSize="18" FontFamily="Calibri"
                        Text="Item details">
                     
                 </Label>
                 <Label Grid.Column="1" 
                        Grid.Row="2" 
-                       BackgroundColor="#32312D"
-                       TextColor="White"
+                       BackgroundColor="White"
+                       TextColor="Gray"
                        FontSize="18" FontFamily="Calibri"
                        HorizontalTextAlignment="End"
                        Text="V">
                     
                 </Label>
             </Grid>
+        </StackLayout>
             <!--<StackLayout Margin="10,0,10,10" 
                          VerticalOptions="End" 
                          BackgroundColor="#358550"
                          HeightRequest="140">
                 
             </StackLayout>-->
-        </StackLayout>
-        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10" BackgroundColor="#1F1F5E">
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10" >
             <ImageButton Source="like.png" 
                          HorizontalOptions="Center" 
                          VerticalOptions="CenterAndExpand"

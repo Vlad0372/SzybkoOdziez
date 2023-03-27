@@ -14,7 +14,7 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.BackgroundColor" Value="DarkOrange" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
                 <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
@@ -41,12 +41,12 @@
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor" Value="{x:OnPlatform UWP=Transparent, iOS=White}" />
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="DarkOrange" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Selected">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor" Value="DarkOrange" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -63,7 +63,7 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="DarkOrange" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -78,24 +78,24 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <FlyoutItem Title="About" Icon="icon_about.png">
-        <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-    </FlyoutItem>
-    <FlyoutItem Title="Browse" Icon="icon_feed.png">
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
-    </FlyoutItem>
-    <!--16.03 added-->
-    <FlyoutItem Title="Vlad`s test page" Icon="icon_about.png">
+
+    <!--16.03 added
+        <FlyoutItem Title="About" Icon="icon_about.png">
+            <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        </FlyoutItem>
+    -->
+
+    <FlyoutItem Title="Strona główna" Icon="mainPageIcon.png">
         <ShellContent Route="VladsTestPage" ContentTemplate="{DataTemplate local:VladsTestPage}" />
     </FlyoutItem>
     <!--16.03 added-->
     <!--23.03 added (Karol)-->
-    <FlyoutItem Title="Karol tu testuje" Icon="icon_about.png">
+    <FlyoutItem Title="Koszyk" Icon="shoppingCart.png">
         <ShellContent Route="ShoppingCartPage" ContentTemplate="{DataTemplate local:ShoppingCartPage}" />
     </FlyoutItem>
     <!--23.03 added (Karol)-->
     <!--27.03 added (Michal)-->
-    <FlyoutItem Title="Lista obserwowanych przedmiotów" Icon="icon_about.png">
+    <FlyoutItem Title="Lista obserwowanych przedmiotów" Icon="observedIcon.png">
         <ShellContent Route="WatchlistPage" ContentTemplate="{DataTemplate local:WatchlistPage}" />
     </FlyoutItem>
     <!--27.03 added (Michal)-->
@@ -103,7 +103,7 @@
 
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="Wyloguj" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked" IconImageSource="logoutIcon">
     </MenuItem>
 
     <!--

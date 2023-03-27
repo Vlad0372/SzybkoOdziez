@@ -13,7 +13,7 @@ namespace SzybkoOdziez.ViewModels
         public ObservableCollection<ProductInfo> Items { get; set; }
         public ShoppingCartViewModel()
         {
-            Title = "Koszyk Karola";
+            Title = "Koszyk";
 
             Items = new ObservableCollection<ProductInfo>();
             Items.Add(new ProductInfo() { Id = 1, Name = "Bluza", Description = "desc1", Price = "250 zł", Url = "bluza.jpg" });

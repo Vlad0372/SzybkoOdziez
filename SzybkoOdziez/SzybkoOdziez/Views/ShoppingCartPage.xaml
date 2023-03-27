@@ -58,7 +58,7 @@
                 Clicked="Kliknienie_zamowienia"
                 Text="Złóż zamówienie"                
                 TextColor="White" 
-                BackgroundColor="Black" 
+                BackgroundColor="DarkOrange" 
                 BorderWidth="1.5" 
                 CornerRadius="50"
                 VerticalOptions="EndAndExpand"
