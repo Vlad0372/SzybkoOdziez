@@ -47,7 +47,7 @@ namespace SzybkoOdziez.Views
                 currentProduct.Name = "prod_name_" + i;
                 currentProduct.Description = "disc_" + i;
                 currentProduct.Url = "@drawable/" + imgsNameList[i] + ".jpg";
-                currentProduct.Price = (i + 1 * 100 % 15).ToString();
+                currentProduct.Price = ((i + 1 * 100 % 15) * 10).ToString() + ",00 zł";
 
                 productsList.Add(currentProduct);
             }
