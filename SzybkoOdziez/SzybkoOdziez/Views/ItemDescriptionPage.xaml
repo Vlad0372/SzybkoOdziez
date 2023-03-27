@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.ItemDescriptionPage"
+             xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:ItemDescriptionPage />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="10,10,10,10">
+                <Grid Margin="10,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="0" 
+                       Grid.Row="0"
+                       Text="Producent">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="1" 
+                       Grid.Row="0"
+                       Text="Sprandi">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="0" 
+                       Grid.Row="1"
+                       Text="Kolor">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="1" 
+                       Grid.Row="1"
+                       Text="Granatowe">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="0" 
+                       Grid.Row="2"
+                       Text="Sezon">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="1" 
+                       Grid.Row="2"
+                       Text="Jesień/Zima">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="0" 
+                       Grid.Row="3"
+                       Text="Materiał">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="1" 
+                       Grid.Row="3"
+                       Text="Bawełna">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="0" 
+                       Grid.Row="4"
+                       Text="Wzór">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="1" 
+                       Grid.Row="4"
+                       Text="Gładkie">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="0" 
+                       Grid.Row="5"
+                       Text="Model">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="1" 
+                       Grid.Row="5"
+                       Text="SP22-BLM503 ">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="0" 
+                       Grid.Row="6"
+                       Text="Cena">
+                    </Label>
+                    <Label 
+                        FontSize="18" FontFamily="Calibri"
+                       Grid.Column="1" 
+                       Grid.Row="6"
+                       Text="150zł">
+                    </Label>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -13,6 +13,10 @@ namespace SzybkoOdziez.Views
             InitializeComponent(); 
             InitProductInfoList();
         }
+        private void ShowItemDescription(object sender, EventArgs args)
+        {
+            Navigation.PushAsync(new ItemDescriptionPage());
+        }
         private async void OnDislikeClicked(object sender, EventArgs args)
         {
             var randProduct = GetRandProductInfo();

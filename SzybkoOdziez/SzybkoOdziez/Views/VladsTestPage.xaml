@@ -50,16 +50,16 @@
                        Text="Item price">
 
                 </Label>
-                <Label Text="Item description"
+                <Button Text="Item description"
                        FontFamily="courier new" 
                        Grid.ColumnSpan="2" 
                        Grid.Row="1" 
                        BackgroundColor="#32312D"
                        TextColor="White"
                        x:Name="productDesc"
-                       FontSize="18" 
-                       >
-                </Label>
+                       FontSize="14" 
+                       Clicked="ShowItemDescription">
+                </Button>
                 <!--<BoxView Grid.Row="2" 
                          Grid.ColumnSpan="2"
                          Color="Red" HeightRequest="2" HorizontalOptions="FillAndExpand"
