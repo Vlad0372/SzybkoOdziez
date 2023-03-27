@@ -23,17 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\MichalTu.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\RegistrationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ShoppingCartPage.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\WatchlistPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Zatwierdzenie_zamowienie.xaml">
       <Generator>MSBuild:Compile</Generator>
