@@ -1,18 +1,6 @@
-﻿using Android.Content;
-using Android.App;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Reflection;
-using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Xamarin.Forms.PlatformConfiguration;
-using System.IO;
-using System.Linq;
-using Android.Graphics.Drawables;
-using Android;
-using Java.IO;
 
 namespace SzybkoOdziez.Views
 {

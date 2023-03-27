@@ -1,9 +1,4 @@
-﻿using Android.Content.Res;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using SzybkoOdziez.Views;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace SzybkoOdziez.ViewModels
 {
