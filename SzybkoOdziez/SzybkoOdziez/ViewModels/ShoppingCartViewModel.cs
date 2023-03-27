@@ -10,17 +10,17 @@ namespace SzybkoOdziez.ViewModels
 {
     public class ShoppingCartViewModel : BaseViewModel
     {
-        public ObservableCollection<ProductInfo> listaProduktu { get; set; }
+        public ObservableCollection<ProductInfo> Items { get; set; }
         public ShoppingCartViewModel()
         {
             Title = "Koszyk Karola";
 
-            listaProduktu = new ObservableCollection<ProductInfo>();
-            listaProduktu.Add(new ProductInfo() { ProduktId = 1, NazwaProduktu = "Bluza", Cena = "250 zł", ImageUrl = "bluza.jpg" });
-            listaProduktu.Add(new ProductInfo() { ProduktId = 2, NazwaProduktu = "Czapka", Cena = "15 zł", ImageUrl = "czapka.jpg" });
-            listaProduktu.Add(new ProductInfo() { ProduktId = 3, NazwaProduktu = "Buty", Cena = "100 zł", ImageUrl = "buty.jpg" });
-            listaProduktu.Add(new ProductInfo() { ProduktId = 4, NazwaProduktu = "Dresy", Cena = "200 zł", ImageUrl = "dresy.jpg" });
-            listaProduktu.Add(new ProductInfo() { ProduktId = 5, NazwaProduktu = "Kurtka", Cena = "500 zł", ImageUrl = "kurtka.jpg" });
+            Items = new ObservableCollection<ProductInfo>();
+            Items.Add(new ProductInfo() { Id = 1, Name = "Bluza", Description = "desc1", Price = "250 zł", Url = "bluza.jpg" });
+            Items.Add(new ProductInfo() { Id = 2, Name = "Czapka", Description = "desc2", Price = "15 zł", Url = "czapka.jpg" });
+            Items.Add(new ProductInfo() { Id = 3, Name = "Buty", Description = "desc3", Price = "100 zł", Url = "buty.jpg" });
+            Items.Add(new ProductInfo() { Id = 4, Name = "Dresy", Description = "desc4", Price = "200 zł", Url = "dresy.jpg" });
+            Items.Add(new ProductInfo() { Id = 5, Name = "Kurtka", Description = "desc5", Price = "500 zł", Url = "kurtka.jpg" });
         }
     }
 }

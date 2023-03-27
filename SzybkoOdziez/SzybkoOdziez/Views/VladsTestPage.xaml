@@ -18,7 +18,7 @@
         <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#7585FF">
             <StackLayout Margin="10,10,10,10" x:Name="imgContainer"  VerticalOptions="FillAndExpand" BackgroundColor="#50C878">
                 <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
-                    <Image x:Name="mainClothesImg" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
+                    <Image x:Name="productUrl" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
                 </ContentView>
             </StackLayout>
             <Grid BackgroundColor="Cyan" HeightRequest="150" Padding="10,0,10,0">
@@ -37,6 +37,7 @@
                        BackgroundColor="#32312D"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
+                       x:Name="productName"
                        Text="Item name">
                 </Label>
                 <Label Grid.Column="1" 
@@ -46,6 +47,7 @@
                        FontSize="18" FontFamily="Calibri"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="End"
+                       x:Name="productPrice"
                        Text="Item price">
                     
                 </Label>
@@ -55,6 +57,7 @@
                        Grid.Row="1" 
                        BackgroundColor="#32312D"
                        TextColor="White"
+                       x:Name="productDesc"
                        FontSize="18" 
                        >
 

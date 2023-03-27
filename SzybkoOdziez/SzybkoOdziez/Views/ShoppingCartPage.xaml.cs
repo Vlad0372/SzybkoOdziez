@@ -28,10 +28,10 @@ namespace SzybkoOdziez.Views
         {
             TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
 
-            ProductInfo produkt_informacje = ((ShoppingCartViewModel)BindingContext).listaProduktu.
-                FirstOrDefault(prod => prod.ProduktId == (int)tappedEventArgs.Parameter);
+            ProductInfo produkt_informacje = ((ShoppingCartViewModel)BindingContext).Items.
+                FirstOrDefault(prod => prod.Id == (int)tappedEventArgs.Parameter);
 
-            ((ShoppingCartViewModel)BindingContext).listaProduktu.Remove(produkt_informacje);
+            ((ShoppingCartViewModel)BindingContext).Items.Remove(produkt_informacje);
         }
     }
 }

@@ -6,9 +6,10 @@ namespace SzybkoOdziez.Models
 {
     public class ProductInfo
     {
-        public int ProduktId { get; set; }
-        public string NazwaProduktu { get; set; }
-        public string Cena { get; set; }
-        public string ImageUrl { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Price { get; set; }
+        public string Url { get; set; }
     }
 }

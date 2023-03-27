@@ -15,7 +15,7 @@
             </Frame>
 
             <ListView x:DataType="local:ShoppingCartViewModel"
-                ItemsSource="{Binding listaProduktu}"
+                ItemsSource="{Binding Items}"
                 HasUnevenRows="True"
                 SeparatorColor="Black"
                 SeparatorVisibility="None"
@@ -28,11 +28,11 @@
                             <Grid Padding="10">
                                 <Frame CornerRadius="15" HasShadow="True">
                                     <StackLayout Orientation="Horizontal" x:DataType="model:ProductInfo">
-                                        <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100">
+                                        <Image Source="{Binding Url}" WidthRequest="100" HeightRequest="100">
                                         </Image>
                                         <StackLayout VerticalOptions="Center">
-                                            <Label VerticalOptions="Center" Text="{Binding NazwaProduktu}" FontSize="Medium"></Label>
-                                            <Label VerticalOptions="Center" Text="{Binding Cena}" FontSize="Medium"></Label>
+                                            <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Medium"></Label>
+                                            <Label VerticalOptions="Center" Text="{Binding Price}" FontSize="Medium"></Label>
                                         </StackLayout>
                                         <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                                             <Image Source="smietnik.jpg"
@@ -41,7 +41,7 @@
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
                                                         Tapped="TapGestureRecognizer_Tapped"
-                                                        CommandParameter="{Binding ProduktId}"
+                                                        CommandParameter="{Binding Id}"
                                                         >
                                                     </TapGestureRecognizer>
                                                 </Image.GestureRecognizers>
