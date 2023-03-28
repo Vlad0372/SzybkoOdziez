@@ -24,7 +24,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*" />
-                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
@@ -50,16 +50,16 @@
                        Text="Item price">
 
                 </Label>
-                <Button Text="Item description"
+                <Label Text="Item description"
                        FontFamily="courier new" 
                        Grid.ColumnSpan="2" 
                        Grid.Row="1" 
                        BackgroundColor="#32312D"
                        TextColor="White"
                        x:Name="productDesc"
-                       FontSize="14" 
-                       Clicked="ShowItemDescription">
-                </Button>
+                       FontSize="16" 
+                       >
+                </Label>
                 <!--<BoxView Grid.Row="2" 
                          Grid.ColumnSpan="2"
                          Color="Red" HeightRequest="2" HorizontalOptions="FillAndExpand"
@@ -67,16 +67,18 @@
                          >
                     
                 </BoxView>-->
+                
                 <Frame BackgroundColor="Gray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
                        Grid.Column="0" 
                        Grid.Row="2" 
-                       Margin="-20,0,-20,0">
+                       Margin="-20,0,-20,0"
+                       >
                     <Label  
                        VerticalTextAlignment="Center"
                        BackgroundColor="#32312D"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
-                       Text="&#9645;   Rozmiar"
+                       Text="Pokaż więcej"
                        Padding="20,0,0,0">
                        
                     </Label>
