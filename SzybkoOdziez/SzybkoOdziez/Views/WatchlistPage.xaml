@@ -4,11 +4,12 @@
              x:Class="SzybkoOdziez.Views.WatchlistPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="My Watchlist" FontSize="Medium" Margin="10"/>
+            <Label Text="Lista obserwowanych przedmiotów" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" TextColor="#555"/>
             <CollectionView x:Name="ProductList" ItemsSource="{Binding Products}" Margin="10">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout x:Name="WatchlistProductStackLayout" Orientation="Horizontal" Margin="10,5">
+                        <!--<StackLayout x:Name="WatchlistProductStackLayout" Orientation="Horizontal" Margin="10,5">
+
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnWishlistProductStackLayoutTapped" />
                             </StackLayout.GestureRecognizers>
@@ -17,7 +18,51 @@
                                 <Label Text="{Binding Name}" FontSize="Medium"/>
                                 <Label Text="{Binding Price}" FontSize="Small" />
                             </StackLayout>
+                            <Image Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                            
+                        </StackLayout>-->
+                        <StackLayout>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="70" />
+                                </Grid.ColumnDefinitions>
+                                <!--grid w ktorym jest zdjecie produktu i tekst produktu-->
+                                <Grid Margin="10,5" x:Name="WatchlistProductStackLayout">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnWishlistProductStackLayoutTapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <!--zdjecie produktu-->
+                                    <Image Source="{Binding Url}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
+                                    <!--tekst produktu (nazwa, cena)-->
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="{Binding Name}" FontSize="Medium"/>
+                                        <Label Text="{Binding Price}" FontSize="Small" />
+                                    </StackLayout>
+                                </Grid>
+                                <!--kontener smietnika-->
+                                <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 25, 0">
+                                    <!--obrazek smietnik-->
+                                    <Image Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                        Tapped="OnWishlistProductTrashcanTapped"
+                                                        CommandParameter="{Binding Id}"
+                                                        >
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </Grid>
+                            <BoxView HeightRequest="2" BackgroundColor="LightGray" Margin="0, 5" />
                         </StackLayout>
+
+
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

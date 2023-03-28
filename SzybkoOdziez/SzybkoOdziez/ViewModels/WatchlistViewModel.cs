@@ -19,10 +19,17 @@ namespace SzybkoOdziez.ViewModels
 
             Products = new ObservableCollection<ProductInfo>
             {
-            new ProductInfo { Id = 1, Name = "HAHAHA", Description = "OKEJ, CZY TO DZIALA?!?!", Price = "5.00 zl", Url = "@drawable/" + imgsNameList[1] + ".jpg" }
+            new ProductInfo { Id = 1, Name = "Test Product", Description = "Test Description", Price = "Test 5.00 zl", Url = "@drawable/" + imgsNameList[1] + ".jpg" }
             };
 
             
         }
+
+        public WatchlistViewModel(ObservableCollection<ProductInfo> products)
+        {
+            Products = products;
+        }
+
+
     }
 }

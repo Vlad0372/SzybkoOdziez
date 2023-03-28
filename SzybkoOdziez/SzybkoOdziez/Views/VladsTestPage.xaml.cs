@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using SzybkoOdziez.Models;
 using Xamarin.Forms;
 
@@ -8,9 +9,14 @@ namespace SzybkoOdziez.Views
     public partial class VladsTestPage : ContentPage
     {
         private List<ProductInfo> productsList = new List<ProductInfo>();
+
+        //list of liked products, used in Watchlist Page
+        private ObservableCollection<ProductInfo> likedProductsList = new ObservableCollection<ProductInfo>();
+
         public VladsTestPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            Application.Current.Properties.Add("likedProductsList", likedProductsList);
             InitProductInfoList();
         }
         private void ShowItemDescription(object sender, EventArgs args)
@@ -30,6 +36,40 @@ namespace SzybkoOdziez.Views
         }
         private async void OnLikeClicked(object sender, EventArgs args)
         {
+            //updating list of liked products by adding newly liked product
+            var helperList = (ObservableCollection<ProductInfo>)Application.Current.Properties["likedProductsList"];
+            var helperProduct = new ProductInfo { Id = helperList.Count + 1, Name = productName.Text, Description = productDesc.Text, Price = productPrice.Text, Url = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source) };
+
+            //powinno byc to, ale trzeba naprawic id
+            //if (!helperList.Contains(helperProduct))
+            //{
+            //    Application.Current.Properties.Remove("likedProductsList");
+            //    helperList.Add(helperProduct);
+            //    Application.Current.Properties.Add("likedProductsList", likedProductsList);
+            //    await Application.Current.SavePropertiesAsync();
+            //}
+
+            //!---------------- DO USUNIECIA PO POPRAWIENIU POBIERANIA/PRZYPISYWANIA ID ---------------!
+            bool helperBool = true;
+            foreach (var helper in helperList)
+            {
+                if (helperProduct.Name == helper.Name)
+                {
+                    helperBool = false;
+                }
+            }
+            if (helperBool)
+            {
+                Application.Current.Properties.Remove("likedProductsList");
+                helperList.Add(helperProduct);
+                Application.Current.Properties.Add("likedProductsList", likedProductsList);
+                await Application.Current.SavePropertiesAsync();
+            }
+            //!----------------------------------- DO USUNIECIA ---------------------------------------!
+
+
+
+
             var randProduct = GetRandProductInfo();
             productUrl.Source = randProduct.Url;
             productName.Text = randProduct.Name;
