@@ -16,6 +16,7 @@ namespace SzybkoOdziez.Views
         public VladsTestPage()
         {
             InitializeComponent();
+            //w momencie wlaczenia strony glownej tworzy pusta liste polubionych przedmiotow, pewnie powinno byc przerzucone do startu apki
             Application.Current.Properties.Add("likedProductsList", likedProductsList);
             InitProductInfoList();
         }
@@ -40,7 +41,7 @@ namespace SzybkoOdziez.Views
             var helperList = (ObservableCollection<ProductInfo>)Application.Current.Properties["likedProductsList"];
             var helperProduct = new ProductInfo { Id = helperList.Count + 1, Name = productName.Text, Description = productDesc.Text, Price = productPrice.Text, Url = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source) };
 
-            //powinno byc to, ale trzeba naprawic id
+            //powinno byc cos takiego, ale trzeba naprawic id
             //if (!helperList.Contains(helperProduct))
             //{
             //    Application.Current.Properties.Remove("likedProductsList");
