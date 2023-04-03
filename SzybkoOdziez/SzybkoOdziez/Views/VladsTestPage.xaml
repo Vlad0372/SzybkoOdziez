@@ -67,25 +67,31 @@
                        Margin="-20,0,-20,0">
                     <Label  
                        VerticalTextAlignment="Center"
-                       BackgroundColor="#32312D"
+                       BackgroundColor="Bisque"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
                        Text="Pokaż więcej"
                        Padding="20,0,0,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShowMore"/>
+                        </Label.GestureRecognizers>
                     </Label>
                 </Frame>
-                <Frame BackgroundColor="Gray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
+                <Frame BackgroundColor="blue" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
                        Grid.Column="1" 
                        Grid.Row="2"
                        Margin="0,0,-20,0">
                     <Label  
                        VerticalTextAlignment="Center"
-                       BackgroundColor="#32312D"
+                       BackgroundColor="Bisque"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri"
                        HorizontalTextAlignment="End"
                        Text="&#9660;"
                        Padding="0,0,20,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShowMore"/>
+                        </Label.GestureRecognizers>
                     </Label>
                 </Frame>
             </Grid>

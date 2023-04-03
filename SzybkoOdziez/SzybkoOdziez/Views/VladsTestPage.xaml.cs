@@ -12,7 +12,10 @@ namespace SzybkoOdziez.Views
 
         //list of liked products, used in Watchlist Page
         private ObservableCollection<ProductInfo> likedProductsList = new ObservableCollection<ProductInfo>();
-
+        private void ShowMore(object sender, EventArgs e)
+        {
+            
+        }
         public VladsTestPage()
         {
             InitializeComponent();
