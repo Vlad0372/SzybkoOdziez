@@ -10,7 +10,7 @@ namespace SzybkoOdziez.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDefaultDataStore<Item> DataStore => DependencyService.Get<IDefaultDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy

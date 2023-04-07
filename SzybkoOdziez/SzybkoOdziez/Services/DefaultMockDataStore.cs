@@ -6,11 +6,11 @@ using SzybkoOdziez.Models;
 
 namespace SzybkoOdziez.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class DefaultMockDataStore : IDefaultDataStore<Item>
     {
         readonly List<Item> items;
 
-        public MockDataStore()
+        public DefaultMockDataStore()
         {
             items = new List<Item>()
             {

@@ -8,27 +8,27 @@
 
     <!--zawartosc strony-->
     <ContentPage.Content x:DataType="local:ShoppingCartViewModel">
-        <StackLayout x:DataType="model:ProductInfo">
+        <StackLayout x:DataType="model:Product">
 
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Twoje zamówienie" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
             </Frame>
 
             <ListView x:DataType="local:ShoppingCartViewModel"
-                ItemsSource="{Binding Items}"
+                ItemsSource="{Binding Products}"
                 HasUnevenRows="True"
                 SeparatorColor="Black"
                 SeparatorVisibility="None"
                 IsPullToRefreshEnabled="True"
                 RefreshControlColor="Black"
                 >
-                <ListView.ItemTemplate x:DataType="model:ProductInfo">
+                <ListView.ItemTemplate x:DataType="model:Product">
                     <DataTemplate>
                         <ViewCell>
                             <Grid Padding="10">
                                 <Frame CornerRadius="15" HasShadow="True">
-                                    <StackLayout Orientation="Horizontal" x:DataType="model:ProductInfo">
-                                        <Image Source="{Binding Url}" WidthRequest="100" HeightRequest="100">
+                                    <StackLayout Orientation="Horizontal" x:DataType="model:Product">
+                                        <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100">
                                         </Image>
                                         <StackLayout VerticalOptions="Center">
                                             <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Medium"></Label>
@@ -40,7 +40,7 @@
                                                    HeightRequest="30">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
-                                                        Tapped="TapGestureRecognizer_Tapped"
+                                                        Tapped="ShoppingCartTrashcan_Tapped"
                                                         CommandParameter="{Binding Id}"
                                                         >
                                                     </TapGestureRecognizer>

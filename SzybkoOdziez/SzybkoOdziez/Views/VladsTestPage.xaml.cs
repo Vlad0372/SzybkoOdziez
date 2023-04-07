@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using SzybkoOdziez.Models;
 using Xamarin.Forms;
 
@@ -21,6 +22,7 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
             //w momencie wlaczenia strony glownej tworzy pusta liste polubionych przedmiotow, pewnie powinno byc przerzucone do startu apki
             Application.Current.Properties.Add("likedProductsList", likedProductsList);
+            Application.Current.Properties.Add("shoppingCatProductsList", shoppingCartProductsList);
             InitProductInfoList();
         }
         private void ShowItemDescription(object sender, EventArgs args)
@@ -40,35 +42,54 @@ namespace SzybkoOdziez.Views
         }
         private async void OnLikeClicked(object sender, EventArgs args)
         {
-            //updating list of liked products by adding newly liked product
-            var helperList = (ObservableCollection<ProductInfo>)Application.Current.Properties["likedProductsList"];
-            var helperProduct = new ProductInfo { Id = helperList.Count + 1, Name = productName.Text, Description = productDesc.Text, Price = productPrice.Text, Url = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source) };
+            //TODO zrefaktoryzowac zeby bralo product z productDataStore
+            var app = (App)Application.Current;
+            var wishlistDataStore = app.wishlistDataStore;
+            var wishlistIEnumerable = await wishlistDataStore.GetItemsAsync();
 
-            //powinno byc cos takiego, ale trzeba naprawic id
-            //if (!helperList.Contains(helperProduct))
+            var currentProduct = new Product
+            {
+                Id = wishlistIEnumerable.Count() + 1,
+                ImageUrl = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source),
+                Name = productName.Text,
+                //Price = productPrice.Text,
+                Price = Convert.ToDecimal(productPrice.Text.Split(',').First()),
+                Description = productDesc.Text,
+            };
+
+            if (wishlistDataStore.CheckInDataStore(currentProduct))
+            {
+                await wishlistDataStore.AddItemAsync(currentProduct);
+            }
+
+            //var helperList = (ObservableCollection<ProductInfo>)Application.Current.Properties["likedProductsList"];
+            //var helperProduct = new ProductInfo { Id = helperList.Count + 1, Name = productName.Text, Description = productDesc.Text, Price = productPrice.Text, Url = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source) };
+
+            ////powinno byc cos takiego, ale trzeba naprawic id
+            ////if (!helperList.Contains(helperProduct))
+            ////{
+            ////    Application.Current.Properties.Remove("likedProductsList");
+            ////    helperList.Add(helperProduct);
+            ////    Application.Current.Properties.Add("likedProductsList", likedProductsList);
+            ////    await Application.Current.SavePropertiesAsync();
+            ////}
+
+            ////!---------------- DO USUNIECIA PO POPRAWIENIU POBIERANIA/PRZYPISYWANIA ID ---------------!
+            //bool notFoundInWishlist = true;
+            //foreach (var helper in helperList)
+            //{
+            //    if (helperProduct.Name == helper.Name)
+            //    {
+            //        notFoundInWishlist = false;
+            //    }
+            //}
+            //if (notFoundInWishlist)
             //{
             //    Application.Current.Properties.Remove("likedProductsList");
             //    helperList.Add(helperProduct);
             //    Application.Current.Properties.Add("likedProductsList", likedProductsList);
             //    await Application.Current.SavePropertiesAsync();
             //}
-
-            //!---------------- DO USUNIECIA PO POPRAWIENIU POBIERANIA/PRZYPISYWANIA ID ---------------!
-            bool helperBool = true;
-            foreach (var helper in helperList)
-            {
-                if (helperProduct.Name == helper.Name)
-                {
-                    helperBool = false;
-                }
-            }
-            if (helperBool)
-            {
-                Application.Current.Properties.Remove("likedProductsList");
-                helperList.Add(helperProduct);
-                Application.Current.Properties.Add("likedProductsList", likedProductsList);
-                await Application.Current.SavePropertiesAsync();
-            }
             //!----------------------------------- DO USUNIECIA ---------------------------------------!
 
 
