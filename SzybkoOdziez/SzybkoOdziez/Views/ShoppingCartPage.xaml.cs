@@ -53,7 +53,7 @@ namespace SzybkoOdziez.Views
             else
             {
                 await shoppingCartDataStore.DeleteItemAsync(tappedProduct);
-                ((ShoppingCartViewModel)BindingContext).OnShoppingCartOpen();
+                _viewModel.OnShoppingCartOpen();
             }
         }
     }

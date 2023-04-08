@@ -15,26 +15,19 @@ namespace SzybkoOdziez.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WatchlistPage : ContentPage
     {
-        private ObservableCollection<ProductInfo> _products;
         private WishlistDataStore _wishlistDataStore;
-        private WatchlistViewModel _watchlistViewModel;
+        private WatchlistViewModel _viewModel;
 
         public WatchlistPage()
         {
             InitializeComponent();
-            //pulling list of liked products from app properties
-
-
-
-            ObservableCollection<ProductInfo> likedProductsList = (ObservableCollection<ProductInfo>)Application.Current.Properties["likedProductsList"];
-            _products = likedProductsList;
-            BindingContext = _watchlistViewModel = new ViewModels.WatchlistViewModel();
+            BindingContext = _viewModel = new ViewModels.WatchlistViewModel();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            _watchlistViewModel.OnWishlistOpen();
+            _viewModel.OnWishlistOpen();
         }
 
         private void OnWishlistProductStackLayoutTapped(object sender, EventArgs e)
@@ -68,7 +61,7 @@ namespace SzybkoOdziez.Views
             else
             {
                 await wishlistDataStore.DeleteItemAsync(tappedProduct);
-                ((WatchlistViewModel)BindingContext).OnWishlistOpen();
+                _viewModel.OnWishlistOpen();
             }
             //TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
             //Product product = ((WatchlistViewModel)BindingContext).Products

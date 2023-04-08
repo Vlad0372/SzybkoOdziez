@@ -20,9 +20,6 @@ namespace SzybkoOdziez.Views
         public VladsTestPage()
         {
             InitializeComponent();
-            //w momencie wlaczenia strony glownej tworzy pusta liste polubionych przedmiotow, pewnie powinno byc przerzucone do startu apki
-            Application.Current.Properties.Add("likedProductsList", likedProductsList);
-            Application.Current.Properties.Add("shoppingCatProductsList", shoppingCartProductsList);
             InitProductInfoList();
         }
         private void ShowItemDescription(object sender, EventArgs args)
