@@ -1,14 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SzybkoOdziez.Views.Zatwierdzenie_zamowienie">
+             x:Class="SzybkoOdziez.Views.Zatwierdzenie_zamowienie"
+             xmlns:local="clr-namespace:SzybkoOdziez.ViewModels"  
+             xmlns:model="clr-namespace:SzybkoOdziez.Models">
 
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Twoje zakupy zostało zrealizowane! Dziękujemy za zakupy!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <ContentPage.Content x:DataType="local:PurchaseSummaryViewModel">
+        <StackLayout x:DataType="model:Product">
+
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Podsumowanie teojego zamówienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+            </Frame>
+
+            <Button
+               
+                    
+                    
+                    
+                Text="Zapłać za swoje produkty"                
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
+                    >
+            </Button>
+            <Label>
+                <Label.GestureRecognizers>
+                   
+                    
+                    
+                    
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
-    
 </ContentPage>

@@ -56,7 +56,7 @@
             </ListView>
             <Button x:Name="Przycisk_zamowienia"
                 Clicked="Kliknienie_zamowienia"
-                Text="Złóż zamówienie"                
+                Text="Przejdź do podsumowanie"                
                 TextColor="White" 
                 BackgroundColor="DarkOrange" 
                 BorderWidth="1.5" 
