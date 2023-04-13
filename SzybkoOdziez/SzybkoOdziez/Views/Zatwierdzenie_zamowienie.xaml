@@ -4,20 +4,49 @@
              x:Class="SzybkoOdziez.Views.Zatwierdzenie_zamowienie"
              xmlns:local="clr-namespace:SzybkoOdziez.ViewModels"  
              xmlns:model="clr-namespace:SzybkoOdziez.Models">
-
-    <ContentPage.Content x:DataType="local:PurchaseSummaryViewModel">
-        <StackLayout x:DataType="model:Product">
-
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+    <ScrollView>
+       
+        <StackLayout>
+            
+                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Podsumowanie teojego zamówienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
             </Frame>
 
-            
-            
-            
-            
+
+            <!--lista produktów-->
+                <ListView x:DataType="local:ShoppingCartViewModel"
+                ItemsSource="{Binding Products}"
+                HasUnevenRows="True"
+                SeparatorColor="Black"
+                SeparatorVisibility="None"
+                IsPullToRefreshEnabled="True"
+                RefreshControlColor="Black"
+                >
+                <ListView.ItemTemplate x:DataType="model:Product">
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Frame CornerRadius="15" HasShadow="True">
+                                    <StackLayout Orientation="Horizontal" x:DataType="model:Product">
+                                        <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100">
+                                        </Image>
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Medium"></Label>
+                                            <Label VerticalOptions="Center" Text="{Binding Price}" FontSize="Medium"></Label>
+                                        </StackLayout>
+                                        
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--lista produktów-->
+
+
             <!--Napis z platnością-->
-            <StackLayout>
+           
                 <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Wybierz opcję płatności" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
             </Frame>
@@ -28,10 +57,10 @@
             </RadioButton>
             <RadioButton Content="Płatność gotówce" GroupName="platnosc" IsChecked="False">
             </RadioButton>
-            </StackLayout>
+            
 
                     <!--Napis z dostawy-->
-            <StackLayout>
+            
                 <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Wybierz opcję dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
             </Frame>
@@ -42,10 +71,10 @@
             </RadioButton>
             <RadioButton Content="Poczta Polska" GroupName="dostawa" IsChecked="False">
             </RadioButton>
-            </StackLayout>
+            
 
             <!--dane do dostawy-->
-            <StackLayout>
+            
                 <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                     <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
                 </Frame>
@@ -64,13 +93,13 @@
                    PlaceholderColor="Silver"
                    HorizontalTextAlignment="Center"   >
                 </Entry>
-                <Entry Placeholder="Województwo"
+            <Entry Placeholder="Województwo"
                    TextColor="Black" 
                    PlaceholderColor="Silver"
                    HorizontalTextAlignment="Center"   >
-                </Entry>
+            </Entry>
 
-            </StackLayout>
+
 
             <Button
    
@@ -82,16 +111,11 @@
                 VerticalOptions="EndAndExpand"
                     >
             </Button>
-            <Label>
-                <Label.GestureRecognizers>
-                   
-                    
-                    
-                    
-                </Label.GestureRecognizers>
-            </Label>
+           
+        
         </StackLayout>
-    
-    
-    </ContentPage.Content>
+
+
+      
+        </ScrollView>
 </ContentPage>

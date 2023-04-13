@@ -6,18 +6,29 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SzybkoOdziez.Models;
+using SzybkoOdziez.ViewModels;
 
 namespace SzybkoOdziez.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Zatwierdzenie_zamowienie : ContentPage
     {
-        public ObservableCollection<string> Items { get; set; }
-
+        ShoppingCartViewModel _viewModel;
         public Zatwierdzenie_zamowienie()
         {
             InitializeComponent();
 
+            BindingContext = _viewModel = new ShoppingCartViewModel();
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnShoppingCartOpen();
+        }
+        public ObservableCollection<string> Items { get; set; }
+
+        
     }
 }
