@@ -22,7 +22,8 @@ namespace SzybkoOdziez.Views
         {
             if (userLogin.Text == "admin" && userPass.Text == "admin")
             {
-                Navigation.PushAsync(new VladsTestPage());
+                
+                Navigation.PushAsync(new MainPage());
             }
             else
             {

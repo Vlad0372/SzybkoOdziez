@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SzybkoOdziez.Views.VladsTestPage"
+             x:Class="SzybkoOdziez.Views.MainPage"
              xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
              Title="{Binding Title}">
 
     <ContentPage.BindingContext>
-        <vm:VladsTestPage />
+        <vm:MainPage />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Accent">#96d1ff</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout BackgroundColor="White">
+    <StackLayout BackgroundColor="#B6B6B6">
         <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#32312D">
             <StackLayout Margin="10,10,10,10" x:Name="imgContainer"  VerticalOptions="FillAndExpand" BackgroundColor="#50C878">
                 <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
@@ -67,7 +67,7 @@
                        Margin="-20,0,-20,0">
                     <Label  
                        VerticalTextAlignment="Center"
-                       BackgroundColor="Bisque"
+                       BackgroundColor="#32312D"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
                        Text="Pokaż więcej"
@@ -77,13 +77,13 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </Frame>
-                <Frame BackgroundColor="blue" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
+                <Frame BackgroundColor="Gray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
                        Grid.Column="1" 
                        Grid.Row="2"
                        Margin="0,0,-20,0">
                     <Label  
                        VerticalTextAlignment="Center"
-                       BackgroundColor="Bisque"
+                       BackgroundColor="#32312D"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri"
                        HorizontalTextAlignment="End"
@@ -96,7 +96,7 @@
                 </Frame>
             </Grid>
         </StackLayout>
-        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10" BackgroundColor="White">
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10" BackgroundColor="#B6B6B6">
             <ImageButton Source="like.png" 
                          HorizontalOptions="Center" 
                          VerticalOptions="CenterAndExpand"

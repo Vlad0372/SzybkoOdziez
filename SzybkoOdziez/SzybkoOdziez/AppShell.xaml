@@ -86,7 +86,7 @@
     -->
 
     <FlyoutItem Title="Strona główna" Icon="mainPageIcon.png">
-        <ShellContent Route="VladsTestPage" ContentTemplate="{DataTemplate local:VladsTestPage}" />
+        <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     </FlyoutItem>
     <!--16.03 added-->
     <!--23.03 added (Karol)-->

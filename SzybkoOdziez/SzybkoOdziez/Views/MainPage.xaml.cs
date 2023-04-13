@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace SzybkoOdziez.Views
 {
-    public partial class VladsTestPage : ContentPage
+    public partial class MainPage : ContentPage
     {
         private List<ProductInfo> productsList = new List<ProductInfo>();
 
@@ -17,7 +17,7 @@ namespace SzybkoOdziez.Views
         {
             
         }
-        public VladsTestPage()
+        public MainPage()
         {
             InitializeComponent();
             InitProductInfoList();
