@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.OrderHistoryPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Historia zamówień" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" TextColor="#555"/>
+            <CollectionView x:Name="OrderList" ItemsSource="{Binding Products}" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                <!--grid w ktorym jest zdjecie produktu i tekst produktu-->
+                                <Grid Margin="10,5" x:Name="WatchlistProductStackLayout">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnWishlistProductStackLayoutTapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <!--zdjecie produktu-->
+                                    <Image Grid.Column="0" Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
+                                    <!--tekst produktu (nazwa, cena)-->
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="{Binding Name}" FontSize="Medium"/>
+                                        <Label Text="{Binding Price}" FontSize="Small" />
+                                    </StackLayout>
+                                </Grid>
+                                <!--kontener smietnika-->
+                                <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 25, 0">
+                                    <!--obrazek koszyk, dodawanie produktu do koszyka-->
+                                    <Image Grid.Column="0" Source="shoppingCart.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                        Tapped="OnWishlistProductShoppingCartTapped"
+                                                        CommandParameter="{Binding Id}"
+                                                        >
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <!--obrazek smietnik, usuwanie produktu z listy obserwowanych przedmiotow-->
+                                    <Image Grid.Column="1" Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                        Tapped="OnWishlistProductTrashcanTapped"
+                                                        CommandParameter="{Binding Id}"
+                                                        >
+                                            </TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </Grid>
+                            <BoxView HeightRequest="2" BackgroundColor="LightGray" Margin="0, 5" />
+                        </StackLayout>
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label x:Name="NoProductsLabel" Text="No products added to watchlist" FontSize="Medium" Margin="10" IsVisible="False"/>
+            <!-- ============= Vladek dodal 13.04 ============= -->
+            <Button
+                
+                Text="Usuń wszystko"                
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                CornerRadius="50"
+                HorizontalOptions="FillAndExpand"
+                Margin="0,0,0,20"  
+                    >
+            </Button>
+            <!-- ============================================== -->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

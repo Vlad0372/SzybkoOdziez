@@ -99,6 +99,11 @@
         <ShellContent Route="WatchlistPage" ContentTemplate="{DataTemplate local:WatchlistPage}" />
     </FlyoutItem>
     <!--27.03 added (Michal)-->
+    <!--13.04 added (Vladek)-->
+    <FlyoutItem Title="Historia zamówień" Icon="orderHistoryIcon.png">
+        <ShellContent Route="OrderHistoryPage" ContentTemplate="{DataTemplate local:OrderHistoryPage}" />
+    </FlyoutItem>
+    <!--13.04 added (Vladek)-->
 
 
 

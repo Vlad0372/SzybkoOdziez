@@ -68,7 +68,7 @@ namespace SzybkoOdziez.Views
             }
             else
             {
-                if (await DisplayAlert("Podtwierdzenie", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
+                if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
                 {
                     await shoppingCartDataStore.ClearAll();
 
