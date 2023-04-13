@@ -54,17 +54,30 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="Przycisk_zamowienia"
-                Clicked="Kliknienie_zamowienia"
-                Text="Przejdź do podsumowanie"                
-                TextColor="White" 
-                BackgroundColor="DarkOrange" 
-                BorderWidth="1.5" 
-                CornerRadius="50"
-                VerticalOptions="EndAndExpand"
-                Margin="0,0,0,20"
+            <!-- ============= Vladek zmienil i dodal 13.04 ============= -->
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="Przycisk_zamowienia"
+                    Clicked="Kliknienie_zamowienia"
+                    Text="Przejdź do podsumowania"                
+                    TextColor="White" 
+                    BackgroundColor="DarkOrange"                   
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,20"
                     >
-            </Button>
+                </Button>
+                <Button 
+                    Clicked="ClearShoppingCartDataStoreList"
+                    Text="Usuń wszystko"                
+                    TextColor="White" 
+                    BackgroundColor="DarkOrange"                    
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,20"
+                    >
+                </Button>
+            </StackLayout>
+            <!-- ============================================== -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -125,11 +125,14 @@ namespace SzybkoOdziez.Views
             }
             else
             {
-                await wishlistDataStore.ClearAll();
+                if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
+                {
+                    await wishlistDataStore.ClearAll();
 
-                _viewModel.OnWishlistOpen();
+                    _viewModel.OnWishlistOpen();
 
-                await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
+                    await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
+                } 
             }          
         }
 

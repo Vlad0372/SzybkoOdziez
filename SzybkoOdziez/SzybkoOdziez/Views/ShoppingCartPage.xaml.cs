@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SzybkoOdziez.Models;
 using SzybkoOdziez.ViewModels;
+using SzybkoOdziez.Services;
 
 namespace SzybkoOdziez.Views
 {
@@ -56,5 +57,28 @@ namespace SzybkoOdziez.Views
                 _viewModel.OnShoppingCartOpen();
             }
         }
+        private async void ClearShoppingCartDataStoreList(object sender, EventArgs e)
+        {
+            var app = (App)Application.Current;
+            var shoppingCartDataStore = app.shoppingCartDataStore;
+
+            if (shoppingCartDataStore.Count() == 0)
+            {
+                await DisplayAlert("Pusta lista", "W liscie obserwowanych przedmiotów nie znajduje się zadnego przedmiotu", "Anuluj");
+            }
+            else
+            {
+                if (await DisplayAlert("Podtwierdzenie", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
+                {
+                    await shoppingCartDataStore.ClearAll();
+
+                    _viewModel.OnShoppingCartOpen();
+
+                    await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
+                }             
+            }
+        }
+        
+
     }
 }

@@ -80,12 +80,11 @@
             <!-- ============= Vladek dodal 13.04 ============= -->
             <Button
                 Clicked="ClearWhishListDataStoreList"
-                Text="Wyczyść całą listę"                
+                Text="Usuń wszystko"                
                 TextColor="White" 
                 BackgroundColor="DarkOrange" 
-                BorderWidth="1.5" 
                 CornerRadius="50"
-                VerticalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
                 Margin="0,0,0,20"  
                     >
             </Button>
