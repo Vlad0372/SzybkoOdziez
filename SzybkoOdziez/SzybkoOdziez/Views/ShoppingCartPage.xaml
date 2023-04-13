@@ -62,13 +62,9 @@
                 BorderWidth="1.5" 
                 CornerRadius="50"
                 VerticalOptions="EndAndExpand"
+                Margin="0,0,0,20"
                     >
             </Button>
-            <Label>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Kliknienie_zamowienia"/>
-                </Label.GestureRecognizers>
-            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

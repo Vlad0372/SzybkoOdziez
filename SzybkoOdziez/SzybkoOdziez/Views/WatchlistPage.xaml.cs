@@ -73,6 +73,7 @@ namespace SzybkoOdziez.Views
 
 
         }
+
         //private async void RemoveItemFromWatchlist(Product tappedProduct)
         //{
 
@@ -111,6 +112,25 @@ namespace SzybkoOdziez.Views
                     await shoppingCartDataStore.AddItemAsync(tappedProduct);
                 }
             }
+        }
+
+        private async void ClearWhishListDataStoreList(object sender, EventArgs e)
+        {
+            var app = (App)Application.Current;
+            var wishlistDataStore = app.wishlistDataStore;
+            
+            if(wishlistDataStore.Count() == 0)
+            {
+                await DisplayAlert("Pusta lista", "W liscie obserwowanych przedmiotów nie znajduje się zadnego przedmiotu", "Anuluj");
+            }
+            else
+            {
+                await wishlistDataStore.ClearAll();
+
+                _viewModel.OnWishlistOpen();
+
+                await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
+            }          
         }
 
 

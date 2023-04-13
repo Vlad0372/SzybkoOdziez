@@ -92,6 +92,27 @@ namespace SzybkoOdziez.Services
             }
             return notFoundInDataStore;
         }
+        public int Count()
+        {
+            // Returns length of product list
+            if(_products != null)
+            {
+                return _products.Count();
+            }
+            return 0;
+        }
+        public async Task ClearAll()
+        {
+            // Removes all products from the product list
+            if (_products != null)
+            {
+                for(int i = _products.Count - 1; i >= 0; i--)
+                {
+                    await DeleteItemAsync(_products[i]);
+                }
+            }
+        }
+
     }
 }
 

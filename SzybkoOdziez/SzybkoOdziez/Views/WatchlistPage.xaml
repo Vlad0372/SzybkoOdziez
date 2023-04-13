@@ -77,6 +77,19 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Label x:Name="NoProductsLabel" Text="No products added to watchlist" FontSize="Medium" Margin="10" IsVisible="False"/>
+            <!-- ============= Vladek dodal 13.04 ============= -->
+            <Button
+                Clicked="ClearWhishListDataStoreList"
+                Text="Wyczyść całą listę"                
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
+                Margin="0,0,0,20"  
+                    >
+            </Button>
+            <!-- ============================================== -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
