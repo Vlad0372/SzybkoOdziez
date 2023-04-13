@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Historia zamówień" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" TextColor="#555"/>
-            <CollectionView x:Name="OrderList" ItemsSource="{Binding Products}" Margin="10">
+            <CollectionView x:Name="OrderList" ItemsSource="{Binding Orders}" Margin="10">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
@@ -25,11 +25,11 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <!--zdjecie produktu-->
-                                    <Image Grid.Column="0" Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
+                                    <Image Grid.Column="0" Source="Resources/drawable/m_acc_item_1.jpg" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
                                     <!--tekst produktu (nazwa, cena)-->
                                     <StackLayout Grid.Column="1">
-                                        <Label Text="{Binding Name}" FontSize="Medium"/>
-                                        <Label Text="{Binding Price}" FontSize="Small" />
+                                        <Label Text="{Binding Id}" FontSize="Medium"/>
+                                        <Label Text="{Binding Name}" FontSize="Small" />
                                     </StackLayout>
                                 </Grid>
                                 <!--kontener smietnika-->

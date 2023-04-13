@@ -22,7 +22,7 @@ namespace SzybkoOdziez.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.OnWishlistOpen();
+            _viewModel.OnOrderHistoryOpen();
         }
 
         private void OnWishlistProductStackLayoutTapped(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace SzybkoOdziez.Views
             else
             {
                 await wishlistDataStore.DeleteItemAsync(tappedProduct);
-                _viewModel.OnWishlistOpen();
+                _viewModel.OnOrderHistoryOpen();
             }
         }
 
@@ -97,7 +97,7 @@ namespace SzybkoOdziez.Views
                 {
                     await wishlistDataStore.ClearAll();
 
-                    _viewModel.OnWishlistOpen();
+                    _viewModel.OnOrderHistoryOpen();
 
                     await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
                 }

@@ -10,37 +10,49 @@ namespace SzybkoOdziez.ViewModels
 {
     class OrderHistoryViewModel
     {
-        public ObservableCollection<Product> Products { get; }
-        public Command LoadProductsCommand { get; }
+        public ObservableCollection<Order> Orders { get; }
+        public Command LoadOrdersCommand { get; }
 
         public OrderHistoryViewModel()
         {
 
-            Products = new ObservableCollection<Product>();
-            LoadProductsCommand = new Command(async () => await LoadWishlistAsync());
-            //RemoveProductCommand = new Command(async () => await RemoveProductWishlistAsync(_selectedProduct));
+            Orders = new ObservableCollection<Order>();
+            LoadOrdersCommand = new Command(async () => await LoadOrderHistoryListAsync());
         }
 
-        public OrderHistoryViewModel(ObservableCollection<Product> products)
+        public OrderHistoryViewModel(ObservableCollection<Order> orders)
         {
-            Products = products;
+            Orders = orders;
         }
 
-        public async void OnWishlistOpen()
+        public async void OnOrderHistoryOpen()
         {
-            await LoadWishlistAsync();
+            await LoadOrderHistoryListAsync();
         }
 
-        async Task LoadWishlistAsync()
+        async Task LoadOrderHistoryListAsync()
         {
-            Products.Clear();
-            var app = (App)Application.Current;
-            var wishlistDataStore = app.wishlistDataStore;
-            var wishlistIEnumerable = await wishlistDataStore.GetItemsAsync();
-            foreach (var product in wishlistIEnumerable)
+            Orders.Clear();
+            
+            for (int i = 0; i < 10; i++)
             {
-                Products.Add(product);
+                var order = new Order
+                {
+                    Id = i,
+                    Name = "order_title_" + i,
+                    Products = new List<Product>()               
+                };
+
+                Orders.Add(order);
             }
+            //Orders.Clear();
+            //var app = (App)Application.Current;
+            //var wishlistDataStore = app.wishlistDataStore;
+            //var wishlistIEnumerable = await wishlistDataStore.GetItemsAsync();
+            //foreach (var order in wishlistIEnumerable)
+            //{
+            //    Orders.Add(order);
+            //}
         }
     }
 }
