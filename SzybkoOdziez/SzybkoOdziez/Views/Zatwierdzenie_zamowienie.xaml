@@ -4,50 +4,31 @@
              x:Class="SzybkoOdziez.Views.Zatwierdzenie_zamowienie"
              xmlns:local="clr-namespace:SzybkoOdziez.ViewModels"  
              xmlns:model="clr-namespace:SzybkoOdziez.Models">
-    <ScrollView>
+
+
+    <StackLayout>
+
+        <Frame BackgroundColor="White" Padding="15" CornerRadius="0">
+            <Label Text="Podsumowanie twojego zamówienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25"/>
+        </Frame>
+
        
-        <StackLayout>
-            
-                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Podsumowanie teojego zamówienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+        <!--lista produktów-->
+        <ScrollView>
+            <StackLayout>
+                <!--suma danego produktu-->
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Suma twojego zamówienia wynosi" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
             </Frame>
 
 
-            <!--lista produktów-->
-                <ListView x:DataType="local:ShoppingCartViewModel"
-                ItemsSource="{Binding Products}"
-                HasUnevenRows="True"
-                SeparatorColor="Black"
-                SeparatorVisibility="None"
-                IsPullToRefreshEnabled="True"
-                RefreshControlColor="Black"
-                >
-                <ListView.ItemTemplate x:DataType="model:Product">
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <Frame CornerRadius="15" HasShadow="True">
-                                    <StackLayout Orientation="Horizontal" x:DataType="model:Product">
-                                        <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100">
-                                        </Image>
-                                        <StackLayout VerticalOptions="Center">
-                                            <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Medium"></Label>
-                                            <Label VerticalOptions="Center" Text="{Binding Price}" FontSize="Medium"></Label>
-                                        </StackLayout>
-                                        
-                                    </StackLayout>
-                                </Frame>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!--lista produktów-->
 
 
+
+            <!---->
             <!--Napis z platnością-->
-           
-                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Wybierz opcję płatności" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
             </Frame>
             <!--Wybory nad płatnością-->
@@ -57,11 +38,11 @@
             </RadioButton>
             <RadioButton Content="Płatność gotówce" GroupName="platnosc" IsChecked="False">
             </RadioButton>
-            
 
-                    <!--Napis z dostawy-->
-            
-                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+
+            <!--Napis z dostawy-->
+
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Wybierz opcję dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
             </Frame>
             <!--Wybory nad dostawy-->
@@ -71,38 +52,73 @@
             </RadioButton>
             <RadioButton Content="Poczta Polska" GroupName="dostawa" IsChecked="False">
             </RadioButton>
-            
+
 
             <!--dane do dostawy-->
-            
-                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                    <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
-                </Frame>
-                <Entry Placeholder="Miejscowość"
+
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+            </Frame>
+            <Entry Placeholder="Miejscowość"
                    TextColor="Black" 
                    PlaceholderColor="Silver"
                    HorizontalTextAlignment="Center"   >
-                </Entry>
-                <Entry Placeholder="Ulica"
+            </Entry>
+            <Entry Placeholder="Ulica"
                    TextColor="Black" 
                    PlaceholderColor="Silver"
                    HorizontalTextAlignment="Center"   >
-                </Entry>
-                <Entry Placeholder="Kod pocztowy"
+            </Entry>
+            <Entry Placeholder="Kod pocztowy"
                    TextColor="Black" 
                    PlaceholderColor="Silver"
                    HorizontalTextAlignment="Center"   >
-                </Entry>
+            </Entry>
             <Entry Placeholder="Województwo"
                    TextColor="Black" 
                    PlaceholderColor="Silver"
                    HorizontalTextAlignment="Center"   >
             </Entry>
+                </StackLayout>
+        </ScrollView>
 
+        <StackLayout>
+            <!--lista produktów-->
+            <ListView x:DataType="local:ShoppingCartViewModel"
+                ItemsSource="{Binding Products}"
+                HasUnevenRows="True"
+                SeparatorColor="Black"
+                SeparatorVisibility="None"
+                HeightRequest="350"
+                RefreshControlColor="Black"
+                >
+                <ListView.ItemTemplate x:DataType="model:Product" >
+                    <DataTemplate >
+                        <ViewCell >
+                            <Grid Padding="5" >
 
+                                <Frame CornerRadius="15" HasShadow="True" >
+                                    <StackLayout Orientation="Horizontal" x:DataType="model:Product">
+                                        
+                                            <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50">
+                                        </Image>
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Small"></Label>
+                                            <Label VerticalOptions="Center" Text="{Binding Price}" ></Label>
 
-            <Button
-   
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+        <Button x:Name="complition_of_order"
+                Clicked="complition_of_order_Clicked"
                 Text="Zapłać za swoje produkty"                
                 TextColor="White" 
                 BackgroundColor="DarkOrange" 
@@ -110,12 +126,12 @@
                 CornerRadius="50"
                 VerticalOptions="EndAndExpand"
                     >
-            </Button>
-           
-        
-        </StackLayout>
+        </Button>
+        <Label>
+            <Label.GestureRecognizers>
+               
+            </Label.GestureRecognizers>
+        </Label>
 
-
-      
-        </ScrollView>
+    </StackLayout>
 </ContentPage>
