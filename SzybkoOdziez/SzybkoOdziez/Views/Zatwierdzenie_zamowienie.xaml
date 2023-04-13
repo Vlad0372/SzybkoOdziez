@@ -12,11 +12,68 @@
                 <Label Text="Podsumowanie teojego zamówienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
             </Frame>
 
+            
+            
+            
+            
+            <!--Napis z platnością-->
+            <StackLayout>
+                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Wybierz opcję płatności" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+            </Frame>
+            <!--Wybory nad płatnością-->
+            <RadioButton Content="Blik" GroupName="platnosc" IsChecked="True">
+            </RadioButton>
+            <RadioButton Content="Karta kredytowa"  GroupName="platnosc" IsChecked="False">
+            </RadioButton>
+            <RadioButton Content="Płatność gotówce" GroupName="platnosc" IsChecked="False">
+            </RadioButton>
+            </StackLayout>
+
+                    <!--Napis z dostawy-->
+            <StackLayout>
+                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Wybierz opcję dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+            </Frame>
+            <!--Wybory nad dostawy-->
+            <RadioButton Content="Inpost" GroupName="dostawa" IsChecked="True">
+            </RadioButton>
+            <RadioButton Content="DHL" GroupName="dostawa" IsChecked="False">
+            </RadioButton>
+            <RadioButton Content="Poczta Polska" GroupName="dostawa" IsChecked="False">
+            </RadioButton>
+            </StackLayout>
+
+            <!--dane do dostawy-->
+            <StackLayout>
+                <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                    <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+                </Frame>
+                <Entry Placeholder="Miejscowość"
+                   TextColor="Black" 
+                   PlaceholderColor="Silver"
+                   HorizontalTextAlignment="Center"   >
+                </Entry>
+                <Entry Placeholder="Ulica"
+                   TextColor="Black" 
+                   PlaceholderColor="Silver"
+                   HorizontalTextAlignment="Center"   >
+                </Entry>
+                <Entry Placeholder="Kod pocztowy"
+                   TextColor="Black" 
+                   PlaceholderColor="Silver"
+                   HorizontalTextAlignment="Center"   >
+                </Entry>
+                <Entry Placeholder="Województwo"
+                   TextColor="Black" 
+                   PlaceholderColor="Silver"
+                   HorizontalTextAlignment="Center"   >
+                </Entry>
+
+            </StackLayout>
+
             <Button
-               
-                    
-                    
-                    
+   
                 Text="Zapłać za swoje produkty"                
                 TextColor="White" 
                 BackgroundColor="DarkOrange" 
@@ -34,5 +91,7 @@
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>
+    
+    
     </ContentPage.Content>
 </ContentPage>
