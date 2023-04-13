@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SzybkoOdziez.Models;
 using SzybkoOdziez.ViewModels;
+using SzybkoOdziez.Views;
 
 namespace SzybkoOdziez.Views
 {
@@ -20,6 +21,7 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
 
             BindingContext = _viewModel = new ShoppingCartViewModel();
+            
         }
 
         protected override async void OnAppearing()
@@ -29,6 +31,9 @@ namespace SzybkoOdziez.Views
         }
         public ObservableCollection<string> Items { get; set; }
 
-        
+        private void complition_of_order_Clicked(object sender, EventArgs e)
+        {
+            //NavigationPage.PushAsync(new CompletionOfTheOrder());
+        }
     }
 }
