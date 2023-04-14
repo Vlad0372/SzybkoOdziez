@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using SzybkoOdziez.Models;
 using SzybkoOdziez.ViewModels;
 using Xamarin.Forms;
@@ -16,10 +17,16 @@ namespace SzybkoOdziez.Views
     {
         private CompletionOfTheOrder _viewModel;
 
+
+       
         public CompletionOfTheOrder()
         {
             InitializeComponent();
-           
+            Random rnd = new Random();
+            int orderNumber = rnd.Next(10000, 99999); // generuje losową liczbę z przedziału od 10000 do 99999
+
+            // Przypisanie wartości do właściwości kontrolki w pliku .xaml
+            orderNumberLabel.Text = orderNumber.ToString(); // zakładając, że kontrolka ma nazwę "orderNumberLabel"
         }
 
         private void main_page_Clicked(object sender, EventArgs e)
@@ -27,12 +34,6 @@ namespace SzybkoOdziez.Views
             Navigation.PushAsync(new MainPage());
         }
 
-        private void random_number_Clicked(object sender, EventArgs e)
-        {
-            Random random = new Random();
-            int numerZamowienia = random.Next(1000, 10000);
-            Console.WriteLine("Twój numer to: " + numerZamowienia);
-
-        }
+        
     }
 }

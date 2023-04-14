@@ -19,17 +19,12 @@
                 HorizontalOptions="CenterAndExpand" 
                    FontSize="20"/>
 
-            
-            <Button x:Name="random_number"
-                Clicked="random_number_Clicked"
-                            
-                TextColor="Black" 
-              
-                BorderWidth="1.5" 
-                CornerRadius="50"
-                VerticalOptions="EndAndExpand"
-                    >
-            </Button>
+            <Label x:Name="orderNumberLabel" Text="{Binding orderNumberLabel}"
+                    VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="50"
+                   TextColor="Orange"
+                   />
             <Button x:Name="main_page"
                 Clicked="main_page_Clicked"
                 Text="Powrót na główną stronę"                
