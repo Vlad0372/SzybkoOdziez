@@ -117,7 +117,7 @@
             </ListView>
         </StackLayout>
 
-        <Button x:Name="complition_of_order"
+        <Button x:Name="complition_of_orderr"
                 Clicked="complition_of_order_Clicked"
                 Text="Zapłać za swoje produkty"                
                 TextColor="White" 

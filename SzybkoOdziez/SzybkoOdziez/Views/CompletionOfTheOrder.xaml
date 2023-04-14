@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.CompletionOfTheOrder"
+             xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
+             Title="{Binding Title}" 
+              xmlns:local="clr-namespace:SzybkoOdziez.ViewModels"  
+              xmlns:model="clr-namespace:SzybkoOdziez.Models">
+    <ContentPage.Content x:DataType="local:CompletionOfTheOrder"
+                         >
+        <StackLayout>
+            <Label Text="Dziękujemy za zakupy!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="25"/>
+
+            <Label Text="Twój numer zamówienia to: "
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="20"/>
+
+            <Button x:Name="main_page"
+                
+                Text="Powrót na główną stronę"                
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
+                    >
+            </Button>
+            <Label>
+                <Label.GestureRecognizers>
+
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

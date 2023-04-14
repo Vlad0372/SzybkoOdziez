@@ -33,7 +33,7 @@ namespace SzybkoOdziez.Views
 
         private void complition_of_order_Clicked(object sender, EventArgs e)
         {
-            //NavigationPage.PushAsync(new CompletionOfTheOrder());
+           Navigation.PushAsync(new CompletionOfTheOrder());
         }
     }
 }
