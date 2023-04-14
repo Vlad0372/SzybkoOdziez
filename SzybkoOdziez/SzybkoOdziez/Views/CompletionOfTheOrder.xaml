@@ -19,8 +19,19 @@
                 HorizontalOptions="CenterAndExpand" 
                    FontSize="20"/>
 
+            
+            <Button x:Name="random_number"
+                Clicked="random_number_Clicked"
+                            
+                TextColor="Black" 
+              
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
+                    >
+            </Button>
             <Button x:Name="main_page"
-                
+                Clicked="main_page_Clicked"
                 Text="Powrót na główną stronę"                
                 TextColor="White" 
                 BackgroundColor="DarkOrange" 
