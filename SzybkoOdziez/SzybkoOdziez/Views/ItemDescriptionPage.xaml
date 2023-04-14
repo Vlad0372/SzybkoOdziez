@@ -11,98 +11,113 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Margin="10,10,10,10">
+            <StackLayout Margin="10,10,10,10" >
                 <Grid Margin="10,0,10,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.4*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="0" 
                        Grid.Row="0"
                        Text="Producent">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
                        Grid.Row="0"
                        Text="Sprandi">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="0" 
                        Grid.Row="1"
                        Text="Kolor">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
                        Grid.Row="1"
                        Text="Granatowe">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="0" 
                        Grid.Row="2"
                        Text="Sezon">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
                        Grid.Row="2"
                        Text="Jesień/Zima">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="0" 
                        Grid.Row="3"
                        Text="Materiał">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
                        Grid.Row="3"
                        Text="Bawełna">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="0" 
                        Grid.Row="4"
                        Text="Wzór">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
                        Grid.Row="4"
                        Text="Gładkie">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="0" 
                        Grid.Row="5"
                        Text="Model">
-                    </Label>
-                    <Label 
+                        </Label>
+                        <Label 
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
                        Grid.Row="5"
                        Text="SP22-BLM503 ">
-                    </Label>
-                    <Label 
-                        FontSize="18" FontFamily="Calibri"
+                        </Label>
+                        <Label 
+                        FontSize="18" FontFamily="Calibri" TextColor="Black"
                        Grid.Column="0" 
                        Grid.Row="6"
                        Text="Cena">
-                    </Label>
-                    <Label 
-                        FontSize="18" FontFamily="Calibri"
+                        </Label>
+                        <Label 
+                        FontSize="18" FontFamily="Calibri" TextColor="Black"
                        Grid.Column="1" 
                        Grid.Row="6"
                        Text="150zł">
-                    </Label>
+                        </Label>
+                    </Grid>
+                    <Grid Margin="10,100,10,0">
+                    <Label  FontSize="18" FontFamily="Calibri">Rozmiar</Label>
+                    <Picker
+                        Margin="10,30,10,10"
+                        FontSize="18" FontFamily="Calibri"
+                        Title="Wybierz Rozmiar"
+                        TitleColor="Gray">
+                        <Picker.Items>
+                            <x:String>S</x:String>
+                            <x:String>M</x:String>
+                            <x:String>L</x:String>
+                            <x:String>XL</x:String>
+                        </Picker.Items>
+                    </Picker>
                 </Grid>
             </StackLayout>
         </StackLayout>

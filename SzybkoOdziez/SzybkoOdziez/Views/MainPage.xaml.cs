@@ -15,16 +15,12 @@ namespace SzybkoOdziez.Views
         private ObservableCollection<ProductInfo> likedProductsList = new ObservableCollection<ProductInfo>();
         private void ShowMore(object sender, EventArgs e)
         {
-            
+            Navigation.PushAsync(new ItemDescriptionPage());
         }
         public MainPage()
         {
             InitializeComponent();
             InitProductInfoList();
-        }
-        private void ShowItemDescription(object sender, EventArgs args)
-        {
-            Navigation.PushAsync(new ItemDescriptionPage());
         }
         private async void OnDislikeClicked(object sender, EventArgs args)
         {
