@@ -14,11 +14,11 @@ using System.Collections.Generic;
 namespace SzybkoOdziez.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Zatwierdzenie_zamowienie : ContentPage
+    public partial class OrderConfirmation : ContentPage
     {
         ShoppingCartViewModel _viewModel;
         public ObservableCollection<Product> Products { get; set; }
-        public Zatwierdzenie_zamowienie()
+        public OrderConfirmation()
         {
             InitializeComponent();
 
