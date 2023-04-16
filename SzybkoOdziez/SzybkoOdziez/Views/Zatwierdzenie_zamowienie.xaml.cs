@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using SzybkoOdziez.Models;
 using SzybkoOdziez.ViewModels;
 using SzybkoOdziez.Views;
+using System.Collections.Generic;
 
 namespace SzybkoOdziez.Views
 {
@@ -16,14 +17,26 @@ namespace SzybkoOdziez.Views
     public partial class Zatwierdzenie_zamowienie : ContentPage
     {
         ShoppingCartViewModel _viewModel;
+        public ObservableCollection<Product> Products { get; set; }
         public Zatwierdzenie_zamowienie()
         {
             InitializeComponent();
 
             BindingContext = _viewModel = new ShoppingCartViewModel();
-            
-        }
+            List<Product> products = new List<Product>();//lista produktów
+            Products = new ObservableCollection<Product>(products);
 
+            // oblicz łączną wartość
+            decimal total = products.Sum(p => p.Price);
+
+            // ustaw tekst etykiety
+            TotalLabel.Text += total.ToString();
+           
+            foreach (var item in products)
+            {
+                Console.WriteLine("xD");
+            }
+        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();

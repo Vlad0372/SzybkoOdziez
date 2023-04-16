@@ -20,12 +20,12 @@
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Suma twojego zamówienia wynosi" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
             </Frame>
+                <Label x:Name="TotalLabel" Text="{Binding Price}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25" x:DataType="model:Product"/>
 
 
 
 
-
-            <!---->
+                <!---->
             <!--Napis z platnością-->
 
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
@@ -57,7 +57,7 @@
             <!--dane do dostawy-->
 
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+                <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15" />
             </Frame>
             <Entry Placeholder="Miejscowość"
                    TextColor="Black" 
@@ -85,6 +85,7 @@
         <StackLayout>
             <!--lista produktów-->
             <ListView x:DataType="local:ShoppingCartViewModel"
+                      x:Name="ProductsListView"
                 ItemsSource="{Binding Products}"
                 HasUnevenRows="True"
                 SeparatorColor="Black"
@@ -99,8 +100,8 @@
 
                                 <Frame CornerRadius="15" HasShadow="True" >
                                     <StackLayout Orientation="Horizontal" x:DataType="model:Product">
-                                        
-                                            <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50">
+
+                                        <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50">
                                         </Image>
                                         <StackLayout VerticalOptions="Center">
                                             <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Small"></Label>
@@ -115,6 +116,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
         </StackLayout>
 
         <Button x:Name="complition_of_orderr"
