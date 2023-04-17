@@ -27,11 +27,13 @@ namespace SzybkoOdziez.Views
         {
             base.OnAppearing();
             _viewModel.OnShoppingCartOpen();
+            
         }
 
         private void Kliknienie_zamowienia(object sender, EventArgs e)
         {
             Navigation.PushAsync(new OrderConfirmationPage());
+            Navigation.RemovePage(this);
         }
         private async void ShoppingCartTrashcan_Tapped(object sender, EventArgs e)
         {

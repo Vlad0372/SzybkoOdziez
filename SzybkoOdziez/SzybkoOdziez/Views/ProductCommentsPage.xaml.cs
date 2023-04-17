@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace SzybkoOdziez.Views
 {
-    //[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProductCommentsPage : ContentPage
     {
         private ProductCommentsViewModel _viewModel;
@@ -30,6 +30,10 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
             BindingContext = _viewModel = new ViewModels.ProductCommentsViewModel();
             _product = product;
+            Comment comment = new Comment();
+            comment.Title = "XD";
+            comment.Description = "Lorem ipsum i tak dalej";
+            _product.Comments.Add(comment);
         }
 
         protected override async void OnAppearing()

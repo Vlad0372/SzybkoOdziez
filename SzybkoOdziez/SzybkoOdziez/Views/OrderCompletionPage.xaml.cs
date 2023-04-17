@@ -33,9 +33,11 @@ namespace SzybkoOdziez.Views
         {
             //Application.Current.MainPage.Navigation.PushModalAsync(new MainPage(), true);
             //Navigation.PushAsync(new MainPage());
-            await Shell.Current.GoToAsync("//MainPage");
-        }
+             await Shell.Current.GoToAsync("//MainPage");
+             Navigation.RemovePage(this);
 
+        }
         
+
     }
 }

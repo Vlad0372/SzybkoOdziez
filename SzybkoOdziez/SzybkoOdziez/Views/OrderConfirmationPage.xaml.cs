@@ -55,7 +55,7 @@ namespace SzybkoOdziez.Views
 
             //// ustaw tekst etykiety
            TotalLabel.Text = total.ToString();
-
+           
 
         }
         public ObservableCollection<string> Items { get; set; }
@@ -63,7 +63,9 @@ namespace SzybkoOdziez.Views
         private void complition_of_order_Clicked(object sender, EventArgs e)
         {
            Navigation.PushAsync(new OrderCompletionPage());
-           
+           Navigation.RemovePage(this);
+
         }
+        
     }
 }
