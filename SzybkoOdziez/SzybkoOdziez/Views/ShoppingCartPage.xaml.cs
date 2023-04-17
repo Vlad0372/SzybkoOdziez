@@ -20,6 +20,7 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
 
             BindingContext = _viewModel = new ShoppingCartViewModel();
+            
         }
 
         protected override async void OnAppearing()

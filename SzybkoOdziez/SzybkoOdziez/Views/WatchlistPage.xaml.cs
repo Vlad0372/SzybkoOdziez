@@ -9,6 +9,7 @@ using SzybkoOdziez.Services;
 using SzybkoOdziez.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Acr.UserDialogs;
 
 namespace SzybkoOdziez.Views
 {
@@ -65,6 +66,9 @@ namespace SzybkoOdziez.Views
                 await wishlistDataStore.DeleteItemAsync(tappedProduct);
                 _viewModel.OnWishlistOpen();
             }
+
+            
+
             //TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
             //Product product = ((WatchlistViewModel)BindingContext).Products
             //    .FirstOrDefault(prod => prod.Id == (int)tappedEventArgs.Parameter);
@@ -106,12 +110,16 @@ namespace SzybkoOdziez.Views
             if (shoppingCartDataStore.CheckInDataStore(tappedProduct))
             {
                 await shoppingCartDataStore.AddItemAsync(tappedProduct);
+
+                UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
             }
             else
             {
                 if(await DisplayAlert("W koszyku juz znajduje sie taki przedmiot", "Chcesz dodac duplikat tego przedmiotu do koszyka?", "Tak", "Nie"))
                 {
                     await shoppingCartDataStore.AddItemAsync(tappedProduct);
+
+                    UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
                 }
             }
         }

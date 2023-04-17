@@ -19,6 +19,13 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();
             InitProductInfoList();
+
+            var randProduct = GetRandProductInfo();
+            productUrl.Source = randProduct.Url;
+            productName.Text = randProduct.Name;
+            productDesc.Text = randProduct.Description;
+            productPrice.Text = randProduct.Price;
+            SetCurrentProduct(randProduct);
         }
         private void ShowMore(object sender, EventArgs e)
         {
@@ -91,13 +98,13 @@ namespace SzybkoOdziez.Views
 
 
 
-
             var randProduct = GetRandProductInfo();
             productUrl.Source = randProduct.Url;
             productName.Text = randProduct.Name;
             productDesc.Text = randProduct.Description;
             productPrice.Text = randProduct.Price;
             SetCurrentProduct(randProduct);
+
 
             await likeButton.ScaleTo(0.75, 100);
             await likeButton.ScaleTo(1, 100);         
