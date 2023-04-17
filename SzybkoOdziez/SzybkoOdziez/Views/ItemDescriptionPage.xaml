@@ -98,10 +98,10 @@
                        Text="Cena">
                     </Label>
                     <Label 
+                        x:Name="priceLabel"
                         FontSize="18" FontFamily="Calibri" TextColor="Black"
                        Grid.Column="1" 
-                       Grid.Row="6"
-                       Text="150zł">
+                       Grid.Row="6">
                     </Label>
                 </Grid>
                 <Grid Margin="10,100,10,0">

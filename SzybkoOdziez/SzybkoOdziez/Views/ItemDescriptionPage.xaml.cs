@@ -22,6 +22,10 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();
             _product = product;
+            if (_product != null)
+            {
+                priceLabel.Text = Convert.ToString(_product.Price)+" zł";
+            }
         }
 
         public void OnLabelCommentsTapped(object sender, EventArgs e)
