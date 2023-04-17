@@ -115,6 +115,10 @@ namespace SzybkoOdziez.Views
             var allProductDataStore = app.allProductDataStore;
             var currentProduct = allProductDataStore.GetItemByUrl(productInfo.Url);
             _product = currentProduct;
+            if (_product != null)
+            {
+                productPrice.Text = Convert.ToString(_product.Price)+" zł";
+            }
         }
         private void InitProductInfoList()
         {
