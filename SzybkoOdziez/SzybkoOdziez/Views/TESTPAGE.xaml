@@ -4,19 +4,6 @@
              x:Class="SzybkoOdziez.Views.TESTPAGE">
     <ContentPage.Content>
         <StackLayout>
-            <CollectionView ItemsSource="{Binding Comments}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Title}" FontAttributes="Bold" />
-                            <Label Text="{Binding Description}" />
-                            <!--<StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding Url[0]}" HeightRequest="100" WidthRequest="100" />
-                            </StackLayout>-->
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
             <Label>DZIALA</Label>
         </StackLayout>
     </ContentPage.Content>
