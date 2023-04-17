@@ -71,13 +71,30 @@ namespace SzybkoOdziez.Services
             foreach (var item in _orders)
             {
                 //trzeba zmienic na porownanie product == product, ale id sie nie zgadza poki co
-                if (item.Name == order.Name)
+                if (item.Number == order.Number)
                 {
                     notFoundInDataStore = false;
                 }
             }
             return notFoundInDataStore;
         }
+        public int Count()
+        {
+            if (_orders != null)
+            {
+                return _orders.Count;
+            }
+            return 0;
+        }
+        public Order GetLastItem()
+        {
+            if (_orders != null)
+            {
+                return _orders.LastOrDefault();
+            }
+            return new Order();
+        }
+        
     }
 }
 

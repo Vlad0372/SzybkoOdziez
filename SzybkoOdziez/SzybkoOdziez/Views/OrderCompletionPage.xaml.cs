@@ -28,7 +28,14 @@ namespace SzybkoOdziez.Views
             // Przypisanie wartości do właściwości kontrolki w pliku .xaml
             orderNumberLabel.Text = orderNumber.ToString(); // zakładając, że kontrolka ma nazwę "orderNumberLabel"
         }
+        //=============== to Vladek dodal ===================== 
+        public OrderCompletionPage(Order order)
+        {
+            InitializeComponent();
 
+            orderNumberLabel.Text = order.Number;
+        }
+        //=============== to Vladek dodal ===================== 
         private async void main_page_Clicked(object sender, EventArgs e)
         {
             //Application.Current.MainPage.Navigation.PushModalAsync(new MainPage(), true);

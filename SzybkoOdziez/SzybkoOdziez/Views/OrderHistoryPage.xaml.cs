@@ -24,15 +24,13 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
 
             BindingContext = _viewModel = new OrderHistoryViewModel();
-            //additionalItemsExistImg.Visibility
-           
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             _viewModel.OnOrderHistoryOpen();
-
+            
             Orders = _viewModel.Orders;
         }
     }

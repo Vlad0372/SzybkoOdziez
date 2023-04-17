@@ -28,7 +28,8 @@ namespace SzybkoOdziez.ViewModels
         public async void OnOrderHistoryOpen()
         {
             //await LoadOrderHistoryAsync();
-            await LoadOrderHistoryAsync_TEST();
+            //await LoadOrderHistoryAsync_TEST();
+            await LoadOrderHistoryAsync();
         }
 
         async Task LoadOrderHistoryAsync()
@@ -50,11 +51,25 @@ namespace SzybkoOdziez.ViewModels
 
             for (int i = 0; i < 10; i++)
             {
+                var bruh = new ObservableCollection<Product>();
+
+                if(i % 2 == 0)
+                {
+                    bruh.Add(new Product { Id = i, ImageUrl="@drawable/m_acc_item_1.jpg"});
+                }
+                else
+                {
+                    bruh.Add(new Product { Id = i, ImageUrl = "@drawable/m_acc_item_3.jpg" });
+                    bruh.Add(new Product { Id = i*2, ImageUrl = "@drawable/m_acc_item_2.jpg" });
+            
+
+                }
                 var order = new Order
                 {
                     Id = i,
-                    Name = "order_title_" + i,
-                    Products = new List<Product>()
+                    Number = "order_number_" + i,
+                    CreatedDate = DateTime.Now.ToString("dd.MM.yyy"),
+                    Products = bruh//new List<Product>()
                 };
 
                 Orders.Add(order);
