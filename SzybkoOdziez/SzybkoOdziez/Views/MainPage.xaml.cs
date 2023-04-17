@@ -39,7 +39,7 @@ namespace SzybkoOdziez.Views
             productDesc.Text = randProduct.Description;
             productPrice.Text = randProduct.Price;
             SetCurrentProduct(randProduct);
-
+            
             await dislikeButton.ScaleTo(0.75, 100);
             await dislikeButton.ScaleTo(1, 100);        
         }

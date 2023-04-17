@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SzybkoOdziez.Views.OrderHistoryPage">
+  
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Historia zamówień" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" TextColor="#555"/>
@@ -9,73 +10,72 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
-
-                            <Grid>
+                            <Grid Margin="0,0,0,20">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="150" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <!--grid w ktorym jest zdjecie produktu i tekst produktu-->
-                                <Grid Margin="10,5" x:Name="WatchlistProductStackLayout">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnWishlistProductStackLayoutTapped"/>
-                                    </Grid.GestureRecognizers>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="60" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <!--zdjecie produktu-->
-                                    <Image Grid.Column="0" Source="Resources/drawable/m_acc_item_1.jpg" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
-                                    <!--tekst produktu (nazwa, cena)-->
-                                    <StackLayout Grid.Column="1">
-                                        <Label Text="{Binding Id}" FontSize="Medium"/>
-                                        <Label Text="{Binding Name}" FontSize="Small" />
-                                    </StackLayout>
-                                </Grid>
-                                <!--kontener smietnika-->
-                                <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 25, 0">
-                                    <!--obrazek koszyk, dodawanie produktu do koszyka-->
-                                    <Image Grid.Column="0" Source="shoppingCart.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                        Tapped="OnWishlistProductShoppingCartTapped"
-                                                        CommandParameter="{Binding Id}"
-                                                        >
-                                            </TapGestureRecognizer>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                    <!--obrazek smietnik, usuwanie produktu z listy obserwowanych przedmiotow-->
-                                    <Image Grid.Column="1" Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                        Tapped="OnWishlistProductTrashcanTapped"
-                                                        CommandParameter="{Binding Id}"
-                                                        >
-                                            </TapGestureRecognizer>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                </Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4*"/>
+                                    <RowDefinition Height="4*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,5,0,0" >
+                                    <Label x:Name="Numerll" Text="Numer zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Name}" FontSize="Small" Margin="0,-5,0,0"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="0" Grid.Row="1" Margin="5,0,0,0" >
+                                    <Label Text="Data zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Name}" FontSize="Small" Margin="0,-5,0,0"/>
+                                </StackLayout>
+                                <Frame BackgroundColor="LightGray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
+                                            Grid.Column="0" 
+                                            Grid.Row="2" 
+                                            Margin="0,0,-10,0">
+                                    <Label  
+                                            VerticalTextAlignment="Center"
+                                            BackgroundColor="#F6F6F6"
+                                            TextColor="Gray"
+                                            FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
+                                            Text="Pokaż więcej"
+                                            Padding="10,0,0,0">
+                                        <Label.GestureRecognizers>
+
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Frame>
+                                <Frame  BackgroundColor="LightGray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
+                                            Grid.Column="1" 
+                                            Grid.Row="2"
+                                            Margin="0,0,0,0">
+                                    <Label  
+                                            VerticalTextAlignment="Center"
+                                            BackgroundColor="#F6F6F6"
+                                            TextColor="Gray"
+                                            FontSize="18" FontFamily="Calibri"
+                                            HorizontalTextAlignment="End"
+                                            Text="&#9660;"
+                                            Padding="0,0,10,0">
+                                        <Label.GestureRecognizers x:Name="BRUh">
+
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </Frame>
+
+                                <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.RowSpan="2" >
+                                    <Frame HorizontalOptions="EndAndExpand" BackgroundColor="#LightGray" WidthRequest="70" Padding="2,2,2,2" CornerRadius="0" HasShadow="False">
+                                        <Image Source="Resources/drawable/w_pants_item_2.jpg" Aspect="Fill"/>
+                                    </Frame>
+                                    <Frame x:Name="additionalItemsExistImg" IsVisible="true" HorizontalOptions="End" BackgroundColor="#LightGray" WidthRequest="70" Padding="2,2,2,2" Margin="0,0,5,0" CornerRadius="0" HasShadow="False">
+                                        <Image Source="Resources/drawable/other_order_items.jpg" Aspect="Fill"/>
+                                    </Frame>
+                                </StackLayout>
+
                             </Grid>
-                            <BoxView HeightRequest="2" BackgroundColor="LightGray" Margin="0, 5" />
                         </StackLayout>
-
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Label x:Name="NoProductsLabel" Text="No products added to watchlist" FontSize="Medium" Margin="10" IsVisible="False"/>
-            <!-- ============= Vladek dodal 13.04 ============= -->
-            <Button
-                
-                Text="Usuń wszystko"                
-                TextColor="White" 
-                BackgroundColor="DarkOrange" 
-                CornerRadius="50"
-                HorizontalOptions="FillAndExpand"
-                Margin="0,0,0,20"  
-                    >
-            </Button>
-            <!-- ============================================== -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

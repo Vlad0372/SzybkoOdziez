@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using SzybkoOdziez.Services;
 using SzybkoOdziez.Services.MyApp.Services;
 using SzybkoOdziez.Views;
@@ -13,6 +14,7 @@ namespace SzybkoOdziez
         public AllProductDataStore allProductDataStore;
         public WishlistDataStore wishlistDataStore;
         public ShoppingCartDataStore shoppingCartDataStore;
+        public OrderHistoryDataStore orderHistoryDataStore;
 
         public App()
         {
@@ -20,6 +22,7 @@ namespace SzybkoOdziez
             allProductDataStore = new AllProductDataStore();
             wishlistDataStore = new WishlistDataStore();
             shoppingCartDataStore = new ShoppingCartDataStore();
+            orderHistoryDataStore = new OrderHistoryDataStore();
 
             DependencyService.Register<DefaultMockDataStore>();
             MainPage = new AppShell();
