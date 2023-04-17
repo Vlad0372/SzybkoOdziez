@@ -5,8 +5,8 @@ using System.Threading;
 
 namespace SzybkoOdziez.Services
 {
-    public class WishlistDataStore : ProductDataStore
+    public class AllProductDataStore : ProductDataStore
     {
-       
+
     }
 }

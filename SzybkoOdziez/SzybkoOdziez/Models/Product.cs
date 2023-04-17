@@ -12,6 +12,7 @@ namespace SzybkoOdziez.Models
         public decimal Price { get; set; }
         public decimal TotalPrice { get; set; }
         public string ImageUrl { get; set; }
+        public List<Comment> Comments { get; set; }
         //TODO: dodac kategorie
     }
 

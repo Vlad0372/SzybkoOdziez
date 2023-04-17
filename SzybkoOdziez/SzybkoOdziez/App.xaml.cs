@@ -10,14 +10,14 @@ namespace SzybkoOdziez
 {
     public partial class App : Application
     {
-        public ProductDataStore productDataStore;
+        public AllProductDataStore allProductDataStore;
         public WishlistDataStore wishlistDataStore;
         public ShoppingCartDataStore shoppingCartDataStore;
 
         public App()
         {
             InitializeComponent();
-            productDataStore = new ProductDataStore();
+            allProductDataStore = new AllProductDataStore();
             wishlistDataStore = new WishlistDataStore();
             shoppingCartDataStore = new ShoppingCartDataStore();
 
@@ -27,7 +27,7 @@ namespace SzybkoOdziez
 
         protected override async void OnStart()
         {
-            var productLoader = new ProductLoader(productDataStore);
+            var productLoader = new ProductLoader(allProductDataStore);
             await productLoader.LoadAllProductsFromDrawableAsync();
         }
 

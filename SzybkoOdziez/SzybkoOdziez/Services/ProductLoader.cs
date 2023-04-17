@@ -44,6 +44,7 @@ namespace SzybkoOdziez.Services
                         Name = productName,
                         Description = "Lorem ipsum",
                         Price = new Random().Next(8, 250),
+                        Comments = new List<Comment> { new Comment() }
                     };
                     products.Add(product);
                 }
