@@ -30,7 +30,7 @@ namespace SzybkoOdziez.Views
 
         private void Kliknienie_zamowienia(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OrderConfirmation());
+            Navigation.PushAsync(new OrderConfirmationPage());
         }
         private async void ShoppingCartTrashcan_Tapped(object sender, EventArgs e)
         {

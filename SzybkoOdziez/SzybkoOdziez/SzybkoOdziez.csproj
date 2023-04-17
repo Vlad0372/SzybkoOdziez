@@ -21,19 +21,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\OrderCompletionPage.xaml.cs">
+      <DependentUpon>OrderCompletionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\OrderHistoryPage.xaml.cs">
       <DependentUpon>OrderHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\OrderConfirmation.xaml.cs">
-      <DependentUpon>OrderConfirmation.xaml</DependentUpon>
+    <Compile Update="Views\OrderConfirmationPage.xaml.cs">
+      <DependentUpon>OrderConfirmationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\CompletionOfTheOrder.xaml">
+    <EmbeddedResource Update="Views\OrderCompletionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ItemDescriptionPage.xaml">
@@ -48,7 +51,7 @@
     <EmbeddedResource Update="Views\WatchlistPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\OrderConfirmationOrderConfirmation.xaml">
+    <EmbeddedResource Update="Views\OrderConfirmationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

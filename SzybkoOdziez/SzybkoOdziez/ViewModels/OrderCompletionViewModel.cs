@@ -5,10 +5,10 @@ using Xamarin.Forms;
 
 namespace SzybkoOdziez.ViewModels
 {
-    public class CompletionOfTheOrder : BaseViewModel
+    public class OrderCompletionViewModel : BaseViewModel
     {
-        public CompletionOfTheOrder()
-            {
+        public OrderCompletionViewModel()
+        {
 
             Title = "Zatwierdzenie twojego zamówienia";
         }

@@ -13,13 +13,13 @@ using Xamarin.Forms.Xaml;
 namespace SzybkoOdziez.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CompletionOfTheOrder : ContentPage
+    public partial class OrderCompletionPage : ContentPage
     {
-        private CompletionOfTheOrder _viewModel;
+        private OrderCompletionPage _viewModel;
 
 
        
-        public CompletionOfTheOrder()
+        public OrderCompletionPage()
         {
             InitializeComponent();
             Random rnd = new Random();
@@ -29,9 +29,11 @@ namespace SzybkoOdziez.Views
             orderNumberLabel.Text = orderNumber.ToString(); // zakładając, że kontrolka ma nazwę "orderNumberLabel"
         }
 
-        private void main_page_Clicked(object sender, EventArgs e)
+        private async void main_page_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainPage());
+            //Application.Current.MainPage.Navigation.PushModalAsync(new MainPage(), true);
+            //Navigation.PushAsync(new MainPage());
+            await Shell.Current.GoToAsync("//MainPage");
         }
 
         

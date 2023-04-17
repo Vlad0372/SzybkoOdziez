@@ -13,6 +13,7 @@ namespace SzybkoOdziez
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(Views.MainPage), typeof(Views.MainPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

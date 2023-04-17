@@ -6,9 +6,9 @@ using Xamarin.Forms;
 
 namespace SzybkoOdziez.ViewModels
 {
-    public class MainPage : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
-        public MainPage()
+        public MainViewModel()
         {
             Title = "Strona główna";
             
