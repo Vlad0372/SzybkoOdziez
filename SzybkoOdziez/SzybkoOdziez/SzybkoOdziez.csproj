@@ -7,6 +7,13 @@
 
   <ItemGroup>
     <Compile Remove="Services\Class1.cs" />
+    <Compile Remove="Services\CommentImageConverterLimiter.cs" />
+    <Compile Remove="Services\ICommentImageConverterLimiter.cs" />
+    <Compile Remove="View1.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="View1.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,11 +46,17 @@
     <EmbeddedResource Update="Views\ItemDescriptionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProductCommentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\RegistrationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ShoppingCartPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TESTPAGE.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WatchlistPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

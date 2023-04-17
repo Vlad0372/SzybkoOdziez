@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SzybkoOdziez.Models;
+using static Android.Resource;
 
 namespace SzybkoOdziez.Services
 {
@@ -111,6 +112,10 @@ namespace SzybkoOdziez.Services
                     await DeleteItemAsync(_products[i]);
                 }
             }
+        }
+        public Product GetItemByUrl(string url)
+        {
+            return _products.FirstOrDefault(s => s.ImageUrl == url);
         }
 
     }

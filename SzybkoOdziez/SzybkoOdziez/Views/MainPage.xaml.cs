@@ -10,17 +10,19 @@ namespace SzybkoOdziez.Views
     public partial class MainPage : ContentPage
     {
         private List<ProductInfo> productsList = new List<ProductInfo>();
+        private Product _product { get; set; }
 
         //list of liked products, used in Watchlist Page
         private ObservableCollection<ProductInfo> likedProductsList = new ObservableCollection<ProductInfo>();
-        private void ShowMore(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new ItemDescriptionPage());
-        }
+        //przesunalem ShowMore pod konstruktor xd michal 16.04
         public MainPage()
         {
             InitializeComponent();
             InitProductInfoList();
+        }
+        private void ShowMore(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ItemDescriptionPage(_product));
         }
         private async void OnDislikeClicked(object sender, EventArgs args)
         {
@@ -29,6 +31,7 @@ namespace SzybkoOdziez.Views
             productName.Text = randProduct.Name;
             productDesc.Text = randProduct.Description;
             productPrice.Text = randProduct.Price;
+            SetCurrentProduct(randProduct);
 
             await dislikeButton.ScaleTo(0.75, 100);
             await dislikeButton.ScaleTo(1, 100);        
@@ -48,6 +51,7 @@ namespace SzybkoOdziez.Views
                 //Price = productPrice.Text,
                 Price = Convert.ToDecimal(productPrice.Text.Split(',').First()),
                 Description = productDesc.Text,
+                Comments = new List<Comment> { new Comment() }
             };
 
             if (wishlistDataStore.CheckInDataStore(currentProduct))
@@ -93,10 +97,18 @@ namespace SzybkoOdziez.Views
             productName.Text = randProduct.Name;
             productDesc.Text = randProduct.Description;
             productPrice.Text = randProduct.Price;
+            SetCurrentProduct(randProduct);
 
             await likeButton.ScaleTo(0.75, 100);
             await likeButton.ScaleTo(1, 100);         
         }    
+        private void SetCurrentProduct(ProductInfo productInfo)
+        {
+            var app = (App)Application.Current;
+            var allProductDataStore = app.allProductDataStore;
+            var currentProduct = allProductDataStore.GetItemByUrl(productInfo.Url);
+            _product = currentProduct;
+        }
         private void InitProductInfoList()
         {
             List<string> imgsNameList = DependencyService.Get<IImgArrayGetterService>().GetImgArrayStreamAsync();

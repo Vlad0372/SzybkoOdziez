@@ -27,13 +27,15 @@ namespace SzybkoOdziez.Views
 
         private void OnWishlistProductStackLayoutTapped(object sender, EventArgs e)
         {
-            ChangePageToItemDescription();
+            var tappedImage = (Image)sender;
+            var tappedProduct = (Product)tappedImage.BindingContext;
+            ChangePageToItemDescription(tappedProduct);
         }
 
 
-        private void ChangePageToItemDescription()
+        private void ChangePageToItemDescription(Product product)
         {
-            Navigation.PushAsync(new ItemDescriptionPage());
+            Navigation.PushAsync(new ItemDescriptionPage(product));
         }
 
         private async void OnWishlistProductTrashcanTapped(object sender, EventArgs e)
