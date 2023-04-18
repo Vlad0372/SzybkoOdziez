@@ -31,6 +31,5 @@ namespace SzybkoOdziez.ViewModels
                 Comments.Add(comment);
             }
         }
-
     }
 }

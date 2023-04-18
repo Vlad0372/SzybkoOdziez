@@ -9,6 +9,9 @@ using SzybkoOdziez.Models;
 using SzybkoOdziez.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Android.Provider;
+using System.Windows;
+using Acr.UserDialogs;
 
 namespace SzybkoOdziez.Views
 {
@@ -30,10 +33,6 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
             BindingContext = _viewModel = new ViewModels.ProductCommentsViewModel();
             _product = product;
-            Comment comment = new Comment();
-            comment.Title = "XD";
-            comment.Description = "Lorem ipsum i tak dalej";
-            _product.Comments.Add(comment);
         }
 
         protected override async void OnAppearing()
@@ -42,12 +41,33 @@ namespace SzybkoOdziez.Views
             _viewModel.OnProductCommentsOpen(_product);
         }
 
-        public void OnAddCommentButtonClicked(object sender, EventArgs args)
+        public async void OnAddCommentButtonClicked(object sender, EventArgs args)
         {
             Comment comment = new Comment();
             comment.Title = CommentTitleEntry.Text;
             comment.Description = CommentTextEditor.Text;
-            _product.Comments.Add(comment);
+            if (CheckIfCommentUnique(comment))
+            {
+                _product.Comments.Add(comment);
+                _viewModel.OnProductCommentsOpen(_product);
+            }
+            else
+            {
+                await DisplayAlert("Duplikat!", "Komentarz o takim tytule już istnieje!", "Ok");
+            }
+        }
+
+        public bool CheckIfCommentUnique(Comment comment)
+        {
+            bool isUnique = true;
+            foreach (Comment productcomment in _product.Comments)
+            {
+                if (productcomment.Title == comment.Title)
+                {
+                    isUnique = false;
+                }
+            }
+            return isUnique;
         }
     }
 }
