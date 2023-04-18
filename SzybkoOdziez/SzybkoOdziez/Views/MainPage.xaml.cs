@@ -117,7 +117,7 @@ namespace SzybkoOdziez.Views
             _product = currentProduct;
             if (_product != null)
             {
-                productPrice.Text = Convert.ToString(_product.Price)+" zł";
+                productPrice.Text = Convert.ToString(_product.Price)+",00 zł";
             }
         }
         private void InitProductInfoList()

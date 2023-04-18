@@ -41,5 +41,13 @@ namespace SzybkoOdziez.Views
             base.OnAppearing();
             _viewModel.OnProductCommentsOpen(_product);
         }
+
+        public void OnAddCommentButtonClicked(object sender, EventArgs args)
+        {
+            Comment comment = new Comment();
+            comment.Title = CommentTitleEntry.Text;
+            comment.Description = CommentTextEditor.Text;
+            _product.Comments.Add(comment);
+        }
     }
 }
