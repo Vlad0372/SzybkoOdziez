@@ -28,9 +28,9 @@ namespace SzybkoOdziez.Views
             }
         }
 
-        public void OnLabelCommentsTapped(object sender, EventArgs e)
+        public async void OnLabelCommentsTapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ProductCommentsPage(_product));
+            await Navigation.PushAsync(new ProductCommentsPage(_product));  
         }
     }
 }
