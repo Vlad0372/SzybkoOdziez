@@ -30,23 +30,24 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <!--<ViewCell>-->
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                        <Grid Padding="10" Margin="0" BackgroundColor="Aqua">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                                 <!--Comment Title--> 
-                                <Label Text="{Binding Title}" 
+                            <!--Comment Title-->
+                            <Label Text="{Binding Title}" 
                                        Grid.Row="0" Grid.Column="0" />
 
-                                 <!--Comment edit, delete--> 
-                                <!--<Grid>
+                            <!--Comment edit, delete-->
+                            <!--<Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.5*"/>
                                         <ColumnDefinition Width="auto"/>
@@ -54,10 +55,17 @@
                                     <Image Source="" Grid.Row="0" Grid.Column="1" />
                                 </Grid>-->
 
-                                 <!--Comment Text Content--> 
-                                <Label Text="{Binding Description}" 
+                            <!--Comment Description-->
+                            <Label Text="{Binding Description}" 
                                        Grid.Row="1" Grid.ColumnSpan="3" />
-                            </Grid>
+                            <!--Comment Image-->
+                            <Image Grid.Row="2" Grid.Column="3" 
+                                   Source="drawable/czapka.jpg" 
+                                   IsVisible="True"
+                                   HeightRequest="80">
+                                
+                            </Image>
+                        </Grid>
                         <!--</ViewCell>-->
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
