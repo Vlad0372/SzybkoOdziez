@@ -5,13 +5,69 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SzybkoOdziez.Views.RegistrationPage"
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="False" 
+             BackgroundImageSource="login_page_background.jpg"
              >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Witamy w rejestrowanie konta!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        
+        <StackLayout Padding="25" 
+                     VerticalOptions="Center" 
+                     HorizontalOptions="Fill"
+                     >
+            <Frame Padding="24" CornerRadius="0">
+                <Label Text="REJESTRACJA" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+            </Frame>
+            <Entry x:Name="area_Name"  
+                   Placeholder="Imię" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                   PlaceholderColor="Black" 
+                   >
+            </Entry>
+            <Entry x:Name="area_Surname" 
+                   Placeholder="Nazwizko" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                   PlaceholderColor="Black" 
+                   >
+            </Entry>
+            <Entry x:Name="area_E_MAIL" 
+                   Placeholder="E-mail" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                   PlaceholderColor="Black" 
+                   >
+            </Entry>
+
+            <Entry x:Name="area_Name_user"
+                Placeholder="Nazwa użytkownika" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                   PlaceholderColor="Black" 
+                   >
+            </Entry>
+            <Entry x:Name="area_PASSWORD"
+                   Placeholder="Hasło"  
+                   IsPassword="True" 
+                   TextColor="Black" 
+                   PlaceholderColor="Black"
+                   HorizontalTextAlignment="Center"              
+                   >
+            </Entry>
+
+
+
+            <Button 
+                VerticalOptions="Center" 
+                Text="Załóż konto" 
+                TextColor="White" 
+                BackgroundColor="Black" 
+                BorderWidth="1.5" 
+                CornerRadius="50" 
+                Clicked="create_account_Button_Clicked"
+                BorderColor="Pink">
+            </Button>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

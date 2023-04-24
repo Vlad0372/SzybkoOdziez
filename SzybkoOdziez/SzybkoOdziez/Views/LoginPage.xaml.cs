@@ -18,12 +18,14 @@ namespace SzybkoOdziez.Views
             this.BindingContext = new LoginViewModel();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
             if (userLogin.Text == "admin" && userPass.Text == "admin")
             {
+
+                await Shell.Current.GoToAsync("//MainPage");
                 
-                Navigation.PushAsync(new MainPage());
+
             }
             else
             {
