@@ -14,9 +14,9 @@
                      VerticalOptions="Center" 
                      HorizontalOptions="Fill"
                      >
-            <Frame Padding="24" CornerRadius="0">
-                <Label Text="REJESTRACJA" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
-            </Frame>
+
+            <Label Text="REJESTRACJA" HorizontalTextAlignment="Center" TextColor="Black" FontSize="50" />
+
             <Entry x:Name="area_Name"  
                    Placeholder="Imię" 
                    HorizontalTextAlignment="Center"
