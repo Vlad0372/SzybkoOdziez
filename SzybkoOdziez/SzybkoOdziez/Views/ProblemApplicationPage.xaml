@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.ProblemApplicationPage"
+              xmlns:services="clr-namespace:SzybkoOdziez.Services"
+              xmlns:model="clr-namespace:SzybkoOdziez.Models">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Zgłoszenie problemu aplikacji" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+            </Frame>
+
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Wybierz opcję problemy z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25"/>
+            </Frame>
+            <!--Wybory nad płatnością-->
+            <RadioButton Content="Błąd załadowanie apliakcji" GroupName="App_Problem" IsChecked="True">
+            </RadioButton>
+            <RadioButton Content="Brak połączeniem się z bazą"  GroupName="App_Problem" IsChecked="False">
+            </RadioButton>
+            <RadioButton Content="Nie można dokonać zakupu" GroupName="App_Problem" IsChecked="False">
+            </RadioButton>
+            <RadioButton Content="Błąd podczas logowanie" GroupName="App_Problem" IsChecked="False">
+            </RadioButton>
+            <RadioButton Content="Nie udało się dokonać płatności" GroupName="App_Problem" IsChecked="False">
+            </RadioButton>
+            
+
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Opisz problem z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25" />
+            </Frame>
+            <Entry Placeholder="Opisz problem z aplikacją" 
+       TextColor="Black"
+       FontSize="20"
+       Keyboard="Chat"
+       MaxLength="1000" />
+
+            <Button 
+                   Clicked="send_message_problem_application_Clicked"
+                    Text="Wyślij zgłoszenie problemu aplikacji"                
+                    TextColor="White" 
+                    BackgroundColor="DarkOrange"                    
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,20"
+                    >
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
