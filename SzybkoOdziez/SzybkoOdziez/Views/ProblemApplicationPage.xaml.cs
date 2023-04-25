@@ -19,8 +19,18 @@ namespace SzybkoOdziez.Views
 
         private void send_message_problem_application_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GetMessageAboutProblemApplicationPage());
-            Navigation.RemovePage(this);
+           
+                Navigation.PushAsync(new GetMessageAboutProblemApplicationPage());
+                Navigation.RemovePage(this);
+            
+        }
+
+        private void ClearSelection_clicked(object sender, EventArgs e)
+        {
+            AppProblem1.IsChecked = false;
+            AppProblem2.IsChecked = false;
+            AppProblem3.IsChecked = false;
+            AppProblem4.IsChecked = false;
         }
     }
 }

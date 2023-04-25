@@ -5,9 +5,34 @@
               Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Twoje ogłoszenie zostało wysłane"
+            <Label Text="Twoje ogłoszenie zostało wysłane!"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="25"
+                   TextColor="DarkOrange"
+                   />
+
+            <Label Text="Kliknij przycisk żeby wrócić na główną stronę"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="17"
+                   TextColor="Black"
+                   />
+            <Button
+                Clicked="return_main_page_clicked"
+                Text="Powrót na główną stronę"                
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
+                    >
+            </Button>
+            <Label>
+                <Label.GestureRecognizers>
+
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

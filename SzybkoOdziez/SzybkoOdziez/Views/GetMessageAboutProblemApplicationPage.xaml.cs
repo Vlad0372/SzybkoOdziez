@@ -16,5 +16,11 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();
         }
+
+        private async void return_main_page_clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//MainPage");
+            Navigation.RemovePage(this);
+        }
     }
 }

@@ -105,7 +105,7 @@
     </FlyoutItem>
     <!--13.04 added (Vladek)-->
     <!--25.04 added (Karol)-->
-        <FlyoutItem Title="Zgłoszenie problemu aplikacji" Icon="icon_problem_application.png">
+        <FlyoutItem Title="Zgłoszenie problemu z aplikacją" Icon="icon_problem_application.png">
         <ShellContent Route="ProblemApplicationPage" ContentTemplate="{DataTemplate local:ProblemApplicationPage}" />
     </FlyoutItem>
 

@@ -24,18 +24,20 @@ namespace SzybkoOdziez.Views
             {
 
                 await Shell.Current.GoToAsync("//MainPage");
-                
+                Navigation.RemovePage(this);
+
 
             }
             else
             {
-                DisplayAlert("UPS...!", "Podałeś złe hasło albo nazwę uztkownika", "Spróbuj ponownie");
+                DisplayAlert("UPS...!", "Podałeś złe hasło albo nazwę użytkownika", "Spróbuj ponownie");
             }
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new RegistrationPage());
+            Navigation.RemovePage(this);
         }
     }
 }

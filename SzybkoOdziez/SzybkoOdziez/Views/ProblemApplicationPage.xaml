@@ -8,24 +8,30 @@
         <StackLayout>
             
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Zgłoszenie problemu aplikacji" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+                <Label Text="Zgłoszenie problemu z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
             </Frame>
 
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Wybierz opcję problemy z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25"/>
             </Frame>
             <!--Wybory nad płatnością-->
-            <RadioButton Content="Błąd załadowanie apliakcji" GroupName="App_Problem" IsChecked="True">
+            <RadioButton Content="Błąd załadowaniem się strony" x:Name="AppProblem1" IsChecked="False">
             </RadioButton>
-            <RadioButton Content="Brak połączeniem się z bazą"  GroupName="App_Problem" IsChecked="False">
+            <RadioButton Content="Brak połączeniem się z bazą"  x:Name="AppProblem2" IsChecked="False">
             </RadioButton>
-            <RadioButton Content="Nie można dokonać zakupu" GroupName="App_Problem" IsChecked="False">
+            <RadioButton Content="Nie można dokonać zakupu" x:Name="AppProblem3" IsChecked="False">
             </RadioButton>
-            <RadioButton Content="Błąd podczas logowanie" GroupName="App_Problem" IsChecked="False">
+
+            <RadioButton Content="Nie udało się dokonać płatności" x:Name="AppProblem4" IsChecked="False">
             </RadioButton>
-            <RadioButton Content="Nie udało się dokonać płatności" GroupName="App_Problem" IsChecked="False">
-            </RadioButton>
-            
+            <Button Clicked="ClearSelection_clicked"
+                Text="Odznacz moje decyzje"  
+                TextColor="White" 
+                    BackgroundColor="DarkOrange"                    
+                    CornerRadius="100"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,20">
+            </Button>
 
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Opisz problem z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25" />
