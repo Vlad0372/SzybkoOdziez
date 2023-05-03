@@ -9,8 +9,9 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>-->
             <StackLayout Padding="10">
-                <Label Text="Add Comment" 
-                       FontSize="Large" />
+                <Label Text="Comments" 
+                       FontSize="Large" 
+                       HorizontalTextAlignment="Center"/>
                 <Entry x:Name="CommentTitleEntry" Placeholder="Title" Margin="0,10,0,0" />
                 <Editor x:Name="CommentTextEditor" 
                         Placeholder="Text Content" 
@@ -30,24 +31,24 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <!--<ViewCell>-->
-                        <Grid Padding="10" Margin="0" BackgroundColor="Aqua">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                        <!--<StackLayout Margin="10">
+                            <Grid Padding="10" BackgroundColor="Aqua" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                            <!--Comment Title-->
-                            <Label Text="{Binding Title}" 
+                                --><!--Comment Title--><!--
+                                <Label Text="{Binding Title}" 
                                        Grid.Row="0" Grid.Column="0" />
 
-                            <!--Comment edit, delete-->
-                            <!--<Grid>
+                                --><!--Comment edit, delete-->
+                                <!--<Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="0.5*"/>
                                         <ColumnDefinition Width="auto"/>
@@ -55,21 +56,57 @@
                                     <Image Source="" Grid.Row="0" Grid.Column="1" />
                                 </Grid>-->
 
-                            <!--Comment Description-->
-                            <Label Text="{Binding Description}" 
-                                       Grid.Row="1" Grid.ColumnSpan="3" />
-                            <!--Comment Image-->
-                            <Image Grid.Row="2" Grid.Column="3" 
+                                <!--Comment Description--><!--
+                                <Label Text="{Binding Description}" 
+                                       Grid.Row="1" Grid.Column="0" />
+                                --><!--Comment Image--><!--
+                                <Image x:Name="commentImage"
+                                   Grid.Row="1" Grid.Column="1" 
                                    Source="drawable/czapka.jpg" 
                                    IsVisible="True"
                                    HeightRequest="80">
-                                
-                            </Image>
-                        </Grid>
+
+                                </Image>
+                            </Grid>
+                        </StackLayout>-->
+
+
+                        <StackLayout>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="150" />
+                                </Grid.ColumnDefinitions>
+                                <!--grid w ktorym jest zdjecie produktu i tekst produktu-->
+                                <Grid Margin="10,5" x:Name="WatchlistProductStackLayout">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <!--zdjecie produktu-->
+                                    <Image Grid.Column="0" Source="" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
+                                    <!--tekst produktu (nazwa, cena)-->
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="{Binding Title}" FontSize="Medium"/>
+                                        <Label Text="{Binding Description}" FontSize="Small" />
+                                    </StackLayout>
+                                </Grid>
+                                <!--kontener smietnika-->
+                                <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 25, 0">
+                                    <!--obrazek koszyk, dodawanie produktu do koszyka-->
+                                </Grid>
+                            </Grid>
+                            <BoxView HeightRequest="2" BackgroundColor="LightGray" Margin="0, 5" />
+                        </StackLayout>
+
+
                         <!--</ViewCell>-->
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <!--<Image Source="" x:Name="ImageComment"></Image>-->
+            <!--<Button Clicked="Button_Clicked2" Text="XD"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
