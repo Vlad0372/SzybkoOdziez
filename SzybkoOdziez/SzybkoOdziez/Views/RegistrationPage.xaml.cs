@@ -10,6 +10,8 @@ using Xamarin.Forms.Xaml;
 using static Android.Graphics.ColorSpace;
 using static Java.Util.Jar.Attributes;
 using Oracle.ManagedDataAccess.Client;
+using System.Data.SqlClient;
+using static Android.Provider.ContactsContract.CommonDataKinds;
 
 namespace SzybkoOdziez.Views
 {
@@ -24,15 +26,15 @@ namespace SzybkoOdziez.Views
 
         private async void create_account_Button_Clicked(object sender, EventArgs e)
         {
-            string ConnectionString = "Data Source=(DESCRIPTION=" +
-            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
-            "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
-            "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
+            //string ConnectionString = "Data Source=(DESCRIPTION=" +
+            //"(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+            //"(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+            //"User Id=s100824;Password=Sddb2023;";
+            //OracleConnection connection = new OracleConnection(ConnectionString);
+            //connection.Open();
 
-
-            if (string.IsNullOrEmpty(area_Name.Text)|| string.IsNullOrEmpty(area_Surname.Text) || string.IsNullOrEmpty(area_Name_user.Text) || string.IsNullOrEmpty(area_PASSWORD.Text) || string.IsNullOrEmpty(area_E_MAIL.Text))
+            
+            if (string.IsNullOrEmpty(name.Text)|| string.IsNullOrEmpty(last_name.Text) || string.IsNullOrEmpty(mail.Text) || string.IsNullOrEmpty(nickname.Text) || string.IsNullOrEmpty(password.Text))
             {
 
                 
@@ -41,6 +43,18 @@ namespace SzybkoOdziez.Views
             }
             else
             {
+                //var query = "INSERT INTO user (name, last_name, mail, nickname, password) VALUES (@name, @last_name, @mail, @nickname, @password)";
+
+                //OracleCommand command = new OracleCommand(query, connection);
+
+                //command.Parameters.Add("@name", name);
+                //command.Parameters.Add("@last_name", last_name);
+                //command.Parameters.Add("@mail", mail);
+                //command.Parameters.Add("@nickname", nickname);
+                //command.Parameters.Add("@password", password);
+
+                //command.ExecuteNonQuery();
+                //connection.Close();
                 await Shell.Current.GoToAsync("//MainPage");
                 Navigation.RemovePage(this);
             }

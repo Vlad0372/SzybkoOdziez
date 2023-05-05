@@ -17,21 +17,21 @@
 
             <Label Text="REJESTRACJA" HorizontalTextAlignment="Center" TextColor="Black" FontSize="50" />
 
-            <Entry x:Name="area_Name"  
+            <Entry x:Name="name"  
                    Placeholder="Imię" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
             </Entry>
-            <Entry x:Name="area_Surname" 
+            <Entry x:Name="last_name" 
                    Placeholder="Nazwizko" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
             </Entry>
-            <Entry x:Name="area_E_MAIL" 
+            <Entry x:Name="mail" 
                    Placeholder="E-mail" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
@@ -39,14 +39,14 @@
                    >
             </Entry>
 
-            <Entry x:Name="area_Name_user"
+            <Entry x:Name="nickname"
                 Placeholder="Nazwa użytkownika" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
             </Entry>
-            <Entry x:Name="area_PASSWORD"
+            <Entry x:Name="password"
                    Placeholder="Hasło"  
                    IsPassword="True" 
                    TextColor="Black" 
