@@ -26,14 +26,29 @@ namespace SzybkoOdziez.Views
 
         private async void create_account_Button_Clicked(object sender, EventArgs e)
         {
-            //string ConnectionString = "Data Source=(DESCRIPTION=" +
-            //"(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
-            //"(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
-            //"User Id=s100824;Password=Sddb2023;";
-            //OracleConnection connection = new OracleConnection(ConnectionString);
-            //connection.Open();
+
+            string ConnectionString = "Data Source=(DESCRIPTION=" +
+           "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+           "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+           "User Id=s100824;Password=Sddb2023;";
+            OracleConnection connection = new OracleConnection(ConnectionString);
+            connection.Open();
+
+            var query = "INSERT INTO \"user\" (user_id, name, last_name, mail, nickname, password) VALUES (@user_id, @name, @last_name, @mail, @nickname, @password)";
+
+            OracleCommand command = new OracleCommand(query, connection);
+
 
             
+
+
+
+
+            //
+
+            
+            
+
             if (string.IsNullOrEmpty(name.Text)|| string.IsNullOrEmpty(last_name.Text) || string.IsNullOrEmpty(mail.Text) || string.IsNullOrEmpty(nickname.Text) || string.IsNullOrEmpty(password.Text))
             {
 
@@ -43,23 +58,20 @@ namespace SzybkoOdziez.Views
             }
             else
             {
-                //var query = "INSERT INTO user (name, last_name, mail, nickname, password) VALUES (@name, @last_name, @mail, @nickname, @password)";
 
-                //OracleCommand command = new OracleCommand(query, connection);
-
-                //command.Parameters.Add("@name", name);
-                //command.Parameters.Add("@last_name", last_name);
-                //command.Parameters.Add("@mail", mail);
-                //command.Parameters.Add("@nickname", nickname);
-                //command.Parameters.Add("@password", password);
-
-                //command.ExecuteNonQuery();
-                //connection.Close();
+                command.Parameters.Add(new OracleParameter("@user_id", user_id));
+                command.Parameters.Add(new OracleParameter("@name", name));
+                command.Parameters.Add(new OracleParameter("@last_name", last_name));
+                command.Parameters.Add(new OracleParameter("@mail", mail));
+                command.Parameters.Add(new OracleParameter("@nickname", nickname));
+                command.Parameters.Add(new OracleParameter("@password", password));
+                command.ExecuteNonQuery();
                 await Shell.Current.GoToAsync("//MainPage");
                 Navigation.RemovePage(this);
+               
             }
 
-           
+            connection.Close();
         }
     }
 }
