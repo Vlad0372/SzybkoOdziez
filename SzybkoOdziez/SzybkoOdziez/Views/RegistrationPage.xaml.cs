@@ -12,6 +12,7 @@ using static Java.Util.Jar.Attributes;
 using Oracle.ManagedDataAccess.Client;
 using System.Data.SqlClient;
 using static Android.Provider.ContactsContract.CommonDataKinds;
+using Java.Nio.FileNio.Attributes;
 
 namespace SzybkoOdziez.Views
 {
@@ -34,44 +35,78 @@ namespace SzybkoOdziez.Views
             OracleConnection connection = new OracleConnection(ConnectionString);
             connection.Open();
 
-            var query = "INSERT INTO \"user\" (user_id, name, last_name, mail, nickname, password) VALUES (@user_id, @name, @last_name, @mail, @nickname, @password)";
-
-            OracleCommand command = new OracleCommand(query, connection);
 
 
-            
+
+
 
 
 
 
             //
-
-            
-            
-
-            if (string.IsNullOrEmpty(name.Text)|| string.IsNullOrEmpty(last_name.Text) || string.IsNullOrEmpty(mail.Text) || string.IsNullOrEmpty(nickname.Text) || string.IsNullOrEmpty(password.Text))
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
 
-                
-                DisplayAlert("UPS...!", "Musisz podać wszystkie dane", "Spróbuj ponownie");
 
+
+
+                var query = "INSERT INTO \"user\" (user_id, name, last_name, mail, nickname, password) VALUES (:user_id, :name, :last_name, :mail, :nickname, :password)";
+
+                using (OracleCommand cmdInsert = new OracleCommand(query, conn))
+                {
+
+                    int userrr = int.Parse(user_id.Text);
+                    string nameee = name.Text;
+                    string last_nameee = last_name.Text;
+                    string maillll = mail.Text;
+                    string nicknameee = nickname.Text;
+                    string passworddd = password.Text;
+
+
+                    OracleCommand command = new OracleCommand(query, connection);
+                    command.Parameters.Add(new OracleParameter("user_id", userrr));
+                    command.Parameters.Add(new OracleParameter("name", nameee));
+                    command.Parameters.Add(new OracleParameter("last_name", last_nameee));
+                    command.Parameters.Add(new OracleParameter("mail", maillll));
+                    command.Parameters.Add(new OracleParameter("nickname", nicknameee));
+                    command.Parameters.Add(new OracleParameter("password", passworddd));
+
+                    //NIC SIĘ NIE DZIEJE xD
+                    //if (user_id.Text == "" && name.Text == "" && last_name.Text == "" && mail.Text == "" && nickname.Text == "" && password.Text == "" )
+                    //{
+                    //     DisplayAlert("UPS", "Proszę wpisać wszystkie wymagane dane", "Spróbuj ponownie!");
+
+                    //}
+
+
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+                        conn.Close();
+
+                        if (rowsAffected > 0)
+                        {
+
+                            await Shell.Current.GoToAsync("//MainPage");
+                            Navigation.RemovePage(this);
+                        }
+                        else
+                        {
+                            //NIC SIĘ NIE DZIEJE xD
+                            // nic nie zostało dodane do bazy - wyświetl komunikat o błędzie
+                            DisplayAlert("UPS","Nie udało się zarejestrować", "Spróbuj ponownie!");
+                        }
+                    }
+                    catch (OracleException ex)
+                    {
+                        // wystąpił błąd Oracle - wyświetl komunikat o błędzie
+                        DisplayAlert("UPS", "Nie udało się zarejestrować, użytkownik zajął twoją ulubioną liczbnę!","Spróbuj ponownie" ,ex.Message);
+
+                    }
+                }
             }
-            else
-            {
-
-                command.Parameters.Add(new OracleParameter("@user_id", user_id));
-                command.Parameters.Add(new OracleParameter("@name", name));
-                command.Parameters.Add(new OracleParameter("@last_name", last_name));
-                command.Parameters.Add(new OracleParameter("@mail", mail));
-                command.Parameters.Add(new OracleParameter("@nickname", nickname));
-                command.Parameters.Add(new OracleParameter("@password", password));
-                command.ExecuteNonQuery();
-                await Shell.Current.GoToAsync("//MainPage");
-                Navigation.RemovePage(this);
-               
-            }
-
-            connection.Close();
         }
     }
 }
