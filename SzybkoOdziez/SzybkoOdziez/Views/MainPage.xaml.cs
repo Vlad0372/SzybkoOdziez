@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using SzybkoOdziez.Models;
 using Xamarin.Forms;
@@ -105,6 +106,11 @@ namespace SzybkoOdziez.Views
             productPrice.Text = randProduct.Price;
             SetCurrentProduct(randProduct);
 
+            //===================== vlad chuj do usuniecia bruh =================================
+            //test
+
+          
+            //===================================================================================
 
             await likeButton.ScaleTo(0.75, 100);
             await likeButton.ScaleTo(1, 100);         

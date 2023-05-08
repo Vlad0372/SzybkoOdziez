@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,8 @@ using System.Threading.Tasks;
 using SzybkoOdziez.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static Android.Provider.ContactsContract.CommonDataKinds;
+using static Java.Util.Jar.Attributes;
 
 namespace SzybkoOdziez.Views
 {
@@ -20,17 +23,32 @@ namespace SzybkoOdziez.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            if (userLogin.Text == "admin" && userPass.Text == "admin")
+            string connStr = "Data Source=(DESCRIPTION=" +
+           "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+           "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+           "User Id=s100824;Password=Sddb2023;";
+
+            using (OracleConnection conn = new OracleConnection(connStr))
             {
+                conn.Open();
 
-                await Shell.Current.GoToAsync("//MainPage");
-                Navigation.RemovePage(this);
+                OracleCommand command = new OracleCommand();
 
+                command.Connection = conn;
+                command.CommandText = "select * from \"user\" where name = '" + userLogin.Text + "' and password = '" + userPass.Text + "'";
+                command.CommandType = System.Data.CommandType.Text;
+               
+                object isUserExists = command.ExecuteScalar();
 
-            }
-            else
-            {
-                DisplayAlert("UPS...!", "Podałeś złe hasło albo nazwę użytkownika", "Spróbuj ponownie");
+                if (isUserExists != null)
+                {
+                    await Shell.Current.GoToAsync("//MainPage");
+                    Navigation.RemovePage(this);
+                }
+                else
+                {
+                    DisplayAlert("UPS...!", "Podałeś złe hasło albo nazwę użytkownika", "Spróbuj ponownie");
+                }
             }
         }
 

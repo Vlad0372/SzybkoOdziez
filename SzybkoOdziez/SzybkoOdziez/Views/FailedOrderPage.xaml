@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.FailedOrderPage"
+              xmlns:services="clr-namespace:SzybkoOdziez.Services"
+              xmlns:model="clr-namespace:SzybkoOdziez.Models">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Zgłoszenie problemu z zamówieniem" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25"/>
+            </Frame>
+            <Frame BackgroundColor="White" Padding="10" CornerRadius="0">
+                <Label Text="Wprowadź numer zamówienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20"/>
+            </Frame>
+            
+            <Entry 
+                    x:Name="orderNumberEntry"
+                    Placeholder="#"
+                    Margin="100,20,100,20"
+                    TextColor="Black"
+                    FontSize="32"
+                    Keyboard="Chat"
+                    MaxLength="10"/>
+            
+            <RadioButton Content="Błąd płatności" x:Name="OrderProblem1" IsChecked="False">
+            </RadioButton>
+            <RadioButton Content="Błędny adres/sposób dostawy"  x:Name="OrderProblem2" IsChecked="False">
+            </RadioButton>
+            <RadioButton Content="Nie zgodność z zamówieniem" x:Name="OrderProblem3" IsChecked="False">
+            </RadioButton>
+
+            <Frame BackgroundColor="White" Padding="10"
+                   Margin="0,10,0,10"
+                   CornerRadius="0">
+                <Label Text="Krótko opisz problem" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20"/>
+            </Frame>
+            
+            <Editor x:Name="editor" 
+                    Placeholder="Krótko opisz problem z zamówieniem" 
+                    FontSize="20"
+                    Margin="10,0,10,20"
+                    HeightRequest="100"/>
+            
+
+            <Button    
+                    Clicked="RepordOrderProblem_Clicked"
+                    Text="Zgłoś problem"                
+                    TextColor="White" 
+                    BackgroundColor="DarkOrange"                    
+                    CornerRadius="50"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,20"
+                    >
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

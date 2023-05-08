@@ -108,7 +108,11 @@
         <FlyoutItem Title="Zgłoszenie problemu z aplikacją" Icon="icon_problem_application.png">
         <ShellContent Route="ProblemApplicationPage" ContentTemplate="{DataTemplate local:ProblemApplicationPage}" />
     </FlyoutItem>
-
+    <!--08.05 added (Vladek)-->
+    <FlyoutItem Title="Zgłoszenie problemu z zamówieniem" Icon="icon_cancel.png">
+        <ShellContent Route="FailedOrderPage" ContentTemplate="{DataTemplate local:FailedOrderPage}" />
+    </FlyoutItem>
+    <!--08.05 added (Vladek)-->
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Wyloguj" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked" IconImageSource="logoutIcon">
     </MenuItem>
