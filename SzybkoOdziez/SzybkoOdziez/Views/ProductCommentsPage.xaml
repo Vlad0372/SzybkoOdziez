@@ -107,6 +107,8 @@
             </CollectionView>
             <!--<Image Source="" x:Name="ImageComment"></Image>-->
             <!--<Button Clicked="Button_Clicked2" Text="XD"/>-->
+            <Button Clicked="testbuttonclick" Text="test"/>
+            <Image x:Name="resultImage"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
