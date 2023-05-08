@@ -73,6 +73,77 @@ namespace SzybkoOdziez.Views
             return isUnique;
         }
 
+
+        public async void testbuttonclick(object sender, EventArgs args)
+        {
+
+            Console.WriteLine("WE ARE HERE");
+            //var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
+            //if (status != PermissionStatus.Granted)
+            //{
+            //    status = await Permissions.RequestAsync<Permissions.StorageRead>();
+            //    if (status != PermissionStatus.Granted)
+            //    {
+            //        // Permission denied by the user
+            //        // Handle this situation accordingly
+            //        return;
+            //    }
+            //}
+
+            // Permission has been granted, proceed with using MediaPicker.PickPhotoAsync()
+
+            //try
+            //{
+            //    var result = await MediaPicker.PickPhotoAsync();
+            //    if (result != null)
+            //    {
+            //        // Handle the selected photo
+            //        Console.WriteLine(result);
+            //    }
+            //}
+            //catch (FeatureNotSupportedException)
+            //{
+            //    // Handle not supported on the device
+            //}
+            //catch (PermissionException)
+            //{
+            //    // Handle permission exception
+            //    Console.WriteLine("permission exception");
+            //}
+            //catch (Exception)
+            //{
+            //    // Handle other exceptions
+            //}
+
+
+
+            var result = await MediaPicker.PickPhotoAsync();
+            var stream = await result.OpenReadAsync();
+            resultImage.Source = ImageSource.FromStream(() => stream);
+            //Console.WriteLine(photo);
+
+
+
+        }
+
+        //async Task LoadPhotoAsync(FileResult photo)
+        //{
+        //    // canceled
+        //    if (photo == null)
+        //    {
+        //        //PhotoPath = null;
+        //        return;
+        //    }
+        //    // save the file into local storage
+        //    var newFile = System.IO.Path.Combine(FileSystem.CacheDirectory, photo.FileName);
+        //    using (var stream = await photo.OpenReadAsync())
+        //    using (var newStream = File.OpenWrite(newFile))
+        //        await stream.CopyToAsync(newStream);
+
+        //    var PhotoPath = newFile;
+        //    Console.WriteLine(PhotoPath);
+        //}
+
         //private async void PickImage_Clicked(object sender, EventArgs e)
         //{
         //    string filePath = "";

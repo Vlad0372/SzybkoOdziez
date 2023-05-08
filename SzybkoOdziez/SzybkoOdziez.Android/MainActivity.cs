@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.OS;
 using Acr.UserDialogs;
 
+
 namespace SzybkoOdziez.Droid
 {
     [Activity(Label = "SzybkoOdziez", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
@@ -26,5 +27,6 @@ namespace SzybkoOdziez.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }
