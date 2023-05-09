@@ -107,5 +107,22 @@ namespace SzybkoOdziez.Views
 
             return orders;
         }
+
+        private async void DokonajZwrotu_Tapped(object sender, EventArgs e)
+        {
+            var tappedLabel = (Label)sender;
+            var tappedOrder = (Order)tappedLabel.BindingContext;
+            //tappedOrder.orderState = 1;
+            var app = (App)Application.Current;
+            var orderHistoryDataStore = await app.orderHistoryDataStore.GetItemsAsync();
+
+            if (orderHistoryDataStore.Contains(tappedOrder)){
+                await app.orderHistoryDataStore.DeleteItemAsync(tappedOrder);
+                _viewModel.OnOrderHistoryOpen();
+            }
+
+            await DisplayAlert("Zwrot", "Dokonano zwrotu tego zamówienia", "Ok");
+
+        }
     }
 }

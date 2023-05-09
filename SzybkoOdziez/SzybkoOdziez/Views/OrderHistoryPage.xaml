@@ -35,10 +35,11 @@
                                             BackgroundColor="#F6F6F6"
                                             TextColor="Gray"
                                             FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
-                                            Text="Pokaż więcej"
+                                            Text="Dokonaj zwrotu"
                                             Padding="10,0,0,0">
                             <Label.GestureRecognizers>
-
+                                <!-- tymczasowo tutaj jest dokonanie zwrotu -->
+                                <TapGestureRecognizer Tapped="DokonajZwrotu_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </Frame>
