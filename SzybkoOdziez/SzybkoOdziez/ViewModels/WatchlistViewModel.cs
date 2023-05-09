@@ -54,6 +54,7 @@ namespace SzybkoOdziez.ViewModels
 
         public void InitializeWishlistFromDB(int user_id)
         {
+            Products.Clear();
             string ConnectionString = "Data Source=(DESCRIPTION=" +
             "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
             "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
@@ -137,7 +138,10 @@ namespace SzybkoOdziez.ViewModels
                 var wishlistDataStore = app.wishlistDataStore;
                 foreach(var item in Products)
                 {
-                    wishlistDataStore.AddItemAsync(item);
+                    if (wishlistDataStore.CheckInDataStore(item))
+                    {
+                        wishlistDataStore.AddItemAsync(item);
+                    }
                 }
             }
 

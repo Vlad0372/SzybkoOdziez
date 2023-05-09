@@ -61,9 +61,9 @@ namespace SzybkoOdziez.Views
         }
         private async void OnLikeClicked(object sender, EventArgs args)
         {
-            var app = (App)Application.Current;
-            var wishlistDataStore = app.wishlistDataStore;
-            var wishlistIEnumerable = await wishlistDataStore.GetItemsAsync();
+            //var app = (App)Application.Current;
+            //var wishlistDataStore = app.wishlistDataStore;
+            //var wishlistIEnumerable = await wishlistDataStore.GetItemsAsync();
 
             var currentProduct = new Product
             {
@@ -75,10 +75,10 @@ namespace SzybkoOdziez.Views
                 Comments = new List<Comment> { new Comment() }
             };
 
-            if (wishlistDataStore.CheckInDataStore(currentProduct))
-            {
-                await wishlistDataStore.AddItemAsync(currentProduct);
-            }
+            //if (wishlistDataStore.CheckInDataStore(currentProduct))
+            //{
+            //    await wishlistDataStore.AddItemAsync(currentProduct);
+            //}
 
 
             AddProductToUserObserved(99, currentProduct.Id);
