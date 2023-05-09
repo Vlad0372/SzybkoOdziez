@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Java.Nio.Channels;
+using Java.Util;
+using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -7,6 +10,7 @@ using SzybkoOdziez.Models;
 using SzybkoOdziez.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using static Java.Text.Normalizer;
 
 namespace SzybkoOdziez.ViewModels
 {
@@ -46,6 +50,116 @@ namespace SzybkoOdziez.ViewModels
             {
                 Products.Add(product);
             }
+        }
+
+        public void InitializeWishlistFromDB(int user_id)
+        {
+            string ConnectionString = "Data Source=(DESCRIPTION=" +
+            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+            "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+            "User Id=s100824;Password=Sddb2023;";
+
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            {
+                var querySelectIDs = "SELECT * FROM observed WHERE(user_user_id = :user_id)";
+                List<int> item_ids = new List<int>();
+                using (OracleCommand cmdInsert = new OracleCommand(querySelectIDs, conn))
+                {
+                    OracleCommand command = new OracleCommand(querySelectIDs, conn);
+                    command.Parameters.Add(new OracleParameter("user_id", user_id));
+
+                    try
+                    {
+                        conn.Open();
+                        OracleDataReader reader = null;
+                        reader = command.ExecuteReader();
+
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                item_ids.Add(reader.GetInt32(1));
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        conn.Close();
+
+                    }
+                    catch (OracleException ex)
+                    {
+                        // wystąpił błąd Oracle - wyświetl komunikat o błędzie
+                        Console.WriteLine(ex.ToString());
+                        conn.Close();
+                    }
+                }
+                var querySelectItems = "SELECT item_id, name, description, price, img_source FROM item WHERE (item_id = :item_id)";
+                using (OracleCommand cmdInsert = new OracleCommand(querySelectItems, conn))
+                {
+                    foreach (var item_id in item_ids)
+                    {
+                        OracleCommand command = new OracleCommand(querySelectItems, conn);
+                        command.Parameters.Add(new OracleParameter("item_id", item_id));
+                        try
+                        {
+                            conn.Open();
+                            OracleDataReader reader = null;
+                            reader = command.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                Product sqlproduct = new Product
+                                {
+                                    Id = reader.GetInt32(0),
+                                    Name = reader.GetString(1),
+                                    Description = reader.GetString(2),
+                                    Price = reader.GetInt32(3),
+                                    ImageUrl = reader.GetString(4),
+                                };
+                                Products.Add(sqlproduct);
+                            }
+                            conn.Close();
+                        }
+                        catch (OracleException ex)
+                        {
+                            //blad oracle 
+
+                            Console.WriteLine(ex.ToString());
+                            conn.Close();
+                        }
+                    }
+                }
+
+
+                var app = (App)Application.Current;
+                var wishlistDataStore = app.wishlistDataStore;
+                foreach(var item in Products)
+                {
+                    wishlistDataStore.AddItemAsync(item);
+                }
+            }
+
+
+            //OracleCommand oraCommand = new OracleCommand("SELECT fullname FROM user_profile WHERE domain_user_name = :userName");
+            //oraCommand.BindByName = true;
+            //oraCommand.Parameters.Add(new OracleParameter("@userName", domainUser));
+
+            //OracleDataReader oraReader = null;
+            //oraReader = oraCommand.ExecuteReader();
+
+            //if (oraReader.HasRows)
+            //{
+            //    while (oraReader.Read())
+            //    {
+            //        fullName = oraReader.GetString(0);
+            //    }
+            //}
+            //else
+            //{
+            //    return "No Rows Found";
+            //}
         }
 
         //public Product SelectedProduct

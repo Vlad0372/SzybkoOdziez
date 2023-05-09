@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using SzybkoOdziez.Models;
 using Xamarin.Forms;
+using static Android.Provider.ContactsContract.CommonDataKinds;
+using static Java.Util.Jar.Attributes;
 
 namespace SzybkoOdziez.Views
 {
@@ -58,21 +61,12 @@ namespace SzybkoOdziez.Views
         }
         private async void OnLikeClicked(object sender, EventArgs args)
         {
-            //TODO zrefaktoryzowac zeby bralo product z productDataStore
             var app = (App)Application.Current;
             var wishlistDataStore = app.wishlistDataStore;
             var wishlistIEnumerable = await wishlistDataStore.GetItemsAsync();
 
             var currentProduct = new Product
             {
-                //Id = wishlistIEnumerable.Count() + 1,
-                //ImageUrl = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source),
-                //Name = productName.Text,
-                ////Price = productPrice.Text,
-                //Price = Convert.ToDecimal(productPrice.Text.Split(',').First()),
-                //Description = productDesc.Text,
-                //Comments = new List<Comment> { new Comment() }
-
                 Id = currentProductInfo.Id,
                 ImageUrl = currentProductInfo.ImageUrl,
                 Name = currentProductInfo.Name,
@@ -86,49 +80,54 @@ namespace SzybkoOdziez.Views
                 await wishlistDataStore.AddItemAsync(currentProduct);
             }
 
-            //var helperList = (ObservableCollection<ProductInfo>)Application.Current.Properties["likedProductsList"];
-            //var helperProduct = new ProductInfo { Id = helperList.Count + 1, Name = productName.Text, Description = productDesc.Text, Price = productPrice.Text, Url = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source) };
 
-            ////powinno byc cos takiego, ale trzeba naprawic id
-            ////if (!helperList.Contains(helperProduct))
-            ////{
-            ////    Application.Current.Properties.Remove("likedProductsList");
-            ////    helperList.Add(helperProduct);
-            ////    Application.Current.Properties.Add("likedProductsList", likedProductsList);
-            ////    await Application.Current.SavePropertiesAsync();
-            ////}
+            AddProductToUserObserved(99, currentProduct.Id);
 
-            ////!---------------- DO USUNIECIA PO POPRAWIENIU POBIERANIA/PRZYPISYWANIA ID ---------------!
-            //bool notFoundInWishlist = true;
-            //foreach (var helper in helperList)
-            //{
-            //    if (helperProduct.Name == helper.Name)
-            //    {
-            //        notFoundInWishlist = false;
-            //    }
-            //}
-            //if (notFoundInWishlist)
-            //{
-            //    Application.Current.Properties.Remove("likedProductsList");
-            //    helperList.Add(helperProduct);
-            //    Application.Current.Properties.Add("likedProductsList", likedProductsList);
-            //    await Application.Current.SavePropertiesAsync();
-            //}
-            //!----------------------------------- DO USUNIECIA ---------------------------------------!
 
-            //var randProduct = GetRandProductInfo();
-            //productUrl.Source = randProduct.Url;
-            //productName.Text = randProduct.Name;
-            //productDesc.Text = randProduct.Description;
-            // productPrice.Text = randProduct.Price;
-            //SetCurrentProduct(randProduct);
+
             currentProductInfo = GetRandProductInfo();
             SetCurrentProduct(currentProductInfo);
 
             await likeButton.ScaleTo(0.75, 100);
             await likeButton.ScaleTo(1, 100);         
-        }    
-        private void SetCurrentProduct(Product productInfo)
+        }
+
+        private void AddProductToUserObserved(int user_id, int item_id)
+        {
+            string ConnectionString = "Data Source=(DESCRIPTION=" +
+           "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+           "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+           "User Id=s100824;Password=Sddb2023;";
+            OracleConnection connection = new OracleConnection(ConnectionString);
+            connection.Open();
+
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            {
+                var query = "INSERT INTO observed (user_user_id, item_item_id) VALUES (:user_user_id, :item_item_id)";
+
+                using (OracleCommand cmdInsert = new OracleCommand(query, conn))
+                {
+                    OracleCommand command = new OracleCommand(query, connection);
+                    command.Parameters.Add(new OracleParameter("user_user_id", user_id));
+                    command.Parameters.Add(new OracleParameter("item_item_id", item_id));
+
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+                        conn.Close();
+
+                    }
+                    catch (OracleException ex)
+                    {
+                        // wystąpił błąd Oracle - wyświetl komunikat o błędzie
+                        DisplayAlert("UPS", "Cos poszlo nie tak", "Spróbuj ponownie", ex.Message);
+
+                    }
+                }
+            }
+        }
+        private void SetCurrentProduct(ProductInfo productInfo)
         {
             productUrl.Source = productInfo.ImageUrl;
             productName.Text = productInfo.Name;

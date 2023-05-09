@@ -10,6 +10,7 @@ using SzybkoOdziez.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Acr.UserDialogs;
+using Oracle.ManagedDataAccess.Client;
 
 namespace SzybkoOdziez.Views
 {
@@ -28,6 +29,7 @@ namespace SzybkoOdziez.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            _viewModel.InitializeWishlistFromDB(99);
             _viewModel.OnWishlistOpen();
         }
 
@@ -67,37 +69,54 @@ namespace SzybkoOdziez.Views
                 _viewModel.OnWishlistOpen();
             }
 
-            
+
 
             //TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
             //Product product = ((WatchlistViewModel)BindingContext).Products
             //    .FirstOrDefault(prod => prod.Id == (int)tappedEventArgs.Parameter);
             //((WatchlistViewModel)BindingContext).Products.Remove(product);
 
-
+            RemoveItemFromUserObserved(99, tappedProduct.Id);
 
 
 
         }
 
-        //private async void RemoveItemFromWatchlist(Product tappedProduct)
-        //{
+        private void RemoveItemFromUserObserved(int user_id, int item_id)
+        {
+            string ConnectionString = "Data Source=(DESCRIPTION=" +
+           "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+           "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+           "User Id=s100824;Password=Sddb2023;";
+            OracleConnection connection = new OracleConnection(ConnectionString);
+            connection.Open();
 
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            {
+                var query = "DELETE observed WHERE (user_user_id = :user_user_id AND item_item_id = :item_item_id)";
 
-        //    ((WatchlistViewModel)BindingContext).Products.Remove(tappedProduct);
+                using (OracleCommand cmdInsert = new OracleCommand(query, conn))
+                {
+                    OracleCommand command = new OracleCommand(query, connection);
+                    command.Parameters.Add(new OracleParameter("user_user_id", user_id));
+                    command.Parameters.Add(new OracleParameter("item_item_id", item_id));
 
-        //    if (_products.Contains(tappedProduct))
-        //    {
-        //        _products.Remove(tappedProduct);
-        //        Application.Current.Properties.Remove("likedProductsList");
-        //        Application.Current.Properties.Add("likedProductsList", _products);
-        //        await Application.Current.SavePropertiesAsync();
+                    try
+                    {
+                        conn.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+                        conn.Close();
 
-        //        //odswiezenie viewmodelu, zeby zaktualizowac liste obserwowanych przedmiotow
+                    }
+                    catch (OracleException ex)
+                    {
+                        // wystąpił błąd Oracle - wyświetl komunikat o błędzie
+                        DisplayAlert("UPS", "Cos poszlo nie tak", "Spróbuj ponownie", ex.Message);
 
-
-        //        }
-        //}
+                    }
+                }
+            }
+        }
 
         private async void OnWishlistProductShoppingCartTapped(object sender, EventArgs e)
         {

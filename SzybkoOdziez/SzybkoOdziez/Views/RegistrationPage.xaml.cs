@@ -42,7 +42,6 @@ namespace SzybkoOdziez.Views
 
 
 
-
             //
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
@@ -96,17 +95,19 @@ namespace SzybkoOdziez.Views
                         {
                             //NIC SIĘ NIE DZIEJE xD
                             // nic nie zostało dodane do bazy - wyświetl komunikat o błędzie
-                            DisplayAlert("UPS","Nie udało się zarejestrować", "Spróbuj ponownie!");
+                            DisplayAlert("UPS", "Nie udało się zarejestrować", "Spróbuj ponownie!");
                         }
                     }
                     catch (OracleException ex)
                     {
                         // wystąpił błąd Oracle - wyświetl komunikat o błędzie
-                        DisplayAlert("UPS", "Nie udało się zarejestrować, użytkownik zajął twoją ulubioną liczbnę!","Spróbuj ponownie" ,ex.Message);
+                        DisplayAlert("UPS", "Nie udało się zarejestrować, użytkownik zajął twoją ulubioną liczbnę!", "Spróbuj ponownie", ex.Message);
 
                     }
                 }
             }
         }
+
+
     }
 }
