@@ -12,5 +12,6 @@ namespace SzybkoOdziez.Models
         public string CreatedDate { get; set; }
         public decimal TotalPrice { get; set; }
         public ObservableCollection<Product> Products { get; set; }
+        public int orderState { get; set; } //orderState = 0 dokonany, orderState = 1 zwrócony
     }
 }
