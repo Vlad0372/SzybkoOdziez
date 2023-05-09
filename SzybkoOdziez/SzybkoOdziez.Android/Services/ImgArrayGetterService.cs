@@ -40,9 +40,9 @@ namespace SzybkoOdziez.Droid
             return nameList;
         }
 
-        public List<ProductInfo> GetProductListFromDBStreamAsync()
+        public List<Product> GetProductListFromDBStreamAsync()
         {
-            List<ProductInfo> productsList = new List<ProductInfo>();
+            List<Product> productsList = new List<Product>();
 
             string connStr = "Data Source=(DESCRIPTION=" +
            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
@@ -64,13 +64,13 @@ namespace SzybkoOdziez.Droid
                 {
                     while (data.Read())
                     {
-                        var currentProduct = new ProductInfo()
+                        var currentProduct = new Product()
                         {
                             Id = Convert.ToInt32(data["item_id"]),
                             Name = data["name"].ToString(),
                             Description = data["description"].ToString(),
-                            Price = data["price"].ToString(),
-                            Url = data["img_source"].ToString()
+                            Price = Convert.ToDecimal(data["price"]),
+                            ImageUrl = data["img_source"].ToString()
                         };
 
                         productsList.Add(currentProduct);                                   
@@ -82,13 +82,13 @@ namespace SzybkoOdziez.Droid
 
                     for (int i = 0; i < imgsNameList.Count; i++)
                     {
-                        var currentProduct = new ProductInfo();
+                        var currentProduct = new Product();
 
                         currentProduct.Id = i;
                         currentProduct.Name = "prod_name_" + i;
                         currentProduct.Description = "disc_" + i;
-                        currentProduct.Url = "@drawable/" + imgsNameList[i] + ".jpg";
-                        currentProduct.Price = ((i + 1 * 100 % 15) * 10).ToString() + ",00 zł";
+                        currentProduct.ImageUrl = "@drawable/" + imgsNameList[i] + ".jpg";
+                        currentProduct.Price = (i + 1 * 100 % 15) * 10;
 
                         productsList.Add(currentProduct);
                     }

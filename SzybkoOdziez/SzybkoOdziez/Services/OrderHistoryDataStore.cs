@@ -146,8 +146,8 @@ namespace SzybkoOdziez.Services
                                     Id = currentProdInfo.Id,
                                     Name = currentProdInfo.Name,
                                     Description = currentProdInfo.Description,
-                                    ImageUrl = currentProdInfo.Url,
-                                    Price = Convert.ToDecimal(currentProdInfo.Price),
+                                    ImageUrl = currentProdInfo.ImageUrl,
+                                    Price = currentProdInfo.Price,
                                     TotalPrice = 0,
                                     Comments = new List<Comment>(),
                                 };

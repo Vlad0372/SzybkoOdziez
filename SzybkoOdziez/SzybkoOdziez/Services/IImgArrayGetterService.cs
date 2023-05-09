@@ -10,6 +10,6 @@ namespace SzybkoOdziez
     public interface IImgArrayGetterService
     {
         List<string> GetImgArrayStreamAsync();
-        List<ProductInfo> GetProductListFromDBStreamAsync();
+        List<Product> GetProductListFromDBStreamAsync();
     }
 }

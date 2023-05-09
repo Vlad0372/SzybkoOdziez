@@ -10,13 +10,13 @@ namespace SzybkoOdziez.Views
 {
     public partial class MainPage : ContentPage
     {
-        private List<ProductInfo> productsList = new List<ProductInfo>();
+        private List<Product> productsList = new List<Product>();
         private Product _product { get; set; }
 
-        private ProductInfo currentProductInfo { get; set; }
+        private Product currentProductInfo { get; set; }
 
         //list of liked products, used in Watchlist Page
-        private ObservableCollection<ProductInfo> likedProductsList = new ObservableCollection<ProductInfo>();
+        private ObservableCollection<Product> likedProductsList = new ObservableCollection<Product>();
         //przesunalem ShowMore pod konstruktor xd michal 16.04
         public MainPage()
         {
@@ -74,9 +74,9 @@ namespace SzybkoOdziez.Views
                 //Comments = new List<Comment> { new Comment() }
 
                 Id = currentProductInfo.Id,
-                ImageUrl = currentProductInfo.Url,
+                ImageUrl = currentProductInfo.ImageUrl,
                 Name = currentProductInfo.Name,
-                Price = Convert.ToDecimal(currentProductInfo.Price),
+                Price = currentProductInfo.Price,
                 Description = currentProductInfo.Description,
                 Comments = new List<Comment> { new Comment() }
             };
@@ -128,16 +128,16 @@ namespace SzybkoOdziez.Views
             await likeButton.ScaleTo(0.75, 100);
             await likeButton.ScaleTo(1, 100);         
         }    
-        private void SetCurrentProduct(ProductInfo productInfo)
+        private void SetCurrentProduct(Product productInfo)
         {
-            productUrl.Source = productInfo.Url;
+            productUrl.Source = productInfo.ImageUrl;
             productName.Text = productInfo.Name;
             productDesc.Text = productInfo.Description;
-            productPrice.Text = productInfo.Price;
+            productPrice.Text = productInfo.Price.ToString();
 
             var app = (App)Application.Current;
             var allProductDataStore = app.allProductDataStore;
-            var currentProduct = allProductDataStore.GetItemByUrl(productInfo.Url);
+            var currentProduct = allProductDataStore.GetItemByUrl(productInfo.ImageUrl);
             _product = currentProduct;
             if (_product != null)
             {
@@ -150,13 +150,14 @@ namespace SzybkoOdziez.Views
             
             for (int i = 0; i < imgsNameList.Count; i++)
             {
-                var currentProduct = new ProductInfo();
+                var currentProduct = new Product();
 
                 currentProduct.Id = i;
                 currentProduct.Name = "prod_name_" + i;
                 currentProduct.Description = "disc_" + i;
-                currentProduct.Url = "@drawable/" + imgsNameList[i] + ".jpg";
-                currentProduct.Price = ((i + 1 * 100 % 15) * 10).ToString() + ",00 zł";
+                currentProduct.ImageUrl = "@drawable/" + imgsNameList[i] + ".jpg";
+                //currentProduct.Price = ((i + 1 * 100 % 15) * 10).ToString() + ",00 zł";
+                currentProduct.Price = (i + 1 * 100 % 15) * 10;
 
                 productsList.Add(currentProduct);
             }
@@ -171,7 +172,7 @@ namespace SzybkoOdziez.Views
             
             return  "@drawable/" + imgsNameList[index] + ".jpg";
         }
-        private ProductInfo GetRandProductInfo()
+        private Product GetRandProductInfo()
         {
             var random = new System.Random();
 
