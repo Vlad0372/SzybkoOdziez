@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SzybkoOdziez.Models;
+using Xamarin.Forms;
 using static Android.Resource;
 
 namespace SzybkoOdziez.Services
@@ -62,6 +65,8 @@ namespace SzybkoOdziez.Services
 
         public async Task<IEnumerable<Order>> GetItemsAsync(bool forceRefresh = false)
         {
+            _orders = GetOrdersFromDB();
+         
             return await Task.FromResult(_orders);
         }
 
@@ -94,7 +99,79 @@ namespace SzybkoOdziez.Services
             }
             return new Order();
         }
-        
+        private List<Order> GetOrdersFromDB()
+        {
+            var orders = new List<Order>();
+            var productsList = DependencyService.Get<IImgArrayGetterService>().GetProductListFromDBStreamAsync();
+
+            string connStr = "Data Source=(DESCRIPTION=" +
+           "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+           "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+           "User Id=s100824;Password=Sddb2023;";
+
+            using (OracleConnection conn = new OracleConnection(connStr))
+            {
+                conn.Open();
+
+                OracleCommand command = new OracleCommand();
+
+                command.Connection = conn;
+                command.CommandText = "select distinct order_order_id from item_order";
+
+                OracleDataReader data = command.ExecuteReader();
+
+                if (data.HasRows)
+                {
+                    while (data.Read())
+                    {
+                        string currentsOrderId = data["order_order_id"].ToString();
+
+                        OracleCommand subCommand = new OracleCommand();
+
+                        subCommand.Connection = conn;
+                        subCommand.CommandText = "select item_item_id from item_order where order_order_id = '" + currentsOrderId + "'";
+
+                        OracleDataReader subData = subCommand.ExecuteReader();
+
+                        var currentProducts = new ObservableCollection<Product>();
+
+                        if (subData.HasRows)
+                        {
+                            while (subData.Read())
+                            {
+                                var currentProdInfo = productsList.Find(i => i.Id == Convert.ToInt32(subData["item_item_id"].ToString()));
+
+                                var currentProd = new Product()
+                                {
+                                    Id = currentProdInfo.Id,
+                                    Name = currentProdInfo.Name,
+                                    Description = currentProdInfo.Description,
+                                    ImageUrl = currentProdInfo.Url,
+                                    Price = Convert.ToDecimal(currentProdInfo.Price),
+                                    TotalPrice = 0,
+                                    Comments = new List<Comment>(),
+                                };
+
+                                currentProducts.Add(currentProd);
+                            }
+                        }
+
+                        var currentOrder = new Order()
+                        {
+                            Id = Convert.ToInt32(data["order_order_id"]),
+                            Number = "1234",
+                            CreatedDate = DateTime.Now.Date.ToString(),
+                            TotalPrice = 0,
+                            Products = currentProducts,
+                        };
+
+                        orders.Add(currentOrder);
+                    }
+                }
+            }
+
+            return orders;
+        }
     }
 }
 

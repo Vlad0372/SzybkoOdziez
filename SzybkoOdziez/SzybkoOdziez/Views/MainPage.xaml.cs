@@ -13,20 +13,30 @@ namespace SzybkoOdziez.Views
         private List<ProductInfo> productsList = new List<ProductInfo>();
         private Product _product { get; set; }
 
+        private ProductInfo currentProductInfo { get; set; }
+
         //list of liked products, used in Watchlist Page
         private ObservableCollection<ProductInfo> likedProductsList = new ObservableCollection<ProductInfo>();
         //przesunalem ShowMore pod konstruktor xd michal 16.04
         public MainPage()
         {
             InitializeComponent();
-            InitProductInfoList();
+            //InitProductInfoList();
+            InitProductInfoListFromDB();
 
-            var randProduct = GetRandProductInfo();
-            productUrl.Source = randProduct.Url;
-            productName.Text = randProduct.Name;
-            productDesc.Text = randProduct.Description;
-            productPrice.Text = randProduct.Price;
-            SetCurrentProduct(randProduct);
+            //var randProduct = GetRandProductInfo();
+            //productUrl.Source = randProduct.Url;
+            //productName.Text = randProduct.Name;
+            //productDesc.Text = randProduct.Description;
+            //productPrice.Text = randProduct.Price;
+            //SetCurrentProduct(randProduct);
+
+            currentProductInfo = GetRandProductInfo();
+            //productUrl.Source = currentProductInfo.Url;
+            //productName.Text = currentProductInfo.Name;
+            //productDesc.Text = currentProductInfo.Description;
+            //productPrice.Text = currentProductInfo.Price;
+            SetCurrentProduct(currentProductInfo);
         }
         private void ShowMore(object sender, EventArgs e)
         {
@@ -34,13 +44,15 @@ namespace SzybkoOdziez.Views
         }
         private async void OnDislikeClicked(object sender, EventArgs args)
         {
-            var randProduct = GetRandProductInfo();
-            productUrl.Source = randProduct.Url;
-            productName.Text = randProduct.Name;
-            productDesc.Text = randProduct.Description;
-            productPrice.Text = randProduct.Price;
-            SetCurrentProduct(randProduct);
-            
+            //var randProduct = GetRandProductInfo();
+            //productUrl.Source = randProduct.Url;
+            // productName.Text = randProduct.Name;
+            // productDesc.Text = randProduct.Description;
+            //productPrice.Text = randProduct.Price;
+            //SetCurrentProduct(randProduct);
+            currentProductInfo = GetRandProductInfo();
+            SetCurrentProduct(currentProductInfo);
+
             await dislikeButton.ScaleTo(0.75, 100);
             await dislikeButton.ScaleTo(1, 100);        
         }
@@ -53,12 +65,19 @@ namespace SzybkoOdziez.Views
 
             var currentProduct = new Product
             {
-                Id = wishlistIEnumerable.Count() + 1,
-                ImageUrl = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source),
-                Name = productName.Text,
-                //Price = productPrice.Text,
-                Price = Convert.ToDecimal(productPrice.Text.Split(',').First()),
-                Description = productDesc.Text,
+                //Id = wishlistIEnumerable.Count() + 1,
+                //ImageUrl = new ImageSourceConverter().ConvertToInvariantString(productUrl.Source),
+                //Name = productName.Text,
+                ////Price = productPrice.Text,
+                //Price = Convert.ToDecimal(productPrice.Text.Split(',').First()),
+                //Description = productDesc.Text,
+                //Comments = new List<Comment> { new Comment() }
+
+                Id = currentProductInfo.Id,
+                ImageUrl = currentProductInfo.Url,
+                Name = currentProductInfo.Name,
+                Price = Convert.ToDecimal(currentProductInfo.Price),
+                Description = currentProductInfo.Description,
                 Comments = new List<Comment> { new Comment() }
             };
 
@@ -97,26 +116,25 @@ namespace SzybkoOdziez.Views
             //}
             //!----------------------------------- DO USUNIECIA ---------------------------------------!
 
-
-
-            var randProduct = GetRandProductInfo();
-            productUrl.Source = randProduct.Url;
-            productName.Text = randProduct.Name;
-            productDesc.Text = randProduct.Description;
-            productPrice.Text = randProduct.Price;
-            SetCurrentProduct(randProduct);
-
-            //===================== vlad chuj do usuniecia bruh =================================
-            //test
-
-          
-            //===================================================================================
+            //var randProduct = GetRandProductInfo();
+            //productUrl.Source = randProduct.Url;
+            //productName.Text = randProduct.Name;
+            //productDesc.Text = randProduct.Description;
+            // productPrice.Text = randProduct.Price;
+            //SetCurrentProduct(randProduct);
+            currentProductInfo = GetRandProductInfo();
+            SetCurrentProduct(currentProductInfo);
 
             await likeButton.ScaleTo(0.75, 100);
             await likeButton.ScaleTo(1, 100);         
         }    
         private void SetCurrentProduct(ProductInfo productInfo)
         {
+            productUrl.Source = productInfo.Url;
+            productName.Text = productInfo.Name;
+            productDesc.Text = productInfo.Description;
+            productPrice.Text = productInfo.Price;
+
             var app = (App)Application.Current;
             var allProductDataStore = app.allProductDataStore;
             var currentProduct = allProductDataStore.GetItemByUrl(productInfo.Url);
@@ -160,6 +178,11 @@ namespace SzybkoOdziez.Views
             int index = random.Next(productsList.Count);
 
             return productsList[index];
+        }
+
+        private void InitProductInfoListFromDB()
+        {
+            productsList = DependencyService.Get<IImgArrayGetterService>().GetProductListFromDBStreamAsync();
         }
     }
 }

@@ -14,13 +14,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout BackgroundColor="#B6B6B6">
-        <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#32312D">
-            <StackLayout Margin="10,10,10,10" x:Name="imgContainer"  VerticalOptions="FillAndExpand" BackgroundColor="#50C878">
-                <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#F0EAD6" >
-                    <Image x:Name="productUrl" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
+        <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#32312D" HeightRequest="200">
+            <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" VerticalOptions="Fill" BackgroundColor="#50C878">
+                <ContentView Padding="0,0,0,0"  VerticalOptions="Fill" BackgroundColor="Aqua">
+                    <Image x:Name="productUrl"  HeightRequest="470" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
                 </ContentView>
             </StackLayout>
-            <Grid BackgroundColor="#32312D" HeightRequest="110" Padding="20,0,20,0">
+            <Grid BackgroundColor="#32312D" MinimumHeightRequest="110" HeightRequest="110" Padding="20,0,20,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="3*" />

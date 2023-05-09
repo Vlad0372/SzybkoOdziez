@@ -16,6 +16,8 @@ using System.IO;
 using Android.Content.Res;
 using Android;
 using System.Reflection;
+using Oracle.ManagedDataAccess.Client;
+using SzybkoOdziez.Models;
 
 [assembly: Dependency(typeof(ImgArrayGetterService))]
 namespace SzybkoOdziez.Droid
@@ -36,6 +38,64 @@ namespace SzybkoOdziez.Droid
             }
 
             return nameList;
+        }
+
+        public List<ProductInfo> GetProductListFromDBStreamAsync()
+        {
+            List<ProductInfo> productsList = new List<ProductInfo>();
+
+            string connStr = "Data Source=(DESCRIPTION=" +
+           "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+           "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+           "User Id=s100824;Password=Sddb2023;";
+
+            using (OracleConnection conn = new OracleConnection(connStr))
+            {
+                conn.Open();
+
+                OracleCommand command = new OracleCommand();
+
+                command.Connection = conn;
+                command.CommandText = "select * from item";
+
+                OracleDataReader data = command.ExecuteReader();
+
+                if (data.HasRows)
+                {
+                    while (data.Read())
+                    {
+                        var currentProduct = new ProductInfo()
+                        {
+                            Id = Convert.ToInt32(data["item_id"]),
+                            Name = data["name"].ToString(),
+                            Description = data["description"].ToString(),
+                            Price = data["price"].ToString(),
+                            Url = data["img_source"].ToString()
+                        };
+
+                        productsList.Add(currentProduct);                                   
+                    }
+                }
+                else
+                {
+                    List<string> imgsNameList = DependencyService.Get<IImgArrayGetterService>().GetImgArrayStreamAsync();
+
+                    for (int i = 0; i < imgsNameList.Count; i++)
+                    {
+                        var currentProduct = new ProductInfo();
+
+                        currentProduct.Id = i;
+                        currentProduct.Name = "prod_name_" + i;
+                        currentProduct.Description = "disc_" + i;
+                        currentProduct.Url = "@drawable/" + imgsNameList[i] + ".jpg";
+                        currentProduct.Price = ((i + 1 * 100 % 15) * 10).ToString() + ",00 zł";
+
+                        productsList.Add(currentProduct);
+                    }
+                }
+            }
+
+            return productsList;
         }
     }
 }
