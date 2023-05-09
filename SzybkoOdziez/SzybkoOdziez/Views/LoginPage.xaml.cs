@@ -35,7 +35,7 @@ namespace SzybkoOdziez.Views
                 OracleCommand command = new OracleCommand();
 
                 command.Connection = conn;
-                command.CommandText = "select * from \"user\" where name = '" + userLogin.Text + "' and password = '" + userPass.Text + "'";
+                command.CommandText = "select * from \"user\" where nickname = '" + userLogin.Text + "' and password = '" + userPass.Text + "'";
                 command.CommandType = System.Data.CommandType.Text;
                
                 object isUserExists = command.ExecuteScalar();
