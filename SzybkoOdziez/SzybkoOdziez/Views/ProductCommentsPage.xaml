@@ -85,7 +85,7 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <!--zdjecie produktu-->
-                                    <Image Grid.Column="0" Source="" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
+                                    <Image Grid.Column="0" Source="{Binding CommentImageSource}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
                                     <!--tekst produktu (nazwa, cena)-->
                                     <StackLayout Grid.Column="1">
                                         <Label Text="{Binding Title}" FontSize="Medium"/>
@@ -107,8 +107,7 @@
             </CollectionView>
             <!--<Image Source="" x:Name="ImageComment"></Image>-->
             <!--<Button Clicked="Button_Clicked2" Text="XD"/>-->
-            <Button Clicked="testbuttonclick" Text="test"/>
-            <Image x:Name="resultImage"/>
+            <Button Clicked="ButtonSelectImage_Clicked" Text="Select an image to add to your comment"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
