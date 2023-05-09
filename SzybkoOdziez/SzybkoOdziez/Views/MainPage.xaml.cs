@@ -127,7 +127,7 @@ namespace SzybkoOdziez.Views
                 }
             }
         }
-        private void SetCurrentProduct(ProductInfo productInfo)
+        private void SetCurrentProduct(Product productInfo)
         {
             productUrl.Source = productInfo.ImageUrl;
             productName.Text = productInfo.Name;
