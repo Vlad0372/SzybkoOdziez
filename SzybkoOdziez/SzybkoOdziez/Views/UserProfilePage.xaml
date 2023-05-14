@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.UserProfilePage">
+    <ContentPage.Content>
+        <StackLayout >
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Mój profil" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+            </Frame>
+           
+           
+          
+                <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20" >
+                <Label x:Name="labelName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
+                </Frame>
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
+                <Label x:Name="labelLastName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
+                </Frame>
+            
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
+                <Label x:Name="labelMail" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
+            </Frame>
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
+                <Label x:Name="labelNickname"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
+            </Frame>
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
+                <Label x:Name="labelPassword" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
+            </Frame>
+
+
+            <Button 
+                    
+                    Text="Zmień swoje dane"                
+                    TextColor="White" 
+                    BackgroundColor="DarkOrange"                   
+                    CornerRadius="50"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,20"
+                    >
+                </Button>
+          
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

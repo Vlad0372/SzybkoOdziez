@@ -22045,55 +22045,58 @@ namespace SzybkoOdziez.Droid
 			public const int tooltip_frame_light = 2131165365;
 			
 			// aapt resource value: 0x7F0700B6
-			public const int w_acc_item_1 = 2131165366;
+			public const int userrrIcon = 2131165366;
 			
 			// aapt resource value: 0x7F0700B7
-			public const int w_acc_item_2 = 2131165367;
+			public const int w_acc_item_1 = 2131165367;
 			
 			// aapt resource value: 0x7F0700B8
-			public const int w_acc_item_3 = 2131165368;
+			public const int w_acc_item_2 = 2131165368;
 			
 			// aapt resource value: 0x7F0700B9
-			public const int w_boots_item_1 = 2131165369;
+			public const int w_acc_item_3 = 2131165369;
 			
 			// aapt resource value: 0x7F0700BA
-			public const int w_boots_item_2 = 2131165370;
+			public const int w_boots_item_1 = 2131165370;
 			
 			// aapt resource value: 0x7F0700BB
-			public const int w_boots_item_3 = 2131165371;
+			public const int w_boots_item_2 = 2131165371;
 			
 			// aapt resource value: 0x7F0700BC
-			public const int w_pants_item_1 = 2131165372;
+			public const int w_boots_item_3 = 2131165372;
 			
 			// aapt resource value: 0x7F0700BD
-			public const int w_pants_item_2 = 2131165373;
+			public const int w_pants_item_1 = 2131165373;
 			
 			// aapt resource value: 0x7F0700BE
-			public const int w_pants_item_3 = 2131165374;
+			public const int w_pants_item_2 = 2131165374;
 			
 			// aapt resource value: 0x7F0700BF
-			public const int w_pants_item_4 = 2131165375;
+			public const int w_pants_item_3 = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int w_pants_item_5 = 2131165376;
+			public const int w_pants_item_4 = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int w_tops_item_1 = 2131165377;
+			public const int w_pants_item_5 = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int w_tops_item_2 = 2131165378;
+			public const int w_tops_item_1 = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int w_underwear_item_1 = 2131165379;
+			public const int w_tops_item_2 = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int w_underwear_item_2 = 2131165380;
+			public const int w_underwear_item_1 = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int w_underwear_item_3 = 2131165381;
+			public const int w_underwear_item_2 = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int xamarin_logo = 2131165382;
+			public const int w_underwear_item_3 = 2131165382;
+			
+			// aapt resource value: 0x7F0700C7
+			public const int xamarin_logo = 2131165383;
 			
 			static Drawable()
 			{
