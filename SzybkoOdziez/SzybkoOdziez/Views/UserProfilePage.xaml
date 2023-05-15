@@ -26,6 +26,7 @@
             <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
                 <Label x:Name="labelNickname"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             </Frame>
+            
 
 
      
