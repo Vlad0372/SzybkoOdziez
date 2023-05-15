@@ -37,7 +37,7 @@ namespace SzybkoOdziez.Views
             {
                 conn.Open();
 
-                var query = "SELECT name, last_name, mail, nickname, password from \"user\" where user_id = :id";
+                var query = "SELECT name, last_name, mail, nickname from \"user\" where user_id = :id";
 
                 
                 var param = new OracleParameter(":id", OracleDbType.Int32);
@@ -56,14 +56,14 @@ namespace SzybkoOdziez.Views
                             string LastNamee = reader.GetString(1);
                             string Maill = reader.GetString(2);
                             string Nicknamee = reader.GetString(3);
-                            string Passwordd = reader.GetString(4);
+                           
 
                             // przypisanie imienia i nazwiska użytkownika do kontrolki Label
                             labelName.Text = Namee;
                             labelLastName.Text = LastNamee;
                             labelMail.Text = Maill;
                             labelNickname.Text = Nicknamee;
-                            labelPassword.Text = Passwordd;
+                            
                         }
                     }
                 }

@@ -7,38 +7,44 @@
             <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
                 <Label Text="Mój profil" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
             </Frame>
-           
-           
-          
-                <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20" >
+
+
+            <Label Text="Imię"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+                    
                 <Label x:Name="labelName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
                 </Frame>
+            <Label Text="Nazwisko"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
             <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
                 <Label x:Name="labelLastName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
                 </Frame>
-            
+            <Label Text="E-mail"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
             <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
                 <Label x:Name="labelMail" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             </Frame>
+            <Label Text="Nazwa nicku"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
             <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
                 <Label x:Name="labelNickname"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             </Frame>
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
-                <Label x:Name="labelPassword" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
-            </Frame>
 
 
-            <Button 
-                    
-                    Text="Zmień swoje dane"                
-                    TextColor="White" 
-                    BackgroundColor="DarkOrange"                   
-                    CornerRadius="50"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="0,0,0,20"
+     
+
+                <Button 
+                
+                Text="Zmień swoje dane"                 
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
                     >
                 </Button>
-          
+            <Label>
+                <Label.GestureRecognizers>
+
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
