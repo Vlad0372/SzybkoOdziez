@@ -23,7 +23,7 @@ namespace SzybkoOdziez.Views
             string Maill = "";
             string Nicknamee = "";
             string Passwordd = "";
-            int userId = GetLoggedInUserID(Nicknamee, Passwordd);
+            int userId = GetLoggedInUserID("ada", "ada");
 
 
             
@@ -42,7 +42,8 @@ namespace SzybkoOdziez.Views
 
 
                 var param = new OracleParameter(":id", OracleDbType.Int32);
-                param.Value = userId;
+                //param.Value = userId;
+                param.Value = 99;
                 using (var cmd = new OracleCommand(query, conn))
                 {
                     cmd.Parameters.Add(param);
