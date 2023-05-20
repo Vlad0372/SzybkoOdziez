@@ -30,11 +30,11 @@ namespace SzybkoOdziez.Views
             _product = product;
             Comment comment = new Comment();
             comment.Title = "SEX";
-            comment.Description = "AHHAHAHAHHAHAHHAn\n\n\nHAHAHHAHAHA";
+            comment.Content = "AHHAHAHAHHAHAHHAn\n\n\nHAHAHHAHAHA";
             _product.Comments.Add(comment);
             Comment comment2 = new Comment();
             comment2.Title = "CLEAN CODE";
-            comment2.Description = "IS NOT REAL\nIT IS A MYTH\n\n\nTHEY ARE LYING";
+            comment2.Content = "IS NOT REAL\nIT IS A MYTH\n\n\nTHEY ARE LYING";
             _product.Comments.Add(comment2);
         }
 

@@ -9,9 +9,12 @@ namespace SzybkoOdziez.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; } 
+        public string Content { get; set; } 
         public List<string> CommentImgUrls { get; set; }
-        public string CommentImageSource { get; set; } 
+        public string CommentImageSource { get; set; }
+        public int DBId { get; set; }
+        public int UserId { get; set; }
+        public int ProductId { get; set; }
     }
 
 }
