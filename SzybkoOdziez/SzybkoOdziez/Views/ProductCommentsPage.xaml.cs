@@ -37,6 +37,8 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();
             BindingContext = _viewModel = new ViewModels.ProductCommentsViewModel();
+
+            if (product.Comments == null) { product.Comments = new List<Comment>(); }
             _product = product;
         }
 
@@ -84,20 +86,7 @@ namespace SzybkoOdziez.Views
 
         public async void ButtonSelectImage_Clicked(object sender, EventArgs args)
         {
-            //var status = await Permissions.CheckStatusAsync<Permissions.StorageRead>();
-            //if (status != PermissionStatus.Granted)
-            //{
-            //    status = await Permissions.RequestAsync<Permissions.StorageRead>();
-            //    if (status != PermissionStatus.Granted)
-            //    {
-            //        // Permission denied by the user
-            //        // Handle this situation accordingly
-            //        return;
-            //    }
-            //}
-
-            // Permission has been granted, proceed with using MediaPicker.PickPhotoAsync()
-
+            //zdjecia komentarzy nie sa nigdzie zapisywane, jedynie zapisywana jest pelna sciezka do zdjecia na urzadzeniu
             try
             {
                 var result = await MediaPicker.PickPhotoAsync();

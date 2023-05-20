@@ -14,79 +14,38 @@ namespace SzybkoOdziez.Views
     public partial class MainPage : ContentPage
     {
         private List<Product> productsList = new List<Product>();
-        private Product _product { get; set; }
+        private Product _currentProduct { get; set; }
 
-        private Product currentProductInfo { get; set; }
-
-        //list of liked products, used in Watchlist Page
-        private ObservableCollection<Product> likedProductsList = new ObservableCollection<Product>();
-        //przesunalem ShowMore pod konstruktor xd michal 16.04
         public MainPage()
         {
             InitializeComponent();
             //InitProductInfoList();
             InitProductInfoListFromDB();
 
-            //var randProduct = GetRandProductInfo();
-            //productUrl.Source = randProduct.Url;
-            //productName.Text = randProduct.Name;
-            //productDesc.Text = randProduct.Description;
-            //productPrice.Text = randProduct.Price;
-            //SetCurrentProduct(randProduct);
-
-            currentProductInfo = GetRandProductInfo();
-            //productUrl.Source = currentProductInfo.Url;
-            //productName.Text = currentProductInfo.Name;
-            //productDesc.Text = currentProductInfo.Description;
-            //productPrice.Text = currentProductInfo.Price;
-            SetCurrentProduct(currentProductInfo);
+            _currentProduct = GetRandProductInfo();
+            SetCurrentProduct(_currentProduct);
         }
+
         private void ShowMore(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ItemDescriptionPage(_product));
+            Navigation.PushAsync(new ItemDescriptionPage(_currentProduct));
         }
+
         private async void OnDislikeClicked(object sender, EventArgs args)
         {
-            //var randProduct = GetRandProductInfo();
-            //productUrl.Source = randProduct.Url;
-            // productName.Text = randProduct.Name;
-            // productDesc.Text = randProduct.Description;
-            //productPrice.Text = randProduct.Price;
-            //SetCurrentProduct(randProduct);
-            currentProductInfo = GetRandProductInfo();
-            SetCurrentProduct(currentProductInfo);
+            _currentProduct = GetRandProductInfo();
+            SetCurrentProduct(_currentProduct);
 
             await dislikeButton.ScaleTo(0.75, 100);
             await dislikeButton.ScaleTo(1, 100);        
         }
+
         private async void OnLikeClicked(object sender, EventArgs args)
         {
-            //var app = (App)Application.Current;
-            //var wishlistDataStore = app.wishlistDataStore;
-            //var wishlistIEnumerable = await wishlistDataStore.GetItemsAsync();
+            AddProductToUserObserved(99, _currentProduct.Id);
 
-            var currentProduct = new Product
-            {
-                Id = currentProductInfo.Id,
-                ImageUrl = currentProductInfo.ImageUrl,
-                Name = currentProductInfo.Name,
-                Price = currentProductInfo.Price,
-                Description = currentProductInfo.Description,
-                Comments = new List<Comment> { new Comment() }
-            };
-
-            //if (wishlistDataStore.CheckInDataStore(currentProduct))
-            //{
-            //    await wishlistDataStore.AddItemAsync(currentProduct);
-            //}
-
-
-            AddProductToUserObserved(99, currentProduct.Id);
-
-
-
-            currentProductInfo = GetRandProductInfo();
-            SetCurrentProduct(currentProductInfo);
+            _currentProduct = GetRandProductInfo();
+            SetCurrentProduct(_currentProduct);
 
             await likeButton.ScaleTo(0.75, 100);
             await likeButton.ScaleTo(1, 100);         
@@ -127,50 +86,48 @@ namespace SzybkoOdziez.Views
                 }
             }
         }
-        private void SetCurrentProduct(Product productInfo)
+
+        private void SetCurrentProduct(Product product)
         {
-            productUrl.Source = productInfo.ImageUrl;
-            productName.Text = productInfo.Name;
-            productDesc.Text = productInfo.Description;
-            productPrice.Text = productInfo.Price.ToString();
-
-            var app = (App)Application.Current;
-            var allProductDataStore = app.allProductDataStore;
-            var currentProduct = allProductDataStore.GetItemByUrl(productInfo.ImageUrl);
-            _product = currentProduct;
-            if (_product != null)
-            {
-                productPrice.Text = Convert.ToString(_product.Price)+",00 zł";
-            }
+            productUrl.Source = product.ImageUrl;
+            productName.Text = product.Name;
+            productDesc.Text = product.Description;
+            productPrice.Text = product.Price.ToString() + " zł";
         }
-        private void InitProductInfoList()
-        {
-            List<string> imgsNameList = DependencyService.Get<IImgArrayGetterService>().GetImgArrayStreamAsync();
-            
-            for (int i = 0; i < imgsNameList.Count; i++)
-            {
-                var currentProduct = new Product();
 
-                currentProduct.Id = i;
-                currentProduct.Name = "prod_name_" + i;
-                currentProduct.Description = "disc_" + i;
-                currentProduct.ImageUrl = "@drawable/" + imgsNameList[i] + ".jpg";
-                //currentProduct.Price = ((i + 1 * 100 % 15) * 10).ToString() + ",00 zł";
-                currentProduct.Price = (i + 1 * 100 % 15) * 10;
-
-                productsList.Add(currentProduct);
-            }
-        }
-        private string GetRandImgPath()
-        {
-            var random = new System.Random();
+        //
+        // PONIZEJ SA DWIE NIEUZYWANE METODY (InitProductInfoList() i GetRandImgPath() NIE WIEM CZY USUNAC uwu
+        //
+        //private void InitProductInfoList()
+        //{
+        //    List<string> imgsNameList = DependencyService.Get<IImgArrayGetterService>().GetImgArrayStreamAsync();
             
-            List<string> imgsNameList = DependencyService.Get<IImgArrayGetterService>().GetImgArrayStreamAsync();
+        //    for (int i = 0; i < imgsNameList.Count; i++)
+        //    {
+        //        var currentProduct = new Product();
 
-            int index = random.Next(imgsNameList.Count);
+        //        currentProduct.Id = i;
+        //        currentProduct.Name = "prod_name_" + i;
+        //        currentProduct.Description = "disc_" + i;
+        //        currentProduct.ImageUrl = "@drawable/" + imgsNameList[i] + ".jpg";
+        //        //currentProduct.Price = ((i + 1 * 100 % 15) * 10).ToString() + ",00 zł";
+        //        currentProduct.Price = (i + 1 * 100 % 15) * 10;
+
+        //        productsList.Add(currentProduct);
+        //    }
+        //}
+        //
+        //private string GetRandImgPath()
+        //{
+        //    var random = new System.Random();
             
-            return  "@drawable/" + imgsNameList[index] + ".jpg";
-        }
+        //    List<string> imgsNameList = DependencyService.Get<IImgArrayGetterService>().GetImgArrayStreamAsync();
+
+        //    int index = random.Next(imgsNameList.Count);
+            
+        //    return  "@drawable/" + imgsNameList[index] + ".jpg";
+        //}
+
         private Product GetRandProductInfo()
         {
             var random = new System.Random();
