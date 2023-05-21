@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.UserProfilePageChangeData">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
+                <Label Text="Edytuj dane" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+            </Frame>
+
+
+
+            <!--ZMIENIANIE UŻYTKOWNIKA-->
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+                <Entry x:Name="user_id" 
+                       FontSize="Large"
+                   Placeholder="Podaj swoją ulubioną liczbę" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                  
+                   >
+                </Entry>
+            </Frame>
+
+
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+                <Entry x:Name="name"  
+                   Placeholder="Imię" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                  FontSize="Large"
+                   >
+                </Entry>
+            </Frame>
+
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+                <Entry x:Name="last_name" 
+                   Placeholder="Nazwizko" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                  FontSize="Large"
+                   >
+                </Entry>
+            </Frame>
+
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+                <Entry x:Name="mail" 
+                   Placeholder="E-mail" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                 FontSize="Large"
+                   >
+                </Entry>
+            </Frame>
+
+
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+                <Entry x:Name="nickname"
+                Placeholder="Nazwa użytkownika" 
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black" 
+                 FontSize="Large"
+                   >
+                </Entry>
+            </Frame>
+
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+                <Entry x:Name="password"
+                   Placeholder="Hasło"  
+                   IsPassword="True" 
+                   TextColor="Black" 
+                   HorizontalTextAlignment="Center" 
+                     FontSize="Large"  
+                   >
+                </Entry>
+            </Frame>
+            <!--ZMIENIANIE UŻYTKOWNIKA-->
+
+
+            <Button 
+                x:Name="button_change_data_user_2"
+                Clicked="button_change_data_user_2_Clicked"
+               
+                Text="Zmień swoje dane!"                 
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
+                    >
+            </Button>
+            <Label>
+                <Label.GestureRecognizers>
+
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

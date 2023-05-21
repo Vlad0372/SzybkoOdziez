@@ -106,11 +106,10 @@ namespace SzybkoOdziez.Views
             }
         }
 
-
-
-
-
-
-
+        private void button_change_data_user_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new UserProfilePageChangeData());
+            Navigation.RemovePage(this);
+        }
     }
 }

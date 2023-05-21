@@ -32,7 +32,8 @@
      
 
                 <Button 
-                
+                x:Name="button_change_data_user"
+                Clicked="button_change_data_user_Clicked"
                 Text="Zmień swoje dane"                 
                 TextColor="White" 
                 BackgroundColor="DarkOrange" 
