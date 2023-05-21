@@ -15,28 +15,24 @@ namespace SzybkoOdziez.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShoppingCartPage : ContentPage
     {
-        ShoppingCartViewModel _viewModel;
+        private ShoppingCartViewModel _viewModel;
         public ShoppingCartPage()
         {
             InitializeComponent();
-
             BindingContext = _viewModel = new ShoppingCartViewModel();
-
+            
+         
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            _viewModel.InitializeShoppingCartFromDB(99);
             _viewModel.OnShoppingCartOpen();
 
         }
 
-        private void Kliknienie_zamowienia(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new OrderConfirmationPage());
-            Navigation.RemovePage(this);
-        }
-
+      
         private async void ClearShoppingCartDataStoreList(object sender, EventArgs e)
         {
             var app = (App)Application.Current;
@@ -44,7 +40,7 @@ namespace SzybkoOdziez.Views
 
             if (shoppingCartDataStore.Count() == 0)
             {
-                await DisplayAlert("Pusta lista", "W liscie obserwowanych przedmiotów nie znajduje się zadnego przedmiotu", "Anuluj");
+                await DisplayAlert("Pusta lista", "W koszyku nie znajduje się zadnego przedmiotu", "Anuluj");
             }
             else
             {
@@ -84,29 +80,27 @@ namespace SzybkoOdziez.Views
                 await shoppingCartDataStore.DeleteItemAsync(tappedProduct);
                 _viewModel.OnShoppingCartOpen();
             }
-             RemoveItemFromUserShoppingCart(tappedProduct.Id, tappedProduct1.Id);
+            RemoveItemFromUserObserved(99, tappedProduct.Id);
 
         }
-        
-        
-        private void RemoveItemFromUserShoppingCart(int item_id, int order_id)
+
+
+        private void RemoveItemFromUserObserved(int user_id, int item_id)
         {
             string ConnectionString = "Data Source=(DESCRIPTION=" +
            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
            "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
            "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
 
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
-                var query = "DELETE item_order WHERE (item_item_id = :item_item_id AND order_order_id = :order_order_id)";
+                var query = "DELETE shopping_cart WHERE (user_user_id = :user_user_id AND item_item_id = :item_item_id)";
 
                 using (OracleCommand cmdInsert = new OracleCommand(query, conn))
                 {
-                    OracleCommand command = new OracleCommand(query, connection);
+                    OracleCommand command = new OracleCommand(query, conn);
+                    command.Parameters.Add(new OracleParameter("user_user_id", user_id));
                     command.Parameters.Add(new OracleParameter("item_item_id", item_id));
-                    command.Parameters.Add(new OracleParameter("order_order_id", order_id));
 
                     try
                     {
@@ -125,5 +119,11 @@ namespace SzybkoOdziez.Views
             }
 
         }
+        private void Kliknienie_zamowienia(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OrderConfirmationPage());
+            Navigation.RemovePage(this);
+        }
+
     }
 }
