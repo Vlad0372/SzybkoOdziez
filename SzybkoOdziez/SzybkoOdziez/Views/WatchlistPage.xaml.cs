@@ -19,6 +19,7 @@ namespace SzybkoOdziez.Views
     {
         private WishlistDataStore _wishlistDataStore;
         private WatchlistViewModel _viewModel;
+        private string ItemCategory="Wszystkie";
 
         public WatchlistPage()
         {
@@ -31,8 +32,22 @@ namespace SzybkoOdziez.Views
             base.OnAppearing();
             _viewModel.InitializeWishlistFromDB(99);
             _viewModel.OnWishlistOpen();
+            _viewModel.FilterProducts(ItemCategory);
         }
-
+        private async void FilterButtonClick(object sender, EventArgs e)
+        {
+            string tempItemCategory = ItemCategory;
+            ItemCategory = await DisplayActionSheet("Filtruj", "Anuluj", null, "Wszystkie", "Bielizna", "Bluza", "Buty", "Czapka", "Koszula", "Kurtka", "Marynarka", "Paski", "Rękawice", "Spodnie", "Spódnice", "Szalik", "T-shirt");
+            if(ItemCategory == "Anuluj")
+            {
+                ItemCategory = tempItemCategory;
+            }
+            else
+            {
+                _viewModel.FilterProducts(ItemCategory);
+            }
+           
+        }
         private void OnWishlistProductStackLayoutTapped(object sender, EventArgs e)
         {
             var tappedImage = (Grid)sender;
@@ -67,6 +82,7 @@ namespace SzybkoOdziez.Views
             {
                 await wishlistDataStore.DeleteItemAsync(tappedProduct);
                 _viewModel.OnWishlistOpen();
+                _viewModel.FilteredProducts.Remove(tappedProduct);
             }
 
 
@@ -77,8 +93,6 @@ namespace SzybkoOdziez.Views
             //((WatchlistViewModel)BindingContext).Products.Remove(product);
 
             RemoveItemFromUserObserved(99, tappedProduct.Id);
-
-
 
         }
 

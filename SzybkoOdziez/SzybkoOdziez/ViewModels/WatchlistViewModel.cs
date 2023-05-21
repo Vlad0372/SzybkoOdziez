@@ -19,6 +19,7 @@ namespace SzybkoOdziez.ViewModels
         //private Product _selectedProduct;
 
         public ObservableCollection<Product> Products { get; }
+        public ObservableCollection<Product> FilteredProducts { get; }
         public Command LoadProductsCommand { get; }
         //public Command<Product> RemoveProductCommand { get; }
 
@@ -26,6 +27,7 @@ namespace SzybkoOdziez.ViewModels
         {
 
             Products = new ObservableCollection<Product>();
+            FilteredProducts = new ObservableCollection<Product>();
             LoadProductsCommand = new Command(async () => await LoadWishlistAsync());
             //RemoveProductCommand = new Command(async () => await RemoveProductWishlistAsync(_selectedProduct));
         }
@@ -34,7 +36,27 @@ namespace SzybkoOdziez.ViewModels
         {
             Products = products;
         }
-
+        public async void FilterProducts(string category)
+        {
+            FilteredProducts.Clear();
+            if (category == "Wszystkie")
+            {
+                foreach(var product in Products)
+                {
+                    FilteredProducts.Add(product);
+                }
+            }
+            else
+            {
+                foreach (var product in Products)
+                {
+                    if (product.Category == category)
+                    {
+                        FilteredProducts.Add(product);
+                    }
+                }
+            }
+        }
         public async void OnWishlistOpen()
         {
             await LoadWishlistAsync();
@@ -96,7 +118,7 @@ namespace SzybkoOdziez.ViewModels
                         conn.Close();
                     }
                 }
-                var querySelectItems = "SELECT item_id, name, description, price, img_source FROM item WHERE (item_id = :item_id)";
+                var querySelectItems = "SELECT item_id, name, description, price, img_source, category FROM item WHERE (item_id = :item_id)";
                 using (OracleCommand cmdInsert = new OracleCommand(querySelectItems, conn))
                 {
                     foreach (var item_id in item_ids)
@@ -118,6 +140,7 @@ namespace SzybkoOdziez.ViewModels
                                     Description = reader.GetString(2),
                                     Price = reader.GetInt32(3),
                                     ImageUrl = reader.GetString(4),
+                                    Category = reader.GetString(5),
                                 };
                                 Products.Add(sqlproduct);
                             }
@@ -136,7 +159,7 @@ namespace SzybkoOdziez.ViewModels
 
                 var app = (App)Application.Current;
                 var wishlistDataStore = app.wishlistDataStore;
-                foreach(var item in Products)
+                foreach (var item in Products)
                 {
                     if (wishlistDataStore.CheckInDataStore(item))
                     {
