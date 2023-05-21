@@ -171,7 +171,7 @@ namespace SzybkoOdziez.Views
                     await wishlistDataStore.ClearAll();
 
                     _viewModel.OnWishlistOpen();
-
+                    _viewModel.FilterProducts(ItemCategory);
                     await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
                 } 
             }          
