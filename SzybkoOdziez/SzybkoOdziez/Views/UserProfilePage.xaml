@@ -10,20 +10,20 @@
 
 
             <Label Text="Imię"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
-                    
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
+
                 <Label x:Name="labelName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
                 </Frame>
             <Label Text="Nazwisko"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
                 <Label x:Name="labelLastName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
                 </Frame>
             <Label Text="E-mail"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
                 <Label x:Name="labelMail" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             </Frame>
             <Label Text="Nazwa nicku"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20">
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
                 <Label x:Name="labelNickname"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             </Frame>
             

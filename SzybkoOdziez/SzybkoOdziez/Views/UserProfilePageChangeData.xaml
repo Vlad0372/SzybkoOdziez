@@ -11,17 +11,22 @@
 
 
             <!--ZMIENIANIE UŻYTKOWNIKA-->
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
-                <Entry x:Name="old_password" 
-                   Placeholder="Podaj stare hasło" 
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
+                <Entry 
+                    
+                    x:Name="old_password" 
+                       IsPassword="True" 
+                       Placeholder="Podaj stare hasło" 
+                       
                    HorizontalTextAlignment="Center"
+                       
                    TextColor="Black" 
                  FontSize="Large"
                    >
                 </Entry>
             </Frame>
 
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
                 <Entry x:Name="mail" 
                    Placeholder="E-mail" 
                    HorizontalTextAlignment="Center"
@@ -32,7 +37,7 @@
             </Frame>
 
 
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
                 <Entry x:Name="nickname"
                 Placeholder="Nazwa użytkownika" 
                    HorizontalTextAlignment="Center"
@@ -42,7 +47,7 @@
                 </Entry>
             </Frame>
 
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
                 <Entry x:Name="password"
                    Placeholder="Hasło"  
                    IsPassword="True" 
