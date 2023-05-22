@@ -19,7 +19,7 @@ namespace SzybkoOdziez.Views
     {
         private WishlistDataStore _wishlistDataStore;
         private WatchlistViewModel _viewModel;
-        private string ItemCategory="Wszystkie";
+        private string ItemCategory = "Wszystkie";
 
         public WatchlistPage()
         {
@@ -34,6 +34,7 @@ namespace SzybkoOdziez.Views
             _viewModel.OnWishlistOpen();
             _viewModel.FilterProducts(ItemCategory);
         }
+
         private async void FilterButtonClick(object sender, EventArgs e)
         {
             string tempItemCategory = ItemCategory;
@@ -48,6 +49,7 @@ namespace SzybkoOdziez.Views
             }
            
         }
+
         private void OnWishlistProductStackLayoutTapped(object sender, EventArgs e)
         {
             var tappedImage = (Grid)sender;
