@@ -116,6 +116,11 @@
         <ShellContent Route="UserProfilePage" ContentTemplate="{DataTemplate local:UserProfilePage}" />
     </FlyoutItem>
     <!--08.05 added (Vladek)-->
+    <!--21.05 added (Vladek)-->
+    <FlyoutItem Title="Ustawienia" Icon="icon_setting.png">
+        <ShellContent Route="SettingsPage" ContentTemplate="{DataTemplate local:SettingsPage}" />
+    </FlyoutItem>
+    <!--21.05 added (Vladek)-->
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Wyloguj" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked" IconImageSource="logoutIcon">
     </MenuItem>
