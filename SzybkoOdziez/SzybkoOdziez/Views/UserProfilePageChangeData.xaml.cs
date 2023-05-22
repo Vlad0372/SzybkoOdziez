@@ -18,6 +18,8 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
         }
 
+
+
         private async void button_change_data_user_2_Clicked(object sender, EventArgs e)
         {
             string ConnectionString = "Data Source=(DESCRIPTION=" +
@@ -57,13 +59,13 @@ namespace SzybkoOdziez.Views
 
 
                     OracleCommand command = new OracleCommand(query, connection);
-                    command.Parameters.Add(new OracleParameter("user_id", userrr));
+                    
                     command.Parameters.Add(new OracleParameter("name", nameee));
                     command.Parameters.Add(new OracleParameter("last_name", last_nameee));
                     command.Parameters.Add(new OracleParameter("mail", maillll));
                     command.Parameters.Add(new OracleParameter("nickname", nicknameee));
                     command.Parameters.Add(new OracleParameter("password", passworddd));
-
+                    command.Parameters.Add(new OracleParameter("user_id", userrr));
                     //NIC SIĘ NIE DZIEJE xD
                     //if (user_id.Text == "" && name.Text == "" && last_name.Text == "" && mail.Text == "" && nickname.Text == "" && password.Text == "" )
                     //{
