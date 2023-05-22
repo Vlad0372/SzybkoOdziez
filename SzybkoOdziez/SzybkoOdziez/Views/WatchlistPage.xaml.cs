@@ -205,6 +205,7 @@ namespace SzybkoOdziez.Views
                 if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
                 {
                     await wishlistDataStore.ClearAll();
+                    DeleteAllFromObservedForUserDB(app.userId);
 
                     _viewModel.OnWishlistOpen();
                     _viewModel.FilterProducts(ItemCategory);
@@ -213,7 +214,34 @@ namespace SzybkoOdziez.Views
             }          
         }
 
+        private void DeleteAllFromObservedForUserDB(int userId)
+        {
+            var app = (App)Application.Current;
+            string ConnectionString = app.connectionString;
+            string queryString = "DELETE observed WHERE (user_user_id = :user_user_id)";
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            {
+                using (OracleCommand cmd = new OracleCommand(queryString, conn))
+                {
+                    cmd.Parameters.Add("user_user_id", userId);
 
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+        }
 
     }
 
