@@ -170,12 +170,23 @@ namespace SzybkoOdziez.Views
             {
                 using (OracleCommand cmd = new OracleCommand(queryString, conn))
                 {
-                    cmd.Parameters.Add(userId);
-                    cmd.Parameters.Add(productId);
+                    cmd.Parameters.Add("user_id", userId);
+                    cmd.Parameters.Add("item_id", productId);
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    catch(OracleException ex)
+                    {
+                        Console.WriteLine(ex);
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                    }
                 }
             }
         }
