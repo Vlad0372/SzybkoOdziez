@@ -33,29 +33,7 @@ namespace SzybkoOdziez.Views
         }
 
       
-        private async void ClearShoppingCartDataStoreList(object sender, EventArgs e)
-        {
-            var app = (App)Application.Current;
-            var shoppingCartDataStore = app.shoppingCartDataStore;
-
-            if (shoppingCartDataStore.Count() == 0)
-            {
-                await DisplayAlert("Pusta lista", "W koszyku nie znajduje się zadnego przedmiotu", "Anuluj");
-            }
-            else
-            {
-                if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
-                {
-                    await shoppingCartDataStore.ClearAll();
-
-                    _viewModel.OnShoppingCartOpen();
-
-                    await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
-                }
-            }
-
-
-        }
+        
         private async void ShoppingCartTrashcan_Tapped(object sender, EventArgs e)
         {
             //TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
@@ -67,7 +45,7 @@ namespace SzybkoOdziez.Views
 
             var tappedImage = (Image)sender;
             var tappedProduct = (Product)tappedImage.BindingContext;
-            var tappedProduct1 = (Order)tappedImage.BindingContext;
+            //var tappedProduct1 = (Order)tappedImage.BindingContext;
             var app = (App)Application.Current;
             var shoppingCartDataStore = app.shoppingCartDataStore;
 
@@ -117,6 +95,30 @@ namespace SzybkoOdziez.Views
                     }
                 }
             }
+
+        }
+
+        private async void ClearShoppingCartDataStoreList(object sender, EventArgs e)
+        {
+            var app = (App)Application.Current;
+            var shoppingCartDataStore = app.shoppingCartDataStore;
+
+            if (shoppingCartDataStore.Count() == 0)
+            {
+                await DisplayAlert("Pusta lista", "W koszyku nie znajduje się zadnego przedmiotu", "Anuluj");
+            }
+            else
+            {
+                if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
+                {
+                    await shoppingCartDataStore.ClearAll();
+
+                    _viewModel.OnShoppingCartOpen();
+
+                    await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
+                }
+            }
+
 
         }
         private void Kliknienie_zamowienia(object sender, EventArgs e)

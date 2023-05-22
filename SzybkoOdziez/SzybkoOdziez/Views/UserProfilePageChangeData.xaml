@@ -12,33 +12,11 @@
 
             <!--ZMIENIANIE UŻYTKOWNIKA-->
             <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
-                <Entry x:Name="user_id" 
-                       FontSize="Large"
-                   Placeholder="Podaj swoją ulubioną liczbę" 
+                <Entry x:Name="old_password" 
+                   Placeholder="Podaj stare hasło" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
-                  
-                   >
-                </Entry>
-            </Frame>
-
-
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
-                <Entry x:Name="name"  
-                   Placeholder="Imię" 
-                   HorizontalTextAlignment="Center"
-                   TextColor="Black" 
-                  FontSize="Large"
-                   >
-                </Entry>
-            </Frame>
-
-            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="20"  >
-                <Entry x:Name="last_name" 
-                   Placeholder="Nazwizko" 
-                   HorizontalTextAlignment="Center"
-                   TextColor="Black" 
-                  FontSize="Large"
+                 FontSize="Large"
                    >
                 </Entry>
             </Frame>

@@ -138,6 +138,7 @@ namespace SzybkoOdziez.ViewModels
 
                 var app = (App)Application.Current;
                 var shoppingCartDataStore = app.shoppingCartDataStore;
+                shoppingCartDataStore.ClearAll();
                 foreach(Product product in Products)
                 {
                     shoppingCartDataStore.AddItemAsync(product);

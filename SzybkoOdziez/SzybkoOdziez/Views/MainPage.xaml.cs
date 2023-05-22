@@ -62,8 +62,8 @@ namespace SzybkoOdziez.Views
            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
            "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
            "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
+            //OracleConnection connection = new OracleConnection(ConnectionString);
+            //connection.Open();
 
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
@@ -71,7 +71,7 @@ namespace SzybkoOdziez.Views
 
                 using (OracleCommand cmdInsert = new OracleCommand(query, conn))
                 {
-                    OracleCommand command = new OracleCommand(query, connection);
+                    OracleCommand command = new OracleCommand(query, conn);
                     command.Parameters.Add(new OracleParameter("user_user_id", user_id));
                     command.Parameters.Add(new OracleParameter("item_item_id", item_id));
 

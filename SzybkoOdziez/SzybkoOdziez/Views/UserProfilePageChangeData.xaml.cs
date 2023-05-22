@@ -17,91 +17,141 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();
         }
-
-
-
-        private async void button_change_data_user_2_Clicked(object sender, EventArgs e)
+        
+        private bool VerifyOldPassword(int user_id, string oldPassword)
         {
+
             string ConnectionString = "Data Source=(DESCRIPTION=" +
            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
            "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
            "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
+            OracleConnection connection1 = new OracleConnection(ConnectionString);
+            connection1.Open();
 
-
-
-
-
-
-
-
-            //
-            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            using (OracleConnection connection = new OracleConnection(ConnectionString))
             {
+                connection.Open();
 
+                // Pobierz aktualne hasło użytkownika z bazy danych
+                string selectQuery = "SELECT password FROM \"user\" WHERE user_id = :user_id";
 
-
-
-               // var query = "INSERT INTO \"user\" (user_id, name, last_name, mail, nickname, password) VALUES (:user_id, :name, :last_name, :mail, :nickname, :password)";
-
-                var query = "UPDATE \"user\" SET name = :name, last_name = :last_name, mail = :mail, nickname = :nickname, password = :password WHERE user_id = :user_id";
-
-                using (OracleCommand cmdInsert = new OracleCommand(query, conn))
+                using (OracleCommand command = new OracleCommand(selectQuery, connection))
                 {
+                    command.Parameters.Add("user_id", user_id);
 
-                    int userrr = int.Parse(user_id.Text);
-                    string nameee = name.Text;
-                    string last_nameee = last_name.Text;
-                    string maillll = mail.Text;
-                    string nicknameee = nickname.Text;
-                    string passworddd = password.Text;
-
-
-                    OracleCommand command = new OracleCommand(query, connection);
-                    
-                    command.Parameters.Add(new OracleParameter("name", nameee));
-                    command.Parameters.Add(new OracleParameter("last_name", last_nameee));
-                    command.Parameters.Add(new OracleParameter("mail", maillll));
-                    command.Parameters.Add(new OracleParameter("nickname", nicknameee));
-                    command.Parameters.Add(new OracleParameter("password", passworddd));
-                    command.Parameters.Add(new OracleParameter("user_id", userrr));
-                    //NIC SIĘ NIE DZIEJE xD
-                    //if (user_id.Text == "" && name.Text == "" && last_name.Text == "" && mail.Text == "" && nickname.Text == "" && password.Text == "" )
-                    //{
-                    //     DisplayAlert("UPS", "Proszę wpisać wszystkie wymagane dane", "Spróbuj ponownie!");
-
-                    //}
-
-
-
-                    try
+                    using (OracleDataReader reader = command.ExecuteReader())
                     {
-                        conn.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-                        conn.Close();
-
-                        if (rowsAffected > 0)
+                        
+                        if (reader.Read())
                         {
+                            string storedPassword = reader.GetString(0);
 
-                            await Shell.Current.GoToAsync("//MainPage");
-                            Navigation.RemovePage(this);
+                            // Porównaj wprowadzone stare hasło z przechowywanym hasłem
+                            if (storedPassword == oldPassword)
+                            {
+                                return true; // Stare hasło jest poprawne
+                            }
                         }
-                        else
-                        {
-                            //NIC SIĘ NIE DZIEJE xD
-                            // nic nie zostało dodane do bazy - wyświetl komunikat o błędzie
-                            DisplayAlert("UPS", "Nie udało się zarejestrować", "Spróbuj ponownie!");
-                        }
-                    }
-                    catch (OracleException ex)
-                    {
-                        // wystąpił błąd Oracle - wyświetl komunikat o błędzie
-                        DisplayAlert("UPS", "Nie udało się zarejestrować, użytkownik zajął twoją ulubioną liczbnę!", "Spróbuj ponownie", ex.Message);
-
                     }
                 }
             }
+
+            return false; // Stare hasło jest nieprawidłowe lub wystąpił błąd
+        }
+        //
+        private async void button_change_data_user_2_Clicked(object sender, EventArgs e)
+        {
+
+            string old_passworddd = old_password.Text;
+            int user_id = 99;
+            if (VerifyOldPassword(user_id, old_passworddd))
+            {
+                string ConnectionString = "Data Source=(DESCRIPTION=" +
+               "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+               "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+               "User Id=s100824;Password=Sddb2023;";
+                OracleConnection connection = new OracleConnection(ConnectionString);
+                connection.Open();
+
+
+
+
+
+
+
+
+
+
+                //
+                using (OracleConnection conn = new OracleConnection(ConnectionString))
+                {
+
+
+
+
+                    // var query = "INSERT INTO \"user\" (user_id, name, last_name, mail, nickname, password) VALUES (:user_id, :name, :last_name, :mail, :nickname, :password)";
+
+                    var query = "UPDATE \"user\" SET mail = :mail, nickname = :nickname, password = :password WHERE user_id = :user_id";
+
+                    using (OracleCommand cmdInsert = new OracleCommand(query, conn))
+                    {
+
+                        int userrr = 99;
+
+                        string maillll = mail.Text;
+                        string nicknameee = nickname.Text;
+                        string passworddd = password.Text;
+
+
+                        OracleCommand command = new OracleCommand(query, connection);
+
+                        command.Parameters.Add(new OracleParameter("mail", maillll));
+                        command.Parameters.Add(new OracleParameter("nickname", nicknameee));
+                        command.Parameters.Add(new OracleParameter("password", passworddd));
+                        command.Parameters.Add(new OracleParameter("user_id", userrr));
+                        //NIC SIĘ NIE DZIEJE xD
+                        //if (user_id.Text == "" && name.Text == "" && last_name.Text == "" && mail.Text == "" && nickname.Text == "" && password.Text == "" )
+                        //{
+                        //     DisplayAlert("UPS", "Proszę wpisać wszystkie wymagane dane", "Spróbuj ponownie!");
+
+                        //}
+
+
+
+                        try
+                        {
+                            conn.Open();
+                            int rowsAffected = command.ExecuteNonQuery();
+                            conn.Close();
+
+                            if (rowsAffected > 0)
+                            {
+
+                                await Shell.Current.GoToAsync("//MainPage");
+                                Navigation.RemovePage(this);
+                            }
+                            else
+                            {
+                                //NIC SIĘ NIE DZIEJE xD
+                                // nic nie zostało dodane do bazy - wyświetl komunikat o błędzie
+                                DisplayAlert("UPS", "Nie udało się zarejestrować", "Spróbuj ponownie!");
+                            }
+                        }
+                        catch (OracleException ex)
+                        {
+                            // wystąpił błąd Oracle - wyświetl komunikat o błędzie
+                            DisplayAlert("UPS", "Nie udało się zarejestrować, użytkownik zajął twoją ulubioną liczbnę!", "Spróbuj ponownie", ex.Message);
+
+                        }
+                    }
+                }
+
+            }
+            else 
+            {
+                DisplayAlert("UPS", "Obecne hasło zostało źle napisane!!!!", "Spróbuj ponownie!");
+            }
+            
         }
     }
 }
