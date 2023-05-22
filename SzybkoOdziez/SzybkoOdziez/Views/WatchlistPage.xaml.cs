@@ -143,6 +143,7 @@ namespace SzybkoOdziez.Views
             if (shoppingCartDataStore.CheckInDataStore(tappedProduct))
             {
                 await shoppingCartDataStore.AddItemAsync(tappedProduct);
+                InsertIntoShoppingCartDB(tappedProduct.Id);
 
                 UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
             }
@@ -151,8 +152,30 @@ namespace SzybkoOdziez.Views
                 if(await DisplayAlert("W koszyku juz znajduje sie taki przedmiot", "Chcesz dodac duplikat tego przedmiotu do koszyka?", "Tak", "Nie"))
                 {
                     await shoppingCartDataStore.AddItemAsync(tappedProduct);
+                    InsertIntoShoppingCartDB(tappedProduct.Id);
 
                     UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
+                }
+            }
+        }
+
+        private void InsertIntoShoppingCartDB(int productId)
+        {
+            var app = (App)Application.Current;
+            string ConnectionString = app.connectionString;
+            string queryString = "INSERT INTO shopping_cart (user_user_id, item_item_id)" +
+                "VALUES (:user_id, :item_id)";
+            int userId = 99;
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            {
+                using (OracleCommand cmd = new OracleCommand(queryString, conn))
+                {
+                    cmd.Parameters.Add(userId);
+                    cmd.Parameters.Add(productId);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
             }
         }
