@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.PrivacyPolicyPage"
+             xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:PrivacyPolicyViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <Label Text="Niniejsza Polityka Prywatności określa zasady gromadzenia, przetwarzania i ochrony danych osobowych przez firmę XYZ sprzedającą odzież."
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="1. Dane osobowe"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="Firma XYZ może gromadzić następujące dane osobowe od swoich klientów:"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="- Imię i nazwisko"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 5, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="- Adres e-mail"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 3, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="- Adres zamieszkania"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 3, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="- Numer telefonu"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 3, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="- Dane płatnicze (np. numer karty kredytowej)"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 3, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="2. Cel gromadzenia danych"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="Dane osobowe są gromadzone w celu umożliwienia realizacji zamówień, dostarczania produktów, obsługi klienta oraz prowadzenia działań marketingowych. Firma XYZ może również wykorzystywać dane osobowe do analizy rynku i ulepszania swoich usług."
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="3. Przetwarzanie danych"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="Firma XYZ przetwarza dane osobowe zgodnie z obowiązującymi przepisami prawa. Dane są przechowywane w bezpieczny sposób i chronione przed nieautoryzowanym dostępem."
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="4. Udostępnianie danych"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="Firma XYZ może udostępniać dane osobowe swoim partnerom biznesowym, takim jak dostawcy usług płatniczych i firmy kurierskie, w celu umożliwienia realizacji zamówień i dostarczenia produktów. Dane osobowe nie są sprzedawane ani udostępniane osobom trzecim w celach marketingowych bez wyraźnej zgody klienta."
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="5. Prawa klienta"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="Klient ma prawo dostępu do swoich danych osobowych, ich poprawiania, usunięcia oraz wycofania zgody na ich przetwarzanie. W celu skorzystania z tych praw, klient powinien skontaktować się z firmą XYZ."
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="6. Bezpieczeństwo danych"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="Firma XYZ podejmuje wszelkie niezbędne środki bezpieczeństwa w celu ochrony danych osobowych klientów przed utratą, nieautoryzowanym dostępem, wykorzystaniem czy zmianą."
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="7. Kontakt"
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 0"
+                   FontSize="16"/>
+                    <Label Text="W przypadku pytań dotyczących Polityki Prywatności lub przetwarzania danych osobowych, klient może skontaktować się z firmą XYZ."
+                 HorizontalTextAlignment="Start"
+                   Margin="25, 10, 10, 50"
+                   FontSize="16"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

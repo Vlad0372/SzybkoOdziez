@@ -62,10 +62,26 @@
                    HorizontalTextAlignment="Center"              
                    >
             </Entry>
-
+            <Label HorizontalOptions="Center"
+                   Margin="0, 50, 0, 0 ">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Sprawdź naszą " 
+                              TextColor="Black"/>
+                        <Span Text="Politykę Prywatności" 
+                              TextColor="Black" 
+                              FontAttributes="Bold" 
+                              TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
 
 
             <Button 
+                Margin="0, 50, 0, 0 "
                 VerticalOptions="Center" 
                 Text="Załóż konto" 
                 TextColor="White" 
