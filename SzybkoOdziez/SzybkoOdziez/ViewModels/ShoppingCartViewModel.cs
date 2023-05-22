@@ -28,11 +28,12 @@ namespace SzybkoOdziez.ViewModels
             //Products.Add(new Product() { Id = 3, Name = "Buty", Description = "desc3", Price = 100, ImageUrl = "buty.jpg" });
             //Products.Add(new Product() { Id = 4, Name = "Dresy", Description = "desc4", Price = 200, ImageUrl = "dresy.jpg" });
             //Products.Add(new Product() { Id = 5, Name = "Kurtka", Description = "desc5", Price = 500, ImageUrl = "kurtka.jpg" });
-            var app = (App)Application.Current;
-            foreach (var product in Products)
-            {
-                app.shoppingCartDataStore.AddItemAsync(product);
-            }
+
+            //var app = (App)Application.Current;
+            //foreach (var product in Products)
+            //{
+            //    app.shoppingCartDataStore.AddItemAsync(product);
+            //}
 
         }
 
@@ -134,7 +135,15 @@ namespace SzybkoOdziez.ViewModels
                 }
 
 
-                
+
+                var app = (App)Application.Current;
+                var shoppingCartDataStore = app.shoppingCartDataStore;
+                foreach(Product product in Products)
+                {
+                    shoppingCartDataStore.AddItemAsync(product);
+                }
+
+
             }
 
 
