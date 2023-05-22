@@ -18,6 +18,15 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();
             // OGARNĄĆ ŻEBY INNY UŻYTKOWNIK ZOBACZYŁ SWOJE DANE!!!!!
+           
+
+
+
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
             string Namee = "";
             string LastNamee = "";
             string Maill = "";
@@ -26,7 +35,7 @@ namespace SzybkoOdziez.Views
             int userId = GetLoggedInUserID("ada", "ada");
 
 
-            
+
             string ConnectionString = "Data Source=(DESCRIPTION=" +
                "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
                "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
@@ -50,20 +59,20 @@ namespace SzybkoOdziez.Views
 
                     using (var reader = cmd.ExecuteReader())
                     {
-                      
-                        
+
+
                         if (reader.Read())
                         {
 
 
-                             Namee = reader.GetString(0);
-                             LastNamee = reader.GetString(1);
-                             Maill = reader.GetString(2);
-                             Nicknamee = reader.GetString(3);
+                            Namee = reader.GetString(0);
+                            LastNamee = reader.GetString(1);
+                            Maill = reader.GetString(2);
+                            Nicknamee = reader.GetString(3);
 
 
                             // przypisanie imienia i nazwiska użytkownika do kontrolki Label
-                            
+
 
                         }
                         reader.Close();
@@ -74,9 +83,6 @@ namespace SzybkoOdziez.Views
                     }
                 }
             }
-
-
-
         }
 
         public int GetLoggedInUserID(string nicknamee, string passwordd)
@@ -106,11 +112,10 @@ namespace SzybkoOdziez.Views
             }
         }
 
-
-
-
-
-
-
+        private void button_change_data_user_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new UserProfilePageChangeData());
+            Navigation.RemovePage(this);
+        }
     }
 }

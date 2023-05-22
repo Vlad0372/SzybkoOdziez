@@ -15,51 +15,25 @@ namespace SzybkoOdziez.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShoppingCartPage : ContentPage
     {
-        ShoppingCartViewModel _viewModel;
+        private ShoppingCartViewModel _viewModel;
         public ShoppingCartPage()
         {
             InitializeComponent();
-
             BindingContext = _viewModel = new ShoppingCartViewModel();
-
+            
+         
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            _viewModel.InitializeShoppingCartFromDB(99);
             _viewModel.OnShoppingCartOpen();
 
         }
 
-        private void Kliknienie_zamowienia(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new OrderConfirmationPage());
-            Navigation.RemovePage(this);
-        }
-
-        private async void ClearShoppingCartDataStoreList(object sender, EventArgs e)
-        {
-            var app = (App)Application.Current;
-            var shoppingCartDataStore = app.shoppingCartDataStore;
-
-            if (shoppingCartDataStore.Count() == 0)
-            {
-                await DisplayAlert("Pusta lista", "W liscie obserwowanych przedmiotów nie znajduje się zadnego przedmiotu", "Anuluj");
-            }
-            else
-            {
-                if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
-                {
-                    await shoppingCartDataStore.ClearAll();
-
-                    _viewModel.OnShoppingCartOpen();
-
-                    await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
-                }
-            }
-
-
-        }
+      
+        
         private async void ShoppingCartTrashcan_Tapped(object sender, EventArgs e)
         {
             //TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
@@ -71,7 +45,7 @@ namespace SzybkoOdziez.Views
 
             var tappedImage = (Image)sender;
             var tappedProduct = (Product)tappedImage.BindingContext;
-            var tappedProduct1 = (Order)tappedImage.BindingContext;
+            //var tappedProduct1 = (Order)tappedImage.BindingContext;
             var app = (App)Application.Current;
             var shoppingCartDataStore = app.shoppingCartDataStore;
 
@@ -84,29 +58,27 @@ namespace SzybkoOdziez.Views
                 await shoppingCartDataStore.DeleteItemAsync(tappedProduct);
                 _viewModel.OnShoppingCartOpen();
             }
-             RemoveItemFromUserShoppingCart(tappedProduct.Id, tappedProduct1.Id);
+            RemoveItemFromUserObserved(99, tappedProduct.Id);
 
         }
-        
-        
-        private void RemoveItemFromUserShoppingCart(int item_id, int order_id)
+
+
+        private void RemoveItemFromUserObserved(int user_id, int item_id)
         {
             string ConnectionString = "Data Source=(DESCRIPTION=" +
            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
            "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
            "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
 
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
-                var query = "DELETE item_order WHERE (item_item_id = :item_item_id AND order_order_id = :order_order_id)";
+                var query = "DELETE shopping_cart WHERE (user_user_id = :user_user_id AND item_item_id = :item_item_id)";
 
                 using (OracleCommand cmdInsert = new OracleCommand(query, conn))
                 {
-                    OracleCommand command = new OracleCommand(query, connection);
+                    OracleCommand command = new OracleCommand(query, conn);
+                    command.Parameters.Add(new OracleParameter("user_user_id", user_id));
                     command.Parameters.Add(new OracleParameter("item_item_id", item_id));
-                    command.Parameters.Add(new OracleParameter("order_order_id", order_id));
 
                     try
                     {
@@ -125,5 +97,64 @@ namespace SzybkoOdziez.Views
             }
 
         }
+
+        private async void ClearShoppingCartDataStoreList(object sender, EventArgs e)
+        {
+            var app = (App)Application.Current;
+            var shoppingCartDataStore = app.shoppingCartDataStore;
+
+            if (shoppingCartDataStore.Count() == 0)
+            {
+                await DisplayAlert("Pusta lista", "W koszyku nie znajduje się zadnego przedmiotu", "Anuluj");
+            }
+            else
+            {
+                if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
+                {
+                    await shoppingCartDataStore.ClearAll();
+                    DeleteAllFromShoppingCartUserDB(app.userId);
+                    _viewModel.OnShoppingCartOpen();
+
+                    await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
+                }
+            }
+
+
+        }
+
+        private void DeleteAllFromShoppingCartUserDB(int userId)
+        {
+            var app = (App)Application.Current;
+            string ConnectionString = app.connectionString;
+            string queryString = "DELETE shopping_cart WHERE (user_user_id = :user_user_id)";
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            {
+                using (OracleCommand cmd = new OracleCommand(queryString, conn))
+                {
+                    cmd.Parameters.Add("user_user_id", userId);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    catch (OracleException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+        }
+        private void Kliknienie_zamowienia(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new OrderConfirmationPage());
+            Navigation.RemovePage(this);
+        }
+
     }
 }

@@ -19,6 +19,7 @@ namespace SzybkoOdziez
             "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
             "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
             "User Id=s100824;Password=Sddb2023;";
+        public int userId = 99;
 
         public App()
         {

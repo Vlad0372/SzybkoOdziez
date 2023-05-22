@@ -49,6 +49,7 @@ namespace SzybkoOdziez.Views
                 {
                     DisplayAlert("UPS...!", "Podałeś złe hasło albo nazwę użytkownika", "Spróbuj ponownie");
                 }
+                conn.Close();
             }
         }
 

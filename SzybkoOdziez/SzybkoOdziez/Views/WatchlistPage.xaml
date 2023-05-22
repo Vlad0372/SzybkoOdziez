@@ -2,10 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SzybkoOdziez.Views.WatchlistPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Primary" Priority="1" Text="Filtruj"  Clicked="FilterButtonClick" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Lista obserwowanych przedmiotów" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" TextColor="#555"/>
-            <CollectionView x:Name="ProductList" ItemsSource="{Binding Products}" Margin="10">
+            <CollectionView x:Name="ProductList" ItemsSource="{Binding FilteredProducts}" Margin="10">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <!--<StackLayout x:Name="WatchlistProductStackLayout" Orientation="Horizontal" Margin="10,5">

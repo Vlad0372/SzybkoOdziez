@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Android.Media;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,7 @@ namespace SzybkoOdziez.Views
         private List<Product> productsList = new List<Product>();
         private Product _currentProduct { get; set; }
 
+        private string ItemCategory = "Wszystkie";
         public MainPage()
         {
             InitializeComponent();
@@ -30,7 +32,10 @@ namespace SzybkoOdziez.Views
         {
             Navigation.PushAsync(new ItemDescriptionPage(_currentProduct));
         }
-
+        private async void FilterButtonClick(object sender, EventArgs e)
+        {
+             ItemCategory = await DisplayActionSheet("Filtruj", "Anuluj", null, "Wszystkie","Bielizna", "Bluza", "Buty", "Czapka", "Koszula", "Kurtka", "Marynarka", "Paski", "Rękawice", "Spodnie", "Spódnice", "Szalik", "T-shirt");
+        }
         private async void OnDislikeClicked(object sender, EventArgs args)
         {
             _currentProduct = GetRandProductInfo();
@@ -57,8 +62,8 @@ namespace SzybkoOdziez.Views
            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
            "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
            "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
+            //OracleConnection connection = new OracleConnection(ConnectionString);
+            //connection.Open();
 
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
@@ -66,7 +71,7 @@ namespace SzybkoOdziez.Views
 
                 using (OracleCommand cmdInsert = new OracleCommand(query, conn))
                 {
-                    OracleCommand command = new OracleCommand(query, connection);
+                    OracleCommand command = new OracleCommand(query, conn);
                     command.Parameters.Add(new OracleParameter("user_user_id", user_id));
                     command.Parameters.Add(new OracleParameter("item_item_id", item_id));
 
@@ -133,8 +138,19 @@ namespace SzybkoOdziez.Views
             var random = new System.Random();
 
             int index = random.Next(productsList.Count);
-
-            return productsList[index];
+            if(ItemCategory == "Wszystkie")
+            {
+                return productsList[index];
+            }
+            else
+            {
+                while (productsList[index].Category != ItemCategory)
+                {
+                    index = random.Next(productsList.Count);
+                }
+                return productsList[index];
+            }
+            
         }
 
         private void InitProductInfoListFromDB()
