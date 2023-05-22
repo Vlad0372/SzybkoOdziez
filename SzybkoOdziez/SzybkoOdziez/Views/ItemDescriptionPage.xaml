@@ -26,10 +26,10 @@
                        Text="Producent">
                     </Label>
                     <Label 
+                        x:Name="producerLabel"
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
-                       Grid.Row="0"
-                       Text="Sprandi">
+                       Grid.Row="0">
                     </Label>
                     <Label 
                         FontSize="18" FontFamily="Calibri"
@@ -38,10 +38,10 @@
                        Text="Kolor">
                     </Label>
                     <Label 
+                        x:Name="colorLabel"
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
-                       Grid.Row="1"
-                       Text="Granatowe">
+                       Grid.Row="1">
                     </Label>
                     <Label 
                         FontSize="18" FontFamily="Calibri"
@@ -50,10 +50,10 @@
                        Text="Sezon">
                     </Label>
                     <Label 
+                        x:Name="seasonLabel"
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
-                       Grid.Row="2"
-                       Text="Jesień/Zima">
+                       Grid.Row="2">
                     </Label>
                     <Label 
                         FontSize="18" FontFamily="Calibri"
@@ -62,10 +62,10 @@
                        Text="Materiał">
                     </Label>
                     <Label 
+                        x:Name="materialLabel"
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
-                       Grid.Row="3"
-                       Text="Bawełna">
+                       Grid.Row="3">
                     </Label>
                     <Label 
                         FontSize="18" FontFamily="Calibri"
@@ -74,10 +74,10 @@
                        Text="Wzór">
                     </Label>
                     <Label 
+                        x:Name="patternLabel"
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
-                       Grid.Row="4"
-                       Text="Gładkie">
+                       Grid.Row="4">
                     </Label>
                     <Label 
                         FontSize="18" FontFamily="Calibri"
@@ -86,10 +86,10 @@
                        Text="Model">
                     </Label>
                     <Label 
+                        x:Name="modelLabel"
                         FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
-                       Grid.Row="5"
-                       Text="SP22-BLM503 ">
+                       Grid.Row="5">
                     </Label>
                     <Label 
                         FontSize="18" FontFamily="Calibri" TextColor="Black"
@@ -107,15 +107,11 @@
                 <Grid Margin="10,100,10,0">
                     <Label  FontSize="18" FontFamily="Calibri">Rozmiar</Label>
                     <Picker
+                        x:Name="sizePicker"
                         Margin="10,30,10,10"
                         FontSize="18" FontFamily="Calibri"
-                        Title="Wybierz Rozmiar"
                         TitleColor="Gray">
                         <Picker.Items>
-                            <x:String>S</x:String>
-                            <x:String>M</x:String>
-                            <x:String>L</x:String>
-                            <x:String>XL</x:String>
                         </Picker.Items>
                     </Picker>
                 </Grid>

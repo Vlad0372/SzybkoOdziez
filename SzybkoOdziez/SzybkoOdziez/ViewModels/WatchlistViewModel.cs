@@ -118,7 +118,7 @@ namespace SzybkoOdziez.ViewModels
                         conn.Close();
                     }
                 }
-                var querySelectItems = "SELECT item_id, name, description, price, img_source, category FROM item WHERE (item_id = :item_id)";
+                var querySelectItems = "SELECT item_id, name, description, price, img_source, category, producer, model, color, season, \"size\", material, pattern  FROM item WHERE (item_id = :item_id)";
                 using (OracleCommand cmdInsert = new OracleCommand(querySelectItems, conn))
                 {
                     foreach (var item_id in item_ids)
@@ -141,6 +141,13 @@ namespace SzybkoOdziez.ViewModels
                                     Price = reader.GetInt32(3),
                                     ImageUrl = reader.GetString(4),
                                     Category = reader.GetString(5),
+                                    Producer = reader.GetString(6),
+                                    Model = reader.GetString(7),
+                                    Color = reader.GetString(8),
+                                    Season = reader.GetString(9),
+                                    Size = Convert.ToInt32(reader.GetString(10)),
+                                    Material = reader.GetString(11),
+                                    Pattern = reader.GetString(12),
                                 };
                                 Products.Add(sqlproduct);
                             }

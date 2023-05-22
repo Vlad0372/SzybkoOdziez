@@ -71,7 +71,15 @@ namespace SzybkoOdziez.Droid
                             Description = data["description"].ToString(),
                             Price = Convert.ToDecimal(data["price"]),
                             ImageUrl = data["img_source"].ToString(),
-                            Category = data["category"].ToString()
+                            Category = data["category"].ToString(),
+                            Producer = data["producer"].ToString(),
+                            Color = data["color"].ToString(),
+                            Season = data["season"].ToString(),
+                            Material = data["material"].ToString(),
+                            Pattern = data["pattern"].ToString(),
+                            Model = data["model"].ToString(),
+                            Size = Convert.ToInt32(data["size"]),
+
                         };
 
                         productsList.Add(currentProduct);                                   
