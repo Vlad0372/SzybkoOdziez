@@ -3,8 +3,9 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:SzybkoOdziez.Views"
        Title="SzybkoOdziez"
-       x:Class="SzybkoOdziez.AppShell">
-
+       x:Class="SzybkoOdziez.AppShell"
+       FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, 
+    Dark={StaticResource DarkPrimaryColor}}">
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
     
@@ -41,12 +42,13 @@
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor" Value="{x:OnPlatform UWP=Transparent, iOS=White}" />
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="DarkOrange" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{AppThemeBinding Light=DarkOrange, Dark=White}" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Selected">
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor" Value="DarkOrange" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{AppThemeBinding Light=White, Dark=White}" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
@@ -63,7 +65,7 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="DarkOrange" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{AppThemeBinding Light=DarkOrange, Dark=White}" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

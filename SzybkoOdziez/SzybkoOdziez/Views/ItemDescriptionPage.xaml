@@ -105,7 +105,7 @@
                     </Label>
                     <Label 
                         Style="{StaticResource SZO_StyleTxt}"
-                        FontSize="18" FontFamily="Calibri" TextColor="Black"
+                        FontSize="18" FontFamily="Calibri"
                        Grid.Column="0" 
                        Grid.Row="6"
                        Text="Cena">
@@ -113,7 +113,7 @@
                     <Label 
                         Style="{StaticResource SZO_StyleTxt}"
                         x:Name="priceLabel"
-                        FontSize="18" FontFamily="Calibri" TextColor="Black"
+                        FontSize="18" FontFamily="Calibri"
                        Grid.Column="1" 
                        Grid.Row="6">
                     </Label>
