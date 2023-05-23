@@ -3,26 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SzybkoOdziez.Views.UserProfilePage">
     <ContentPage.Content>
-        <StackLayout >
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Mój profil" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                <Label Text="Mój profil" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="36"/>
             </Frame>
 
 
-            <Label Text="Imię"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
+            <Label Text="Imię" Style="{StaticResource SZO_StyleTxt}" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
             <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
 
                 <Label x:Name="labelName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
                 </Frame>
-            <Label Text="Nazwisko"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
+            <Label Text="Nazwisko" Style="{StaticResource SZO_StyleTxt}" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
             <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
                 <Label x:Name="labelLastName"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
                 </Frame>
-            <Label Text="E-mail"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
+            <Label Text="E-mail" Style="{StaticResource SZO_StyleTxt}" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
             <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
                 <Label x:Name="labelMail" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             </Frame>
-            <Label Text="Nazwa nicku"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
+            <Label Text="Nazwa nicku" Style="{StaticResource SZO_StyleTxt}" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" Padding="5"/>
             <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="5" >
                 <Label x:Name="labelNickname"  HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
             </Frame>

@@ -7,6 +7,34 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Light colors -->
+            <Color x:Key="LightPrimaryColor">WhiteSmoke</Color>
+            <Color x:Key="LightSecondaryColor">White</Color>
+            <Color x:Key="LightTextColor">Black</Color>
+
+            <!-- Dark colors -->
+            <Color x:Key="DarkPrimaryColor">Teal</Color>
+            <Color x:Key="DarkSecondaryColor">#005B5B</Color>
+            <Color x:Key="DarkTextColor">White</Color>
+
+            <Style x:Key="SZO_StyleTxt"
+               TargetType="Label">
+                <Setter Property="TextColor"
+                    Value="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+            </Style>
+            
+            <Style x:Key="SZO_StyleBG"
+               TargetType="Label">
+                <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+            </Style>
+            
+            <Style x:Key="SZO_StyleBG2"
+               TargetType="Label">
+                <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+            </Style>
+
             <Color x:Key="Primary">#2196F3</Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>

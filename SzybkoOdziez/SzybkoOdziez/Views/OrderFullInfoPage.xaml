@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:SzybkoOdziez.ViewModels"  
+             xmlns:model="clr-namespace:SzybkoOdziez.Models"
+             x:Class="SzybkoOdziez.Views.OrderFullInfoPage">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource SZO_StyleBG2}" >
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="14" CornerRadius="0">
+                <Label Text="Szczegóły zamówienia" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="24"/>
+            </Frame>
+
+            <Frame Style="{StaticResource SZO_StyleBG}"  Padding="8" CornerRadius="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="ID zamówienia" HorizontalTextAlignment="Start" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                    <Label x:Name="f1" Text="0"  HorizontalOptions="EndAndExpand" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="8" CornerRadius="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Suma płatności" HorizontalTextAlignment="Start" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                    <Label x:Name="f2" Text="0" HorizontalOptions="EndAndExpand" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="8" CornerRadius="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Metoda płatności" HorizontalTextAlignment="Start" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                    <Label x:Name="f3" Text="0" HorizontalOptions="EndAndExpand" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="8" CornerRadius="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Metoda dostawy" HorizontalTextAlignment="Start" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                    <Label x:Name="f4" Text="0" HorizontalOptions="EndAndExpand" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="8" CornerRadius="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Data zamówienia" HorizontalTextAlignment="Start" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                    <Label x:Name="f5" Text="0"  HorizontalOptions="EndAndExpand" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                </StackLayout>
+            </Frame>
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="8" CornerRadius="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Status zamówienia" HorizontalTextAlignment="Start" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                    <Label x:Name="f6" Text="0" HorizontalOptions="EndAndExpand" Style="{StaticResource SZO_StyleTxt}" FontSize="18"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="14" CornerRadius="0">
+                <Label Text="Artykuły" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="24"/>
+            </Frame>
+
+            <StackLayout>
+                <ListView 
+                x:Name="orderProductsListView"
+                HasUnevenRows="True"
+                SeparatorColor="Black"
+                SeparatorVisibility="None"
+                HeightRequest="500"
+                RefreshControlColor="Black"
+                >
+                    <ListView.ItemTemplate x:DataType="model:Product" >
+                        <DataTemplate >
+                            <ViewCell >
+                                <Grid Padding="5" >
+
+                                    <Frame CornerRadius="15" HasShadow="True" >
+                                        <StackLayout Orientation="Horizontal" x:DataType="model:Product">
+
+                                            <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50">
+                                            </Image>
+                                            <StackLayout VerticalOptions="Center">
+                                                <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Small"></Label>
+                                                <Label VerticalOptions="Center" Text="{Binding Price}" ></Label>
+
+                                            </StackLayout>
+
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+            <Button 
+                Clicked="ReturnOrder_Clicked"
+                Text="Dokonaj zwrotu"                 
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="EndAndExpand"
+                Margin="0,0,0,20">
+            </Button>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

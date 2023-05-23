@@ -3,33 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SzybkoOdziez.Views.SettingsPage">
     <ContentPage.Content>
-        <StackLayout >
-            <Frame BackgroundColor="White" Padding="14" CornerRadius="0">
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="14" CornerRadius="0">
                 <Label Text="Ustawienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="30"/>
             </Frame>
 
+            <Frame Style="{StaticResource SZO_StyleBG}"  Padding="8" CornerRadius="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="nightModeLabel" Text="ustawienie1" VerticalOptions="Center" HorizontalTextAlignment="Start" TextColor="Black" FontSize="18"/>
+                    
+                    <Button  
+                        x:Name="nightModeBtn"
+                        Clicked="EnableNightMode_Clicked"
+                        Text="ustawienie1"                 
+                        TextColor="White"
+                        FontSize="12"                   
+                        BackgroundColor="DarkOrange" 
+                        BorderWidth="1.5" 
+                        CornerRadius="50"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Center">
+                    </Button>
+                </StackLayout>
+            </Frame>
 
-           
-
-
-
-
-
-            <Button 
-                
-                Text="Bruh"                 
-                TextColor="White" 
-                BackgroundColor="DarkOrange" 
-                BorderWidth="1.5" 
-                CornerRadius="50"
-                VerticalOptions="EndAndExpand"
-                    >
-            </Button>
-            <Label>
-                <Label.GestureRecognizers>
-
-                </Label.GestureRecognizers>
-            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

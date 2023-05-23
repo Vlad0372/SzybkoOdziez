@@ -156,10 +156,11 @@ namespace SzybkoOdziez.Services
                             }
                         }
 
+
                         var currentOrder = new Order()
                         {
                             Id = Convert.ToInt32(data["order_order_id"]),
-                            Number = "1234",
+                            Number = data["order_order_id"].ToString(),
                             CreatedDate = DateTime.Now.Date.ToString(),
                             TotalPrice = 0,
                             Products = currentProducts,

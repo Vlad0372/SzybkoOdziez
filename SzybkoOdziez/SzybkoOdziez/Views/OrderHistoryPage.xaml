@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:services="clr-namespace:SzybkoOdziez.Services"
              x:Class="SzybkoOdziez.Views.OrderHistoryPage"
-             xmlns:model="clr-namespace:SzybkoOdziez.Models">
+             xmlns:model="clr-namespace:SzybkoOdziez.Models"
+             Style="{StaticResource SZO_StyleBG2}">
     <ContentPage.Resources>
 
         <DataTemplate x:Key="SingleItemOrderTemplate" x:DataType="model:Order">
-            <StackLayout>
+            <StackLayout Style="{StaticResource SZO_StyleBG}">
                 <Grid Margin="0,0,0,40">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -19,12 +20,12 @@
                         <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,5,0,0" >
-                        <Label x:Name="Numerll" Text="Numer zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
-                        <Label Text="{Binding Number}" FontSize="Small" Margin="0,-5,0,0"/>
+                        <Label x:Name="Numerll" Style="{StaticResource SZO_StyleTxt}" Text="Numer zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
+                        <Label Text="{Binding Number}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                     </StackLayout>
                     <StackLayout Grid.Column="0" Grid.Row="1" Margin="5,0,0,0" >
-                        <Label Text="Data zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
-                        <Label Text="{Binding CreatedDate}" FontSize="Small" Margin="0,-5,0,0"/>
+                        <Label Text="Data zamówienia" Style="{StaticResource SZO_StyleTxt}" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
+                        <Label Text="{Binding CreatedDate}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                     </StackLayout>
                     <Frame BackgroundColor="LightGray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
                                             Grid.Column="0" 
@@ -35,11 +36,10 @@
                                             BackgroundColor="#F6F6F6"
                                             TextColor="Gray"
                                             FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
-                                            Text="Dokonaj zwrotu"
+                                            Text="Pokaż więcej"
                                             Padding="10,0,0,0">
                             <Label.GestureRecognizers>
-                                <!-- tymczasowo tutaj jest dokonanie zwrotu -->
-                                <TapGestureRecognizer Tapped="DokonajZwrotu_Tapped"/>
+                                <TapGestureRecognizer Tapped="ShowFullOrder_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </Frame>
@@ -72,7 +72,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MultipleItemsOrderTemplate" x:DataType="model:Order">
-            <StackLayout>
+            <StackLayout Style="{StaticResource SZO_StyleBG}">
                 <Grid Margin="0,0,0,40">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -84,12 +84,12 @@
                         <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
                     <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,5,0,0" >
-                        <Label x:Name="Numerll" Text="Numer zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
-                        <Label Text="{Binding Number}" FontSize="Small" Margin="0,-5,0,0"/>
+                        <Label x:Name="Numerll" Style="{StaticResource SZO_StyleTxt}" Text="Numer zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
+                        <Label Text="{Binding Number}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                     </StackLayout>
                     <StackLayout Grid.Column="0" Grid.Row="1" Margin="5,0,0,0" >
-                        <Label Text="Data zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
-                        <Label Text="{Binding CreatedDate}" FontSize="Small" Margin="0,-5,0,0"/>
+                        <Label Text="Data zamówienia" Style="{StaticResource SZO_StyleTxt}" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
+                        <Label Text="{Binding CreatedDate}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                     </StackLayout>
                     <Frame BackgroundColor="LightGray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
                                             Grid.Column="0" 
@@ -103,7 +103,7 @@
                                             Text="Pokaż więcej"
                                             Padding="10,0,0,0">
                             <Label.GestureRecognizers>
-
+                                <TapGestureRecognizer Tapped="ShowFullOrder_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                     </Frame>
@@ -147,7 +147,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Historia zamówień" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" TextColor="#555"/>
+            <Label Style="{StaticResource SZO_StyleTxt}" Text="Historia zamówień" FontSize="Large" Margin="10" HorizontalTextAlignment="Center"/>
             <CollectionView x:Name="OrderList" ItemsSource="{Binding Orders}" Margin="10" ItemTemplate="{StaticResource OrderTypeSelector}">
                 
             </CollectionView>

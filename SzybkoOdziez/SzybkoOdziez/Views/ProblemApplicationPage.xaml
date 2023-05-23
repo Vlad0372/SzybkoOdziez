@@ -5,24 +5,26 @@
               xmlns:services="clr-namespace:SzybkoOdziez.Services"
               xmlns:model="clr-namespace:SzybkoOdziez.Models">
     <ContentPage.Content>
-        <StackLayout>
-            
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Zgłoszenie problemu z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
+
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                <Label Text="Zgłoszenie problemu z aplikacją" HorizontalTextAlignment="Center" 
+                       Style="{StaticResource SZO_StyleTxt}" FontSize="36"/>
             </Frame>
 
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Wybierz opcję problemy z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25"/>
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                <Label Text="Wybierz opcję problemy z aplikacją" HorizontalTextAlignment="Center" 
+                       Style="{StaticResource SZO_StyleTxt}" FontSize="25"/>
             </Frame>
             <!--Wybory nad płatnością-->
-            <RadioButton Content="Błąd załadowaniem się strony" x:Name="AppProblem1" IsChecked="False">
+            <RadioButton Content="Błąd załadowaniem się strony" x:Name="AppProblem1" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
-            <RadioButton Content="Brak połączeniem się z bazą"  x:Name="AppProblem2" IsChecked="False">
+            <RadioButton Content="Brak połączeniem się z bazą"  x:Name="AppProblem2" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
-            <RadioButton Content="Nie można dokonać zakupu" x:Name="AppProblem3" IsChecked="False">
+            <RadioButton Content="Nie można dokonać zakupu" x:Name="AppProblem3" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
 
-            <RadioButton Content="Nie udało się dokonać płatności" x:Name="AppProblem4" IsChecked="False">
+            <RadioButton Content="Nie udało się dokonać płatności" x:Name="AppProblem4" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
             <Button Clicked="ClearSelection_clicked"
                 Text="Odznacz moje decyzje"  
@@ -33,11 +35,13 @@
                     Margin="0,0,0,20">
             </Button>
 
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Opisz problem z aplikacją" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25" />
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                <Label Text="Opisz problem z aplikacją" HorizontalTextAlignment="Center" 
+                       Style="{StaticResource SZO_StyleTxt}" FontSize="25" />
             </Frame>
-            <Entry Placeholder="Opisz problem z aplikacją" 
-       TextColor="Black"
+            <Entry Placeholder="Opisz problem z aplikacją"
+                   
+       Style="{StaticResource SZO_StyleTxt}"
        FontSize="20"
        Keyboard="Chat"
        MaxLength="1000" />

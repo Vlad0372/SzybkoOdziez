@@ -8,6 +8,7 @@ using Oracle.ManagedDataAccess.Client;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Android.Media.TV;
+using Acr.UserDialogs;
 
 namespace SzybkoOdziez.Views
 {
@@ -17,97 +18,39 @@ namespace SzybkoOdziez.Views
         public SettingsPage()
         {
             InitializeComponent();
-            // OGARNĄĆ ŻEBY INNY UŻYTKOWNIK ZOBACZYŁ SWOJE DANE!!!!!
-            string Namee = "";
-            string LastNamee = "";
-            string Maill = "";
-            string Nicknamee = "";
-            string Passwordd = "";
-            int userId = GetLoggedInUserID("ada", "ada");
-
-
-
-            string ConnectionString = "Data Source=(DESCRIPTION=" +
-               "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
-               "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
-               "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
-
-            using (OracleConnection conn = new OracleConnection(ConnectionString))
-            {
-                conn.Open();
-
-                var query = "SELECT name, last_name, mail, nickname from \"user\" where user_id = :id";
-
-
-                var param = new OracleParameter(":id", OracleDbType.Int32);
-                //param.Value = userId;
-                param.Value = 99;
-                using (var cmd = new OracleCommand(query, conn))
-                {
-                    cmd.Parameters.Add(param);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-
-
-                        if (reader.Read())
-                        {
-
-
-                            Namee = reader.GetString(0);
-                            LastNamee = reader.GetString(1);
-                            Maill = reader.GetString(2);
-                            Nicknamee = reader.GetString(3);
-
-
-                            // przypisanie imienia i nazwiska użytkownika do kontrolki Label
-
-
-                        }
-                        reader.Close();
-                        
-                    }
-                }
-            }
-
-
-
+            SwitchTheme();
         }
 
-        public int GetLoggedInUserID(string nicknamee, string passwordd)
+        public void EnableNightMode_Clicked(object sender, EventArgs e)
         {
-            string ConnectionString = "Data Source=(DESCRIPTION=" +
-               "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
-               "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
-               "User Id=s100824;Password=Sddb2023;";
-            int userId = -1;
-            using (OracleConnection connection = new OracleConnection(ConnectionString))
+            SwitchTheme();
+
+            if (Application.Current.UserAppTheme == OSAppTheme.Light)
             {
-                connection.Open();
-                var query = "SELECT user_id from \"user\" where nickname = :nickname AND password = :password";
-                OracleCommand command = new OracleCommand(query, connection);
-                command.Parameters.Add("nickname", nicknamee);
-                command.Parameters.Add("password", passwordd);
-                OracleDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    userId = reader.GetInt32(0);
-                }
-
-                reader.Close();
-
-                return userId;
+                UserDialogs.Instance.Toast("Tryb nocny włączony pomyślnie!", TimeSpan.FromSeconds(2));
+            }
+            else
+            {
+                UserDialogs.Instance.Toast("Tryb nocny wyłączony pomyślnie!", TimeSpan.FromSeconds(2));
             }
         }
 
+        private void SwitchTheme()
+        {
+            if (Application.Current.UserAppTheme == OSAppTheme.Light)
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Dark;
 
+                nightModeLabel.Text = "Tryb nocny (włączono)";
+                nightModeBtn.Text = "Wyłącz";
+            }
+            else
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Light;
 
-
-
-
-
+                nightModeLabel.Text = "Tryb nocny (wyłączono)";
+                nightModeBtn.Text = "Włącz";
+            }
+        }
     }
 }

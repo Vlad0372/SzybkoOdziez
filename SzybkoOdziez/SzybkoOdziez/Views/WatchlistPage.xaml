@@ -6,8 +6,8 @@
         <ToolbarItem Order="Primary" Priority="1" Text="Filtruj"  Clicked="FilterButtonClick" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Lista obserwowanych przedmiotów" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" TextColor="#555"/>
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
+            <Label Text="Lista obserwowanych przedmiotów" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}"/>
             <CollectionView x:Name="ProductList" ItemsSource="{Binding FilteredProducts}" Margin="10">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -24,7 +24,7 @@
                             <Image Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
                             
                         </StackLayout>-->
-                        <StackLayout>
+                        <StackLayout Style="{StaticResource SZO_StyleBG}">
 
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -44,8 +44,8 @@
                                     <Image Grid.Column="0" Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
                                     <!--tekst produktu (nazwa, cena)-->
                                     <StackLayout Grid.Column="1">
-                                        <Label Text="{Binding Name}" FontSize="Medium"/>
-                                        <Label Text="{Binding Price}" FontSize="Small" />
+                                        <Label Text="{Binding Name}" FontSize="Medium"  Style="{StaticResource SZO_StyleTxt}"/>
+                                        <Label Text="{Binding Price}" FontSize="Small"  Style="{StaticResource SZO_StyleTxt}"/>
                                     </StackLayout>
                                 </Grid>
                                 <!--kontener smietnika-->

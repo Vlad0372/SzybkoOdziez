@@ -16,7 +16,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Order="Primary" Priority="1" Text="Filtruj"  Clicked="FilterButtonClick" />
     </ContentPage.ToolbarItems>
-    <StackLayout BackgroundColor="#B6B6B6">
+    <StackLayout Style="{StaticResource SZO_StyleBG}">
         <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#32312D" HeightRequest="200">
             <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" VerticalOptions="Fill" BackgroundColor="#50C878">
                 <ContentView Padding="0,0,0,0"  VerticalOptions="Fill" BackgroundColor="Aqua">
@@ -99,7 +99,7 @@
                 </Frame>
             </Grid>
         </StackLayout>
-        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10" BackgroundColor="#B6B6B6">
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10">
             <ImageButton Source="like.png" 
                          HorizontalOptions="Center" 
                          VerticalOptions="CenterAndExpand"

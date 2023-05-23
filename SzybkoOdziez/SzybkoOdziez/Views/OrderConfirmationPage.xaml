@@ -5,11 +5,11 @@
              xmlns:local="clr-namespace:SzybkoOdziez.ViewModels"  
              xmlns:model="clr-namespace:SzybkoOdziez.Models">
 
+    
+    <StackLayout Style="{StaticResource SZO_StyleBG2}">
 
-    <StackLayout>
-
-        <Frame BackgroundColor="White" Padding="15" CornerRadius="0">
-            <Label Text="Podsumowanie twojego zamówienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25"/>
+        <Frame Style="{StaticResource SZO_StyleBG}" Padding="15" CornerRadius="0">
+            <Label Text="Podsumowanie twojego zamówienia" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="25"/>
         </Frame>
 
        
@@ -17,10 +17,10 @@
         <ScrollView>
             <StackLayout>
                 <!--suma danego produktu-->
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Suma twojego zamówienia wynosi" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+                <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                    <Label Text="Suma twojego zamówienia wynosi" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
-                <Label x:Name="TotalLabel" Text="{Binding Price}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="25" x:DataType="model:Product"/>
+                <Label x:Name="totalPriceLabel" Text="{Binding Price}" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="25" x:DataType="model:Product"/>
 
 
 
@@ -28,56 +28,68 @@
                 <!---->
             <!--Napis z platnością-->
 
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Wybierz opcję płatności" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+                <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                    <Label Text="Wybierz opcję płatności" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             <!--Wybory nad płatnością-->
-            <RadioButton Content="Blik" GroupName="platnosc" IsChecked="True">
+                <RadioButton x:Name="paymentRadioBtn1" Content="Blik" GroupName="platnosc" IsChecked="True" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
-            <RadioButton Content="Karta kredytowa"  GroupName="platnosc" IsChecked="False">
+                <RadioButton x:Name="paymentRadioBtn2" Content="Karta kredytowa"  GroupName="platnosc" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
-            <RadioButton Content="Płatność gotówce" GroupName="platnosc" IsChecked="False">
+                <RadioButton x:Name="paymentRadioBtn3" Content="Płatność gotówce" GroupName="platnosc" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
 
 
             <!--Napis z dostawy-->
 
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Wybierz opcję dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15"/>
+                <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                    <Label Text="Wybierz opcję dostawy" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             <!--Wybory nad dostawy-->
-            <RadioButton Content="Inpost" GroupName="dostawa" IsChecked="True">
+                <RadioButton x:Name="deliveryRadioBtn1" Content="Inpost" GroupName="dostawa" IsChecked="True" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
-            <RadioButton Content="DHL" GroupName="dostawa" IsChecked="False">
+                <RadioButton x:Name="deliveryRadioBtn2" Content="DHL" GroupName="dostawa" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
-            <RadioButton Content="Poczta Polska" GroupName="dostawa" IsChecked="False">
+                <RadioButton x:Name="deliveryRadioBtn3" Content="Poczta Polska" GroupName="dostawa" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
 
 
             <!--dane do dostawy-->
 
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" TextColor="Black" FontSize="15" />
+                <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                    <Label Text="Uzupełnij dane do dostawy" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="15" />
             </Frame>
-            <Entry Placeholder="Miejscowość"
-                   TextColor="Black" 
+                <Entry 
+                    x:Name="placeTxt"
+                    Placeholder="Miejscowość"
+                    
                    PlaceholderColor="Silver"
-                   HorizontalTextAlignment="Center"   >
+                   HorizontalTextAlignment="Center"  
+                    Style="{StaticResource SZO_StyleTxt}">
             </Entry>
-            <Entry Placeholder="Ulica"
-                   TextColor="Black" 
+            <Entry 
+                    x:Name="streetTxt"
+                    Placeholder="Ulica"
+                   
                    PlaceholderColor="Silver"
-                   HorizontalTextAlignment="Center"   >
+                   HorizontalTextAlignment="Center" 
+                Style="{StaticResource SZO_StyleTxt}">
             </Entry>
-            <Entry Placeholder="Kod pocztowy"
-                   TextColor="Black" 
+                <Entry 
+                    x:Name="postalCodeTxt"
+                    Placeholder="Kod pocztowy"
+                  
                    PlaceholderColor="Silver"
-                   HorizontalTextAlignment="Center"   >
+                   HorizontalTextAlignment="Center"  
+                    Style="{StaticResource SZO_StyleTxt}">
             </Entry>
-            <Entry Placeholder="Województwo"
-                   TextColor="Black" 
+                <Entry 
+                    x:Name="voivodeshipTxt"
+                    Placeholder="Województwo"
+                   
                    PlaceholderColor="Silver"
-                   HorizontalTextAlignment="Center"   >
+                   HorizontalTextAlignment="Center" 
+                    Style="{StaticResource SZO_StyleTxt}">
             </Entry>
                 </StackLayout>
         </ScrollView>

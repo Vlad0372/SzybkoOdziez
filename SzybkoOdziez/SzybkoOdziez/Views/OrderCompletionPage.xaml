@@ -8,16 +8,18 @@
               xmlns:model="clr-namespace:SzybkoOdziez.Models">
     <ContentPage.Content x:DataType="local:OrderCompletionViewModel"
                          >
-        <StackLayout>
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
             <Label Text="Dziękujemy za zakupy!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
-                   FontSize="25"/>
+                   FontSize="25"
+                   Style="{StaticResource SZO_StyleTxt}"/>
 
             <Label Text="Twój numer zamówienia to: "
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
-                   FontSize="20"/>
+                   FontSize="20"
+                   Style="{StaticResource SZO_StyleTxt}"/>
 
             <Label x:Name="orderNumberLabel" Text="{Binding orderNumberLabel}"
                     VerticalOptions="CenterAndExpand" 

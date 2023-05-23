@@ -8,10 +8,10 @@
 
     <!--zawartosc strony-->
     <ContentPage.Content x:DataType="local:ShoppingCartViewModel">
-        <StackLayout x:DataType="model:Product">
+        <StackLayout x:DataType="model:Product" Style="{StaticResource SZO_StyleBG2}">
 
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Twoje zamówienie" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                <Label Text="Twoje zamówienie" Style="{StaticResource SZO_StyleTxt}"  HorizontalTextAlignment="Center"  FontSize="36"/>
             </Frame>
 
             <ListView x:DataType="local:ShoppingCartViewModel"

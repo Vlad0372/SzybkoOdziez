@@ -124,5 +124,14 @@ namespace SzybkoOdziez.Views
             await DisplayAlert("Zwrot", "Dokonano zwrotu tego zamówienia", "Ok");
 
         }
+
+        private void ShowFullOrder_Tapped(object sender, EventArgs e)
+        {
+            var tappedLabel = (Label)sender;
+            var tappedOrder = (Order)tappedLabel.BindingContext;
+
+            Navigation.PushAsync(new OrderFullInfoPage(tappedOrder.Id.ToString()));       
+            Navigation.RemovePage(this);
+        }
     }
 }

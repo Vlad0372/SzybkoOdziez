@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SzybkoOdziez.Views.UserProfilePageChangeData">
     <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="White" Padding="24" CornerRadius="0">
-                <Label Text="Edytuj dane" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
+            <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                <Label Text="Edytuj dane" Style="{StaticResource SZO_StyleTxt}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
             </Frame>
 
 

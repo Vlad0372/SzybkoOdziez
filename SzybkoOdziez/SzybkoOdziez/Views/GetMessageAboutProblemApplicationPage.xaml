@@ -4,19 +4,20 @@
              x:Class="SzybkoOdziez.Views.GetMessageAboutProblemApplicationPage"
               Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout  Style="{StaticResource SZO_StyleBG}">
+            
             <Label Text="Twoje ogłoszenie zostało wysłane!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                 FontSize="25"
-                   TextColor="DarkOrange"
+                    Style="{StaticResource SZO_StyleTxt}"
                    />
 
             <Label Text="Kliknij przycisk żeby wrócić na główną stronę"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                 FontSize="17"
-                   TextColor="Black"
+                    Style="{StaticResource SZO_StyleTxt}"
                    />
             <Button
                 Clicked="return_main_page_clicked"
