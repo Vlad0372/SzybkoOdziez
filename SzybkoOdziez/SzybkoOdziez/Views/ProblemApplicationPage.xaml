@@ -39,9 +39,9 @@
                 <Label Text="Opisz problem z aplikacją" HorizontalTextAlignment="Center" 
                        Style="{StaticResource SZO_StyleTxt}" FontSize="25" />
             </Frame>
-            <Entry Placeholder="Opisz problem z aplikacją"
-                   
-       Style="{StaticResource SZO_StyleTxt}"
+            <Entry x:Name="entryReportBody"
+       Placeholder="Opisz problem z aplikacją" 
+       TextColor="Black"
        FontSize="20"
        Keyboard="Chat"
        MaxLength="1000" />

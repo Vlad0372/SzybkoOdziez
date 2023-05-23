@@ -17,6 +17,9 @@ namespace SzybkoOdziez
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
+            var app = (App)Application.Current;
+            app.isLoggedIn = false;
+            app.userId = 99;
             await Shell.Current.GoToAsync("//LoginPage");
         }
     }

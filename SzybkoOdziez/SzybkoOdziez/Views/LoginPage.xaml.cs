@@ -15,6 +15,7 @@ namespace SzybkoOdziez.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        
         public LoginPage()
         {
             InitializeComponent();
@@ -35,13 +36,16 @@ namespace SzybkoOdziez.Views
                 OracleCommand command = new OracleCommand();
 
                 command.Connection = conn;
-                command.CommandText = "select * from \"user\" where nickname = '" + userLogin.Text + "' and password = '" + userPass.Text + "'";
+                command.CommandText = "select user_id from \"user\" where nickname = '" + userLogin.Text + "' and password = '" + userPass.Text + "'";
                 command.CommandType = System.Data.CommandType.Text;
                
                 object isUserExists = command.ExecuteScalar();
 
                 if (isUserExists != null)
                 {
+                    var app = (App)Application.Current;
+                    app.isLoggedIn = true;
+                    app.userId = Convert.ToInt32(isUserExists);
                     await Shell.Current.GoToAsync("//MainPage");
                     Navigation.RemovePage(this);
                 }

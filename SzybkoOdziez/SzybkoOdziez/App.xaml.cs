@@ -20,6 +20,7 @@ namespace SzybkoOdziez
             "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
             "User Id=s100824;Password=Sddb2023;";
         public int userId = 99;
+        public bool isLoggedIn = false;
 
         public App()
         {
