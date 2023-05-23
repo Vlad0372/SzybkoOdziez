@@ -13,9 +13,17 @@ namespace SzybkoOdziez.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserProfilePageChangeData : ContentPage
     {
+        int user_id;
         public UserProfilePageChangeData()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            var app = (App)Application.Current;
+            user_id = app.userId;
         }
         
         private bool VerifyOldPassword(int user_id, string oldPassword)
@@ -63,7 +71,7 @@ namespace SzybkoOdziez.Views
         {
 
             string old_passworddd = old_password.Text;
-            int user_id = 99;
+            int user_id = this.user_id;
             if (VerifyOldPassword(user_id, old_passworddd))
             {
                 string ConnectionString = "Data Source=(DESCRIPTION=" +
@@ -96,7 +104,7 @@ namespace SzybkoOdziez.Views
                     using (OracleCommand cmdInsert = new OracleCommand(query, conn))
                     {
 
-                        int userrr = 99;
+                        int userrr = this.user_id;
 
                         string maillll = mail.Text;
                         string nicknameee = nickname.Text;

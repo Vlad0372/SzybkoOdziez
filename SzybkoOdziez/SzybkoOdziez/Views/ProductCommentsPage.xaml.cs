@@ -28,6 +28,7 @@ namespace SzybkoOdziez.Views
         private ProductCommentsViewModel _viewModel;
         private Product _product;
         private string _fileFullPath;
+        int user_id;
         //private ObservableCollection<Comment> _comments;
 
 
@@ -48,6 +49,8 @@ namespace SzybkoOdziez.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            var app = (App)Application.Current;
+            user_id = app.userId;
             _viewModel.OnProductCommentsOpen(_product);
         }
 
@@ -58,7 +61,7 @@ namespace SzybkoOdziez.Views
             comment.Content = CommentTextEditor.Text;
             int newcommentDBID = AddCommentToDB(comment);
             comment.DBId = newcommentDBID;
-            comment.UserId = 99;
+            comment.UserId = user_id;
             comment.ProductId = _product.Id;
 
             _viewModel.Comments.Add(comment);
@@ -146,7 +149,7 @@ namespace SzybkoOdziez.Views
                         cmd.Parameters.Add("title", comment.Title);
                         cmd.Parameters.Add("content", comment.Content);
                         cmd.Parameters.Add("item_id", _product.Id);
-                        cmd.Parameters.Add("user_id", 99);
+                        cmd.Parameters.Add("user_id", comment.UserId);
                         if (_fileFullPath != null)
                         {
                             cmd.Parameters.Add(":comment_image", OracleDbType.Blob).Value = imageData;

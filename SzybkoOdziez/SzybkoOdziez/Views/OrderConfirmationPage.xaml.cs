@@ -23,6 +23,7 @@ namespace SzybkoOdziez.Views
         ShoppingCartViewModel _viewModel;
         public ObservableCollection<Product> Products { get; set; }
         private Order currentOrder { get; set; }
+        int user_id;
 
         string connectionString = "Data Source=(DESCRIPTION=" +
                "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
@@ -61,6 +62,8 @@ namespace SzybkoOdziez.Views
           
             var app = (App)Application.Current;
             var orderHistoryDataStore = app.orderHistoryDataStore;
+            user_id = app.userId;
+
             int orderId = 0;
             Random rnd = new Random();
 
@@ -225,7 +228,7 @@ namespace SzybkoOdziez.Views
                     command.Parameters.Add(new OracleParameter("PAYMENT_METHOD", bruh));
                     command.Parameters.Add(new OracleParameter("DELIVERY_OPTION", bruh));
                     command.Parameters.Add(new OracleParameter("DELIVERY_DESTINATION_ID", 44));
-                    command.Parameters.Add(new OracleParameter("USER_USER_ID", 104));
+                    command.Parameters.Add(new OracleParameter("USER_USER_ID", user_id));
                     command.Parameters.Add(new OracleParameter("\"date\"", currentDate));
                     command.Parameters.Add(new OracleParameter("ORDER_STATUS", bruh));
 

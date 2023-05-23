@@ -45,6 +45,8 @@ namespace SzybkoOdziez.ViewModels
             }
         }
 
+
+
         async Task LoadOrderHistoryAsync_TEST()
         {
             Orders.Clear();

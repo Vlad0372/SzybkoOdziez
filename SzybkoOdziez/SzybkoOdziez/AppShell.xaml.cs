@@ -20,6 +20,9 @@ namespace SzybkoOdziez
             var app = (App)Application.Current;
             app.isLoggedIn = false;
             app.userId = 99;
+            app.orderHistoryDataStore.ClearAll();
+            app.shoppingCartDataStore.ClearAll();
+            app.wishlistDataStore.ClearAll();
             await Shell.Current.GoToAsync("//LoginPage");
         }
     }

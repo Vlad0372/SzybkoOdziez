@@ -16,6 +16,7 @@ namespace SzybkoOdziez.Views
     {
         private List<Product> productsList = new List<Product>();
         private Product _currentProduct { get; set; }
+        int user_id;
 
         private string ItemCategory = "Wszystkie";
         public MainPage()
@@ -26,6 +27,13 @@ namespace SzybkoOdziez.Views
 
             _currentProduct = GetRandProductInfo();
             SetCurrentProduct(_currentProduct);
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            var app = (App)Application.Current;
+            user_id = app.userId;
         }
 
         private void ShowMore(object sender, EventArgs e)
@@ -47,7 +55,7 @@ namespace SzybkoOdziez.Views
 
         private async void OnLikeClicked(object sender, EventArgs args)
         {
-            AddProductToUserObserved(99, _currentProduct.Id);
+            AddProductToUserObserved(user_id, _currentProduct.Id);
 
             _currentProduct = GetRandProductInfo();
             SetCurrentProduct(_currentProduct);

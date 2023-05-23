@@ -56,6 +56,8 @@ namespace SzybkoOdziez.ViewModels
         public void InitializeShoppingCartFromDB(int user_id)
         {
             Products.Clear();
+            var app = (App)Application.Current;
+            user_id = app.userId;
             string ConnectionString = "Data Source=(DESCRIPTION=" +
             "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
             "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
@@ -136,7 +138,6 @@ namespace SzybkoOdziez.ViewModels
 
 
 
-                var app = (App)Application.Current;
                 var shoppingCartDataStore = app.shoppingCartDataStore;
                 shoppingCartDataStore.ClearAll();
                 foreach(Product product in Products)

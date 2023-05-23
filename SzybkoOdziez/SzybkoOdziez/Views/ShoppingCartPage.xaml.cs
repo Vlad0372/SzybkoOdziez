@@ -16,6 +16,8 @@ namespace SzybkoOdziez.Views
     public partial class ShoppingCartPage : ContentPage
     {
         private ShoppingCartViewModel _viewModel;
+        int user_id;
+
         public ShoppingCartPage()
         {
             InitializeComponent();
@@ -27,9 +29,11 @@ namespace SzybkoOdziez.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.InitializeShoppingCartFromDB(99);
+            var app = (App)Application.Current;
+            user_id = app.userId;
+            _viewModel.InitializeShoppingCartFromDB(user_id);
             _viewModel.OnShoppingCartOpen();
-
+            
         }
 
       
@@ -58,7 +62,7 @@ namespace SzybkoOdziez.Views
                 await shoppingCartDataStore.DeleteItemAsync(tappedProduct);
                 _viewModel.OnShoppingCartOpen();
             }
-            RemoveItemFromUserObserved(99, tappedProduct.Id);
+            RemoveItemFromUserObserved(user_id, tappedProduct.Id);
 
         }
 
@@ -112,7 +116,7 @@ namespace SzybkoOdziez.Views
                 if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
                 {
                     await shoppingCartDataStore.ClearAll();
-                    DeleteAllFromShoppingCartUserDB(app.userId);
+                    DeleteAllFromShoppingCartUserDB(user_id);
                     _viewModel.OnShoppingCartOpen();
 
                     await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");

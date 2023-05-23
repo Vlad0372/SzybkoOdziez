@@ -99,6 +99,17 @@ namespace SzybkoOdziez.Services
             }
             return new Order();
         }
+        public async Task ClearAll()
+        {
+            // Removes all products from the product list
+            if (_orders != null)
+            {
+                for (int i = _orders.Count - 1; i >= 0; i--)
+                {
+                    await DeleteItemAsync(_orders[i]);
+                }
+            }
+        }
         private List<Order> GetOrdersFromDB()
         {
             var orders = new List<Order>();

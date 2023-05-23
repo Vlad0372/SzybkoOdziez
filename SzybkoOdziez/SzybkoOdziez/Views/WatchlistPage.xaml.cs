@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Acr.UserDialogs;
 using Oracle.ManagedDataAccess.Client;
+using Org.BouncyCastle.Bcpg;
 
 namespace SzybkoOdziez.Views
 {
@@ -94,7 +95,7 @@ namespace SzybkoOdziez.Views
             //    .FirstOrDefault(prod => prod.Id == (int)tappedEventArgs.Parameter);
             //((WatchlistViewModel)BindingContext).Products.Remove(product);
 
-            RemoveItemFromUserObserved(99, tappedProduct.Id);
+            RemoveItemFromUserObserved(app.userId, tappedProduct.Id);
 
         }
 
@@ -165,7 +166,7 @@ namespace SzybkoOdziez.Views
             string ConnectionString = app.connectionString;
             string queryString = "INSERT INTO shopping_cart (user_user_id, item_item_id)" +
                 "VALUES (:user_id, :item_id)";
-            int userId = 99;
+            int userId = app.userId;
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
                 using (OracleCommand cmd = new OracleCommand(queryString, conn))

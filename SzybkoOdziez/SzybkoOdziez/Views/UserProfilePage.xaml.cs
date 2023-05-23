@@ -14,6 +14,7 @@ namespace SzybkoOdziez.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserProfilePage : ContentPage
     {
+        int user_id;
         public UserProfilePage()
         {
             InitializeComponent();
@@ -27,12 +28,14 @@ namespace SzybkoOdziez.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+            var app = (App)Application.Current;
+            user_id = app.userId;
             string Namee = "";
             string LastNamee = "";
             string Maill = "";
             string Nicknamee = "";
             string Passwordd = "";
-            int userId = GetLoggedInUserID("ada", "ada");
+            //int userId = GetLoggedInUserID("ada", "ada");
 
 
 
@@ -52,7 +55,7 @@ namespace SzybkoOdziez.Views
 
                 var param = new OracleParameter(":id", OracleDbType.Int32);
                 //param.Value = userId;
-                param.Value = 99;
+                param.Value = user_id;
                 using (var cmd = new OracleCommand(query, conn))
                 {
                     cmd.Parameters.Add(param);
@@ -114,8 +117,16 @@ namespace SzybkoOdziez.Views
 
         private void button_change_data_user_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new UserProfilePageChangeData());
-            Navigation.RemovePage(this);
+            var app = (App)Application.Current;
+            if (app.isLoggedIn)
+            {
+                Navigation.PushAsync(new UserProfilePageChangeData());
+                Navigation.RemovePage(this);
+            }
+            else
+            {
+                DisplayAlert("Niezalogowany użytkownik", "Proszę się zalogować by korzystać z tej funkcji", "Ok");
+            }
         }
     }
 }
