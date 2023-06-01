@@ -140,7 +140,7 @@ namespace SzybkoOdziez.ViewModels
                                     Id = reader.GetInt32(0),
                                     Name = reader.GetString(1),
                                     Description = reader.GetString(2),
-                                    Price = reader.GetInt32(3),
+                                    Price = reader.GetDecimal(3),
                                     ImageUrl = reader.GetString(4),
                                     Category = reader.GetString(5),
                                     Producer = reader.GetString(6),

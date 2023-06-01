@@ -24,55 +24,62 @@
                             <Image Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
                             
                         </StackLayout>-->
-                        <StackLayout Style="{StaticResource SZO_StyleBG}">
+                        <StackLayout Style="{StaticResource SZO_StyleBG}" >
+                            <Frame BorderColor ="Black" Padding="15" CornerRadius="20" Margin="10">
+                                <Grid >
 
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="150" />
-                                </Grid.ColumnDefinitions>
-                                <!--grid w ktorym jest zdjecie produktu i tekst produktu-->
-                                <Grid Margin="10,5" x:Name="WatchlistProductStackLayout">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnWishlistProductStackLayoutTapped"/>
-                                    </Grid.GestureRecognizers>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="60" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="150" />
                                     </Grid.ColumnDefinitions>
-                                    <!--zdjecie produktu-->
-                                    <Image Grid.Column="0" Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
-                                    <!--tekst produktu (nazwa, cena)-->
-                                    <StackLayout Grid.Column="1">
-                                        <Label Text="{Binding Name}" FontSize="Medium"  Style="{StaticResource SZO_StyleTxt}"/>
-                                        <Label Text="{Binding Price}" FontSize="Small"  Style="{StaticResource SZO_StyleTxt}"/>
-                                    </StackLayout>
-                                </Grid>
-                                <!--kontener smietnika-->
-                                <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 25, 0">
-                                    <!--obrazek koszyk, dodawanie produktu do koszyka-->
-                                    <Image Grid.Column="0" Source="shoppingCart.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
+                                    <!--grid w ktorym jest zdjecie produktu i tekst produktu-->
+                                    <Grid Margin="10,5" x:Name="WatchlistProductStackLayout">
+
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnWishlistProductStackLayoutTapped"/>
+                                        </Grid.GestureRecognizers>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="60" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <!--zdjecie produktu-->
+                                        <Image Grid.Column="0" Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
+                                        <!--tekst produktu (nazwa, cena)-->
+                                        <StackLayout Grid.Column="1">
+
+                                            <Label Text="{Binding Name}"  FontSize="Medium"  Style="{StaticResource SZO_StyleTxt}"/>
+                                            <Label Text="{Binding Price, StringFormat='{}{0} zł'}"  FontSize="Small"  Style="{StaticResource SZO_StyleTxt}"  >
+
+                                            </Label>
+
+                                        </StackLayout>
+                                    </Grid>
+                                    <!--kontener smietnika-->
+                                    <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 25, 0">
+                                        <!--obrazek koszyk, dodawanie produktu do koszyka-->
+                                        <Image Grid.Column="0" Source="shoppingCart.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
                                                         Tapped="OnWishlistProductShoppingCartTapped"
                                                         CommandParameter="{Binding Id}"
                                                         >
-                                            </TapGestureRecognizer>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                    <!--obrazek smietnik, usuwanie produktu z listy obserwowanych przedmiotow-->
-                                    <Image Grid.Column="1" Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
+                                                </TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <!--obrazek smietnik, usuwanie produktu z listy obserwowanych przedmiotow-->
+                                        <Image Grid.Column="1" Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
                                                         Tapped="OnWishlistProductTrashcanTapped"
                                                         CommandParameter="{Binding Id}"
                                                         >
-                                            </TapGestureRecognizer>
-                                        </Image.GestureRecognizers>
-                                    </Image>
+                                                </TapGestureRecognizer>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                            <BoxView HeightRequest="2" BackgroundColor="LightGray" Margin="0, 5" />
+                            </Frame>
+                          
                         </StackLayout>
 
 

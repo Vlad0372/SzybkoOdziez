@@ -26,6 +26,8 @@ namespace SzybkoOdziez.Views
         {
             InitializeComponent();
             BindingContext = _viewModel = new ViewModels.WatchlistViewModel();
+            string cezazl = " zł";
+            //priceeLabel.Text = cezazl.ToString();
         }
 
         protected override async void OnAppearing()
