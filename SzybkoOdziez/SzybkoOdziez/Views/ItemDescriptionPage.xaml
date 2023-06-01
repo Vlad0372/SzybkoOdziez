@@ -129,21 +129,17 @@
                         </Picker.Items>
                     </Picker>
                 </Grid>
-                <Grid>
-                    <!--show comments michal 16.04-->
-                    <Label FontSize="18" FontFamily="Calibri"
-                           Margin="250,270,10,10"
-                           Text="Komentarze"
-                           FontAttributes="Italic"
-                           TextDecorations="Underline"
-                           TextColor="DarkBlue">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                Tapped="OnLabelCommentsTapped">
-                            </TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <!--show comments michal 16.04-->
+                <Grid RowDefinitions="300">
+                    <Button 
+                x:Name="button_change_data_user"
+               Clicked="OnLabelCommentsTapped"
+                Text="Sprawdź sekcji komentarza"                 
+                TextColor="White" 
+                BackgroundColor="DarkOrange" 
+                BorderWidth="1.5" 
+                CornerRadius="50"
+                VerticalOptions="End">
+                    </Button>
                 </Grid>
             </StackLayout>
         </StackLayout>
