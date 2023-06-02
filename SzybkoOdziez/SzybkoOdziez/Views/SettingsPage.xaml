@@ -4,8 +4,8 @@
              x:Class="SzybkoOdziez.Views.SettingsPage">
     <ContentPage.Content>
         <StackLayout Style="{StaticResource SZO_StyleBG2}">
-            <Frame Style="{StaticResource SZO_StyleBG}" Padding="14" CornerRadius="0">
-                <Label Text="Ustawienia" HorizontalTextAlignment="Center" TextColor="Black" FontSize="30"/>
+            <Frame Style="{StaticResource SZO_StyleBG2}" Padding="14" CornerRadius="0">
+                <Label Text="Ustawienia" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="30"/>
             </Frame>
 
             <Frame Style="{StaticResource SZO_StyleBG}"  Padding="8" CornerRadius="0">

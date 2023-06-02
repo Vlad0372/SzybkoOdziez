@@ -6,7 +6,7 @@
              x:Class="SzybkoOdziez.Views.OrderFullInfoPage">
     <ContentPage.Content>
         <StackLayout Style="{StaticResource SZO_StyleBG2}" >
-            <Frame Style="{StaticResource SZO_StyleBG}" Padding="14" CornerRadius="0">
+            <Frame Style="{StaticResource SZO_StyleBG2}" Padding="14" CornerRadius="0">
                 <Label Text="Szczegóły zamówienia" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="24"/>
             </Frame>
 
@@ -66,14 +66,14 @@
                             <ViewCell >
                                 <Grid Padding="5" >
 
-                                    <Frame CornerRadius="15" HasShadow="True" >
+                                    <Frame CornerRadius="15" HasShadow="True" Style="{StaticResource SZO_StyleBG}">
                                         <StackLayout Orientation="Horizontal" x:DataType="model:Product">
 
                                             <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50">
                                             </Image>
                                             <StackLayout VerticalOptions="Center">
-                                                <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Small"></Label>
-                                                <Label VerticalOptions="Center" Text="{Binding Price}" ></Label>
+                                                <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Small" Style="{StaticResource SZO_StyleTxt}"></Label>
+                                                <Label VerticalOptions="Center" Text="{Binding Price, StringFormat='{}{0} zł'}" Style="{StaticResource SZO_StyleTxt}" ></Label>
 
                                             </StackLayout>
 

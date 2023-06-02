@@ -95,7 +95,7 @@ namespace SzybkoOdziez.Views
             //// oblicz łączną wartość
   
             //// ustaw tekst etykiety
-           totalPriceLabel.Text = currentOrder.TotalPrice.ToString();
+           totalPriceLabel.Text = currentOrder.TotalPrice.ToString() + " zł";
            
 
         }

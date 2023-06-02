@@ -10,7 +10,7 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <StackLayout Style="{StaticResource SZO_StyleBG}">
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
             <StackLayout Margin="10,10,10,10" >
                 <Grid Margin="10,0,10,0">
                     <Grid.RowDefinitions>

@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout  Style="{StaticResource SZO_StyleBG2}">
 
-            <Frame  Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+            <Frame  Style="{StaticResource SZO_StyleBG2}" Padding="24" CornerRadius="0">
                 <Label Text="Zgłoszenie problemu z zamówieniem" HorizontalTextAlignment="Center" 
                        Style="{StaticResource SZO_StyleTxt}" FontSize="25"/>
             </Frame>
@@ -17,6 +17,7 @@
             </Frame>
             
             <Entry 
+               
                     x:Name="orderNumberEntry"
                     Placeholder="#"
                     Margin="100,20,100,20"
@@ -49,7 +50,8 @@
                     Dark={StaticResource DarkTextColor}}"
                     FontSize="20"
                     Margin="10,0,10,20"
-                    HeightRequest="100"/>
+                    HeightRequest="100"
+                    HorizontalOptions="Center"/>
             
 
             <Button    

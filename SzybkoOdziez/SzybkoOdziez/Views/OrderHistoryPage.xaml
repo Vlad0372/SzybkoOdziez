@@ -31,7 +31,7 @@
                                             Grid.Column="0" 
                                             Grid.Row="2" 
                                             Margin="0,0,-10,0">
-                        <Label  
+                        <Label  Style="{StaticResource SZO_StyleBG}"
                                             VerticalTextAlignment="Center"
                                             BackgroundColor="#F6F6F6"
                                             TextColor="Gray"

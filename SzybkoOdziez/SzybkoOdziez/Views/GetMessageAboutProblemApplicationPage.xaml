@@ -4,7 +4,7 @@
              x:Class="SzybkoOdziez.Views.GetMessageAboutProblemApplicationPage"
               Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout  Style="{StaticResource SZO_StyleBG}">
+        <StackLayout  Style="{StaticResource SZO_StyleBG2}">
             
             <Label Text="Twoje ogłoszenie zostało wysłane!"
                 VerticalOptions="CenterAndExpand" 

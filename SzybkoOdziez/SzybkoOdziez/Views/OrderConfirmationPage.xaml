@@ -8,8 +8,8 @@
     
     <StackLayout Style="{StaticResource SZO_StyleBG2}">
 
-        <Frame Style="{StaticResource SZO_StyleBG}" Padding="15" CornerRadius="0">
-            <Label Text="Podsumowanie twojego zamówienia" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="25"/>
+        <Frame Style="{StaticResource SZO_StyleBG2}" Padding="15" CornerRadius="0">
+            <Label Text="Podsumowanie twojego zamówienia" Style="{StaticResource SZO_StyleTxt}" FontSize="Large" Margin="10" HorizontalTextAlignment="Center"/>
         </Frame>
 
        
@@ -28,7 +28,7 @@
                 <!---->
             <!--Napis z platnością-->
 
-                <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
+                <Frame  Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
                     <Label Text="Wybierz opcję płatności" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             <!--Wybory nad płatnością-->
@@ -94,7 +94,7 @@
                 </StackLayout>
         </ScrollView>
 
-        <StackLayout>
+        <StackLayout >
             <!--lista produktów-->
             <ListView x:DataType="local:ShoppingCartViewModel"
                       x:Name="ProductsListView"
@@ -104,20 +104,21 @@
                 SeparatorVisibility="None"
                 HeightRequest="350"
                 RefreshControlColor="Black"
+                      
                 >
                 <ListView.ItemTemplate x:DataType="model:Product" >
                     <DataTemplate >
                         <ViewCell >
-                            <Grid Padding="5" >
+                            <Grid Padding="1" >
 
-                                <Frame CornerRadius="15" HasShadow="True" >
-                                    <StackLayout Orientation="Horizontal" x:DataType="model:Product">
+                                <Frame BorderColor ="Black" Padding="20" CornerRadius="20" Margin="10" Style="{StaticResource SZO_StyleBG}">
+                                    <StackLayout Orientation="Horizontal" x:DataType="model:Product" >
 
                                         <Image Source="{Binding ImageUrl}" WidthRequest="50" HeightRequest="50">
                                         </Image>
                                         <StackLayout VerticalOptions="Center">
-                                            <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Small"></Label>
-                                            <Label VerticalOptions="Center" Text="{Binding Price}" ></Label>
+                                            <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Small" Style="{StaticResource SZO_StyleTxt}"></Label>
+                                            <Label VerticalOptions="Center" Text="{Binding Price, StringFormat='{}{0} zł'}" Style="{StaticResource SZO_StyleTxt}"></Label>
 
                                         </StackLayout>
 

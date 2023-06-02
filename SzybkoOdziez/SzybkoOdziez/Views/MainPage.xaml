@@ -4,7 +4,7 @@
              x:Class="SzybkoOdziez.Views.MainPage"
              xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
              Title="{Binding Title}">
-    
+
     <ContentPage.BindingContext>
         <vm:MainViewModel />
     </ContentPage.BindingContext>
@@ -13,92 +13,92 @@
             <Color x:Key="Accent">#96d1ff</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Order="Primary" Priority="1" Text="Filtruj"  Clicked="FilterButtonClick" />
+    <ContentPage.ToolbarItems >
+        <ToolbarItem  Order="Primary" Priority="1" Text="Filtruj"  Clicked="FilterButtonClick"  />
     </ContentPage.ToolbarItems>
-    <StackLayout Style="{StaticResource SZO_StyleBG}">
-        <StackLayout Margin="10,10,10,10" VerticalOptions="FillAndExpand" BackgroundColor="#32312D" HeightRequest="200">
-            <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" VerticalOptions="Fill" BackgroundColor="#50C878">
-                <ContentView Padding="0,0,0,0"  VerticalOptions="Fill" BackgroundColor="Aqua">
-                    <Image x:Name="productUrl"  HeightRequest="470" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill"/>
-                </ContentView>
-            </StackLayout>
-            <Grid BackgroundColor="#32312D" MinimumHeightRequest="110" HeightRequest="110" Padding="20,0,20,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="3*" />
-                    <RowDefinition Height="4*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="2*" />
-                </Grid.ColumnDefinitions>
+    <StackLayout Style="{StaticResource SZO_StyleBG2}">
 
-                <Label Grid.Column="0" 
-                       Grid.Row="0" 
+        <StackLayout Margin="10,10,10,0" VerticalOptions="FillAndExpand" BackgroundColor="#32312D" HeightRequest="200">
+            <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" VerticalOptions="Fill" BackgroundColor="#32312D">
+                <ContentView Padding="0,0,0,0"  VerticalOptions="Fill" BackgroundColor="#32312D">
+                    <Image x:Name="productUrl"  HeightRequest="470" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill" />
+                </ContentView>
+                <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15" >
+                    <Label 
                        BackgroundColor="#32312D"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
                        x:Name="productName"
+                       HorizontalTextAlignment="Center"
                        Text="Item name">
-                </Label>
-                <Label Grid.Column="1" 
-                       Grid.Row="0" 
+                    </Label>
+                </Frame>
+                <!--cena produktu-->
+                <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
+                    <Label 
+                    
                        BackgroundColor="#32312D"
                        TextColor="#9FA9FF"
                        FontSize="18" FontFamily="Calibri"
                        FontAttributes="Bold"
-                       HorizontalTextAlignment="End"
+                       HorizontalTextAlignment="Center"
                        x:Name="productPrice"
+                       
                        Text="Item price">
 
-                </Label>
-                <Label Text="Item description"
-                       FontFamily="courier new" 
-                       Grid.ColumnSpan="2" 
-                       Grid.Row="1" 
+                    </Label>
+                </Frame>
+                <!--nazwa przedmiotu z całkowitym opisem-->
+                <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
+                    <Label Text="Item description"
+                      
+                        FontAttributes="Bold"
                        BackgroundColor="#32312D"
                        TextColor="White"
                        x:Name="productDesc"
-                       FontSize="16" 
+                      FontSize="18" FontFamily="Calibri"
+                       HorizontalTextAlignment="Center"
                        >
-                </Label>
+                    </Label>
+                </Frame>
 
-                <Frame BackgroundColor="Gray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
+            </StackLayout>
+
+
+            <!--ryska żeby było pomiędzy zdjęciem a pokaż więcej-->
+            <Frame BorderColor ="Black" Padding="0,0,0,0" CornerRadius="10" HasShadow="False"
                        Grid.Column="0" 
                        Grid.Row="2" 
-                       Margin="-20,0,-20,0">
+                       Margin="10,0,10,0">
+                <StackLayout>
+
+                    <!--połowa paska z napisem pokaż więcej-->
                     <Label  
                        VerticalTextAlignment="Center"
-                       BackgroundColor="#32312D"
-                       TextColor="White"
+                      
+                       TextColor="Black"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
-                       Text="Pokaż więcej"
-                       Padding="20,0,0,0">
+                       Text="Wyświetl szczegóły &#9660;"
+                        Style="{StaticResource SZO_StyleBG}"
+                       Padding="100,0,0,0">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ShowMore"/>
                         </Label.GestureRecognizers>
                     </Label>
-                </Frame>
-                <Frame BackgroundColor="Gray" Padding="0,2,0,0" CornerRadius="0" HasShadow="False"
-                       Grid.Column="1" 
-                       Grid.Row="2"
-                       Margin="0,0,-20,0">
-                    <Label  
-                       VerticalTextAlignment="Center"
-                       BackgroundColor="#32312D"
-                       TextColor="White"
-                       FontSize="18" FontFamily="Calibri"
-                       HorizontalTextAlignment="End"
-                       Text="&#9660;"
-                       Padding="0,0,20,0">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ShowMore"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </Frame>
-            </Grid>
+                </StackLayout>
+            </Frame>
+
+
+
+
         </StackLayout>
+
+
+
+
+
+
+
         <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10">
             <ImageButton Source="like.png" 
                          HorizontalOptions="Center" 

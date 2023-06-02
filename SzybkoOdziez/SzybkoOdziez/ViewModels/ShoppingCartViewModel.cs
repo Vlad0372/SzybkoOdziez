@@ -119,7 +119,7 @@ namespace SzybkoOdziez.ViewModels
                                     Id = reader.GetInt32(0),
                                     Name = reader.GetString(1),
                                    
-                                    Price = reader.GetInt32(2),
+                                    Price = reader.GetDecimal(2),
                                     ImageUrl = reader.GetString(3),
                                 };
                                 Products.Add(sqlproduct);

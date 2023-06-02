@@ -13,16 +13,16 @@
                        FontSize="Large" 
                        HorizontalTextAlignment="Center"
                        Style="{StaticResource SZO_StyleTxt}"/>
-                
-                
-                <Frame BorderColor ="Black" Padding="15" CornerRadius="20" Margin="20" >
+
+
+                <Frame BorderColor ="Black" Padding="15" CornerRadius="20" Margin="20" Style="{StaticResource SZO_StyleBG}">
                     
                     <Entry x:Name="CommentTitleEntry" Placeholder="Dodaj tytuł komentarza" 
                             HorizontalTextAlignment="Center"
                        Style="{StaticResource SZO_StyleTxt}"
                        Margin="0,10,0,0" />
                 </Frame>
-                <Frame BorderColor ="Black" Padding="15" CornerRadius="20" Margin="20" >
+                <Frame BorderColor ="Black" Padding="15" CornerRadius="20" Margin="20" Style="{StaticResource SZO_StyleBG}" >
                     <Entry x:Name="CommentTextEditor" 
                         Placeholder="Napisz treść komentarza" 
                         HorizontalTextAlignment="Center"
@@ -46,7 +46,7 @@
                     <DataTemplate>
 
                         <StackLayout>
-                            <Frame BorderColor ="Black" Padding="5" CornerRadius="20" Margin="10">
+                            <Frame BorderColor ="Black" Padding="5" CornerRadius="20" Margin="10" Style="{StaticResource SZO_StyleBG}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />

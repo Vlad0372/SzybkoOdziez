@@ -24,8 +24,8 @@
                             <Image Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
                             
                         </StackLayout>-->
-                        <StackLayout Style="{StaticResource SZO_StyleBG}" >
-                            <Frame BorderColor ="Black" Padding="15" CornerRadius="20" Margin="10">
+                        <StackLayout Style="{StaticResource SZO_StyleBG2}" >
+                            <Frame BorderColor ="Black" Padding="15" CornerRadius="20" Margin="10" Style="{StaticResource SZO_StyleBG}">
                                 <Grid >
 
                                     <Grid.ColumnDefinitions>
@@ -47,8 +47,8 @@
                                         <!--tekst produktu (nazwa, cena)-->
                                         <StackLayout Grid.Column="1">
 
-                                            <Label Text="{Binding Name}"  FontSize="Medium"  Style="{StaticResource SZO_StyleTxt}"/>
-                                            <Label Text="{Binding Price, StringFormat='{}{0} zł'}"  FontSize="Small"  Style="{StaticResource SZO_StyleTxt}"  >
+                                            <Label Text="{Binding Name}"  FontSize="Medium" Style="{StaticResource SZO_StyleTxt}"/>
+                                            <Label Text="{Binding Price, StringFormat='{}{0} zł'}"  FontSize="Small"  Style="{StaticResource SZO_StyleTxt}" >
 
                                             </Label>
 
