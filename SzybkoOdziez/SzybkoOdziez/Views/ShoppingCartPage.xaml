@@ -34,7 +34,7 @@
                                             <Label VerticalOptions="Center" Text="{Binding Price, StringFormat='{}{0} zł'}" FontSize="Medium" Style="{StaticResource SZO_StyleTxt}"></Label>
                                         </StackLayout>
                                         <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
-                                            <Image Source="smietnik.jpg"
+                                            <Image Source="smietnik.png"
                                                    WidthRequest="30"
                                                    HeightRequest="30">
                                                 <Image.GestureRecognizers>

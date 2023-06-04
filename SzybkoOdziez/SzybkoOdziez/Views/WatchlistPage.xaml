@@ -67,7 +67,7 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                         <!--obrazek smietnik, usuwanie produktu z listy obserwowanych przedmiotow-->
-                                        <Image Grid.Column="1" Source="smietnik.jpg" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                        <Image Grid.Column="1" Source="smietnik.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                         Tapped="OnWishlistProductTrashcanTapped"

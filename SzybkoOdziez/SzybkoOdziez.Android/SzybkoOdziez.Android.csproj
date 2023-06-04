@@ -150,9 +150,6 @@
     <AndroidResource Include="Resources\drawable\dislike.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\smietnik.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\bluza.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -200,10 +197,13 @@
     <AndroidResource Include="Resources\drawable\icon_cancel.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\userrrIcon.png" />
+    <AndroidResource Include="Resources\drawable\icon_setting.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon_setting.png" />
+    <AndroidResource Include="Resources\drawable\smietnik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\userrrIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

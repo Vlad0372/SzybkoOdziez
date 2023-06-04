@@ -114,7 +114,7 @@
     <FlyoutItem Title="Zgłoszenie problemu z zamówieniem" Icon="icon_cancel.png">
         <ShellContent Route="FailedOrderPage" ContentTemplate="{DataTemplate local:FailedOrderPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Mój profil" Icon="userrrIcon.jpg">
+    <FlyoutItem Title="Mój profil" Icon="userrrIcon.png">
         <ShellContent Route="UserProfilePage" ContentTemplate="{DataTemplate local:UserProfilePage}" />
     </FlyoutItem>
     <!--08.05 added (Vladek)-->
