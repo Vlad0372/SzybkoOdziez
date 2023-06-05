@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SzybkoOdziez.Views.ItemCarouselPage">
+    <ContentPage.Content>
+        <CarouselView ItemsSource="{Binding imageSources}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame HasShadow ="True"
+                               BorderColor="DarkGray"
+                               Margin="20">
+                            <StackLayout>
+                                <Label Text="{Binding}"/>
+                                <Image Source="{Binding}"
+                                       HeightRequest="150"
+                                       WidthRequest="150"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+    </ContentPage.Content>
+</ContentPage>

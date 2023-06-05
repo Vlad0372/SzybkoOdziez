@@ -56,7 +56,8 @@ namespace SzybkoOdziez.Views
         {
             var tappedImage = (Grid)sender;
             var tappedProduct = (Product)tappedImage.BindingContext;
-            ChangePageToItemDescription(tappedProduct);
+            //ChangePageToItemDescription(tappedProduct);
+            Navigation.PushAsync(new ItemCarouselPage(tappedProduct));
         }
 
 
