@@ -133,7 +133,7 @@
                     <Button 
                 x:Name="button_change_data_user"
                Clicked="OnLabelCommentsTapped"
-                Text="Sprawdź sekcji komentarza"                 
+                Text="Sprawdź sekcję komentarzy"                 
                 TextColor="White" 
                 BackgroundColor="DarkOrange" 
                 BorderWidth="1.5" 
