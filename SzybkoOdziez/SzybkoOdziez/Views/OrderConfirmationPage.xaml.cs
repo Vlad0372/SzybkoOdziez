@@ -109,7 +109,30 @@ namespace SzybkoOdziez.Views
             Navigation.RemovePage(this);
 
         }
-        
+        private void paymentBLIK_CheckedChanged(object sender, EventArgs e)
+        {
+            if(BLIK_field.IsVisible == false)
+            {
+                BLIK_field.IsVisible = true;
+            }
+            else
+            {
+                BLIK_field.IsVisible = false;
+            }
+            
+        }
+        private void paymentCredit_Card_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Credit_Card_field.IsVisible == false)
+            {
+                Credit_Card_field.IsVisible = true;
+            }
+            else
+            {
+                Credit_Card_field.IsVisible = false;
+            }
+
+        }
         private void AddOrderToDB(Order order)
         {
             var userId = 1;
@@ -277,6 +300,11 @@ namespace SzybkoOdziez.Views
             connection.Dispose();
 
             return Convert.ToInt32(lastID);
+        }
+
+        private void paymentRadioBtn1_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+
         }
     }
 }

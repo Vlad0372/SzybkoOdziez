@@ -32,11 +32,45 @@
                     <Label Text="Wybierz opcję płatności" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             <!--Wybory nad płatnością-->
-                <RadioButton x:Name="paymentRadioBtn1" Content="Blik" GroupName="platnosc" IsChecked="True" Style="{StaticResource SZO_StyleTxt}">
+                <RadioButton x:Name="paymentRadioBtn1" Content="Blik" GroupName="platnosc" IsChecked="False" Style="{StaticResource SZO_StyleTxt}" CheckedChanged="paymentBLIK_CheckedChanged">
             </RadioButton>
-                <RadioButton x:Name="paymentRadioBtn2" Content="Karta kredytowa"  GroupName="platnosc" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
-            </RadioButton>
-                <RadioButton x:Name="paymentRadioBtn3" Content="Płatność gotówce" GroupName="platnosc" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
+                <StackLayout x:Name="BLIK_field" 
+                    IsVisible="Hidden">
+                    <Entry 
+                        x:Name="BLIK_CODE"
+                        Placeholder="Kod BLIK"
+                        PlaceholderColor="Silver"
+                        HorizontalTextAlignment="Center"  
+                        Style="{StaticResource SZO_StyleTxt}">
+                    </Entry>
+                </StackLayout>
+                <RadioButton x:Name="paymentRadioBtn2" Content="Karta kredytowa"  GroupName="platnosc" IsChecked="False" Style="{StaticResource SZO_StyleTxt}" CheckedChanged="paymentCredit_Card_CheckedChanged">
+                </RadioButton>
+                <StackLayout x:Name="Credit_Card_field"
+                    IsVisible="Hidden">
+                    <Entry 
+                        x:Name="Card_Code"
+                        Placeholder="Numer karty"
+                        PlaceholderColor="Silver"
+                        HorizontalTextAlignment="Center"  
+                        Style="{StaticResource SZO_StyleTxt}">
+                    </Entry>
+                    <Entry 
+                        x:Name="Card_Expiration"
+                        Placeholder="Rok i miesiąc upływu ważności"
+                        PlaceholderColor="Silver"
+                        HorizontalTextAlignment="Center"  
+                        Style="{StaticResource SZO_StyleTxt}">
+                    </Entry>
+                    <Entry 
+                        x:Name="CVC"
+                        Placeholder="kod CVC (tył karty)"
+                        PlaceholderColor="Silver"
+                        HorizontalTextAlignment="Center"  
+                        Style="{StaticResource SZO_StyleTxt}">
+                    </Entry>
+                </StackLayout>
+                <RadioButton x:Name="paymentRadioBtn3" Content="Płatność w gotówce" GroupName="platnosc" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
 
 
