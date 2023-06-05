@@ -49,8 +49,9 @@
                     </Label>
                 </Frame>
                 <!--nazwa przedmiotu z całkowitym opisem-->
-                <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
-                    <Label Text="Item description"
+                <ScrollView HeightRequest="23">
+                    <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
+                        <Label Text="Item description"
                       
                         FontAttributes="Bold"
                        BackgroundColor="#32312D"
@@ -59,9 +60,9 @@
                       FontSize="18" FontFamily="Calibri"
                        HorizontalTextAlignment="Center"
                        >
-                    </Label>
-                </Frame>
-
+                        </Label>
+                    </Frame>
+                </ScrollView>
             </StackLayout>
 
 

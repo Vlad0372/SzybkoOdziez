@@ -10,7 +10,7 @@
 
             <Frame Style="{StaticResource SZO_StyleBG}"  Padding="8" CornerRadius="0">
                 <StackLayout Orientation="Horizontal">
-                    <Label x:Name="nightModeLabel" Text="ustawienie1" VerticalOptions="Center" HorizontalTextAlignment="Start" TextColor="Black" FontSize="18"/>
+                    <Label x:Name="nightModeLabel" Text="ustawienie1" VerticalOptions="Center" HorizontalTextAlignment="Start" FontSize="18" Style="{StaticResource SZO_StyleTxt}"/>
                     
                     <Button  
                         x:Name="nightModeBtn"
