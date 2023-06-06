@@ -38,6 +38,10 @@ namespace SzybkoOdziez.Views
             guestMode = app.guestMode;
         }
 
+        private void ProductPhotoTapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ItemCarouselPage(_currentProduct));
+        }
         private void ShowMore(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ItemDescriptionPage(_currentProduct));

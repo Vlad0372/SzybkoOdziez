@@ -8,11 +8,10 @@
                 <DataTemplate >
                     <StackLayout  Style="{StaticResource SZO_StyleBG2}">
                         <Frame HasShadow ="True"
-                               
                                Margin="20"
                                 BorderColor ="Black" Padding="15" CornerRadius="20"  Style="{StaticResource SZO_StyleBG}">
                             <StackLayout>
-                                <Label Text="{Binding}" Style="{StaticResource SZO_StyleTxt}"  FontSize="Large" HorizontalTextAlignment="Center" />
+                                <!--<Label Text="{Binding}" Style="{StaticResource SZO_StyleTxt}"  FontSize="Large" HorizontalTextAlignment="Center" />-->
                                 <Image Source="{Binding}"
                                        HeightRequest="600"
                                        WidthRequest="600"/>
