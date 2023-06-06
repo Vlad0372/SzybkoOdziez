@@ -35,22 +35,26 @@
                                     <!--grid w ktorym jest zdjecie produktu i tekst produktu-->
                                     <Grid Margin="10,5" x:Name="WatchlistProductStackLayout">
 
-                                        <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnWishlistProductStackLayoutTapped"/>
-                                        </Grid.GestureRecognizers>
+
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="60" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <!--zdjecie produktu-->
-                                        <Image Grid.Column="0" Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60" Margin="0,0,10,0"/>
+                                        <Grid Grid.Column="0" Margin="0,0,10,0">
+                                            <Image  Source="{Binding ImageUrl}" HeightRequest="60" WidthRequest="60" />
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnWishlistProductImageTapped"/>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
                                         <!--tekst produktu (nazwa, cena)-->
                                         <StackLayout Grid.Column="1">
 
                                             <Label Text="{Binding Name}"  FontSize="Medium" Style="{StaticResource SZO_StyleTxt}"/>
-                                            <Label Text="{Binding Price, StringFormat='{}{0} zł'}"  FontSize="Small"  Style="{StaticResource SZO_StyleTxt}" >
-
-                                            </Label>
+                                            <Label Text="{Binding Price, StringFormat='{}{0} zł'}"  FontSize="Small"  Style="{StaticResource SZO_StyleTxt}"/>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnWishlistProductDescriptionTapped"/>
+                                            </StackLayout.GestureRecognizers>
 
                                         </StackLayout>
                                     </Grid>

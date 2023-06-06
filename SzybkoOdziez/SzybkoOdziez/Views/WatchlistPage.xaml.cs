@@ -52,11 +52,17 @@ namespace SzybkoOdziez.Views
            
         }
 
-        private void OnWishlistProductStackLayoutTapped(object sender, EventArgs e)
+        private void OnWishlistProductDescriptionTapped(object sender, EventArgs e)
         {
-            var tappedImage = (Grid)sender;
+            var tappedImage = (StackLayout)sender;
             var tappedProduct = (Product)tappedImage.BindingContext;
-            //ChangePageToItemDescription(tappedProduct);
+            ChangePageToItemDescription(tappedProduct);
+        }
+
+        private void OnWishlistProductImageTapped(object sender, EventArgs e)
+        {
+            var tappedElement = (Grid)sender;
+            var tappedProduct = (Product)tappedElement.BindingContext;
             Navigation.PushAsync(new ItemCarouselPage(tappedProduct));
         }
 
