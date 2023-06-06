@@ -67,11 +67,15 @@ namespace SzybkoOdziez.ViewModels
             {
                 var querySelectIDs = "SELECT * FROM shopping_cart WHERE(user_user_id = :user_id)";
                 List<int> item_ids = new List<int>();
+                List<string> item_sizes = new List<string>();
+                //Dictionary<int, string> item_id_size = new Dictionary<int, string>();
+                List<Tuple<int, string>> item_id_size = new List<Tuple<int, string>>();
                 using (OracleCommand cmdInsert = new OracleCommand(querySelectIDs, conn))
                 {
                     OracleCommand command = new OracleCommand(querySelectIDs, conn);
                     command.Parameters.Add(new OracleParameter("user_id", user_id));
-
+                    int item_id = 0;
+                    string item_size = "";
                     try
                     {
                         conn.Open();
@@ -82,7 +86,20 @@ namespace SzybkoOdziez.ViewModels
                         {
                             while (reader.Read())
                             {
+                                item_id = reader.GetInt32(1);
                                 item_ids.Add(reader.GetInt32(1));
+                                if (reader.IsDBNull(3))
+                                {
+                                    item_size = "-";
+                                    item_sizes.Add("-");
+                                }
+                                else
+                                {
+                                    item_size = reader.GetString(3);
+                                    item_sizes.Add(reader.GetString(3));
+                                }
+                                //item_id_size.Add(item_id, item_size);
+                                item_id_size.Add(new Tuple<int, string>(item_id, item_size));
                             }
                         }
                         else
@@ -102,10 +119,10 @@ namespace SzybkoOdziez.ViewModels
                 var querySelectItems = "SELECT item_id, name, price, img_source FROM item WHERE (item_id = :item_id)";
                 using (OracleCommand cmdInsert = new OracleCommand(querySelectItems, conn))
                 {
-                    foreach (var item_id in item_ids)
+                    foreach (Tuple<int, string> tuple in item_id_size)
                     {
                         OracleCommand command = new OracleCommand(querySelectItems, conn);
-                        command.Parameters.Add(new OracleParameter("item_id", item_id));
+                        command.Parameters.Add(new OracleParameter("item_id", tuple.Item1));
                         try
                         {
                             conn.Open();
@@ -118,9 +135,9 @@ namespace SzybkoOdziez.ViewModels
                                 {
                                     Id = reader.GetInt32(0),
                                     Name = reader.GetString(1),
-                                   
                                     Price = reader.GetDecimal(2),
                                     ImageUrl = reader.GetString(3),
+                                    Size = tuple.Item2,
                                 };
                                 Products.Add(sqlproduct);
                             }

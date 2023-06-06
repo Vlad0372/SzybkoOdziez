@@ -147,7 +147,8 @@ namespace SzybkoOdziez.ViewModels
                                     Model = reader.GetString(7),
                                     Color = reader.GetString(8),
                                     Season = reader.GetString(9),
-                                    Size = Convert.ToInt32(reader.GetString(10)),
+                                    //Size = Convert.ToInt32(reader.GetString(10)),
+                                    Size = "",
                                     Material = reader.GetString(11),
                                     Pattern = reader.GetString(12),
                                 };

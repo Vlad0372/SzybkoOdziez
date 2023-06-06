@@ -12,6 +12,8 @@ using Xamarin.Forms.Xaml;
 using Acr.UserDialogs;
 using Oracle.ManagedDataAccess.Client;
 using Org.BouncyCastle.Bcpg;
+using Java.Lang;
+using Java.IO;
 
 namespace SzybkoOdziez.Views
 {
@@ -141,35 +143,69 @@ namespace SzybkoOdziez.Views
             }
         }
 
+        //private async void OnWishlistProductShoppingCartTapped(object sender, EventArgs e)
+        //{
+        //    var tappedImage = (Image)sender;
+        //    var tappedProduct = (Product)tappedImage.BindingContext;
+
+        //    var app = (App)Application.Current;
+        //    var shoppingCartDataStore = app.shoppingCartDataStore;
+
+        //    if (shoppingCartDataStore.CheckInDataStore(tappedProduct))
+        //    {
+        //        await shoppingCartDataStore.AddItemAsync(tappedProduct);
+        //        InsertIntoShoppingCartDB(tappedProduct);
+
+        //        UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
+        //    }
+        //    else
+        //    {
+        //        if(await DisplayAlert("W koszyku juz znajduje sie taki przedmiot", "Chcesz dodac duplikat tego przedmiotu do koszyka?", "Tak", "Nie"))
+        //        {
+        //            await shoppingCartDataStore.AddItemAsync(tappedProduct);
+        //            InsertIntoShoppingCartDB(tappedProduct);
+
+        //            UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
+        //        }
+        //    }
+        //}
+
+
         private async void OnWishlistProductShoppingCartTapped(object sender, EventArgs e)
         {
+            //TODO: przedmiot zostaje dodany do koszyka, nawet kiedy użytkownik kliknie anuluj przy wyborze rozmiaru
             var tappedImage = (Image)sender;
             var tappedProduct = (Product)tappedImage.BindingContext;
 
             var app = (App)Application.Current;
             var shoppingCartDataStore = app.shoppingCartDataStore;
 
+            string selectedSize = await DisplayActionSheet("Wybierz rozmiar", "Anuluj", null,
+                                        getClothingSizeArray(tappedProduct).ToArray());
+            if (selectedSize == null || selectedSize == "Anuluj") { selectedSize = ""; }
+
             if (shoppingCartDataStore.CheckInDataStore(tappedProduct))
             {
                 await shoppingCartDataStore.AddItemAsync(tappedProduct);
-                InsertIntoShoppingCartDB(tappedProduct.Id);
+                InsertIntoShoppingCartDB(tappedProduct, selectedSize);
 
                 UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
             }
             else
             {
-                if(await DisplayAlert("W koszyku juz znajduje sie taki przedmiot", "Chcesz dodac duplikat tego przedmiotu do koszyka?", "Tak", "Nie"))
+                if (await DisplayAlert("W koszyku juz znajduje sie taki przedmiot", "Chcesz dodac duplikat tego przedmiotu do koszyka?", "Tak", "Nie"))
                 {
                     await shoppingCartDataStore.AddItemAsync(tappedProduct);
-                    InsertIntoShoppingCartDB(tappedProduct.Id);
+                    InsertIntoShoppingCartDB(tappedProduct, selectedSize);
 
                     UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
                 }
             }
         }
 
-        private void InsertIntoShoppingCartDB(int productId)
+        private void InsertIntoShoppingCartDB(Product product)
         {
+            int productId = product.Id;
             var app = (App)Application.Current;
             string ConnectionString = app.connectionString;
             string queryString = "INSERT INTO shopping_cart (user_user_id, item_item_id)" +
@@ -190,7 +226,7 @@ namespace SzybkoOdziez.Views
                     }
                     catch(OracleException ex)
                     {
-                        Console.WriteLine(ex);
+                        System.Console.WriteLine(ex);
                         if (conn.State == System.Data.ConnectionState.Open)
                         {
                             conn.Close();
@@ -198,6 +234,72 @@ namespace SzybkoOdziez.Views
                     }
                 }
             }
+        }
+
+        private void InsertIntoShoppingCartDB(Product product, string size)
+        {
+            int productId = product.Id;
+            var app = (App)Application.Current;
+            string ConnectionString = app.connectionString;
+            string queryString = "INSERT INTO shopping_cart (user_user_id, item_item_id, temp_item_size)" +
+                "VALUES (:user_id, :item_id, :item_size)";
+            int userId = app.userId;
+            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            {
+                using (OracleCommand cmd = new OracleCommand(queryString, conn))
+                {
+                    cmd.Parameters.Add("user_id", userId);
+                    cmd.Parameters.Add("item_id", productId);
+                    cmd.Parameters.Add("item_size", size);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+                    catch (OracleException ex)
+                    {
+                        System.Console.WriteLine(ex);
+                        if (conn.State == System.Data.ConnectionState.Open)
+                        {
+                            conn.Close();
+                        }
+                    }
+                }
+            }
+        }
+
+        public List<string> getClothingSizeArray(Product product)
+        {
+            string selectedSize = "";
+            Dictionary<string, List<string>> categorySizes = new Dictionary<string, List<string>>();
+            categorySizes.Add("Paski", new List<string> { "S", "L" });
+            categorySizes.Add("Rękawice", new List<string> { "S", "L" });
+            categorySizes.Add("Buty", new List<string> { "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45" });
+            categorySizes.Add("Spódnice", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("Kurtka", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("Suknie", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("Czapka", new List<string> { "S", "L" });
+            categorySizes.Add("Marynarka", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("Szalik", new List<string> { "ONE" });
+            categorySizes.Add("Bluza", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("Bielizna", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("T-shirt", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("Koszula", new List<string> { "XS", "S", "M", "L", "XL", "XXL" });
+            categorySizes.Add("Spodnie", new List<string> { "32", "34", "36", "38", "40", "42", "44" });
+
+            if(categorySizes.TryGetValue(product.Category, out List<string> sizes))
+            {
+                return sizes;
+
+            }
+            else
+            {
+                DisplayAlert("Error!", "Nie można zlokalizować rozmiarów dla tego przedmiotu!", "Ok");
+            }
+
+            return new List<string>();
         }
 
         private async void ClearWhishListDataStoreList(object sender, EventArgs e)
@@ -242,7 +344,7 @@ namespace SzybkoOdziez.Views
                     }
                     catch (OracleException ex)
                     {
-                        Console.WriteLine(ex.ToString());
+                        System.Console.WriteLine(ex.ToString());
                         if (conn.State == System.Data.ConnectionState.Open)
                         {
                             conn.Close();

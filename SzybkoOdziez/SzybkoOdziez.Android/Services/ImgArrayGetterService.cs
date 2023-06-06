@@ -78,8 +78,8 @@ namespace SzybkoOdziez.Droid
                             Material = data["material"].ToString(),
                             Pattern = data["pattern"].ToString(),
                             Model = data["model"].ToString(),
-                            Size = Convert.ToInt32(data["size"]),
-
+                            //Size = Convert.ToInt32(data["size"]),
+                            Size = "",
                         };
 
                         productsList.Add(currentProduct);                                   

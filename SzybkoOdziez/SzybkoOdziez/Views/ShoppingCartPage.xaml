@@ -32,6 +32,7 @@
                                         <StackLayout VerticalOptions="Center">
                                             <Label VerticalOptions="Center" Text="{Binding Name}" FontSize="Medium" Style="{StaticResource SZO_StyleTxt}"></Label>
                                             <Label VerticalOptions="Center" Text="{Binding Price, StringFormat='{}{0} zł'}" FontSize="Medium" Style="{StaticResource SZO_StyleTxt}"></Label>
+                                            <Label VerticalOptions="Center" Text="{Binding Size}" FontSize="Medium" Style="{StaticResource SZO_StyleTxt}"></Label>
                                         </StackLayout>
                                         <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
                                             <Image Source="smietnik.png"

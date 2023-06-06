@@ -21,7 +21,7 @@ namespace SzybkoOdziez.Models
         public string Material { get; set; }
         public string Pattern { get; set; }
         public string Model { get; set; }
-        public int Size { get; set; }
+        public string Size { get; set; }
 
     }
 
