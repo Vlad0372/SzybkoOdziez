@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
              Title="{Binding Title}">
 
-    <ContentPage.BindingContext>
+        <ContentPage.BindingContext>
         <vm:MainViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
@@ -16,12 +16,17 @@
     <ContentPage.ToolbarItems >
         <ToolbarItem  Order="Primary" Priority="1" Text="Filtruj"  Clicked="FilterButtonClick"  />
     </ContentPage.ToolbarItems>
-    <StackLayout Style="{StaticResource SZO_StyleBG2}">
+    <Grid>
+        <Grid.RowDefinitions>
+             
+          
+        </Grid.RowDefinitions>
+        <StackLayout Style="{StaticResource SZO_StyleBG2}">
 
         <StackLayout Margin="10,10,10,0" VerticalOptions="FillAndExpand" BackgroundColor="#32312D" HeightRequest="200">
             <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" VerticalOptions="Fill" BackgroundColor="#32312D">
                 <ContentView Padding="0,0,0,0"  VerticalOptions="Fill" BackgroundColor="#32312D">
-                    <Image x:Name="productUrl"  HeightRequest="470" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill">
+                    <Image x:Name="productUrl"  HeightRequest="430" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ProductPhotoTapped"/>
                         </Image.GestureRecognizers>
@@ -52,6 +57,7 @@
 
                     </Label>
                 </Frame>
+                
                 <!--nazwa przedmiotu z całkowitym opisem-->
                 <ScrollView HeightRequest="23">
                     <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
@@ -67,18 +73,12 @@
                         </Label>
                     </Frame>
                 </ScrollView>
-            </StackLayout>
+                    <Frame BorderColor ="Black" Padding="0,0,0,0" CornerRadius="10" HasShadow="False"
+                       Style="{StaticResource SZO_StyleBG}">
+                        <StackLayout>
 
-
-            <!--ryska żeby było pomiędzy zdjęciem a pokaż więcej-->
-            <Frame BorderColor ="Black" Padding="0,0,0,0" CornerRadius="10" HasShadow="False"
-                       Grid.Column="0" 
-                       Grid.Row="2" 
-                       Margin="10,0,10,0" Style="{StaticResource SZO_StyleBG}">
-                <StackLayout>
-
-                    <!--połowa paska z napisem pokaż więcej-->
-                    <Label  
+                            <!--połowa paska z napisem pokaż więcej-->
+                            <Label  
                        VerticalTextAlignment="Center"
                       
                       
@@ -87,12 +87,17 @@
                         Style="{StaticResource SZO_StyleTxt}"
                         
                        Padding="100,0,0,0">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ShowMore"/>
-                        </Label.GestureRecognizers>
-                    </Label>
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ShowMore"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </StackLayout>
+                    </Frame>
                 </StackLayout>
-            </Frame>
+
+
+            <!--ryska żeby było pomiędzy zdjęciem a pokaż więcej-->
+           
 
 
 
@@ -126,4 +131,5 @@
                          Clicked="OnDislikeClicked"/>
         </StackLayout>
     </StackLayout>
+    </Grid>
 </ContentPage>
