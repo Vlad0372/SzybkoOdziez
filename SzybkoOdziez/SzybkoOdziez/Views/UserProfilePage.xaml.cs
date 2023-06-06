@@ -8,6 +8,7 @@ using Oracle.ManagedDataAccess.Client;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Android.Media.TV;
+using static Android.Provider.ContactsContract.CommonDataKinds;
 
 namespace SzybkoOdziez.Views
 {
@@ -15,6 +16,8 @@ namespace SzybkoOdziez.Views
     public partial class UserProfilePage : ContentPage
     {
         int user_id;
+        bool guestMode = true;
+
         public UserProfilePage()
         {
             InitializeComponent();
@@ -29,63 +32,79 @@ namespace SzybkoOdziez.Views
         {
             base.OnAppearing();
             var app = (App)Application.Current;
+            guestMode = app.guestMode;
             user_id = app.userId;
-            string Namee = "";
-            string LastNamee = "";
-            string Maill = "";
-            string Nicknamee = "";
-            string Passwordd = "";
-            //int userId = GetLoggedInUserID("ada", "ada");
 
-
-
-            string ConnectionString = "Data Source=(DESCRIPTION=" +
-               "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
-               "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
-               "User Id=s100824;Password=Sddb2023;";
-            OracleConnection connection = new OracleConnection(ConnectionString);
-            connection.Open();
-
-            using (OracleConnection conn = new OracleConnection(ConnectionString))
+            if (guestMode)
             {
-                conn.Open();
+                labelName.Text = "-";
+                labelLastName.Text = "-";
+                labelMail.Text = "-";
+                labelNickname.Text = "-";
+                await DisplayAlert("Guest user", "Nie ma tu informacji do wyświetlenia, proszę się zalogować aby zobaczyć dane swojego konta", "Ok");
+            }
+            else
+            {
+                string Namee = "";
+                string LastNamee = "";
+                string Maill = "";
+                string Nicknamee = "";
+                string Passwordd = "";
 
-                var query = "SELECT name, last_name, mail, nickname from \"user\" where user_id = :id";
+
+                //int userId = GetLoggedInUserID("ada", "ada");
 
 
-                var param = new OracleParameter(":id", OracleDbType.Int32);
-                //param.Value = userId;
-                param.Value = user_id;
-                using (var cmd = new OracleCommand(query, conn))
+
+                string ConnectionString = "Data Source=(DESCRIPTION=" +
+                   "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +
+                   "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
+                   "User Id=s100824;Password=Sddb2023;";
+                OracleConnection connection = new OracleConnection(ConnectionString);
+                connection.Open();
+
+                using (OracleConnection conn = new OracleConnection(ConnectionString))
                 {
-                    cmd.Parameters.Add(param);
+                    conn.Open();
 
-                    using (var reader = cmd.ExecuteReader())
+                    var query = "SELECT name, last_name, mail, nickname from \"user\" where user_id = :id";
+
+
+                    var param = new OracleParameter(":id", OracleDbType.Int32);
+                    //param.Value = userId;
+                    param.Value = user_id;
+                    using (var cmd = new OracleCommand(query, conn))
                     {
+                        cmd.Parameters.Add(param);
 
-
-                        if (reader.Read())
+                        using (var reader = cmd.ExecuteReader())
                         {
 
 
-                            Namee = reader.GetString(0);
-                            LastNamee = reader.GetString(1);
-                            Maill = reader.GetString(2);
-                            Nicknamee = reader.GetString(3);
+                            if (reader.Read())
+                            {
 
 
-                            // przypisanie imienia i nazwiska użytkownika do kontrolki Label
+                                Namee = reader.GetString(0);
+                                LastNamee = reader.GetString(1);
+                                Maill = reader.GetString(2);
+                                Nicknamee = reader.GetString(3);
 
 
+                                // przypisanie imienia i nazwiska użytkownika do kontrolki Label
+
+
+                            }
+                            reader.Close();
+                            labelName.Text = Namee;
+                            labelLastName.Text = LastNamee;
+                            labelMail.Text = Maill;
+                            labelNickname.Text = Nicknamee;
                         }
-                        reader.Close();
-                        labelName.Text = Namee;
-                        labelLastName.Text = LastNamee;
-                        labelMail.Text = Maill;
-                        labelNickname.Text = Nicknamee;
                     }
                 }
             }
+
         }
 
         public int GetLoggedInUserID(string nicknamee, string passwordd)

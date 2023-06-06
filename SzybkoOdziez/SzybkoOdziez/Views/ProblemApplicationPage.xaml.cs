@@ -19,15 +19,28 @@ namespace SzybkoOdziez.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProblemApplicationPage : ContentPage
     {
+        bool guestMode = true;
+
         public ProblemApplicationPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            var app = (App)Application.Current;
+            guestMode = app.guestMode;
         }
 
         private void send_message_problem_application_Clicked(object sender, EventArgs e)
         {
             //SendEmail("szybkoodziezgetreports@gmail.com", getSelectedRadioButtonContent(), entryReportBody.Text);
             //SendEmailMK("szybkoodziezgetreports@gmail.com", getSelectedRadioButtonContent(), entryReportBody.Text);
+            //if (guestMode)
+            //{
+            //    DisplayAlert("Nie wysłano zgłoszenia!", "By wysłać zgłoszenie, trzeba się zalogować!", "Ok");
+            //}
             Navigation.PushAsync(new GetMessageAboutProblemApplicationPage());
             Navigation.RemovePage(this);
 
