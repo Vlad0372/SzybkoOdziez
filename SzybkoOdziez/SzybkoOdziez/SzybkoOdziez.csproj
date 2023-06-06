@@ -21,6 +21,7 @@
     <PackageReference Include="MailKit" Version="4.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.190" />
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
   </ItemGroup>
