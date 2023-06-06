@@ -63,12 +63,11 @@ namespace SzybkoOdziez.Views
             Navigation.RemovePage(this);
         }
 
-        private void ContinueAsGuestTapped(object sender, EventArgs e)
+        private async void ContinueAsGuestTapped(object sender, EventArgs e)
         {
             var app = (App)Application.Current;
             app.guestMode = true;
-            Navigation.PushAsync(new MainPage());
-            Navigation.RemovePage(this);
+            await Shell.Current.GoToAsync("//MainPage");
         }
     }
 }

@@ -57,6 +57,7 @@ namespace SzybkoOdziez.ViewModels
                 }
             }
         }
+
         public async void OnWishlistOpen()
         {
             await LoadWishlistAsync();

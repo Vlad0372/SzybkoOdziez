@@ -23,6 +23,7 @@ namespace SzybkoOdziez.Views
         private WishlistDataStore _wishlistDataStore;
         private WatchlistViewModel _viewModel;
         private string ItemCategory = "Wszystkie";
+        bool guestMode = true;
 
         public WatchlistPage()
         {
@@ -34,7 +35,12 @@ namespace SzybkoOdziez.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.InitializeWishlistFromDB(99);
+            var app = (App)Application.Current;
+            guestMode = app.guestMode;
+            if (!guestMode)
+            {
+                _viewModel.InitializeWishlistFromDB(app.userId);
+            }
             _viewModel.OnWishlistOpen();
             _viewModel.FilterProducts(ItemCategory);
         }
@@ -105,7 +111,10 @@ namespace SzybkoOdziez.Views
             //    .FirstOrDefault(prod => prod.Id == (int)tappedEventArgs.Parameter);
             //((WatchlistViewModel)BindingContext).Products.Remove(product);
 
-            RemoveItemFromUserObserved(app.userId, tappedProduct.Id);
+            if (!guestMode)
+            {
+                RemoveItemFromUserObserved(app.userId, tappedProduct.Id);
+            }
 
         }
 
@@ -184,10 +193,32 @@ namespace SzybkoOdziez.Views
                                         getClothingSizeArray(tappedProduct).ToArray());
             if (selectedSize == null || selectedSize == "Anuluj") { selectedSize = ""; }
 
+            Product mockProduct = new Product()
+            {
+                Id = tappedProduct.Id,
+                Name = tappedProduct.Name,
+                Description = tappedProduct.Description,
+                Price = tappedProduct.Price,
+                TotalPrice = tappedProduct.TotalPrice,
+                ImageUrl = tappedProduct.ImageUrl,
+                Comments = tappedProduct.Comments,
+                Category = tappedProduct.Category,
+                Producer = tappedProduct.Producer,
+                Color = tappedProduct.Color,
+                Season = tappedProduct.Season,
+                Material = tappedProduct.Material,
+                Pattern = tappedProduct.Pattern,
+                Model = tappedProduct.Model,
+                Size = selectedSize,
+            };
+
             if (shoppingCartDataStore.CheckInDataStore(tappedProduct))
             {
-                await shoppingCartDataStore.AddItemAsync(tappedProduct);
-                InsertIntoShoppingCartDB(tappedProduct, selectedSize);
+                await shoppingCartDataStore.AddItemAsync(mockProduct);
+                if (!guestMode)
+                {
+                    InsertIntoShoppingCartDB(mockProduct, selectedSize);
+                }
 
                 UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
             }
@@ -195,8 +226,11 @@ namespace SzybkoOdziez.Views
             {
                 if (await DisplayAlert("W koszyku juz znajduje sie taki przedmiot", "Chcesz dodac duplikat tego przedmiotu do koszyka?", "Tak", "Nie"))
                 {
-                    await shoppingCartDataStore.AddItemAsync(tappedProduct);
-                    InsertIntoShoppingCartDB(tappedProduct, selectedSize);
+                    await shoppingCartDataStore.AddItemAsync(mockProduct);
+                    if (!guestMode)
+                    {
+                        InsertIntoShoppingCartDB(mockProduct, selectedSize);
+                    }
 
                     UserDialogs.Instance.Toast("Przedmiot został dodany do koszyka pomyślnie!", TimeSpan.FromSeconds(2));
                 }
@@ -316,7 +350,10 @@ namespace SzybkoOdziez.Views
                 if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
                 {
                     await wishlistDataStore.ClearAll();
-                    DeleteAllFromObservedForUserDB(app.userId);
+                    if (!guestMode)
+                    {
+                        DeleteAllFromObservedForUserDB(app.userId);
+                    }
 
                     _viewModel.OnWishlistOpen();
                     _viewModel.FilterProducts(ItemCategory);

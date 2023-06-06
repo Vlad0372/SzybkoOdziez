@@ -17,6 +17,7 @@ namespace SzybkoOdziez.Views
         private List<Product> productsList = new List<Product>();
         private Product _currentProduct { get; set; }
         int user_id;
+        bool guestMode = true;
 
         private string ItemCategory = "Wszystkie";
         public MainPage()
@@ -34,6 +35,7 @@ namespace SzybkoOdziez.Views
             base.OnAppearing();
             var app = (App)Application.Current;
             user_id = app.userId;
+            guestMode = app.guestMode;
         }
 
         private void ShowMore(object sender, EventArgs e)
@@ -55,7 +57,14 @@ namespace SzybkoOdziez.Views
 
         private async void OnLikeClicked(object sender, EventArgs args)
         {
-            AddProductToUserObserved(user_id, _currentProduct.Id);
+            if (guestMode)
+            {
+                AddProductToUserObservedDS(_currentProduct);
+            }
+            else
+            {
+                AddProductToUserObservedDB(user_id, _currentProduct.Id);
+            }
 
             _currentProduct = GetRandProductInfo();
             SetCurrentProduct(_currentProduct);
@@ -64,7 +73,16 @@ namespace SzybkoOdziez.Views
             await likeButton.ScaleTo(1, 100);         
         }
 
-        private void AddProductToUserObserved(int user_id, int item_id)
+        private void AddProductToUserObservedDS(Product product)
+        {
+            var app = (App)Application.Current;
+            if (app.wishlistDataStore.CheckInDataStore(product))
+            {
+                app.wishlistDataStore.AddItemAsync(product);
+            }
+        }
+
+        private void AddProductToUserObservedDB(int user_id, int item_id)
         {
             string ConnectionString = "Data Source=(DESCRIPTION=" +
            "(ADDRESS=(PROTOCOL=TCP)(HOST=217.173.198.135)(PORT=1521))" +

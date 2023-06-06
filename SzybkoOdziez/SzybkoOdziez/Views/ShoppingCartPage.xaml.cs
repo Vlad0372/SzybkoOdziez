@@ -17,6 +17,7 @@ namespace SzybkoOdziez.Views
     {
         private ShoppingCartViewModel _viewModel;
         int user_id;
+        bool guestMode = true;
 
         public ShoppingCartPage()
         {
@@ -31,7 +32,11 @@ namespace SzybkoOdziez.Views
             base.OnAppearing();
             var app = (App)Application.Current;
             user_id = app.userId;
-            _viewModel.InitializeShoppingCartFromDB(user_id);
+            guestMode = app.guestMode;
+            if (!guestMode)
+            {
+                _viewModel.InitializeShoppingCartFromDB(user_id);
+            }
             _viewModel.OnShoppingCartOpen();
             
         }
@@ -62,7 +67,11 @@ namespace SzybkoOdziez.Views
                 await shoppingCartDataStore.DeleteItemAsync(tappedProduct);
                 _viewModel.OnShoppingCartOpen();
             }
-            RemoveItemFromUserObserved(user_id, tappedProduct.Id);
+
+            if (!guestMode)
+            {
+                RemoveItemFromUserObserved(user_id, tappedProduct.Id);
+            }
 
         }
 
@@ -116,7 +125,10 @@ namespace SzybkoOdziez.Views
                 if (await DisplayAlert("Zatwierdź", "Czy na pewno chcesz usunąć wszystkie przedmioty z listy?", "Tak", "Nie"))
                 {
                     await shoppingCartDataStore.ClearAll();
-                    DeleteAllFromShoppingCartUserDB(user_id);
+                    if (!guestMode)
+                    {
+                        DeleteAllFromShoppingCartUserDB(user_id);
+                    }
                     _viewModel.OnShoppingCartOpen();
 
                     await DisplayAlert("Lista wyczyszczona", "Lista została wyczyszczona pomyślnie!", "OK");
