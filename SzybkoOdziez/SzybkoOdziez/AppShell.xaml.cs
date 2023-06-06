@@ -18,7 +18,7 @@ namespace SzybkoOdziez
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
             var app = (App)Application.Current;
-            app.isLoggedIn = false;
+            app.guestMode = true;
             app.userId = 99;
             app.orderHistoryDataStore.ClearAll();
             app.shoppingCartDataStore.ClearAll();

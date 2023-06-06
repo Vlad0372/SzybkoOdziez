@@ -53,6 +53,17 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
+            <!--michal dodal 06.06, przycisk wlaczajacy tryb goscia-->
+            <Label Text="Kontynuuj jako gość"
+                   HorizontalOptions="End"
+                   VerticalOptions="End"
+                   FontAttributes="Italic"
+                   TextDecorations="Underline"
+                   >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ContinueAsGuestTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

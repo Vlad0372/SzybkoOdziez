@@ -118,7 +118,7 @@ namespace SzybkoOdziez.Views
         private void button_change_data_user_Clicked(object sender, EventArgs e)
         {
             var app = (App)Application.Current;
-            if (app.isLoggedIn)
+            if (!app.guestMode)
             {
                 Navigation.PushAsync(new UserProfilePageChangeData());
                 Navigation.RemovePage(this);

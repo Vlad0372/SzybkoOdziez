@@ -44,7 +44,7 @@ namespace SzybkoOdziez.Views
                 if (isUserExists != null)
                 {
                     var app = (App)Application.Current;
-                    app.isLoggedIn = true;
+                    app.guestMode = false;
                     app.userId = Convert.ToInt32(isUserExists);
                     await Shell.Current.GoToAsync("//MainPage");
                     Navigation.RemovePage(this);
@@ -60,6 +60,14 @@ namespace SzybkoOdziez.Views
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new RegistrationPage());
+            Navigation.RemovePage(this);
+        }
+
+        private void ContinueAsGuestTapped(object sender, EventArgs e)
+        {
+            var app = (App)Application.Current;
+            app.guestMode = true;
+            Navigation.PushAsync(new MainPage());
             Navigation.RemovePage(this);
         }
     }
