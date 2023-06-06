@@ -7,7 +7,6 @@ using SzybkoOdziez.Services.MyApp.Services;
 using SzybkoOdziez.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Plugin.FirebasePushNotification;
 
 namespace SzybkoOdziez
 {
@@ -37,33 +36,16 @@ namespace SzybkoOdziez
 
             DependencyService.Register<DefaultMockDataStore>();
             MainPage = new AppShell();
-
-            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
-            {
-                System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
-            };
-            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
-            {
-
-                System.Diagnostics.Debug.WriteLine("Received");
-                foreach (var data in p.Data)
-                {
-                    System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
-                }
-
-            };
-            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
-            {
-                System.Diagnostics.Debug.WriteLine("Opened");
-                foreach (var data in p.Data)
-                {
-                    System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
-                }
-
-
-            };
+ 
         }
-
+        void ShowNotification(string title)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                DisplayAlert($"Informacja dotycząca zamówienia", "Poszło! Już mamy twoje zamówinie," +
+                    " za niedługo dostaniesz szczegóły dotyczące terminu dostawy ;)", "OK");
+            });
+        }
         protected override async void OnStart()
         {
             var productLoader = new ProductLoader(allProductDataStore);

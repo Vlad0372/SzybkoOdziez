@@ -17,7 +17,7 @@ namespace SzybkoOdziez.Droid
         const string channelDescription = "The default channel for notifications.";
 
         public const string TitleKey = "title";
-        public const string MessageKey = "message";
+        public const string MessageKey = "message"; 
 
         bool channelInitialized = false;
         int messageId = 0;
@@ -63,7 +63,7 @@ namespace SzybkoOdziez.Droid
                 Show(title, message);
             }
         }
-
+        
         public void ReceiveNotification(string title, string message)
         {
             var args = new NotificationEventArgs()
@@ -94,7 +94,7 @@ namespace SzybkoOdziez.Droid
             Notification notification = builder.Build();
             manager.Notify(messageId++, notification);
         }
-
+       
         public void DeleteNotification(int id)
         {
             Intent intent = new Intent(AndroidApp.Context, typeof(AlarmHandler));

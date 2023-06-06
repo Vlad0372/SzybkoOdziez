@@ -21,6 +21,8 @@ namespace SzybkoOdziez.Views
     public partial class OrderConfirmationPage : ContentPage
     {
         ShoppingCartViewModel _viewModel;
+
+        INotificationManager notificationManager;
         public ObservableCollection<Product> Products { get; set; }
         private Order currentOrder { get; set; }
         int user_id;
@@ -37,6 +39,13 @@ namespace SzybkoOdziez.Views
             BindingContext = _viewModel = new ShoppingCartViewModel();
 
             currentOrder = new Order();
+
+            notificationManager = DependencyService.Get<INotificationManager>();
+            notificationManager.NotificationReceived += (sender, eventArgs) =>
+            {
+                var evtData = (NotificationEventArgs)eventArgs;
+                ShowNotification(evtData.Title);
+            };
             //List<Product> products = new List<Product>();//lista produktów
             //Products = new ObservableCollection<Product>(products);
 
@@ -45,11 +54,19 @@ namespace SzybkoOdziez.Views
 
             //// ustaw tekst etykiety
             //TotalLabel.Text += total.ToString();
-           
+
             //foreach (var item in products)
             //{
             //    Console.WriteLine("xD");
             //}
+        }
+        void ShowNotification(string title)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                DisplayAlert($"Informacja dotycząca zamówienia", "Poszło! Już mamy twoje zamówinie," +
+                    " za niedługo dostaniesz szczegóły dotyczące terminu dostawy ;)", "OK");
+            });
         }
         protected override async void OnAppearing()
         {
@@ -103,6 +120,13 @@ namespace SzybkoOdziez.Views
 
         private void complition_of_order_Clicked(object sender, EventArgs e)
         {
+            var app = (App)Application.Current;
+            var orderHistoryDataStore = app.orderHistoryDataStore;
+
+            string title = $"Nowe powiadomenie od SzybkoOdzież";
+            string message = $"Kliknij i zobacz, coś dla ciebie mamy!";
+            notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(2));
+
             //Navigation.PushAsync(new OrderCompletionPage());
             Navigation.PushAsync(new OrderCompletionPage(currentOrder));
             //AddOrderToDB(currentOrder);
@@ -306,5 +330,7 @@ namespace SzybkoOdziez.Views
         {
 
         }
+
+        
     }
 }

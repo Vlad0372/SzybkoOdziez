@@ -25,7 +25,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid Padding="5">
-                                <Frame BorderColor ="Black" Padding="10" CornerRadius="20" Margin="10" Style="{StaticResource SZO_StyleBG}">
+                                <Frame BorderColor ="Black" Padding="10" CornerRadius="20" Margin="10,5,10,5" Style="{StaticResource SZO_StyleBG}">
                                     <StackLayout Orientation="Horizontal" x:DataType="model:Product">
                                         <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100">
                                         </Image>

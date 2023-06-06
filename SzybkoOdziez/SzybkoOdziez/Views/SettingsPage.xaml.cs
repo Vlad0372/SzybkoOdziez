@@ -62,7 +62,7 @@ namespace SzybkoOdziez.Views
             }
         }
 
-        void OnSendClick(object sender, EventArgs e)
+        void SendNotification_Clicked(object sender, EventArgs e)
         {
             notificationNumber++;
             string title = $"Local Notification #{notificationNumber}";
@@ -70,7 +70,7 @@ namespace SzybkoOdziez.Views
             notificationManager.SendNotification(title, message);
         }
 
-        void OnScheduleClick(object sender, EventArgs e)
+        void SendScheduledNotification_Clicked(object sender, EventArgs e)
         {
             notificationNumber++;
             string title = $"Local Notification #{notificationNumber}";
