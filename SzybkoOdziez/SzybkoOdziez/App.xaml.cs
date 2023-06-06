@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.FirebasePushNotification;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using SzybkoOdziez.Services;
@@ -6,6 +7,7 @@ using SzybkoOdziez.Services.MyApp.Services;
 using SzybkoOdziez.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.FirebasePushNotification;
 
 namespace SzybkoOdziez
 {
@@ -20,7 +22,7 @@ namespace SzybkoOdziez
             "(CONNECT_DATA=(SERVICE_NAME=tpdb)));" + "" +
             "User Id=s100824;Password=Sddb2023;";
         public int userId = 99;
-        public bool guestMode = false;
+        public bool guestMode = true;
 
         public App()
         {
@@ -35,6 +37,31 @@ namespace SzybkoOdziez
 
             DependencyService.Register<DefaultMockDataStore>();
             MainPage = new AppShell();
+
+            CrossFirebasePushNotification.Current.OnTokenRefresh += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine($"TOKEN : {p.Token}");
+            };
+            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            {
+
+                System.Diagnostics.Debug.WriteLine("Received");
+                foreach (var data in p.Data)
+                {
+                    System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+                }
+
+            };
+            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            {
+                System.Diagnostics.Debug.WriteLine("Opened");
+                foreach (var data in p.Data)
+                {
+                    System.Diagnostics.Debug.WriteLine($"{data.Key} : {data.Value}");
+                }
+
+
+            };
         }
 
         protected override async void OnStart()

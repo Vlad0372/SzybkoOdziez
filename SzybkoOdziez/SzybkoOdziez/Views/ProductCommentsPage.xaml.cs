@@ -29,6 +29,7 @@ namespace SzybkoOdziez.Views
         private Product _product;
         private string _fileFullPath;
         int user_id;
+        bool guestMode = true;
         //private ObservableCollection<Comment> _comments;
 
 
@@ -51,20 +52,28 @@ namespace SzybkoOdziez.Views
             base.OnAppearing();
             var app = (App)Application.Current;
             user_id = app.userId;
+            guestMode = app.guestMode;
             _viewModel.OnProductCommentsOpen(_product);
         }
 
         public async void OnAddCommentButtonClicked(object sender, EventArgs args)
         {
-            Comment comment = new Comment();
-            comment.Title = CommentTitleEntry.Text;
-            comment.Content = CommentTextEditor.Text;
-            int newcommentDBID = AddCommentToDB(comment);
-            comment.DBId = newcommentDBID;
-            comment.UserId = user_id;
-            comment.ProductId = _product.Id;
+            if (guestMode)
+            {
+                await DisplayAlert("Nie dodano komentarza!", "Proszę się zalogować, by móc dodawać komentarze!", "Ok");
+            }
+            else
+            {
+                Comment comment = new Comment();
+                comment.Title = CommentTitleEntry.Text;
+                comment.Content = CommentTextEditor.Text;
+                int newcommentDBID = AddCommentToDB(comment);
+                comment.DBId = newcommentDBID;
+                comment.UserId = user_id;
+                comment.ProductId = _product.Id;
 
-            _viewModel.Comments.Add(comment);
+                _viewModel.Comments.Add(comment);
+            }
             
             //if(_fullPath != null)
             //{

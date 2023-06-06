@@ -21,7 +21,11 @@
         <StackLayout Margin="10,10,10,0" VerticalOptions="FillAndExpand" BackgroundColor="#32312D" HeightRequest="200">
             <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" VerticalOptions="Fill" BackgroundColor="#32312D">
                 <ContentView Padding="0,0,0,0"  VerticalOptions="Fill" BackgroundColor="#32312D">
-                    <Image x:Name="productUrl"  HeightRequest="470" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill" />
+                    <Image x:Name="productUrl"  HeightRequest="470" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ProductPhotoTapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </ContentView>
                 <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15" >
                     <Label 

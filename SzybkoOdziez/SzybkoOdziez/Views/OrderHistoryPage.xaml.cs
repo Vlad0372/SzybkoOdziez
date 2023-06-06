@@ -18,6 +18,7 @@ namespace SzybkoOdziez.Views
     {
         private OrderHistoryViewModel _viewModel; 
         public ObservableCollection<Order> Orders { get; set; }
+        bool guestMode = true;
 
         public OrderHistoryPage()
         {
@@ -30,7 +31,12 @@ namespace SzybkoOdziez.Views
         {
             base.OnAppearing();
             _viewModel.OnOrderHistoryOpen();
-
+            var app = (App)Application.Current;
+            guestMode = app.guestMode;
+            if (guestMode)
+            {
+                await DisplayAlert("Guest user!", "By uzyskać dostęp do historii swoich zamówień, musisz się zalogować!", "Ok");
+            }
             Orders = _viewModel.Orders;
             //Orders = GetOrdersFromDB();
         }

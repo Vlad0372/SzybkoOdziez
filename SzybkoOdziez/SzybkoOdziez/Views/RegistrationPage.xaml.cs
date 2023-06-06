@@ -37,12 +37,6 @@ namespace SzybkoOdziez.Views
 
 
 
-
-
-
-
-
-            //
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
 

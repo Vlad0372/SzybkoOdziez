@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "423497367748",
+    "project_id": "bruhtest-a87d9",
+    "storage_bucket": "bruhtest-a87d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423497367748:android:5d168c8949574f4aa64991",
+        "android_client_info": {
+          "package_name": "com.companyname.szybkoodziez"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423497367748-h7f0meh68huqa03tm7fova47ncoe19if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq86pbxtXaGjcXgPD2T-Srer2UpEm4Vlc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423497367748-h7f0meh68huqa03tm7fova47ncoe19if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
