@@ -30,6 +30,9 @@ namespace SzybkoOdziez
             shoppingCartDataStore = new ShoppingCartDataStore();
             orderHistoryDataStore = new OrderHistoryDataStore();
 
+            // Use the dependency service to get a platform-specific implementation and initialize it.
+            DependencyService.Get<INotificationManager>().Initialize();
+
             DependencyService.Register<DefaultMockDataStore>();
             MainPage = new AppShell();
         }

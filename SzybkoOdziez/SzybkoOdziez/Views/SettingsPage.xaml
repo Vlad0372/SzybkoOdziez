@@ -26,7 +26,27 @@
                     </Button>
                 </StackLayout>
             </Frame>
-
+            <Frame Style="{StaticResource SZO_StyleBG}"  Padding="8" CornerRadius="0">
+            <StackLayout Margin="0,35,0,0"
+                 x:Name="stackLayout">
+                <Label Text="Click the button below to create a local notification."
+               TextColor="Red"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+                <Button Text="Create Notification"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                Clicked="OnSendClick" />
+                <Label Text="Click the button below to schedule a local notification for in 10 seconds time."
+               TextColor="Red"
+               HorizontalOptions="Center"
+               VerticalOptions="Start" />
+                <Button Text="Create Notification"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                Clicked="OnScheduleClick" />
+            </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
