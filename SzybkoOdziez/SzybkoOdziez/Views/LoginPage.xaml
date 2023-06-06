@@ -8,26 +8,30 @@
              Shell.NavBarIsVisible="False"
              BackgroundImageSource="login_page_background.jpg"
              >
-    
+
     <ContentPage.Content>
-        <StackLayout Padding="25" 
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     Padding="15">
+
+            <StackLayout Padding="25" 
                      VerticalOptions="Center" 
                      HorizontalOptions="Fill">
 
-            <Entry x:Name="userLogin" Placeholder="Nazwa użytkownika" 
+                <Entry x:Name="userLogin" Placeholder="Nazwa użytkownika" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
-            </Entry>
-            <Entry x:Name="userPass" Placeholder="Hasło"  
+                </Entry>
+                <Entry x:Name="userPass" Placeholder="Hasło"  
                    IsPassword="True" 
                    TextColor="Black" 
                    PlaceholderColor="Black"
                    HorizontalTextAlignment="Center"              
                    >
-            </Entry>
-            <Button 
+                </Entry>
+                <Button 
                 VerticalOptions="Center" 
                 Text="Logowanie" 
                 TextColor="White" 
@@ -36,25 +40,28 @@
                 CornerRadius="50" 
                 Clicked="Button_Clicked"
                 BorderColor="Pink">
-            </Button>
+                </Button>
 
-            <Label HorizontalOptions="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Nie masz konta?" 
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Nie masz konta?" 
                               TextColor="Black"/>
-                        <Span Text="Rejestruj się!" 
+                            <Span Text="Rejestruj się!" 
                               TextColor="Black" 
                               FontAttributes="Bold" 
                               TextDecorations="Underline"/>
-                    </FormattedString>
-                </Label.FormattedText>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
             <!--michal dodal 06.06, przycisk wlaczajacy tryb goscia-->
             <Label Text="Kontynuuj jako gość"
+                   TextColor="Black"
                    HorizontalOptions="End"
                    VerticalOptions="End"
                    FontAttributes="Italic"
@@ -65,5 +72,6 @@
                 </Label.GestureRecognizers>
             </Label>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
