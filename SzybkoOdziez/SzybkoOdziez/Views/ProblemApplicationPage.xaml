@@ -7,14 +7,13 @@
     <ContentPage.Content>
         <StackLayout Style="{StaticResource SZO_StyleBG2}">
 
-            <Frame Style="{StaticResource SZO_StyleBG2}" Padding="24" CornerRadius="0">
-                <Label Text="Zgłoszenie problemu z aplikacją" HorizontalTextAlignment="Center" 
-                       Style="{StaticResource SZO_StyleTxt}" FontSize="36"/>
-            </Frame>
+            
+                <Label Text="Zgłoszenie problemu z aplikacją" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}"/>
+            
 
             <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
                 <Label Text="Wybierz opcję problemy z aplikacją" HorizontalTextAlignment="Center" 
-                       Style="{StaticResource SZO_StyleTxt}" FontSize="25"/>
+                       Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             <!--Wybory nad płatnością-->
             <RadioButton Content="Błąd załadowaniem się strony" x:Name="AppProblem1" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
@@ -37,7 +36,7 @@
 
             <Frame Style="{StaticResource SZO_StyleBG}" Padding="24" CornerRadius="0">
                 <Label Text="Opisz problem z aplikacją" HorizontalTextAlignment="Center" 
-                       Style="{StaticResource SZO_StyleTxt}" FontSize="25" />
+                       Style="{StaticResource SZO_StyleTxt}" FontSize="15" />
             </Frame>
             <Entry x:Name="entryReportBody"
        Placeholder="Opisz problem z aplikacją" 

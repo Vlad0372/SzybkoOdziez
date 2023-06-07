@@ -23,28 +23,28 @@
         </Grid.RowDefinitions>
         <StackLayout Style="{StaticResource SZO_StyleBG2}">
 
-        <StackLayout Margin="10,10,10,0" VerticalOptions="FillAndExpand" BackgroundColor="#32312D" HeightRequest="200">
-            <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" VerticalOptions="Fill" BackgroundColor="#32312D">
-                <ContentView Padding="0,0,0,0"  VerticalOptions="Fill" BackgroundColor="#32312D">
-                    <Image x:Name="productUrl"  HeightRequest="430" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ProductPhotoTapped"/>
-                        </Image.GestureRecognizers>
-                    </Image>
-                </ContentView>
-                <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15" >
-                    <Label 
+            <StackLayout Margin="10,10,10,10" BackgroundColor="#32312D">
+                <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" BackgroundColor="#32312D">
+                    <ContentView Padding="0,0,0,0" BackgroundColor="#32312D">
+                        <Image x:Name="productUrl"  HeightRequest="375" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ProductPhotoTapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </ContentView>
+                    <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15" >
+                        <Label 
                        BackgroundColor="#32312D"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
                        x:Name="productName"
                        HorizontalTextAlignment="Center"
                        Text="Item name">
-                    </Label>
-                </Frame>
-                <!--cena produktu-->
-                <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
-                    <Label 
+                        </Label>
+                    </Frame>
+                    <!--cena produktu-->
+                    <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
+                        <Label 
                     
                        BackgroundColor="#32312D"
                        TextColor="#9FA9FF"
@@ -55,13 +55,13 @@
                        
                        Text="Item price">
 
-                    </Label>
-                </Frame>
-                
-                <!--nazwa przedmiotu z całkowitym opisem-->
-                <ScrollView HeightRequest="23">
-                    <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
-                        <Label Text="Item description"
+                        </Label>
+                    </Frame>
+
+                    <!--nazwa przedmiotu z całkowitym opisem-->
+                    <ScrollView HeightRequest="23">
+                        <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
+                            <Label Text="Item description"
                       
                         FontAttributes="Bold"
                        BackgroundColor="#32312D"
@@ -70,9 +70,9 @@
                       FontSize="18" FontFamily="Calibri"
                        HorizontalTextAlignment="Center"
                        >
-                        </Label>
-                    </Frame>
-                </ScrollView>
+                            </Label>
+                        </Frame>
+                    </ScrollView>
                     <Frame BorderColor ="Black" Padding="0,0,0,0" CornerRadius="10" HasShadow="False"
                        Style="{StaticResource SZO_StyleBG}">
                         <StackLayout>
@@ -96,36 +96,29 @@
                 </StackLayout>
 
 
-            <!--ryska żeby było pomiędzy zdjęciem a pokaż więcej-->
-           
-
-
-
-
-        </StackLayout>
+                <!--ryska żeby było pomiędzy zdjęciem a pokaż więcej-->
 
 
 
 
 
+            </StackLayout>
 
-
-        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Margin="0,0,0,10">
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Padding="90,-8,90,90">
             <ImageButton Source="like.png" 
-                         HorizontalOptions="Center" 
-                         VerticalOptions="CenterAndExpand"
-                         WidthRequest="100" 
-                         HeightRequest="100" 
+                         
+                       
+                         WidthRequest="75" 
+                         HeightRequest="75" 
                          CornerRadius="50" 
-                         Margin="0,0,20,0"
+                         Margin="0,0,65,0"
                          x:Name="likeButton"
                          Clicked="OnLikeClicked"/>
 
             <ImageButton Source="dislike.png" 
-                         HorizontalOptions="Center" 
-                         VerticalOptions="CenterAndExpand"
-                         WidthRequest="100" 
-                         HeightRequest="100" 
+                         
+                         WidthRequest="75" 
+                         HeightRequest="75" 
                          CornerRadius="50" 
                          x:Name="dislikeButton"
                          Clicked="OnDislikeClicked"/>

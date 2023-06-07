@@ -4,14 +4,14 @@
              x:Class="SzybkoOdziez.Views.UserProfilePageChangeData">
     <ContentPage.Content>
         <StackLayout Style="{StaticResource SZO_StyleBG2}">
-            <Frame Style="{StaticResource SZO_StyleBG2}" Padding="24" CornerRadius="0">
-                <Label Text="Edytuj dane" Style="{StaticResource SZO_StyleTxt}" HorizontalTextAlignment="Center"  FontSize="36"/>
-            </Frame>
+            
+                <Label Text="Edytuj dane"  FontSize="Large" Margin="10" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}"/>
+          
 
 
 
             <!--ZMIENIANIE UŻYTKOWNIKA-->
-            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="8" CornerRadius="20" Margin="15" >
                 <Entry 
                     
                     x:Name="old_password" 
@@ -26,7 +26,7 @@
                 </Entry>
             </Frame>
 
-            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="8" CornerRadius="20" Margin="15" >
                 <Entry x:Name="mail" 
                    Placeholder="E-mail" 
                    HorizontalTextAlignment="Center"
@@ -37,7 +37,7 @@
             </Frame>
 
 
-            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="8" CornerRadius="20" Margin="15" >
                 <Entry x:Name="nickname"
                 Placeholder="Nazwa użytkownika" 
                    HorizontalTextAlignment="Center"
@@ -47,7 +47,7 @@
                 </Entry>
             </Frame>
 
-            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="15" CornerRadius="20" Margin="20" >
+            <Frame BorderColor ="Black" BackgroundColor="LightGray" Padding="8" CornerRadius="20" Margin="15" >
                 <Entry x:Name="password"
                    Placeholder="Hasło"  
                    IsPassword="True" 

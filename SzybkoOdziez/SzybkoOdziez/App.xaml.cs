@@ -38,14 +38,14 @@ namespace SzybkoOdziez
             MainPage = new AppShell();
  
         }
-        void ShowNotification(string title)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                DisplayAlert($"Informacja dotycząca zamówienia", "Poszło! Już mamy twoje zamówinie," +
-                    " za niedługo dostaniesz szczegóły dotyczące terminu dostawy ;)", "OK");
-            });
-        }
+        //void ShowNotification(string title)
+        //{
+        //    Device.BeginInvokeOnMainThread(() =>
+        //    {
+        //        DisplayAlert($"Informacja dotycząca zamówienia", "Poszło! Już mamy twoje zamówinie," +
+        //            " za niedługo dostaniesz szczegóły dotyczące terminu dostawy ;)", "OK");
+        //    });
+        //}
         protected override async void OnStart()
         {
             var productLoader = new ProductLoader(allProductDataStore);

@@ -7,13 +7,12 @@
     <ContentPage.Content>
         <StackLayout  Style="{StaticResource SZO_StyleBG2}">
 
-            <Frame  Style="{StaticResource SZO_StyleBG2}" Padding="24" CornerRadius="0">
-                <Label Text="Zgłoszenie problemu z zamówieniem" HorizontalTextAlignment="Center" 
-                       Style="{StaticResource SZO_StyleTxt}" FontSize="25"/>
-            </Frame>
+         
+                <Label Text="Zgłoszenie problemu z zamówieniem" FontSize="Large" Margin="10" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}"/>
+            
             <Frame  Style="{StaticResource SZO_StyleBG}" Padding="10" CornerRadius="0">
                 <Label Text="Wprowadź numer zamówienia" HorizontalTextAlignment="Center"  
-                       Style="{StaticResource SZO_StyleTxt}" FontSize="20"/>
+                       Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             
             <Entry 
@@ -40,7 +39,7 @@
                    Margin="0,10,0,10"
                    CornerRadius="0">
                 <Label Text="Krótko opisz problem" HorizontalTextAlignment="Center"  
-                       Style="{StaticResource SZO_StyleTxt}" FontSize="20"/>
+                       Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             
             <Editor x:Name="editor" 

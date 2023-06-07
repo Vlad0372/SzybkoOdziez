@@ -11,7 +11,7 @@
 
     <ContentPage.Content>
         <StackLayout Style="{StaticResource SZO_StyleBG2}">
-            <StackLayout Margin="10,10,10,10" >
+            <StackLayout Margin="10,10,10,-70" >
                 <Grid Margin="10,0,10,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -129,7 +129,7 @@
                         </Picker.Items>
                     </Picker>
                 </Grid>
-                <Grid RowDefinitions="300">
+                <Grid RowDefinitions="150">
                     <Button 
                 x:Name="button_change_data_user"
                Clicked="OnLabelCommentsTapped"
