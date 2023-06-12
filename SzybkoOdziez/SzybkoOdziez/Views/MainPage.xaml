@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:SzybkoOdziez.ViewModels"
              Title="{Binding Title}">
 
-        <ContentPage.BindingContext>
+    <ContentPage.BindingContext>
         <vm:MainViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
@@ -16,35 +16,49 @@
     <ContentPage.ToolbarItems >
         <ToolbarItem  Order="Primary" Priority="1" Text="Filtruj"  Clicked="FilterButtonClick"  />
     </ContentPage.ToolbarItems>
-    <Grid>
+    <Grid Style="{StaticResource SZO_StyleBG}">
         <Grid.RowDefinitions>
-             
-          
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="1.2*" />
         </Grid.RowDefinitions>
-        <StackLayout Style="{StaticResource SZO_StyleBG2}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <StackLayout Margin="10,10,10,10" BackgroundColor="#32312D">
-                <StackLayout Margin="10,10,10,10"  x:Name="imgContainer" BackgroundColor="#32312D">
-                    <ContentView Padding="0,0,0,0" BackgroundColor="#32312D">
-                        <Image x:Name="productUrl"  HeightRequest="375" Source="Resources/drawable/m_acc_item_1.jpg" Aspect="Fill">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ProductPhotoTapped"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </ContentView>
-                    <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15" >
-                        <Label 
+        <StackLayout Grid.Row="0"
+            Margin="10,10,10,0" 
+            Padding="10,10,10,10" 
+            BackgroundColor="#32312D">
+            <ContentView Padding="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="Black" >
+                <Image x:Name="productUrl" HeightRequest="50" Source="Resources/drawable/m_acc_item_1.jpg" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ProductPhotoTapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </ContentView>
+        </StackLayout>
+        
+        <StackLayout Grid.Row="1"
+            Margin="10,-7,10,0" 
+                     Padding="10,10,10,10" 
+                     x:Name="imgContainer" 
+                     VerticalOptions="Start"
+                     BackgroundColor="#32312D">
+            
+            <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15" >
+                <Label 
                        BackgroundColor="#32312D"
                        TextColor="White"
                        FontSize="18" FontFamily="Calibri" FontAttributes="Bold"
                        x:Name="productName"
                        HorizontalTextAlignment="Center"
                        Text="Item name">
-                        </Label>
-                    </Frame>
-                    <!--cena produktu-->
-                    <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
-                        <Label 
+                </Label>
+            </Frame>
+            <!--cena produktu-->
+            <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
+                <Label 
                     
                        BackgroundColor="#32312D"
                        TextColor="#9FA9FF"
@@ -55,13 +69,12 @@
                        
                        Text="Item price">
 
-                        </Label>
-                    </Frame>
-
-                    <!--nazwa przedmiotu z całkowitym opisem-->
-                    <ScrollView HeightRequest="23">
-                        <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
-                            <Label Text="Item description"
+                </Label>
+            </Frame>
+            <!--nazwa przedmiotu z całkowitym opisem-->
+            <ScrollView HeightRequest="23">
+                <Frame BorderColor ="#32312D" Padding="-1,-1,-1,-1" CornerRadius="15">
+                    <Label Text="Item description"
                       
                         FontAttributes="Bold"
                        BackgroundColor="#32312D"
@@ -70,15 +83,15 @@
                       FontSize="18" FontFamily="Calibri"
                        HorizontalTextAlignment="Center"
                        >
-                            </Label>
-                        </Frame>
-                    </ScrollView>
-                    <Frame BorderColor ="Black" Padding="0,0,0,0" CornerRadius="10" HasShadow="False"
+                    </Label>
+                </Frame>
+            </ScrollView>
+            <Frame BorderColor ="Black" Padding="0,0,0,0" CornerRadius="10" HasShadow="False"
                        Style="{StaticResource SZO_StyleBG}">
-                        <StackLayout>
+                <StackLayout>
 
-                            <!--połowa paska z napisem pokaż więcej-->
-                            <Label  
+                    <!--połowa paska z napisem pokaż więcej-->
+                    <Label  
                        VerticalTextAlignment="Center"
                       
                       
@@ -87,42 +100,32 @@
                         Style="{StaticResource SZO_StyleTxt}"
                         
                        Padding="100,0,0,0">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ShowMore"/>
-                                </Label.GestureRecognizers>
-                            </Label>
-                        </StackLayout>
-                    </Frame>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ShowMore"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
+            </Frame>
+        </StackLayout>
 
-
-                <!--ryska żeby było pomiędzy zdjęciem a pokaż więcej-->
-
-
-
-
-
-            </StackLayout>
-
-            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Padding="90,-8,90,90">
-            <ImageButton Source="like.png" 
-                         
-                       
-                         WidthRequest="75" 
-                         HeightRequest="75" 
-                         CornerRadius="50" 
-                         Margin="0,0,65,0"
+        <StackLayout Grid.Row="2"
+                     HorizontalOptions="Center"
+                     Orientation="Horizontal" 
+                     Margin="0,-20,0,20"
+                    
+                     >
+            <ImageButton Source="like.png"  
+                         VerticalOptions="FillAndExpand"                      
+                         CornerRadius="100" 
+                         Margin="0,0,50,0"
                          x:Name="likeButton"
                          Clicked="OnLikeClicked"/>
 
             <ImageButton Source="dislike.png" 
-                         
-                         WidthRequest="75" 
-                         HeightRequest="75" 
-                         CornerRadius="50" 
+                         VerticalOptions="FillAndExpand"                   
+                         CornerRadius="100" 
                          x:Name="dislikeButton"
                          Clicked="OnDislikeClicked"/>
         </StackLayout>
-    </StackLayout>
     </Grid>
 </ContentPage>
