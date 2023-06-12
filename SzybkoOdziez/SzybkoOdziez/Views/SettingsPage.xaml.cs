@@ -16,7 +16,6 @@ namespace SzybkoOdziez.Views
     public partial class SettingsPage : ContentPage
     {
         INotificationManager notificationManager;
-        int notificationNumber = 0;
         public SettingsPage()
         {
             InitializeComponent();
@@ -63,30 +62,42 @@ namespace SzybkoOdziez.Views
         }
 
         void SendNotification_Clicked(object sender, EventArgs e)
-        {
-            notificationNumber++;
-            string title = $"Local Notification #{notificationNumber}";
-            string message = $"You have now received {notificationNumber} notifications!";
-            notificationManager.SendNotification(title, message);
+        {        
+            try
+            {
+                string title = "powiadomienie z poziomu ustawień";
+                string message = "treść powiadomienia";
+                notificationManager.SendNotification(title, message);
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Powiadomienie", "Wygląda na to, że nie zezwoliłeś aplikacji na wysyłania wiadomości, "+
+                    "zmień to w ustawieniach urządzenia i spróbuj ponownie, jak problem się powtórzy, zgłoś o problemie poprzez" +
+                    " formularz zgłoszeniowy", "OK");
+            }
         }
 
         void SendScheduledNotification_Clicked(object sender, EventArgs e)
         {
-            notificationNumber++;
-            string title = $"Local Notification #{notificationNumber}";
-            string message = $"You have now received {notificationNumber} notifications!";
-            notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(10));
+            try
+            {
+                string title = "powiadomienie z poziomu ustawień";
+                string message = "treść powiadomienia";
+                notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(5));
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Powiadomienie", "Wygląda na to, że nie zezwoliłeś aplikacji na wysyłania wiadomości, " +
+                    "zmień to w ustawieniach urządzenia i spróbuj ponownie, jak problem się powtórzy, zgłoś o problemie poprzez" +
+                    " formularz zgłoszeniowy", "OK");
+            }          
         }
 
         void ShowNotification(string title, string message)
         {
             Device.BeginInvokeOnMainThread(() =>
-            {
-                var msg = new Label()
-                {
-                    Text = $"Notification Received:\nTitle: {title}\nMessage: {message}"
-                };
-                stackLayout.Children.Add(msg);
+            {              
+                Shell.Current.GoToAsync($"//MainPage//NotificationPage?title={title}&message={message}");
             });
         }
     }

@@ -21,9 +21,9 @@ namespace SzybkoOdziez.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OrderConfirmationPage : ContentPage
     {
-        ShoppingCartViewModel _viewModel;
-
         INotificationManager notificationManager;
+
+        ShoppingCartViewModel _viewModel;
         public ObservableCollection<Product> Products { get; set; }
         private Order currentOrder { get; set; }
         int user_id;
@@ -41,12 +41,15 @@ namespace SzybkoOdziez.Views
 
             currentOrder = new Order();
 
+            //Vladek tu powiadominia robi
             notificationManager = DependencyService.Get<INotificationManager>();
             notificationManager.NotificationReceived += (sender, eventArgs) =>
             {
                 var evtData = (NotificationEventArgs)eventArgs;
-                ShowNotification(evtData.Title);
+                ShowNotification(evtData.Title, evtData.Message);
             };
+            //Vladek tu powiadominia robi
+
             //List<Product> products = new List<Product>();//lista produktów
             //Products = new ObservableCollection<Product>(products);
 
@@ -60,14 +63,6 @@ namespace SzybkoOdziez.Views
             //{
             //    Console.WriteLine("xD");
             //}
-        }
-        void ShowNotification(string title)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                DisplayAlert($"Informacja dotycząca zamówienia", "Poszło! Już mamy twoje zamówinie," +
-                    " za niedługo dostaniesz szczegóły dotyczące terminu dostawy ;)", "OK");
-            });
         }
         protected override async void OnAppearing()
         {
@@ -146,20 +141,23 @@ namespace SzybkoOdziez.Views
                 return; // Zatrzymaj dalsze przetwarzanie
             }
 
-            
-           
-
-            
-
-            
-
-
             var app = (App)Application.Current;
             var orderHistoryDataStore = app.orderHistoryDataStore;
 
-            string title = $"Nowe powiadomenie od SzybkoOdzież";
-            string message = $"Kliknij i zobacz, coś dla ciebie mamy!";
-            notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(2));
+            //Vladek tu powiadominia robi
+            try
+            {
+                string title = "Otrzymaliśmy Twoje zamówienie";
+                string message = "Za niegługo otrzymasz dodatkową informacje dotyczącą czasu dostawy :)";
+                notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(3));
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Powiadomienie", "Wygląda na to, że nie zezwoliłeś aplikacji na wysyłania wiadomości, " +
+                    "zmień to w ustawieniach urządzenia i spróbuj ponownie, jak problem się powtórzy, zgłoś o problemie poprzez" +
+                    " formularz zgłoszeniowy", "OK");
+            }
+            //Vladek tu powiadominia robi
 
             //Navigation.PushAsync(new OrderCompletionPage());
             Navigation.PushAsync(new OrderCompletionPage(currentOrder));
@@ -367,6 +365,12 @@ namespace SzybkoOdziez.Views
 
         }
 
-        
+        void ShowNotification(string title, string message)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Shell.Current.GoToAsync($"//MainPage//NotificationPage?title={title}&message={message}");
+            });
+        }
     }
 }
