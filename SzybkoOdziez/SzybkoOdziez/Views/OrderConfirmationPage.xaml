@@ -80,7 +80,7 @@
                     <Label Text="Wybierz opcję dostawy" HorizontalTextAlignment="Center" Style="{StaticResource SZO_StyleTxt}" FontSize="15"/>
             </Frame>
             <!--Wybory nad dostawy-->
-                <RadioButton x:Name="deliveryRadioBtn1" Content="Inpost" GroupName="dostawa" IsChecked="True" Style="{StaticResource SZO_StyleTxt}">
+                <RadioButton x:Name="deliveryRadioBtn1" Content="Inpost" GroupName="dostawa" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>
                 <RadioButton x:Name="deliveryRadioBtn2" Content="DHL" GroupName="dostawa" IsChecked="False" Style="{StaticResource SZO_StyleTxt}">
             </RadioButton>

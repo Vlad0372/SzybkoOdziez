@@ -14,6 +14,7 @@ using Acr.UserDialogs;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using static Android.App.DownloadManager;
+using Android.Locations;
 
 namespace SzybkoOdziez.Views
 {
@@ -120,6 +121,39 @@ namespace SzybkoOdziez.Views
 
         private void complition_of_order_Clicked(object sender, EventArgs e)
         {
+            var place = placeTxt.Text;
+            var street = streetTxt.Text;
+            var postalCode = postalCodeTxt.Text;
+            var voivodship = voivodeshipTxt.Text;
+
+
+            if (!paymentRadioBtn1.IsChecked && !paymentRadioBtn2.IsChecked && !paymentRadioBtn3.IsChecked)
+            {
+                DisplayAlert("Błąd", "Proszę zaznaczyć jedną z opcji płatności!.", "OK");
+                return;
+            }
+
+            else if (!deliveryRadioBtn1.IsChecked && !deliveryRadioBtn2.IsChecked && !deliveryRadioBtn3.IsChecked)
+            {
+                DisplayAlert("Błąd", "Proszę zaznaczyć jedną z opcji dostawy!.", "OK");
+                return;
+            }
+
+            else if (string.IsNullOrEmpty(place) || string.IsNullOrEmpty(street) || string.IsNullOrEmpty(postalCode) || string.IsNullOrEmpty(voivodship))
+            {
+                // Wyświetl komunikat o błędzie
+                DisplayAlert("Błąd", "Wprowadź wymagane dane.", "OK");
+                return; // Zatrzymaj dalsze przetwarzanie
+            }
+
+            
+           
+
+            
+
+            
+
+
             var app = (App)Application.Current;
             var orderHistoryDataStore = app.orderHistoryDataStore;
 
@@ -195,6 +229,8 @@ namespace SzybkoOdziez.Views
                 paymentMethod = paymentRadioBtn3.Content.ToString();
             }
             //================================
+
+
 
             //int lastDeliveryDestId = GetLastID("DELIVERY_DESTINATION", "DESTINATION_ID", connectionString);
 
