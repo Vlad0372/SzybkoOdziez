@@ -70,9 +70,6 @@ namespace SzybkoOdziez.Views
         private async void button_change_data_user_2_Clicked(object sender, EventArgs e)
         {
 
-
-
-
             string old_passworddd = old_password.Text;
             int user_id = this.user_id;
             if (VerifyOldPassword(user_id, old_passworddd))
