@@ -8,9 +8,9 @@
     <ContentPage.Resources>
 
         <DataTemplate x:Key="SingleItemOrderTemplate" x:DataType="model:Order">
-            <Frame CornerRadius="25" BorderColor="Black"  Margin="1,0,0,1"  Style="{StaticResource SZO_StyleBG}">
+            <Frame CornerRadius="25" BorderColor="Black" Style="{StaticResource SZO_StyleBG}" >
                 <StackLayout>
-                    <Grid Margin="0,0,0,20" >
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -18,23 +18,28 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4*"/>
                             <RowDefinition Height="4*"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
 
-                        <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,5,0,0" >
+                        <StackLayout Grid.Column="0" Grid.Row="0">
                             <Label x:Name="Numerll" Style="{StaticResource SZO_StyleTxt}" Text="Numer zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
                             <Label Text="{Binding Number}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                         </StackLayout>
-                        <StackLayout Grid.Column="0" Grid.Row="1" Margin="5,0,0,0" >
+                        
+                        <StackLayout Grid.Column="0" Grid.Row="1">
                             <Label Text="Data zamówienia" Style="{StaticResource SZO_StyleTxt}" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
                             <Label Text="{Binding CreatedDate}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                         </StackLayout>
 
-
-                        <Frame BorderColor ="Black" Padding="5,0,5,0" CornerRadius="15" HasShadow="False"
-                       Grid.Column="0" 
-                       Grid.Row="2" 
-                       Margin="5,5,-170,-15" Style="{StaticResource SZO_StyleBG}">
+                        <Frame Grid.ColumnSpan="2" Grid.Row="2"
+                               HeightRequest="50"
+                               Margin="0,10,0,0"
+                               Padding="0,0,0,0"
+                               
+                               BorderColor ="Black"
+                               CornerRadius="15" HasShadow="False"
+                               
+                               Style="{StaticResource SZO_StyleBG}">
                             <StackLayout>
 
                                 <!--połowa paska z napisem pokaż więcej-->
@@ -42,8 +47,8 @@
                       
                       
                       
-                       FontSize="16" FontFamily="Calibri" FontAttributes="Bold"
-                       Text="Pokaż więcej &#9660;"
+                        FontSize="16" FontFamily="Calibri" FontAttributes="Bold"
+                        Text="Pokaż więcej &#9660;"
                         Style="{StaticResource SZO_StyleTxt}"
                         VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="Center"
@@ -55,12 +60,11 @@
                             </StackLayout>
                         </Frame>
 
-
-
-
-
-                        <StackLayout Orientation="Horizontal" Grid.Column="1" Grid.RowSpan="2" >
-                            <Frame HorizontalOptions="EndAndExpand" BackgroundColor="#LightGray" WidthRequest="70" Padding="2,2,2,2" CornerRadius="0" HasShadow="False">
+                        <StackLayout Grid.Column="1" Grid.RowSpan="2" Orientation="Horizontal">
+                            <Frame HorizontalOptions="EndAndExpand" 
+                                   BackgroundColor="#LightGray" 
+                                   WidthRequest="70" Padding="2,2,2,2" 
+                                   CornerRadius="0" HasShadow="False">
                                 <Image Source="{Binding Products[0].ImageUrl}" Aspect="Fill"/>
                             </Frame>
                         </StackLayout>
@@ -71,9 +75,9 @@
         </DataTemplate>
 
         <DataTemplate x:Key="MultipleItemsOrderTemplate" x:DataType="model:Order">
-            <Frame CornerRadius="25" BorderColor="Black"  Margin="1,0,0,1" Style="{StaticResource SZO_StyleBG}" >
+            <Frame CornerRadius="25" BorderColor="Black" Style="{StaticResource SZO_StyleBG}" >
                 <StackLayout>
-                    <Grid Margin="0,0,0,20">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -81,33 +85,41 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="4*"/>
                             <RowDefinition Height="4*"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
-                        <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,5,0,0" >
+
+                        <StackLayout Grid.Column="0" Grid.Row="0">
                             <Label x:Name="Numerll" Style="{StaticResource SZO_StyleTxt}" Text="Numer zamówienia" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
                             <Label Text="{Binding Number}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                         </StackLayout>
-                        <StackLayout Grid.Column="0" Grid.Row="1" Margin="5,0,0,0" >
+
+                        <StackLayout Grid.Column="0" Grid.Row="1">
                             <Label Text="Data zamówienia" Style="{StaticResource SZO_StyleTxt}" FontSize="16" FontFamily="Calibri" FontAttributes="Bold"/>
                             <Label Text="{Binding CreatedDate}" Style="{StaticResource SZO_StyleTxt}" FontSize="Small" Margin="0,-5,0,0"/>
                         </StackLayout>
-                        <Frame BorderColor ="Black" Padding="5,0,5,0" CornerRadius="15" HasShadow="False"
-                       Grid.Column="0" 
-                       Grid.Row="2" 
-                       Margin="5,5,-170,-15" Style="{StaticResource SZO_StyleBG}">
+
+                        <Frame Grid.ColumnSpan="2" Grid.Row="2"
+                               HeightRequest="50"
+                               Margin="0,10,0,0"
+                               Padding="0,0,0,0"
+                               
+                               BorderColor ="Black"
+                               CornerRadius="15" HasShadow="False"
+                               
+                               Style="{StaticResource SZO_StyleBG}">
                             <StackLayout>
 
                                 <!--połowa paska z napisem pokaż więcej-->
                                 <Label  
-                       
                       
                       
-                       FontSize="16" FontFamily="Calibri" FontAttributes="Bold"
-                       Text="Pokaż więcej &#9660;"
+                      
+                        FontSize="16" FontFamily="Calibri" FontAttributes="Bold"
+                        Text="Pokaż więcej &#9660;"
                         Style="{StaticResource SZO_StyleTxt}"
-                        
-                       VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="Center">
+                        VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center"
+                       >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ShowFullOrder_Tapped"/>
                                     </Label.GestureRecognizers>
@@ -119,7 +131,8 @@
                             <Frame HorizontalOptions="EndAndExpand" BackgroundColor="#LightGray" WidthRequest="70" Padding="2,2,2,2" CornerRadius="0" HasShadow="False">
                                 <Image Source="{Binding Products[0].ImageUrl}" Aspect="Fill"/>
                             </Frame>
-                            <Frame x:Name="additionalItemsExistImg" IsVisible="true" HorizontalOptions="End" BackgroundColor="#LightGray" WidthRequest="70" Padding="2,2,2,2" Margin="0,0,5,0" CornerRadius="0" HasShadow="False">
+                            <Frame x:Name="additionalItemsExistImg" BackgroundColor="#LightGray" WidthRequest="70" Padding="2,2,2,2" 
+                                   IsVisible="true" HorizontalOptions="End" Margin="0,0,5,0" CornerRadius="0"  HasShadow="False">
                                 <Image Source="Resources/drawable/other_order_items.jpg" Aspect="Fill"/>
                             </Frame>
                         </StackLayout>
@@ -132,15 +145,18 @@
         
         
         
-        <services:OrderHistoryDataTemplateSelector x:Key="OrderTypeSelector"
+    <services:OrderHistoryDataTemplateSelector x:Key="OrderTypeSelector"
                                              SingleItemOrder="{StaticResource SingleItemOrderTemplate}"
                                              MultipleItemsOrder="{StaticResource MultipleItemsOrderTemplate}" />
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Label Style="{StaticResource SZO_StyleTxt}" Text="Historia zamówień" FontSize="Large" Margin="10" HorizontalTextAlignment="Center"/>
-            <CollectionView x:Name="OrderList" ItemsSource="{Binding Orders}" Margin="10" ItemTemplate="{StaticResource OrderTypeSelector}">
+            <CollectionView x:Name="OrderList" ItemsSource="{Binding Orders}" 
+                            ItemTemplate="{StaticResource OrderTypeSelector}"
+                            Margin="20">
                 
+
             </CollectionView>
         </StackLayout>
     </ContentPage.Content>

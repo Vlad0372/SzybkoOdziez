@@ -25,6 +25,11 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
 
             BindingContext = _viewModel = new OrderHistoryViewModel();
+
+            OrderList.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical)
+            {
+                ItemSpacing = 20
+            };
         }
 
         protected override async void OnAppearing()
