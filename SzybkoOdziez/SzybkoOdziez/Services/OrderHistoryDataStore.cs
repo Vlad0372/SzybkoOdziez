@@ -1,4 +1,5 @@
-﻿using Oracle.ManagedDataAccess.Client;
+﻿using Java.Nio.Channels;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -112,6 +113,9 @@ namespace SzybkoOdziez.Services
         }
         private List<Order> GetOrdersFromDB()
         {
+            var app = (App)Application.Current;
+            string currentUserId = app.userId.ToString();
+
             var orders = new List<Order>();
             var productsList = DependencyService.Get<IImgArrayGetterService>().GetProductListFromDBStreamAsync();
 
@@ -127,7 +131,11 @@ namespace SzybkoOdziez.Services
                 OracleCommand command = new OracleCommand();
 
                 command.Connection = conn;
-                command.CommandText = "select distinct order_order_id from item_order";
+                //command.CommandText = "select distinct order_order_id from item_order";
+                command.CommandText = " SELECT distinct order_order_id FROM item_order INNER JOIN \"order\" " +
+                    "ON item_order.order_order_id = \"order\".order_id " +
+                    "INNER JOIN \"user\" ON \"order\".user_user_id = \"user\".user_id " +
+                    "where \"user\".user_id = " + currentUserId;
 
                 OracleDataReader data = command.ExecuteReader();
 

@@ -12,12 +12,12 @@ namespace SzybkoOdziez.ViewModels
     class OrderHistoryViewModel
     {
         public ObservableCollection<Order> Orders { get; }
-        public Command LoadOrdersCommand { get; }
+        //public Command LoadOrdersCommand { get; }
 
         public OrderHistoryViewModel()
         {
             Orders = new ObservableCollection<Order>();
-            LoadOrdersCommand = new Command(async () => await LoadOrderHistoryAsync());            
+            //LoadOrdersCommand = new Command(async () => await LoadOrderHistoryAsync(IsGuest));            
         }
 
         public OrderHistoryViewModel(ObservableCollection<Order> orders)
@@ -29,24 +29,26 @@ namespace SzybkoOdziez.ViewModels
         {
             //await LoadOrderHistoryAsync();
             //await LoadOrderHistoryAsync_TEST();
-            await LoadOrderHistoryAsync();
+            var app = (App)Application.Current;
+            bool guestMode = app.guestMode;          
+            await LoadOrderHistoryAsync(guestMode);
         }
 
-        async Task LoadOrderHistoryAsync()
+        async Task LoadOrderHistoryAsync(bool isGuest)
         {
             Orders.Clear();
 
-            var app = (App)Application.Current;
-            var orderHistoryDataStore = await app.orderHistoryDataStore.GetItemsAsync();
-
-            foreach (var order in orderHistoryDataStore)
+            if(!isGuest)
             {
-                Orders.Add(order);
-            }
+                var app = (App)Application.Current;
+                var orderHistoryDataStore = await app.orderHistoryDataStore.GetItemsAsync();
+
+                foreach (var order in orderHistoryDataStore)
+                {
+                    Orders.Add(order);
+                }
+            }           
         }
-
-
-
         async Task LoadOrderHistoryAsync_TEST()
         {
             Orders.Clear();
