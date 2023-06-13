@@ -13,6 +13,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Data.SqlClient;
 using static Android.Provider.ContactsContract.CommonDataKinds;
 using Java.Nio.FileNio.Attributes;
+using System.Data;
 
 namespace SzybkoOdziez.Views
 {
@@ -100,7 +101,7 @@ namespace SzybkoOdziez.Views
                     }
                 }
             }
-        }
+        }    
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new PrivacyPolicyPage());

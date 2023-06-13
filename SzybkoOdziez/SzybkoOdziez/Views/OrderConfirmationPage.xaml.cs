@@ -15,6 +15,10 @@ using Oracle.ManagedDataAccess.Client;
 using System.Data;
 using static Android.App.DownloadManager;
 using Android.Locations;
+using static Android.Provider.ContactsContract.CommonDataKinds;
+using static Java.Util.Jar.Attributes;
+using Xamarin.Essentials;
+using Android.Icu.Util;
 
 namespace SzybkoOdziez.Views
 {
@@ -93,7 +97,7 @@ namespace SzybkoOdziez.Views
             {
                 Id = orderId,
                 Number = rnd.Next(10000, 99999).ToString(),
-                CreatedDate = DateTime.Now.ToString("dd.MM.yyy"),
+                CreatedDate = DateTime.Now.ToString("dd/MM/yyyy"),
                 TotalPrice = Products.Sum(p => p.Price),
                 Products = Products
             };
@@ -164,6 +168,174 @@ namespace SzybkoOdziez.Views
             //AddOrderToDB(currentOrder);
             Navigation.RemovePage(this);
 
+            int lastDeliveryDestinationId = GetLastID("delivery_destination", "destination_id");
+            lastDeliveryDestinationId++;
+
+            DeliveryDestination currentDeliveryDestination = new DeliveryDestination
+            {
+                Id = lastDeliveryDestinationId,
+                City = place,
+                PostalCode = postalCode,
+                Street = street,
+                Voivodship = voivodship,
+                UserId = app.userId
+            };
+
+            //IsertDevileryDestinationToDB(currentDeliveryDestination);
+            IsertOrderToDB(currentOrder);
+            int lastOrderId = GetLastID("\"order\"", "order_id");
+            InsertItemOrderToDb(lastOrderId, currentOrder);
+        }
+
+        private void IsertDevileryDestinationToDB(DeliveryDestination deliveryDestination)
+        {
+            try
+            {
+                using (OracleConnection conn = new OracleConnection(connectionString))
+                {
+                    conn.Open();
+
+                    var query = "INSERT INTO delivery_destination (destination_id, city, street, postal_code, voivoidship, user_user_id) VALUES (:destination_id, :city, :street, :postal_code, :voivoidship, :user_user_id)";
+
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
+                    {
+                        cmd.Parameters.Add(new OracleParameter("destination_id", deliveryDestination.Id));
+                        cmd.Parameters.Add(new OracleParameter("city", deliveryDestination.City));
+                        cmd.Parameters.Add(new OracleParameter("street", deliveryDestination.Street));
+                        cmd.Parameters.Add(new OracleParameter("postal_code", deliveryDestination.PostalCode));
+                        cmd.Parameters.Add(new OracleParameter("voivoidship", deliveryDestination.Voivodship));
+                        cmd.Parameters.Add(new OracleParameter("user_user_id", deliveryDestination.UserId));
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        conn.Close();
+
+                        if (rowsAffected < 0)
+                        {
+                            DisplayAlert("UPS", "KOKOJAMBA!", "Spróbuj ponownie!");
+                        }
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                DisplayAlert("UPS", "KOKOJAMBA!", "Spróbuj ponownie");
+            }
+        }
+        private void IsertOrderToDB(Order order)
+        {
+            try
+            {
+                var app = (App)Application.Current;
+
+                using (OracleConnection conn = new OracleConnection(connectionString))
+                {
+                    conn.Open();
+
+                    var query = "INSERT INTO \"order\" (order_id, total_price, payment_method, delivery_option, delivery_destination_id, user_user_id, \"date\", order_status) VALUES (:order_id, :total_price, :payment_method, :delivery_option, :delivery_destination_id, :user_user_id, :\"date\", :order_status)";
+                    
+                    using (OracleCommand cmd = new OracleCommand(query, conn))
+                    {
+                        int order_id = GetLastID("\"order\"", "order_id");
+                        order_id++;
+                        string total_price = order.TotalPrice.ToString();
+                        string payment_method = "BLIK";
+                        string delivery_option = "kurier poczta polska";
+                        int delivery_destination_id = 2;
+                        int user_user_id = app.userId;
+                        string order_status = "realizowane";
+
+                        cmd.Parameters.Add(new OracleParameter("order_id", order_id));
+                        cmd.Parameters.Add(new OracleParameter("total_price", total_price));
+                        cmd.Parameters.Add(new OracleParameter("payment_method", payment_method));
+                        cmd.Parameters.Add(new OracleParameter("delivery_option", delivery_option));
+                        cmd.Parameters.Add(new OracleParameter("delivery_destination_id", delivery_destination_id));
+                        cmd.Parameters.Add(new OracleParameter("user_user_id", user_user_id));
+                        cmd.Parameters.Add(new OracleParameter("\"date\"", OracleDbType.Date));
+                        cmd.Parameters["\"date\""].Value = DateTime.Now;
+                        cmd.Parameters.Add(new OracleParameter("order_status", order_status)); 
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        conn.Close();
+
+                        if (rowsAffected < 0)
+                        {
+                            DisplayAlert("UPS", "KOKOJAMBA!", "Spróbuj ponownie!");
+                        }
+                    }
+                }
+            }
+            catch (OracleException ex)
+            {
+                DisplayAlert("UPS", "KOKOJAMBA!", "Spróbuj ponownie");
+            }       
+        }
+        private void InsertItemOrderToDb(int lastOrderId, Order order)
+        {
+            try
+            {
+                using (OracleConnection conn = new OracleConnection(connectionString))
+                {
+                    conn.Open();
+
+                    var query = "INSERT INTO item_order (item_item_id, order_order_id) VALUES (:item_item_id, :order_order_id)";
+                    
+                    for (int i = 0; i < order.Products.Count; i++)
+                    {
+                        using (OracleCommand cmd = new OracleCommand(query, conn))
+                        {   
+                       
+                            int item_item_id = order.Products[i].Id;
+
+                            cmd.Parameters.Add(new OracleParameter("item_item_id", item_item_id));
+                            cmd.Parameters.Add(new OracleParameter("order_order_id", lastOrderId));
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected < 0)
+                            {
+                                DisplayAlert("UPS", "KOKOJAMBA!", "Spróbuj ponownie!");
+                            }
+                        
+                         
+                        
+                        }
+                    }
+                    conn.Close();
+                }
+            }
+            catch (OracleException ex)
+            {
+                DisplayAlert("UPS", "KOKOJAMBA!", "Spróbuj ponownie");
+            }
+        }
+        private int GetLastID(string tableName, string idFieldName)
+        {
+            string lastID = "0";
+
+            OracleConnection connection = new OracleConnection(connectionString);
+            connection.Open();
+            OracleCommand command = new OracleCommand();
+
+            command.Connection = connection;
+            command.CommandText = "select max(" + tableName + "." + idFieldName + ") from " + tableName;
+            command.CommandType = CommandType.Text;
+
+            object val = command.ExecuteScalar();
+
+            if (val != null)
+            {
+                lastID = val.ToString();
+
+                if (lastID == "") { lastID = "0"; }
+            }
+            else
+            {
+                lastID = "0";
+            }
+
+            connection.Dispose();
+
+            return Convert.ToInt32(lastID);
         }
         private void paymentBLIK_CheckedChanged(object sender, EventArgs e)
         {
