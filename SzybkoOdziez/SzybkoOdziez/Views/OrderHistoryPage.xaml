@@ -34,19 +34,20 @@
                         <Frame BorderColor ="Black" Padding="5,0,5,0" CornerRadius="15" HasShadow="False"
                        Grid.Column="0" 
                        Grid.Row="2" 
-                       Margin="45,0,-150,0" Style="{StaticResource SZO_StyleBG}">
+                       Margin="5,5,-170,-15" Style="{StaticResource SZO_StyleBG}">
                             <StackLayout>
 
                                 <!--połowa paska z napisem pokaż więcej-->
                                 <Label  
-                       VerticalTextAlignment="Center"
+                      
                       
                       
                        FontSize="16" FontFamily="Calibri" FontAttributes="Bold"
                        Text="Pokaż więcej &#9660;"
                         Style="{StaticResource SZO_StyleTxt}"
-                        
-                       Padding="90,5,0,0">
+                        VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center"
+                       >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ShowFullOrder_Tapped"/>
                                     </Label.GestureRecognizers>
@@ -93,19 +94,20 @@
                         <Frame BorderColor ="Black" Padding="5,0,5,0" CornerRadius="15" HasShadow="False"
                        Grid.Column="0" 
                        Grid.Row="2" 
-                       Margin="45,0,-150,0" Style="{StaticResource SZO_StyleBG}">
+                       Margin="5,5,-170,-15" Style="{StaticResource SZO_StyleBG}">
                             <StackLayout>
 
                                 <!--połowa paska z napisem pokaż więcej-->
                                 <Label  
-                       VerticalTextAlignment="Center"
+                       
                       
                       
                        FontSize="16" FontFamily="Calibri" FontAttributes="Bold"
                        Text="Pokaż więcej &#9660;"
                         Style="{StaticResource SZO_StyleTxt}"
                         
-                       Padding="90,5,0,0">
+                       VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ShowFullOrder_Tapped"/>
                                     </Label.GestureRecognizers>

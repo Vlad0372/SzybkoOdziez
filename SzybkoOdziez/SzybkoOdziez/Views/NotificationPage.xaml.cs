@@ -47,6 +47,7 @@ namespace SzybkoOdziez.Views
 
             if (title == null || message == null)
             {
+
                 msgText = "Brak powiadomień";
             }
             else
@@ -58,7 +59,7 @@ namespace SzybkoOdziez.Views
             {
                 Text = msgText,
                 FontSize = 18,
-                TextColor = Color.Black
+                Style = (Style)Application.Current.Resources["SZO_StyleTxt"]
             };
 
             stackLayout.Children.Add(msg);
