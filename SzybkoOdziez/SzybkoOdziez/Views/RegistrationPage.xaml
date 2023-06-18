@@ -17,14 +17,7 @@
 
             <Label Text="REJESTRACJA" HorizontalTextAlignment="Center" TextColor="Black" FontSize="50" />
          
-            <Entry x:Name="user_id" 
-                 
-                   Placeholder="Podaj swoją ulubioną liczbę" 
-                   HorizontalTextAlignment="Center"
-                   TextColor="Black" 
-                   PlaceholderColor="Black" 
-                   >
-            </Entry>
+            
             <Entry x:Name="name"  
                    Placeholder="Imię" 
                    HorizontalTextAlignment="Center"

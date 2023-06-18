@@ -25,6 +25,25 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
            
         }
+        private int PobierzOstatnieID(OracleConnection connection)
+        {
+            string sqlQuery = "SELECT MAX(user_id) FROM \"user\"";
+
+            using (OracleCommand command = new OracleCommand(sqlQuery, connection))
+            {
+                object result = command.ExecuteScalar();
+
+                if (result != DBNull.Value && result != null)
+                {
+                    return Convert.ToInt32(result);
+                }
+                else
+                {
+                    // Jeśli nie ma żadnych rekordów, zwróć wartość początkową (np. 1)
+                    return 0;
+                }
+            }
+        }
 
         private async void create_account_Button_Clicked(object sender, EventArgs e)
         {
@@ -48,8 +67,9 @@ namespace SzybkoOdziez.Views
 
                 using (OracleCommand cmdInsert = new OracleCommand(query, conn))
                 {
-
-                    int userrr = int.Parse(user_id.Text);
+                    int ostatnieID = PobierzOstatnieID(connection);
+                    int noweID = ostatnieID + 1;
+                    //int userrr = int.Parse(user_id.Text);
                     string nameee = name.Text;
                     string last_nameee = last_name.Text;
                     string maillll = mail.Text;
@@ -58,7 +78,7 @@ namespace SzybkoOdziez.Views
 
 
                     OracleCommand command = new OracleCommand(query, connection);
-                    command.Parameters.Add(new OracleParameter("user_id", userrr));
+                    command.Parameters.Add(new OracleParameter("@user_id", noweID));
                     command.Parameters.Add(new OracleParameter("name", nameee));
                     command.Parameters.Add(new OracleParameter("last_name", last_nameee));
                     command.Parameters.Add(new OracleParameter("mail", maillll));
