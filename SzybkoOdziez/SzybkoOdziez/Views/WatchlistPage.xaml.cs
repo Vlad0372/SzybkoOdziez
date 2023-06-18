@@ -92,16 +92,29 @@ namespace SzybkoOdziez.Views
 
             var app = (App)Application.Current;
             var wishlistDataStore = app.wishlistDataStore;
+            bool shouldDelete = await DisplayAlert("Potwierdzenie", "Czy chcesz usunąć ten produkt?", "Tak", "Nie");
 
-            if (wishlistDataStore.CheckInDataStore(tappedProduct))
+            //if (wishlistDataStore.CheckInDataStore(tappedProduct))
+            //{
+            //    await DisplayAlert("Error!", "Item not found in data store, when trying to remove it from wishlistDataStore!", "Ok");
+            //}
+            //else
+            //{
+            //    await wishlistDataStore.DeleteItemAsync(tappedProduct);
+            //    _viewModel.OnWishlistOpen();
+            //    _viewModel.FilteredProducts.Remove(tappedProduct);
+            //}
+
+            if (shouldDelete)
             {
-                await DisplayAlert("Error!", "Item not found in data store, when trying to remove it from wishlistDataStore!", "Ok");
-            }
-            else
-            {
+                await DisplayAlert("Sukces", "Produkt został usunięty.", "OK");
                 await wishlistDataStore.DeleteItemAsync(tappedProduct);
                 _viewModel.OnWishlistOpen();
                 _viewModel.FilteredProducts.Remove(tappedProduct);
+            }
+            else if(wishlistDataStore.CheckInDataStore(tappedProduct))
+            {
+                await DisplayAlert("Anulowano", "Usunięcie produktu zostało anulowane.", "OK");
             }
 
 

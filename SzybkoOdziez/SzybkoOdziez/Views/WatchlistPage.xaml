@@ -59,9 +59,9 @@
                                         </StackLayout>
                                     </Grid>
                                     <!--kontener smietnika-->
-                                    <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 25, 0">
+                                    <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 75, 0">
                                         <!--obrazek koszyk, dodawanie produktu do koszyka-->
-                                        <Image Grid.Column="0" Source="shoppingCart.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                        <Image Grid.Column="0" Source="shoppingCart.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center" >
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                         Tapped="OnWishlistProductShoppingCartTapped"
@@ -70,8 +70,10 @@
                                                 </TapGestureRecognizer>
                                             </Image.GestureRecognizers>
                                         </Image>
-                                        <!--obrazek smietnik, usuwanie produktu z listy obserwowanych przedmiotow-->
-                                        <Image Grid.Column="1" Source="smietnik.png" HeightRequest="20" WidthRequest="20" VerticalOptions="Center" >
+                                    </Grid>
+                                    <Grid HorizontalOptions="End" Grid.Column="1" Margin="0, 2, 7, 0">
+                                    <!--obrazek smietnik, usuwanie produktu z listy obserwowanych przedmiotow-->
+                                        <Image Grid.Column="1" Source="smietnik.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center" >
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                         Tapped="OnWishlistProductTrashcanTapped"
