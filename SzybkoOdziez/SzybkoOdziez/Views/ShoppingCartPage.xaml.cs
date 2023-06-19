@@ -9,6 +9,7 @@ using SzybkoOdziez.Models;
 using SzybkoOdziez.ViewModels;
 using SzybkoOdziez.Services;
 using Oracle.ManagedDataAccess.Client;
+using static Android.Telephony.CarrierConfigManager;
 
 namespace SzybkoOdziez.Views
 {
@@ -168,8 +169,18 @@ namespace SzybkoOdziez.Views
         }
         private void Kliknienie_zamowienia(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new OrderConfirmationPage());
-            Navigation.RemovePage(this);
+            var app = (App)Application.Current;
+            var shoppingCartDataStore = app.shoppingCartDataStore;
+            if (shoppingCartDataStore.Count() == 0)
+            {
+                 DisplayAlert("Błąd!", "Nie ma w koszyku produkty", "OK");
+            }
+
+            else
+            {
+                Navigation.PushAsync(new OrderConfirmationPage());
+                Navigation.RemovePage(this);
+            }
         }
 
     }
