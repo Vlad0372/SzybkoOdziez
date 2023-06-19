@@ -558,5 +558,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\imagenotfound.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\registration_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -8,72 +8,83 @@
              Shell.NavBarIsVisible="False" 
              BackgroundImageSource="login_page_background.jpg"
              >
+    
     <ContentPage.Content>
-        
-        <StackLayout Padding="25" 
+        <Grid>
+            <Grid.RowDefinitions>
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="1.2*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+            <StackLayout Padding="25" 
                      VerticalOptions="Center" 
                      HorizontalOptions="Fill"
                      >
 
-            <Label Text="REJESTRACJA" HorizontalTextAlignment="Center" TextColor="Black" FontSize="50" />
-         
-            
-            <Entry x:Name="name"  
+                <Image HeightRequest="130" Source="Resources/drawable/registration_icon.png" >
+
+                </Image>
+
+
+                <Entry x:Name="name"  
                    Placeholder="Imię" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
-            </Entry>
-            <Entry x:Name="last_name" 
+                </Entry>
+                <Entry x:Name="last_name" 
                    Placeholder="Nazwizko" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
-            </Entry>
-            <Entry x:Name="mail" 
+                </Entry>
+                <Entry x:Name="mail" 
                    Placeholder="E-mail" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
-            </Entry>
+                </Entry>
 
-            <Entry x:Name="nickname"
+                <Entry x:Name="nickname"
                 Placeholder="Nazwa użytkownika" 
                    HorizontalTextAlignment="Center"
                    TextColor="Black" 
                    PlaceholderColor="Black" 
                    >
-            </Entry>
-            <Entry x:Name="password"
+                </Entry>
+                <Entry x:Name="password"
                    Placeholder="Hasło"  
                    IsPassword="True" 
                    TextColor="Black" 
                    PlaceholderColor="Black"
                    HorizontalTextAlignment="Center"              
                    >
-            </Entry>
-            <Label HorizontalOptions="Center"
+                </Entry>
+                <Label HorizontalOptions="Center"
                    Margin="0, 50, 0, 0 ">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Sprawdź naszą " 
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Sprawdź naszą " 
                               TextColor="Black"/>
-                        <Span Text="Politykę Prywatności" 
+                            <Span Text="Politykę Prywatności" 
                               TextColor="Black" 
                               FontAttributes="Bold" 
                               TextDecorations="Underline"/>
-                    </FormattedString>
-                </Label.FormattedText>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                </Label.GestureRecognizers>
-            </Label>
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
 
 
-            <Button 
+                <Button 
                 Margin="0, 50, 0, 0 "
                 VerticalOptions="Center" 
                 Text="Załóż konto" 
@@ -83,8 +94,9 @@
                 CornerRadius="50" 
                 Clicked="create_account_Button_Clicked"
                 BorderColor="Pink">
-            </Button>
-            
-        </StackLayout>
+                </Button>
+
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
