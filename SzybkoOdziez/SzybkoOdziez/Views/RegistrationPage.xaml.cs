@@ -14,6 +14,8 @@ using System.Data.SqlClient;
 using static Android.Provider.ContactsContract.CommonDataKinds;
 using Java.Nio.FileNio.Attributes;
 using System.Data;
+using System.Text.RegularExpressions;
+using Xamarin.Essentials;
 
 namespace SzybkoOdziez.Views
 {
@@ -25,6 +27,7 @@ namespace SzybkoOdziez.Views
             InitializeComponent();
            
         }
+
         private int PobierzOstatnieID(OracleConnection connection)
         {
             string sqlQuery = "SELECT MAX(user_id) FROM \"user\"";
@@ -59,7 +62,7 @@ namespace SzybkoOdziez.Views
 
             using (OracleConnection conn = new OracleConnection(ConnectionString))
             {
-
+                string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
 
 
 
@@ -76,48 +79,69 @@ namespace SzybkoOdziez.Views
                     string nicknameee = nickname.Text;
                     string passworddd = password.Text;
 
-
-                    OracleCommand command = new OracleCommand(query, connection);
-                    command.Parameters.Add(new OracleParameter("@user_id", noweID));
-                    command.Parameters.Add(new OracleParameter("name", nameee));
-                    command.Parameters.Add(new OracleParameter("last_name", last_nameee));
-                    command.Parameters.Add(new OracleParameter("mail", maillll));
-                    command.Parameters.Add(new OracleParameter("nickname", nicknameee));
-                    command.Parameters.Add(new OracleParameter("password", passworddd));
-
-                    //NIC SIĘ NIE DZIEJE xD
-                    //if (user_id.Text == "" && name.Text == "" && last_name.Text == "" && mail.Text == "" && nickname.Text == "" && password.Text == "" )
-                    //{
-                    //     DisplayAlert("UPS", "Proszę wpisać wszystkie wymagane dane", "Spróbuj ponownie!");
-
-                    //}
-
-
-
-                    try
+                    
+                    if (string.IsNullOrEmpty(nameee)|| string.IsNullOrEmpty(last_nameee) || string.IsNullOrEmpty(maillll) || string.IsNullOrEmpty(nicknameee) || string.IsNullOrEmpty(passworddd)) 
                     {
-                        conn.Open();
-                        int rowsAffected = command.ExecuteNonQuery();
-                        conn.Close();
-
-                        if (rowsAffected > 0)
-                        {
-
-                            await Shell.Current.GoToAsync("//MainPage");
-                            Navigation.RemovePage(this);
-                        }
-                        else
-                        {
-                            //NIC SIĘ NIE DZIEJE xD
-                            // nic nie zostało dodane do bazy - wyświetl komunikat o błędzie
-                            DisplayAlert("UPS", "Nie udało się zarejestrować", "Spróbuj ponownie!");
-                        }
+                        DisplayAlert("UPS", "Musisz podać wszystkie dane żeby się zarejestrować", "Spróbuj ponownie!");
                     }
-                    catch (OracleException ex)
+                    else if (!Regex.IsMatch(maillll, pattern))
                     {
-                        // wystąpił błąd Oracle - wyświetl komunikat o błędzie
-                        DisplayAlert("UPS", "Nie udało się zarejestrować, użytkownik zajął twoją ulubioną liczbnę!", "Spróbuj ponownie", ex.Message);
 
+                        mail.TextColor = Color.Red;
+                        DisplayAlert("UPS", "Musisz wpisać poprawny E-MAIL!", "Spróbuj ponownie!");
+                    }
+                    else
+                    {
+                        mail.TextColor = Color.Default;
+
+
+
+
+
+
+                        OracleCommand command = new OracleCommand(query, connection);
+                        command.Parameters.Add(new OracleParameter("@user_id", noweID));
+                        command.Parameters.Add(new OracleParameter("name", nameee));
+                        command.Parameters.Add(new OracleParameter("last_name", last_nameee));
+                        command.Parameters.Add(new OracleParameter("mail", maillll));
+                        command.Parameters.Add(new OracleParameter("nickname", nicknameee));
+                        command.Parameters.Add(new OracleParameter("password", passworddd));
+
+                        //NIC SIĘ NIE DZIEJE xD
+                        //if (user_id.Text == "" && name.Text == "" && last_name.Text == "" && mail.Text == "" && nickname.Text == "" && password.Text == "" )
+                        //{
+                        //     DisplayAlert("UPS", "Proszę wpisać wszystkie wymagane dane", "Spróbuj ponownie!");
+
+                        //}
+
+
+
+                        try
+                        {
+                            conn.Open();
+                            int rowsAffected = command.ExecuteNonQuery();
+                            conn.Close();
+
+                            if (rowsAffected > 0)
+                            {
+
+                                await Shell.Current.GoToAsync("//MainPage");
+                                Navigation.RemovePage(this);
+                            }
+                            else
+                            {
+                                //NIC SIĘ NIE DZIEJE xD
+                                // nic nie zostało dodane do bazy - wyświetl komunikat o błędzie
+                                DisplayAlert("UPS", "Nie udało się zarejestrować", "Spróbuj ponownie!");
+                            }
+                        }
+                        catch (OracleException ex)
+                        {
+
+                            // wystąpił błąd Oracle - wyświetl komunikat o błędzie
+                            DisplayAlert("UPS", "Nie udało się zarejestrować", "Spróbuj ponownie", ex.Message);
+
+                        }
                     }
                 }
             }
