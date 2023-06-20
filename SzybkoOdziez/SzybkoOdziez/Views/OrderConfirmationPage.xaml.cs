@@ -19,6 +19,7 @@ using static Android.Provider.ContactsContract.CommonDataKinds;
 using static Java.Util.Jar.Attributes;
 using Xamarin.Essentials;
 using Android.Icu.Util;
+using System.Text.RegularExpressions;
 
 namespace SzybkoOdziez.Views
 {
@@ -126,6 +127,15 @@ namespace SzybkoOdziez.Views
             var voivodship = voivodeshipTxt.Text;
 
 
+            string pattern = @"^\d{2}-\d{3}$";
+
+            // Utwórz obiekt Regex z wzorcem
+            Regex regex = new Regex(pattern);
+
+            // Sprawdź, czy podany kod pocztowy pasuje do wzorca
+            
+
+
             if (!paymentRadioBtn1.IsChecked && !paymentRadioBtn2.IsChecked && !paymentRadioBtn3.IsChecked)
             {
                 DisplayAlert("Błąd", "Proszę zaznaczyć jedną z opcji płatności!.", "OK");
@@ -144,6 +154,29 @@ namespace SzybkoOdziez.Views
                 DisplayAlert("Błąd", "Wprowadź wymagane dane.", "OK");
                 return; // Zatrzymaj dalsze przetwarzanie
             }
+            else
+            {
+                bool isMatch = regex.IsMatch(postalCode);
+                if (isMatch)
+                {
+
+                    
+                }
+                else
+                {
+                   
+                    DisplayAlert("Błąd!", "Kod pocztowy jest nie poprawny.", "OK");
+                    return;
+                }
+
+            }
+                // Utwórz wzorzec regularnego wyrażenia dla kodu pocztowego w Polsce
+                
+                // Sprawdź wynik za pomocą instrukcji warunkowej if
+               
+            
+
+          
 
             var app = (App)Application.Current;
             var orderHistoryDataStore = app.orderHistoryDataStore;
