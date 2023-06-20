@@ -24,6 +24,8 @@ namespace SzybkoOdziez.Views
         private WatchlistViewModel _viewModel;
         private string ItemCategory = "Wszystkie";
         bool guestMode = true;
+        private readonly TimeSpan minTapInterval = new TimeSpan(0, 0, 2);  // 2 seconds
+        private DateTime lastTapTimestamp;
 
         public WatchlistPage()
         {
@@ -62,16 +64,43 @@ namespace SzybkoOdziez.Views
 
         private void OnWishlistProductDescriptionTapped(object sender, EventArgs e)
         {
-            var tappedImage = (StackLayout)sender;
-            var tappedProduct = (Product)tappedImage.BindingContext;
-            ChangePageToItemDescription(tappedProduct);
+            var now = DateTime.Now;
+            try
+            {
+                if (now - this.lastTapTimestamp < this.minTapInterval)
+                {
+                    return;
+                }
+
+                var tappedImage = (StackLayout)sender;
+                var tappedProduct = (Product)tappedImage.BindingContext;
+                ChangePageToItemDescription(tappedProduct);
+            }
+            finally
+            {
+                this.lastTapTimestamp = now;
+            }
+           
         }
 
         private void OnWishlistProductImageTapped(object sender, EventArgs e)
         {
-            var tappedElement = (Grid)sender;
-            var tappedProduct = (Product)tappedElement.BindingContext;
-            Navigation.PushAsync(new ItemCarouselPage(tappedProduct));
+            var now = DateTime.Now;
+            try
+            {
+                if (now - this.lastTapTimestamp < this.minTapInterval)
+                {
+                    return;
+                }
+
+                var tappedElement = (Grid)sender;
+                var tappedProduct = (Product)tappedElement.BindingContext;
+                Navigation.PushAsync(new ItemCarouselPage(tappedProduct));
+            }
+            finally
+            {
+                this.lastTapTimestamp = now;
+            }          
         }
 
 

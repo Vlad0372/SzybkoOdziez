@@ -98,7 +98,7 @@ namespace SzybkoOdziez.Views
             {
                 Id = orderId,
                 Number = rnd.Next(10000, 99999).ToString(),
-                CreatedDate = DateTime.Now.ToString("dd/MM/yyyy"),
+                CreatedDate = DateTime.Now.ToString(),
                 TotalPrice = Products.Sum(p => p.Price),
                 Products = Products
             };

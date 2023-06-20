@@ -73,6 +73,9 @@ namespace SzybkoOdziez.Views
                 comment.ProductId = _product.Id;
 
                 _viewModel.Comments.Add(comment);
+
+                CommentTitleEntry.Text = "";
+                CommentTextEditor.Text = "";
             }
             
             //if(_fullPath != null)

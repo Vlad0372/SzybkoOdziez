@@ -92,6 +92,7 @@
 
                     <!--połowa paska z napisem pokaż więcej-->
                     <Label  
+                       x:Name="showMoreLabel"
                        VerticalTextAlignment="Center"
                       
                       

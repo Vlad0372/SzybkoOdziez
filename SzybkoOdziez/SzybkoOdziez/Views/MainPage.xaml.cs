@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using SzybkoOdziez.Models;
 using Xamarin.Forms;
 using static Android.Provider.ContactsContract.CommonDataKinds;
@@ -19,6 +20,9 @@ namespace SzybkoOdziez.Views
         int user_id;
         bool guestMode = true;
 
+        private readonly TimeSpan minTapInterval = new TimeSpan(0, 0, 2);  // 2 seconds
+        private DateTime lastTapTimestamp;
+
         private string ItemCategory = "Wszystkie";
         public MainPage()
         {
@@ -27,7 +31,7 @@ namespace SzybkoOdziez.Views
             InitProductInfoListFromDB();
 
             _currentProduct = GetRandProductInfo();
-            SetCurrentProduct(_currentProduct);
+            SetCurrentProduct(_currentProduct);          
         }
 
         protected override async void OnAppearing()
@@ -36,6 +40,11 @@ namespace SzybkoOdziez.Views
             var app = (App)Application.Current;
             user_id = app.userId;
             guestMode = app.guestMode;
+
+            if (guestMode == true)
+            {
+                await DisplayAlert("Powiadomienie", "Jesteś w trybie gościa. Aby dane się zapisywały, proszę się zalogować", "OK");
+            }
         }
 
         private void ProductPhotoTapped(object sender, EventArgs e)
@@ -44,11 +53,26 @@ namespace SzybkoOdziez.Views
         }
         private void ShowMore(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ItemDescriptionPage(_currentProduct));
+            var now = DateTime.Now;
+            try
+            {
+                if (now - this.lastTapTimestamp < this.minTapInterval)
+                {
+                    return;
+                }
+
+                Navigation.PushAsync(new ItemDescriptionPage(_currentProduct));
+            }
+            finally
+            {
+                this.lastTapTimestamp = now;
+            }                             
         }
         private async void FilterButtonClick(object sender, EventArgs e)
         {
-             ItemCategory = await DisplayActionSheet("Filtruj", "Anuluj", null, "Wszystkie","Bielizna", "Bluza", "Buty", "Czapka", "Koszula", "Kurtka", "Marynarka", "Paski", "Rękawice", "Spodnie", "Spódnice", "Szalik", "T-shirt");
+            ItemCategory = await DisplayActionSheet("Filtruj", "Anuluj", null, "Wszystkie","Bielizna", "Bluza", "Buty", "Czapka", "Koszula", "Kurtka", "Marynarka", "Paski", "Rękawice", "Spodnie", "Spódnice", "Szalik", "T-shirt");
+
+            OnDislikeClicked(sender, e);
         }
         private async void OnDislikeClicked(object sender, EventArgs args)
         {

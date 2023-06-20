@@ -23,7 +23,7 @@ namespace SzybkoOdziez
             "User Id=s100824;Password=Sddb2023;";
         public int userId = 99;
         public bool guestMode = true;
-
+       
         public App()
         {
             InitializeComponent();
